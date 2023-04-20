@@ -41,6 +41,7 @@ public class PlayerController: MonoBehaviour
 
     private void Update()
     {
+        CheckSplit();
         Follow();
     }
 
@@ -58,7 +59,7 @@ public class PlayerController: MonoBehaviour
         moveAction.canceled += (ctx) => { inputMovement = Vector2.zero; };
 
         InputAction splitAction = input.actions[constants.ActionSplit];
-        splitAction.performed += SwitchAndGrouping;
+        splitAction.performed += SwitchCharacterAndGrouping;
     }
 
     private void InitSelectedPlayer()
@@ -106,7 +107,7 @@ public class PlayerController: MonoBehaviour
         }
     }
 
-    private void SwitchAndGrouping(InputAction.CallbackContext context)
+    private void SwitchCharacterAndGrouping(InputAction.CallbackContext context)
     {
         if (context.interaction is PressInteraction)
         {
@@ -116,10 +117,23 @@ public class PlayerController: MonoBehaviour
         {
             if (grouped || CanGroup())
             {
-                grouped = !grouped;
-                GetUnselectedCharacterAgent().enabled = grouped;
+                SwitchGrouping();
             }
         }
+    }
+
+    private void SwitchCharacter()
+    {
+        selectedCharacter1 = !selectedCharacter1;
+        rb.velocity = Vector2.zero;
+        InitSelectedPlayer();
+        InitNavAgents();
+    }
+
+    private void SwitchGrouping()
+    {
+        grouped = !grouped;
+        GetUnselectedCharacterAgent().enabled = grouped;
     }
 
     private bool CanGroup()
@@ -142,12 +156,12 @@ public class PlayerController: MonoBehaviour
         return canGroup;
     }
 
-    private void SwitchCharacter()
+    private void CheckSplit()
     {
-        selectedCharacter1 = !selectedCharacter1;
-        rb.velocity = Vector2.zero;
-        InitSelectedPlayer();
-        InitNavAgents();
+        if (GetUnselectedCharacterAgent().pathStatus.Equals(NavMeshPathStatus.PathPartial))
+        {
+            SwitchGrouping();
+        }
     }
 
     private GameObject GetSelectedCharacter()
