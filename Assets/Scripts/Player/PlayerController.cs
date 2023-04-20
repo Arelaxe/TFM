@@ -1,30 +1,47 @@
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 using UnityEngine;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Collider2D))]
-[RequireComponent(typeof(PlayerInput))]
-public class PlayerController : MonoBehaviour
+public class PlayerController: MonoBehaviour
 {
+    // General
+    private PlayerInput input;
     private Rigidbody2D rb;
     private Collider2D col;
-    private PlayerInput input;
-
-    private Vector2 inputMovement;
-    private Vector2 prevInputMovement;
-    private bool horzDir;
-
+    
     [SerializeField]
     private PlayerConstants constants;
-    public PlayerConstants Constants { get => constants; }
+
+    // Movement
+    private Vector2 inputMovement;
+
+    // Split
+    [SerializeField]
+    private GameObject character1;
+    private NavMeshAgent navAgent1;
+    [SerializeField]
+    private GameObject character2;
+    private NavMeshAgent navAgent2;
+
+    private bool selectedCharacter1 = true;
+    private bool grouped = true;
+
+    private void Awake()
+    {
+        Physics2D.IgnoreLayerCollision(6, 7, true); // TODO extraer en clase de inicialización
+    }
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<Collider2D>();
-        input = GetComponent<PlayerInput>();
-
         InitInputActions();
+        InitSelectedPlayer();
+        InitNavAgents();
+    }
+
+    private void Update()
+    {
+        Follow();
     }
 
     private void FixedUpdate()
@@ -34,53 +51,114 @@ public class PlayerController : MonoBehaviour
 
     private void InitInputActions()
     {
+        input = GetComponent<PlayerInput>();
+
         InputAction moveAction = input.actions[constants.ActionMove];
-        moveAction.performed += (ctx) => { inputMovement = ctx.ReadValue<Vector2>(); };
-        moveAction.canceled += (ctx) => { inputMovement = Vector2.zero; rb.velocity = inputMovement; };
+        moveAction.performed += (ctx) => { inputMovement = ctx.ReadValue<Vector2>().normalized; };
+        moveAction.canceled += (ctx) => { inputMovement = Vector2.zero; };
+
+        InputAction splitAction = input.actions[constants.ActionSplit];
+        splitAction.performed += SwitchAndGrouping;
+    }
+
+    private void InitSelectedPlayer()
+    {
+        rb = GetSelectedCharacter().GetComponent<Rigidbody2D>();
+        col = GetSelectedCharacter().GetComponent<Collider2D>();
+    }
+
+    private void InitNavAgents()
+    {
+        if (!navAgent1)
+        {
+            navAgent1 = character1.GetComponent<NavMeshAgent>();
+            navAgent1.updateRotation = false;
+            navAgent1.updateUpAxis = false;
+        }
+        if (!navAgent2)
+        {
+            navAgent2 = character2.GetComponent<NavMeshAgent>();
+            navAgent2.updateRotation = false;
+            navAgent2.updateUpAxis = false;
+        }
+
+        navAgent1.enabled = !selectedCharacter1;
+        navAgent2.enabled = selectedCharacter1;
     }
 
     private void Move()
     {
-        if (inputMovement.x != 0f || inputMovement.y != 0f)
-        {
-            CheckDirection();
+        rb.velocity = inputMovement * constants.Speed;
+    }
 
-            if (horzDir)
+    private void Follow()
+    {
+        if (grouped)
+        {
+            if (selectedCharacter1)
             {
-                rb.velocity = new Vector2(Mathf.Sign(inputMovement.x) * constants.Speed, 0);
+                navAgent2.SetDestination(character1.transform.position);
             }
             else
             {
-                rb.velocity = new Vector2(0, Mathf.Sign(inputMovement.y) * constants.Speed);
+                navAgent1.SetDestination(character2.transform.position);
             }
         }
-
-        prevInputMovement = inputMovement;
     }
 
-    private void CheckDirection()
+    private void SwitchAndGrouping(InputAction.CallbackContext context)
     {
-        if (input.currentControlScheme == "Gamepad")
+        if (context.interaction is PressInteraction)
         {
-            if (Mathf.Abs(inputMovement.x) > Mathf.Abs(inputMovement.y))
-            {
-                horzDir = true;
-            }
-            else if (Mathf.Abs(inputMovement.y) > Mathf.Abs(inputMovement.x))
-            {
-                horzDir = false;
-            }
+            SwitchCharacter();
         }
-        else
+        else if (context.interaction is HoldInteraction)
         {
-            if (prevInputMovement.x == 0f && inputMovement.x != 0f || inputMovement.x != 0f && inputMovement.y == 0f)
+            if (grouped || CanGroup())
             {
-                horzDir = true;
-            }
-            else if (prevInputMovement.y == 0f && inputMovement.y != 0f || inputMovement.y != 0f && inputMovement.x == 0f)
-            {
-                horzDir = false;
+                grouped = !grouped;
+                GetUnselectedCharacterAgent().enabled = grouped;
             }
         }
     }
+
+    private bool CanGroup()
+    {
+        bool canGroup = false;
+        LayerMask layerMask = LayerMask.GetMask(LayerMask.LayerToName(GetSelectedCharacter().layer == 6 ? 7 : 6)); // TODO extraer en scriptable object general
+
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(GetSelectedCharacter().transform.position, constants.GroupingMaxDistance, layerMask);
+        int i = 0;
+        while (i < hitColliders.Length)
+        {
+            if (hitColliders[i].tag == "Player") // TODO extraer en scriptable object general
+            {
+                canGroup = true;
+                break;
+            }
+            i++;
+        }
+
+        return canGroup;
+    }
+
+    private void SwitchCharacter()
+    {
+        selectedCharacter1 = !selectedCharacter1;
+        rb.velocity = Vector2.zero;
+        InitSelectedPlayer();
+        InitNavAgents();
+    }
+
+    private GameObject GetSelectedCharacter()
+    {
+        return selectedCharacter1 ? character1 : character2;
+    }
+
+    private NavMeshAgent GetUnselectedCharacterAgent()
+    {
+        return selectedCharacter1 ? navAgent2 : navAgent1;
+    }
+
+    public PlayerConstants Constants { get => constants; }
 }

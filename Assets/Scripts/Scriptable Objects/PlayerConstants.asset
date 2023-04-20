@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: PlayerConstants
   m_EditorClassIdentifier: 
   move: Move
+  split: Split
   speed: 3
+  groupingMaxDistance: 2.5

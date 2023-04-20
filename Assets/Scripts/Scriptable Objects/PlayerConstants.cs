@@ -10,7 +10,11 @@ public class PlayerConstants : ScriptableObject
     [SerializeField]
     private string move;
 
+    [SerializeField]
+    private string split;
+
     public string ActionMove { get => move; }
+    public string ActionSplit { get => split; }
 
     [Space]
     [Header("Movement")]
@@ -18,4 +22,11 @@ public class PlayerConstants : ScriptableObject
     private float speed;
 
     public float Speed { get => speed; }
+
+    [Space]
+    [Header("Grouping")]
+    [SerializeField]
+    private float groupingMaxDistance;
+
+    public float GroupingMaxDistance { get => groupingMaxDistance; }
 }
