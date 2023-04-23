@@ -16,6 +16,16 @@ public class PlayerConstants : ScriptableObject
     public string ActionMove { get => move; }
     public string ActionSplit { get => split; }
 
+    [Header("Camera states")]
+    [SerializeField]
+    private string ryoCamera;
+
+    [SerializeField]
+    private string shinenCamera;
+
+    public string CameraStateRyo { get => ryoCamera; }
+    public string CameraStateShinen { get => shinenCamera; }
+
     [Space]
     [Header("Movement")]
     [SerializeField]

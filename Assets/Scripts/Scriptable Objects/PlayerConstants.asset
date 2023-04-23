@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: Move
   split: Split
-  speed: 3
+  ryoCamera: Ryo Camera State
+  shinenCamera: Shinen Camera State
+  speed: 5
   groupingMaxDistance: 2.5

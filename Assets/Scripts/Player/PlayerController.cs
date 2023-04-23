@@ -27,6 +27,10 @@ public class PlayerController: MonoBehaviour
     private bool selectedCharacter1 = true;
     private bool grouped = true;
 
+    // Camera
+    [SerializeField]
+    private Animator cameraAnimator;
+
     private void Awake()
     {
         Physics2D.IgnoreLayerCollision(6, 7, true); // TODO extraer en clase de inicialización
@@ -128,6 +132,15 @@ public class PlayerController: MonoBehaviour
         rb.velocity = Vector2.zero;
         InitSelectedPlayer();
         InitNavAgents();
+
+        if (selectedCharacter1)
+        {
+            cameraAnimator.Play(constants.CameraStateRyo);
+        }
+        else
+        {
+            cameraAnimator.Play(constants.CameraStateShinen);
+        }
     }
 
     private void SwitchGrouping()
