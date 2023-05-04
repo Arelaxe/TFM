@@ -6,27 +6,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class PlayerConstants : ScriptableObject
 {
-    [Header("Input Actions")]
-    [SerializeField]
-    private string move;
-
-    [SerializeField]
-    private string split;
-
-    public string ActionMove { get => move; }
-    public string ActionSplit { get => split; }
-
-    [Header("Camera states")]
-    [SerializeField]
-    private string ryoCamera;
-
-    [SerializeField]
-    private string shinenCamera;
-
-    public string CameraStateRyo { get => ryoCamera; }
-    public string CameraStateShinen { get => shinenCamera; }
-
-    [Space]
     [Header("Movement")]
     [SerializeField]
     private float speed;
@@ -39,4 +18,18 @@ public class PlayerConstants : ScriptableObject
     private float groupingMaxDistance;
 
     public float GroupingMaxDistance { get => groupingMaxDistance; }
+
+    [Space]
+    [SerializeField]
+    private PlayerUtilsConstants utilsConstants;
+
+    public string ActionMove { get => utilsConstants.ActionMove; }
+    public string ActionSplit { get => utilsConstants.ActionSplit; }
+
+    public string CameraStateRyo { get => utilsConstants.CameraStateRyo; }
+    public string CameraStateShinen { get => utilsConstants.CameraStateShinen; }
+
+    public string AnimParamVelocity { get => utilsConstants.AnimParamVelocity; }
+    public string AnimParamVerticalMovement { get => utilsConstants.AnimParamVerticalMovement; }
+    public string AnimParamPositiveMovement { get => utilsConstants.AnimParamPositiveMovement; }
 }

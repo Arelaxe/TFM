@@ -20,9 +20,11 @@ public class PlayerController: MonoBehaviour
     [SerializeField]
     private GameObject character1;
     private NavMeshAgent navAgent1;
+    private Animator animator1;
     [SerializeField]
     private GameObject character2;
     private NavMeshAgent navAgent2;
+    private Animator animator2;
 
     private bool selectedCharacter1 = true;
     private bool grouped = true;
@@ -41,6 +43,7 @@ public class PlayerController: MonoBehaviour
         InitInputActions();
         InitSelectedPlayer();
         InitNavAgents();
+        InitAnimators();
     }
 
     private void Update()
@@ -91,9 +94,39 @@ public class PlayerController: MonoBehaviour
         navAgent2.enabled = selectedCharacter1;
     }
 
+    private void InitAnimators()
+    {
+        animator1 = character1.GetComponent<Animator>();
+        animator2 = character2.GetComponent<Animator>();
+    }
+
     private void Move()
     {
         rb.velocity = inputMovement * constants.Speed;
+        MoveAnim(rb.velocity, selectedCharacter1 ? animator1 : animator2);
+    }
+
+    private void MoveAnim(Vector2 velocityVector, Animator characterAnimator)
+    {
+        int velocity = (int) velocityVector.sqrMagnitude;
+        characterAnimator.SetInteger(constants.AnimParamVelocity, velocity);
+
+        if (velocity > 0)
+        {
+            bool verticalMovement = Mathf.Abs(velocityVector.y) > Mathf.Abs(velocityVector.x);
+            bool positiveMovement;
+            if (verticalMovement)
+            {
+                positiveMovement = velocityVector.y > 0;
+            }
+            else
+            {
+                positiveMovement = velocityVector.x > 0;
+            }
+
+            characterAnimator.SetBool(constants.AnimParamVerticalMovement, verticalMovement);
+            characterAnimator.SetBool(constants.AnimParamPositiveMovement, positiveMovement);
+        }
     }
 
     private void Follow()
@@ -107,7 +140,10 @@ public class PlayerController: MonoBehaviour
             else
             {
                 navAgent1.SetDestination(character2.transform.position);
+                
             }
+
+            MoveAnim(selectedCharacter1 ? navAgent2.velocity : navAgent1.velocity, selectedCharacter1 ? animator2 : animator1);
         }
     }
 
@@ -180,6 +216,11 @@ public class PlayerController: MonoBehaviour
     private GameObject GetSelectedCharacter()
     {
         return selectedCharacter1 ? character1 : character2;
+    }
+
+    private GameObject GetunselectedCharacter()
+    {
+        return selectedCharacter1 ? character2 : character1;
     }
 
     private NavMeshAgent GetUnselectedCharacterAgent()
