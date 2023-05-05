@@ -8,7 +8,7 @@ public class PlayerController: MonoBehaviour
     // General
     private PlayerInput input;
     private Rigidbody2D rb;
-    private Collider2D col;
+    private BoxCollider2D col;
     
     [SerializeField]
     private PlayerConstants constants;
@@ -28,6 +28,7 @@ public class PlayerController: MonoBehaviour
 
     private bool selectedCharacter1 = true;
     private bool grouped = true;
+    private Vector3 followVelocity = Vector3.zero;
 
     // Camera
     [SerializeField]
@@ -49,12 +50,12 @@ public class PlayerController: MonoBehaviour
     private void Update()
     {
         CheckSplit();
-        Follow();
     }
 
     private void FixedUpdate()
     {
         Move();
+        Follow();
     }
 
     private void InitInputActions()
@@ -72,7 +73,7 @@ public class PlayerController: MonoBehaviour
     private void InitSelectedPlayer()
     {
         rb = GetSelectedCharacter().GetComponent<Rigidbody2D>();
-        col = GetSelectedCharacter().GetComponent<Collider2D>();
+        col = GetSelectedCharacter().GetComponent<BoxCollider2D>();
     }
 
     private void InitNavAgents()
@@ -82,12 +83,14 @@ public class PlayerController: MonoBehaviour
             navAgent1 = character1.GetComponent<NavMeshAgent>();
             navAgent1.updateRotation = false;
             navAgent1.updateUpAxis = false;
+            navAgent1.updatePosition = false;
         }
         if (!navAgent2)
         {
             navAgent2 = character2.GetComponent<NavMeshAgent>();
             navAgent2.updateRotation = false;
             navAgent2.updateUpAxis = false;
+            navAgent2.updatePosition = false;
         }
 
         navAgent1.enabled = !selectedCharacter1;
@@ -103,30 +106,7 @@ public class PlayerController: MonoBehaviour
     private void Move()
     {
         rb.velocity = inputMovement * constants.Speed;
-        MoveAnim(rb.velocity, selectedCharacter1 ? animator1 : animator2);
-    }
-
-    private void MoveAnim(Vector2 velocityVector, Animator characterAnimator)
-    {
-        int velocity = (int) velocityVector.sqrMagnitude;
-        characterAnimator.SetInteger(constants.AnimParamVelocity, velocity);
-
-        if (velocity > 0)
-        {
-            bool verticalMovement = Mathf.Abs(velocityVector.y) > Mathf.Abs(velocityVector.x);
-            bool positiveMovement;
-            if (verticalMovement)
-            {
-                positiveMovement = velocityVector.y > 0;
-            }
-            else
-            {
-                positiveMovement = velocityVector.x > 0;
-            }
-
-            characterAnimator.SetBool(constants.AnimParamVerticalMovement, verticalMovement);
-            characterAnimator.SetBool(constants.AnimParamPositiveMovement, positiveMovement);
-        }
+        SetMoveAnimParams(rb.velocity, selectedCharacter1 ? animator1 : animator2);
     }
 
     private void Follow()
@@ -135,15 +115,47 @@ public class PlayerController: MonoBehaviour
         {
             if (selectedCharacter1)
             {
-                navAgent2.SetDestination(character1.transform.position);
+                FollowMovement(character1, character2, navAgent2, animator2);
             }
             else
             {
-                navAgent1.SetDestination(character2.transform.position);
-                
+                FollowMovement(character2, character1, navAgent1, animator1);
+            }
+        }
+    }
+
+    private void FollowMovement(GameObject leader, GameObject follower, NavMeshAgent followerAgent, Animator followerAnimator)
+    {
+        if (followerAgent.speed == 0)
+        {
+            followerAgent.speed = constants.Speed;
+        }
+        followerAgent.SetDestination(leader.transform.position);
+        follower.transform.position = Vector3.SmoothDamp(follower.transform.position, followerAgent.nextPosition, ref followVelocity, 0.1f);
+
+        SetMoveAnimParams(followerAgent.velocity, followerAnimator);
+    }
+
+    private void SetMoveAnimParams(Vector2 velocity, Animator characterAnimator)
+    {
+        int velocitySqr = (int) velocity.sqrMagnitude;
+        characterAnimator.SetInteger(constants.AnimParamVelocity, velocitySqr);
+
+        if (velocitySqr > 0)
+        {
+            bool verticalMovement = Mathf.Abs(velocity.y) > Mathf.Abs(velocity.x);
+            bool positiveMovement;
+            if (verticalMovement)
+            {
+                positiveMovement = velocity.y > 0;
+            }
+            else
+            {
+                positiveMovement = velocity.x > 0;
             }
 
-            MoveAnim(selectedCharacter1 ? navAgent2.velocity : navAgent1.velocity, selectedCharacter1 ? animator2 : animator1);
+            characterAnimator.SetBool(constants.AnimParamVerticalMovement, verticalMovement);
+            characterAnimator.SetBool(constants.AnimParamPositiveMovement, positiveMovement);
         }
     }
 
@@ -216,11 +228,6 @@ public class PlayerController: MonoBehaviour
     private GameObject GetSelectedCharacter()
     {
         return selectedCharacter1 ? character1 : character2;
-    }
-
-    private GameObject GetunselectedCharacter()
-    {
-        return selectedCharacter1 ? character2 : character1;
     }
 
     private NavMeshAgent GetUnselectedCharacterAgent()

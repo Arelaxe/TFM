@@ -1265,7 +1265,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &1262035245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1447,41 +1447,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8336605227755948324, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
-      propertyPath: m_AutoBraking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8336605227755948324, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
-      propertyPath: m_Acceleration
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8336605227755948324, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 1.025
-      objectReference: {fileID: 0}
     - target: {fileID: 8336605227977791363, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
       propertyPath: m_ChildCameras.Array.size
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8336605228558245115, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8336605228558245115, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8336605228558245115, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8336605228558245115, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8336605228558245118, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 1.025
       objectReference: {fileID: 0}
     - target: {fileID: 8336605228708046906, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
       propertyPath: m_LocalPosition.x
