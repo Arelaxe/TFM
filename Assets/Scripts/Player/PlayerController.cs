@@ -85,11 +85,13 @@ public class PlayerController: MonoBehaviour
     {
         if (!navAgent1)
         {
-            InitNavAgent(character1.GetComponent<NavMeshAgent>());
+            navAgent1 = character1.GetComponent<NavMeshAgent>();
+            InitNavAgent(navAgent1);
         }
         if (!navAgent2)
         {
-            InitNavAgent(character2.GetComponent<NavMeshAgent>());
+            navAgent2 = character2.GetComponent<NavMeshAgent>();
+            InitNavAgent(navAgent2);
         }
 
         navAgent1.enabled = !selectedCharacter1;

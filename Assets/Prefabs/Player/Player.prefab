@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e1e904fb09c89458e5b09545ffefc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerParams: {fileID: 0}
+  playerParams: {fileID: 11400000, guid: 4ca37fbb4eb9b2f47b3012f3af91f7b4, type: 2}
   character1: {fileID: 8336605228558245094}
   character2: {fileID: 8336605227755948323}
   cameraAnimator: {fileID: 8336605227977791372}
