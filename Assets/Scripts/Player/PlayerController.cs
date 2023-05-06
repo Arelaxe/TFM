@@ -2,6 +2,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 public class PlayerController: MonoBehaviour
 {
@@ -11,12 +12,14 @@ public class PlayerController: MonoBehaviour
     private BoxCollider2D col;
     
     [SerializeField]
-    private PlayerConstants constants;
+    private PlayerParams playerParams;
 
     // Movement
     private Vector2 inputMovement;
+    private Tuple<bool, bool> lookingAt1 = Tuple.Create(true, false);
+    private Tuple<bool, bool> lookingAt2 = Tuple.Create(true, false);
 
-    // Split
+    // Group and switch
     [SerializeField]
     private GameObject character1;
     private NavMeshAgent navAgent1;
@@ -28,7 +31,7 @@ public class PlayerController: MonoBehaviour
 
     private bool selectedCharacter1 = true;
     private bool grouped = true;
-    private Vector3 followVelocity = Vector3.zero;
+    private Vector3 followerVelocity = Vector3.zero;
 
     // Camera
     [SerializeField]
@@ -36,7 +39,7 @@ public class PlayerController: MonoBehaviour
 
     private void Awake()
     {
-        Physics2D.IgnoreLayerCollision(6, 7, true); // TODO extraer en clase de inicialización
+        Physics2D.IgnoreLayerCollision(GlobalConstants.LayerIntTerrenal, GlobalConstants.LayerIntSpiritual, true); // TODO extraer en clase de inicialización
     }
 
     void Start()
@@ -58,15 +61,17 @@ public class PlayerController: MonoBehaviour
         Follow();
     }
 
+    // Initialization
+
     private void InitInputActions()
     {
         input = GetComponent<PlayerInput>();
 
-        InputAction moveAction = input.actions[constants.ActionMove];
+        InputAction moveAction = input.actions[PlayerConstants.ActionMove];
         moveAction.performed += (ctx) => { inputMovement = ctx.ReadValue<Vector2>().normalized; };
         moveAction.canceled += (ctx) => { inputMovement = Vector2.zero; };
 
-        InputAction splitAction = input.actions[constants.ActionSplit];
+        InputAction splitAction = input.actions[PlayerConstants.ActionSplit];
         splitAction.performed += SwitchCharacterAndGrouping;
     }
 
@@ -80,21 +85,22 @@ public class PlayerController: MonoBehaviour
     {
         if (!navAgent1)
         {
-            navAgent1 = character1.GetComponent<NavMeshAgent>();
-            navAgent1.updateRotation = false;
-            navAgent1.updateUpAxis = false;
-            navAgent1.updatePosition = false;
+            InitNavAgent(character1.GetComponent<NavMeshAgent>());
         }
         if (!navAgent2)
         {
-            navAgent2 = character2.GetComponent<NavMeshAgent>();
-            navAgent2.updateRotation = false;
-            navAgent2.updateUpAxis = false;
-            navAgent2.updatePosition = false;
+            InitNavAgent(character2.GetComponent<NavMeshAgent>());
         }
 
         navAgent1.enabled = !selectedCharacter1;
         navAgent2.enabled = selectedCharacter1;
+    }
+
+    private void InitNavAgent(NavMeshAgent navAgent)
+    {
+        navAgent.updateRotation = false;
+        navAgent.updateUpAxis = false;
+        navAgent.updatePosition = false;
     }
 
     private void InitAnimators()
@@ -103,10 +109,12 @@ public class PlayerController: MonoBehaviour
         animator2 = character2.GetComponent<Animator>();
     }
 
+    // Movement
+
     private void Move()
     {
-        rb.velocity = inputMovement * constants.Speed;
-        SetMoveAnimParams(rb.velocity, selectedCharacter1 ? animator1 : animator2);
+        rb.velocity = inputMovement * playerParams.Speed;
+        SetMoveAnimParams(rb.velocity, selectedCharacter1 ? animator1 : animator2, false);
     }
 
     private void Follow()
@@ -128,36 +136,63 @@ public class PlayerController: MonoBehaviour
     {
         if (followerAgent.speed == 0)
         {
-            followerAgent.speed = constants.Speed;
+            followerAgent.speed = playerParams.Speed;
         }
         followerAgent.SetDestination(leader.transform.position);
-        follower.transform.position = Vector3.SmoothDamp(follower.transform.position, followerAgent.nextPosition, ref followVelocity, 0.1f);
+        follower.transform.position = Vector3.SmoothDamp(follower.transform.position, followerAgent.nextPosition, ref followerVelocity, 0.1f);
 
-        SetMoveAnimParams(followerAgent.velocity, followerAnimator);
+        SetMoveAnimParams(followerAgent.velocity, followerAnimator, true);
     }
 
-    private void SetMoveAnimParams(Vector2 velocity, Animator characterAnimator)
+    private void SetMoveAnimParams(Vector2 velocity, Animator characterAnimator, bool isFollower)
     {
-        int velocitySqr = (int) velocity.sqrMagnitude;
-        characterAnimator.SetInteger(constants.AnimParamVelocity, velocitySqr);
+        SetLookingAt(isFollower);
+        characterAnimator.SetInteger(PlayerConstants.AnimParamVelocity, (int)velocity.sqrMagnitude);
+        characterAnimator.SetBool(PlayerConstants.AnimParamVerticalMovement, IsCharacter1(isFollower) ? lookingAt1.Item1 : lookingAt2.Item1);
+        characterAnimator.SetBool(PlayerConstants.AnimParamPositiveMovement, IsCharacter1(isFollower) ? lookingAt1.Item2 : lookingAt2.Item2);
+    }
 
+    private void SetLookingAt(bool isFollower)
+    {
+      Vector2 velocity = rb.velocity;
+        if (isFollower)
+        {
+            velocity = IsCharacter1(isFollower) ? navAgent1.velocity : navAgent2.velocity;
+        }
+
+        bool verticalMovement = IsCharacter1(isFollower) ? lookingAt1.Item1 : lookingAt2.Item1;
+        bool positiveMovement = IsCharacter1(isFollower) ? lookingAt1.Item2 : lookingAt2.Item2;
+
+        Tuple<bool, bool> currentLookingAt = CalculateLookingAt(velocity, verticalMovement, positiveMovement);
+        if (IsCharacter1(isFollower))
+        {
+            lookingAt1 = currentLookingAt;
+        }
+        else
+        {
+            lookingAt2 = currentLookingAt;
+        }
+    }
+
+    private Tuple<bool, bool> CalculateLookingAt(Vector2 velocity, bool currentVerticalMovement, bool currentPositiveMovement)
+    {
+        int velocitySqr = (int)velocity.sqrMagnitude;
         if (velocitySqr > 0)
         {
-            bool verticalMovement = Mathf.Abs(velocity.y) > Mathf.Abs(velocity.x);
-            bool positiveMovement;
-            if (verticalMovement)
+            currentVerticalMovement = Mathf.Abs(velocity.y) > Mathf.Abs(velocity.x);
+            if (currentVerticalMovement)
             {
-                positiveMovement = velocity.y > 0;
+                currentPositiveMovement = velocity.y > 0;
             }
             else
             {
-                positiveMovement = velocity.x > 0;
+                currentPositiveMovement = velocity.x > 0;
             }
-
-            characterAnimator.SetBool(constants.AnimParamVerticalMovement, verticalMovement);
-            characterAnimator.SetBool(constants.AnimParamPositiveMovement, positiveMovement);
         }
+        return Tuple.Create(currentVerticalMovement, currentPositiveMovement);
     }
+
+    // Switch and group
 
     private void SwitchCharacterAndGrouping(InputAction.CallbackContext context)
     {
@@ -183,11 +218,11 @@ public class PlayerController: MonoBehaviour
 
         if (selectedCharacter1)
         {
-            cameraAnimator.Play(constants.CameraStateRyo);
+            cameraAnimator.Play(PlayerConstants.CameraStateRyo);
         }
         else
         {
-            cameraAnimator.Play(constants.CameraStateShinen);
+            cameraAnimator.Play(PlayerConstants.CameraStateShinen);
         }
     }
 
@@ -200,13 +235,14 @@ public class PlayerController: MonoBehaviour
     private bool CanGroup()
     {
         bool canGroup = false;
-        LayerMask layerMask = LayerMask.GetMask(LayerMask.LayerToName(GetSelectedCharacter().layer == 6 ? 7 : 6)); // TODO extraer en scriptable object general
+        int layer = GetSelectedCharacter().layer == GlobalConstants.LayerIntTerrenal ? GlobalConstants.LayerIntSpiritual : GlobalConstants.LayerIntTerrenal;
+        LayerMask layerMask = LayerMask.GetMask(LayerMask.LayerToName(layer));
 
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(GetSelectedCharacter().transform.position, constants.GroupingMaxDistance, layerMask);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(GetSelectedCharacter().transform.position, playerParams.GroupingMaxDistance, layerMask);
         int i = 0;
         while (i < hitColliders.Length)
         {
-            if (hitColliders[i].tag == "Player") // TODO extraer en scriptable object general
+            if (hitColliders[i].tag == GlobalConstants.TagPlayer)
             {
                 canGroup = true;
                 break;
@@ -225,6 +261,8 @@ public class PlayerController: MonoBehaviour
         }
     }
 
+    // Auxiliar methods
+
     private GameObject GetSelectedCharacter()
     {
         return selectedCharacter1 ? character1 : character2;
@@ -235,5 +273,20 @@ public class PlayerController: MonoBehaviour
         return selectedCharacter1 ? navAgent2 : navAgent1;
     }
 
-    public PlayerConstants Constants { get => constants; }
+    private bool IsCharacter1(bool isFollower)
+    {
+        return isFollower ? !selectedCharacter1 : selectedCharacter1;
+    }
+
+    public Tuple<bool, bool> GetLookingAt()
+    {
+        return selectedCharacter1 ? lookingAt1 : lookingAt2;
+    }
+
+    public BoxCollider2D GetPlayerCollider()
+    {
+        return col;
+    }
+
+    public PlayerParams PlayerParams { get => playerParams; }
 }

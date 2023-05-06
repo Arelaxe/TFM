@@ -16,7 +16,7 @@ public class PlayerControllerEditor : Editor
 
         if (cachedEditor == null)
         {
-            cachedEditor = CreateEditor(editedMonobehaviour.Constants);
+            cachedEditor = CreateEditor(editedMonobehaviour.PlayerParams);
         }
 
         base.OnInspectorGUI();
