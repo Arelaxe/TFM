@@ -10,6 +10,9 @@ public class PlayerController: MonoBehaviour
     private PlayerInput input;
     private Rigidbody2D rb;
     private BoxCollider2D col;
+    private SpriteRenderer spriteRenderer;
+
+    private PlayerInteractor interactor;
     
     [SerializeField]
     private PlayerParams playerParams;
@@ -48,6 +51,7 @@ public class PlayerController: MonoBehaviour
         InitSelectedPlayer();
         InitNavAgents();
         InitAnimators();
+        interactor = GetComponent<PlayerInteractor>();
     }
 
     private void Update()
@@ -62,7 +66,6 @@ public class PlayerController: MonoBehaviour
     }
 
     // Initialization
-
     private void InitInputActions()
     {
         input = GetComponent<PlayerInput>();
@@ -79,6 +82,7 @@ public class PlayerController: MonoBehaviour
     {
         rb = GetSelectedCharacter().GetComponent<Rigidbody2D>();
         col = GetSelectedCharacter().GetComponent<BoxCollider2D>();
+        spriteRenderer = GetSelectedCharacter().GetComponent<SpriteRenderer>();
     }
 
     private void InitNavAgents()
@@ -117,6 +121,11 @@ public class PlayerController: MonoBehaviour
     {
         rb.velocity = inputMovement * playerParams.Speed;
         SetMoveAnimParams(rb.velocity, selectedCharacter1 ? animator1 : animator2, false);
+
+        if (rb.velocity.sqrMagnitude != 0)
+        {
+            interactor.DestroyInteractions();
+        }
     }
 
     private void Follow()
@@ -226,6 +235,8 @@ public class PlayerController: MonoBehaviour
         {
             cameraAnimator.Play(PlayerConstants.CameraStateShinen);
         }
+
+        interactor.DestroyInteractions();
     }
 
     private void SwitchGrouping()
@@ -275,7 +286,7 @@ public class PlayerController: MonoBehaviour
         return selectedCharacter1 ? navAgent2 : navAgent1;
     }
 
-    private bool IsCharacter1(bool isFollower)
+    public bool IsCharacter1(bool isFollower)
     {
         return isFollower ? !selectedCharacter1 : selectedCharacter1;
     }
@@ -288,6 +299,11 @@ public class PlayerController: MonoBehaviour
     public BoxCollider2D GetPlayerCollider()
     {
         return col;
+    }
+
+    public SpriteRenderer GetPlayerSpriteRenderer()
+    {
+        return spriteRenderer;
     }
 
     public PlayerParams PlayerParams { get => playerParams; }
