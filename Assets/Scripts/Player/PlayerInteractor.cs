@@ -8,6 +8,7 @@ using System.Collections.Generic;
 public class PlayerInteractor : MonoBehaviour
 {
     private PlayerController playerController;
+    private InventoryController inventoryController;
 
     private PlayerInput input;
     private InputAction interactAction;
@@ -33,6 +34,7 @@ public class PlayerInteractor : MonoBehaviour
     private void Start()
     {
         playerController = GetComponent<PlayerController>();
+        inventoryController = GetComponent<InventoryController>();
         InitInputActions();
     }
 
@@ -103,16 +105,26 @@ public class PlayerInteractor : MonoBehaviour
         tempButton.GetComponentInChildren<TextMeshProUGUI>().text = interaction.Name;
         tempButton.onClick.AddListener(() => PerformInteraction(interaction.Action));
 
-        if (interaction.Type.Equals(Interaction.ActionType.Hacking) && !playerController.IsCharacter1(false)
-            || interaction.Type.Equals(Interaction.ActionType.Spiritual) && playerController.IsCharacter1(false))
+        if (IsNotInteractable(interaction))
         {
             tempButton.interactable = false;
         }
     }
 
+    private bool IsNotInteractable(Interaction interaction)
+    {
+        bool hackingConstraint = interaction.Type.Equals(Interaction.ActionType.Hacking) && !playerController.IsCharacter1(false);
+        bool spiritualConstraint = interaction.Type.Equals(Interaction.ActionType.Spiritual) && playerController.IsCharacter1(false);
+        bool itemConstraint = interaction.RequiredItem != null && !inventoryController.HasCharacterItem(playerController.IsCharacter1(false), interaction.RequiredItem);
+        return hackingConstraint || spiritualConstraint || itemConstraint;
+    }
+
     private void PerformInteraction(Action action)
     {
-        action.Execute();
+        if (action)
+        {
+            action.Execute();
+        }
     }
 
     public void DestroyInteractions()

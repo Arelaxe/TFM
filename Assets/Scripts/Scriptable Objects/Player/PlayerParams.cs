@@ -16,7 +16,12 @@ public class PlayerParams : ScriptableObject
     [SerializeField]
     private float groupingMaxDistance;
 
+    [Header("Inventory")]
+    [SerializeField]
+    private int inventorySize;
+
     public float Speed { get => movementSpeed; }
     public float InteractionRange { get => interactionRange; }
     public float GroupingMaxDistance { get => groupingMaxDistance; }
+    public int InventorySize { get => inventorySize; }
 }

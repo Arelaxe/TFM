@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d83547f9e82db94dba35d9454f31f5e, type: 3}
-  m_Name: Player Params
+  m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
+  m_Name: Banana
   m_EditorClassIdentifier: 
-  movementSpeed: 1.5
-  interactionRange: 0.11
-  groupingMaxDistance: 2.5
-  inventorySize: 9
+  <Name>k__BackingField: Banana
+  <Description>k__BackingField: Just a banana
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: e85962a33e540b349a40db111652645a, type: 3}

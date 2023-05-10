@@ -306,5 +306,10 @@ public class PlayerController: MonoBehaviour
         return spriteRenderer;
     }
 
+    public bool AreGrouped()
+    {
+        return grouped;
+    }
+
     public PlayerParams PlayerParams { get => playerParams; }
 }
