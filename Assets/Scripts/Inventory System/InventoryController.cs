@@ -89,6 +89,19 @@ public class InventoryController : MonoBehaviour
         return hasItem;
     }
 
+    public void AddItemToCharacter(bool isCharacter1, Item item)
+    {
+        if (isCharacter1)
+        {
+            inventory1.AddItem(item);
+        }
+        else
+        {
+            inventory2.AddItem(item);
+        }
+        page.UpdateItems(inventory1, inventory2);
+    }
+
     // Page Event Handlers
 
     private void HandleDescriptionRequest(int inventoryIndex, int itemIndex)

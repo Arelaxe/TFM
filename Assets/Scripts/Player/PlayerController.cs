@@ -276,7 +276,7 @@ public class PlayerController: MonoBehaviour
 
     // Auxiliar methods
 
-    private GameObject GetSelectedCharacter()
+    public GameObject GetSelectedCharacter()
     {
         return selectedCharacter1 ? character1 : character2;
     }

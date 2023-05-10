@@ -123,7 +123,7 @@ public class PlayerInteractor : MonoBehaviour
     {
         if (action)
         {
-            action.Execute();
+            action.Execute(playerController);
         }
     }
 
