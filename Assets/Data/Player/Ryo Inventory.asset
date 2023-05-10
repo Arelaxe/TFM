@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d83547f9e82db94dba35d9454f31f5e, type: 3}
-  m_Name: Player Params
+  m_Script: {fileID: 11500000, guid: 5d081244c049c4740a72f5096d87356f, type: 3}
+  m_Name: Ryo Inventory
   m_EditorClassIdentifier: 
-  movementSpeed: 1.5
-  interactionRange: 0.11
-  groupingMaxDistance: 2.5
-  inventorySize: 9
+  items:
+  - {fileID: 11400000, guid: 747123d724f008b4fa0dd69cb4162a9d, type: 2}
+  <Size>k__BackingField: 9

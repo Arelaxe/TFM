@@ -15,7 +15,7 @@ public class Interaction
     private bool available;
 
     [SerializeField]
-    private string requiredItem;
+    private Item item;
 
     [Space]
     [SerializeField]
@@ -31,6 +31,6 @@ public class Interaction
     public string Name { get => name; }
     public bool IsAvailable { get => available; }
     public ActionType Type { get => type; }
-
+    public Item RequiredItem { get => item; }
     public Action Action { get => action; }
 }
