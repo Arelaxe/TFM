@@ -133,6 +133,13 @@ public class InventoryController : MonoBehaviour
         page.UpdateItems(inventory1, inventory2);
     }
 
+    public void RemoveItem(Item item)
+    {
+        inventory1.GetItems().Remove(item);
+        inventory2.GetItems().Remove(item);
+        page.UpdateItems(inventory1, inventory2);
+    }
+
     public void UpdateItemPanelsForSwitch(bool isCharacter1, bool grouped)
     {
         if (!grouped)

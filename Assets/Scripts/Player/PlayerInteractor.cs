@@ -110,7 +110,7 @@ public class PlayerInteractor : MonoBehaviour
         }
 
         tempButton.GetComponentInChildren<TextMeshProUGUI>().text = text;
-        tempButton.onClick.AddListener(() => PerformInteraction(interaction.Action));
+        tempButton.onClick.AddListener(() => PerformInteraction(interaction));
 
         if (IsNotInteractable(interaction))
         {
@@ -136,10 +136,15 @@ public class PlayerInteractor : MonoBehaviour
         return hackingConstraint || spiritualConstraint || itemConstraint || pickUpConstraint;
     }
 
-    private void PerformInteraction(Action action)
+    private void PerformInteraction(Interaction interaction)
     {
+        Action action = interaction.Action;
         if (action)
         {
+            if (interaction.RequiredItem)
+            {
+                inventoryController.RemoveItem(interaction.RequiredItem);
+            }
             action.Execute(playerController);
         }
     }
