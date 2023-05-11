@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
   m_Name: Banana
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Banana
-  <Description>k__BackingField: Just a banana
+  <Name>k__BackingField: "Pl\xE1tano"
+  <Description>k__BackingField: Una buena fuente de potasio.
   <ItemImage>k__BackingField: {fileID: 21300000, guid: e85962a33e540b349a40db111652645a, type: 3}

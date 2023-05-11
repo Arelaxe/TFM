@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
   m_Name: Scroll
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Scroll
-  <Description>k__BackingField: An ancient scroll
+  <Name>k__BackingField: Pergamino
+  <Description>k__BackingField: Pergamino de la Antigua Era.
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 8a280abaab43102498a6393f30a25c22, type: 3}

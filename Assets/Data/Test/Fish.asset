@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
   m_Name: Fish
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Fish
-  <Description>k__BackingField: It's a fish. Ew.
+  <Name>k__BackingField: Pescado
+  <Description>k__BackingField: Un pescado. Apesta.
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 0916f2509d0f9544e9a3693cd85b21f0, type: 3}

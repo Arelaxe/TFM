@@ -102,7 +102,14 @@ public class PlayerInteractor : MonoBehaviour
     private void CustomButton(Interaction interaction, GameObject goButton)
     {
         Button tempButton = goButton.GetComponent<Button>();
-        tempButton.GetComponentInChildren<TextMeshProUGUI>().text = interaction.Name;
+
+        string text = interaction.Name;
+        if (interaction.RequiredItem)
+        {
+            text = text + " (" + interaction.RequiredItem.Name + ")";
+        }
+
+        tempButton.GetComponentInChildren<TextMeshProUGUI>().text = text;
         tempButton.onClick.AddListener(() => PerformInteraction(interaction.Action));
 
         if (IsNotInteractable(interaction))

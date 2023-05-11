@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
   m_Name: Ring
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Ring
-  <Description>k__BackingField: A ring.
+  <Name>k__BackingField: Anillo desgastado
+  <Description>k__BackingField: Anillo con gema incrustada.
   <ItemImage>k__BackingField: {fileID: 21300000, guid: ea79e0f916e52ce4097545369413249d, type: 3}

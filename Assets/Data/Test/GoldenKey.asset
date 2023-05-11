@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
   m_Name: GoldenKey
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Golden Key
-  <Description>k__BackingField: A key made of gold.
+  <Name>k__BackingField: Llave dorada
+  <Description>k__BackingField: Una llave hecha de oro.
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 1900b0ab319892443b0d3750bc1e85f2, type: 3}

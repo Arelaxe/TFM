@@ -12,10 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d081244c049c4740a72f5096d87356f, type: 3}
   m_Name: Shinen Inventory
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 11400000, guid: 2306a898223c0f54aad46c853c5b88ff, type: 2}
-  - {fileID: 11400000, guid: 747123d724f008b4fa0dd69cb4162a9d, type: 2}
-  - {fileID: 11400000, guid: e5280cd90b3cbbe49ab1f66ea56a16db, type: 2}
-  - {fileID: 11400000, guid: ac0442a9115c6f14d94a340954fb0720, type: 2}
-  - {fileID: 11400000, guid: 952618ced97628c4fac570d90326690e, type: 2}
+  items: []
   <Size>k__BackingField: 9
