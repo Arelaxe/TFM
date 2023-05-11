@@ -27,14 +27,13 @@ public class InventoryPage : MonoBehaviour
     private List<InventoryItem> items2 = new List<InventoryItem>();
 
     private int currentDraggedItemIndex = -1;
-    private int currentDraggedItemInventoryIndex = -1;
+    private int currentDraggedInventoryIndex = -1;
 
     public event Action<int, int> OnDescriptionRequested, OnStartDragging;
-    public event Action<int, int, int> OnSwapItems;
+    public event Action<int, int, int, int> OnSwapItems;
 
     private void Awake()
     {
-        Hide();
         mouseFollower.Toggle(false);
         inventoryDescription.ResetDescription();
     }
@@ -65,6 +64,20 @@ public class InventoryPage : MonoBehaviour
             item.OnItemEndDrag += HandleEndDrag;
             item.OnItemDroppedOn += HandleSwap;
         }
+    }
+
+    public void EnableContentPanel(bool forCharacter1)
+    {
+        CanvasGroup canvasGroup = GetCharacterContentPanel(forCharacter1).GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 1f;
+        canvasGroup.blocksRaycasts = true;
+    }
+
+    public void DisableContentPanel(bool forCharacter1)
+    {
+        CanvasGroup canvasGroup = GetCharacterContentPanel(forCharacter1).GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 0.5f;
+        canvasGroup.blocksRaycasts = false;
     }
 
     public void LoadItems(Inventory inventory1, Inventory inventory2)
@@ -153,9 +166,10 @@ public class InventoryPage : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
+        DeselectAll();
     }
 
-    // Events
+    // Event handlers
 
     private void HandleItemSelection(InventoryItem item)
     {
@@ -175,13 +189,13 @@ public class InventoryPage : MonoBehaviour
         if (items2.Contains(item))
         {
             currentDraggedItemIndex = items2.IndexOf(item);
-            currentDraggedItemInventoryIndex = 2;
+            currentDraggedInventoryIndex = 2;
             OnStartDragging?.Invoke(2, items2.IndexOf(item));
         }
         else
         {
             currentDraggedItemIndex = items1.IndexOf(item);
-            currentDraggedItemInventoryIndex = 1;
+            currentDraggedInventoryIndex = 1;
             OnStartDragging?.Invoke(1, items1.IndexOf(item));
         }
     }
@@ -194,16 +208,20 @@ public class InventoryPage : MonoBehaviour
     private void HandleSwap(InventoryItem item)
     {
         HandleItemSelection(item);
-        if (playerController.AreGrouped())
+        int droppedOnInventoryIndex = items1.Contains(item) ? 1 : 2;
+        int droppedOnItemIndex = droppedOnInventoryIndex == 1 ? items1.IndexOf(item) : items2.IndexOf(item);
+
+        if (currentDraggedInventoryIndex == droppedOnInventoryIndex 
+            || currentDraggedInventoryIndex != droppedOnInventoryIndex && playerController.AreGrouped())
         {
-            if (items1.Contains(item) && currentDraggedItemInventoryIndex != 1)
-            {
-                OnSwapItems?.Invoke(currentDraggedItemInventoryIndex, currentDraggedItemIndex, items1.IndexOf(item));
-            }
-            else if (items2.Contains(item) && currentDraggedItemInventoryIndex != 2)
-            {
-                OnSwapItems?.Invoke(currentDraggedItemInventoryIndex, currentDraggedItemIndex, items2.IndexOf(item));
-            }
+            OnSwapItems?.Invoke(currentDraggedInventoryIndex, currentDraggedItemIndex, droppedOnInventoryIndex, droppedOnItemIndex);
         }
+    }
+    
+    // Auxiliar methods
+
+    private RectTransform GetCharacterContentPanel(bool forCharacter1)
+    {
+        return forCharacter1 ? contentPanel1 : contentPanel2;
     }
 }

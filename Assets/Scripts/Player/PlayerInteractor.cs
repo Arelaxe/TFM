@@ -46,7 +46,7 @@ public class PlayerInteractor : MonoBehaviour
         if (foundInteractables > 0)
         {
             Interactable interactable = colliders[0].GetComponent<Interactable>();
-            if (interactable != null && interactAction.WasPressedThisFrame() && interactions.Count == 0)
+            if (interactable != null && interactions.Count == 0)
             {
                 InstantiateInteractions(interactable);
             }
@@ -109,14 +109,24 @@ public class PlayerInteractor : MonoBehaviour
         {
             tempButton.interactable = false;
         }
+        goButton.SetActive(true);
     }
 
     private bool IsNotInteractable(Interaction interaction)
     {
-        bool hackingConstraint = interaction.Type.Equals(Interaction.ActionType.Hacking) && !playerController.IsCharacter1(false);
-        bool spiritualConstraint = interaction.Type.Equals(Interaction.ActionType.Spiritual) && playerController.IsCharacter1(false);
-        bool itemConstraint = interaction.RequiredItem != null && !inventoryController.HasCharacterItem(playerController.IsCharacter1(false), interaction.RequiredItem);
-        return hackingConstraint || spiritualConstraint || itemConstraint;
+        bool isCharacter1 = playerController.IsCharacter1(false);
+
+        bool hackingConstraint = interaction.Type.Equals(Interaction.ActionType.Hacking) && !isCharacter1;
+        bool spiritualConstraint = interaction.Type.Equals(Interaction.ActionType.Spiritual) && isCharacter1;
+        bool itemConstraint = interaction.RequiredItem != null && !inventoryController.HasCharacterItem(isCharacter1, interaction.RequiredItem);
+
+        bool pickUpConstraint = false;
+        if (interaction.Action is PickUpAction)
+        {
+            pickUpConstraint = inventoryController.IsCharacterInventoryFull(isCharacter1);
+        }
+
+        return hackingConstraint || spiritualConstraint || itemConstraint || pickUpConstraint;
     }
 
     private void PerformInteraction(Action action)

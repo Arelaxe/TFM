@@ -10,13 +10,20 @@ public class Inventory : ScriptableObject
     private List<Item> items;
     [field: SerializeField]
     public int Size { get; set; }
-    private bool isFull => items.Count == Size;
+    public bool isFull => items.Count == Size;
 
     public void AddItem(Item item)
     {
         if (!isFull)
         {
             items.Add(item);
+        }
+    }
+    public void AddItem(int index, Item item)
+    {
+        if (!isFull)
+        {
+            items.Insert(index, item);
         }
     }
 

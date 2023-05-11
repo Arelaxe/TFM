@@ -13,6 +13,7 @@ public class PlayerController: MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private PlayerInteractor interactor;
+    private InventoryController inventoryController;
     
     [SerializeField]
     private PlayerParams playerParams;
@@ -52,6 +53,7 @@ public class PlayerController: MonoBehaviour
         InitNavAgents();
         InitAnimators();
         interactor = GetComponent<PlayerInteractor>();
+        inventoryController = GetComponent<InventoryController>();
     }
 
     private void Update()
@@ -237,12 +239,15 @@ public class PlayerController: MonoBehaviour
         }
 
         interactor.DestroyInteractions();
+        inventoryController.UpdateItemPanelsForSwitch(IsCharacter1(false), grouped);
     }
 
     private void SwitchGrouping()
     {
         grouped = !grouped;
         GetUnselectedCharacterAgent().enabled = grouped;
+
+        inventoryController.UpdateItemPanelsForGrouping(IsCharacter1(false), grouped);
     }
 
     private bool CanGroup()
