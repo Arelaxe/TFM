@@ -516,8 +516,8 @@ MonoBehaviour:
   m_LayerIndex: 0
   m_ShowDebugText: 0
   m_ChildCameras:
-  - {fileID: 8336605229122867053}
-  - {fileID: 8336605228708046907}
+  - {fileID: 0}
+  - {fileID: 0}
   m_Instructions:
   - m_FullHash: 1563953630
     m_VirtualCamera: {fileID: 8336605229122867053}
@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Follow: {fileID: 8336605227755948325}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3
+    OrthographicSize: 4
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -776,7 +776,7 @@ MonoBehaviour:
   m_Follow: {fileID: 8336605228558245114}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3
+    OrthographicSize: 4
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -2160,11 +2160,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8080662105403299317, guid: 4515cbd703afebc4ba78f79fbb11bf76, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1720
+      value: 1670
       objectReference: {fileID: 0}
     - target: {fileID: 8080662105403299317, guid: 4515cbd703afebc4ba78f79fbb11bf76, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 680
+      value: 730
       objectReference: {fileID: 0}
     - target: {fileID: 8080662105403299317, guid: 4515cbd703afebc4ba78f79fbb11bf76, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2200,7 +2200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8080662105403299317, guid: 4515cbd703afebc4ba78f79fbb11bf76, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -540
+      value: -525
       objectReference: {fileID: 0}
     - target: {fileID: 8080662105403299317, guid: 4515cbd703afebc4ba78f79fbb11bf76, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7359427389743512279}
   - component: {fileID: 7359427389743512276}
   - component: {fileID: 7359427389743512277}
+  - component: {fileID: 606345361266250051}
   m_Layer: 0
   m_Name: Items
   m_TagString: Untagged
@@ -101,6 +102,18 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 20}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!225 &606345361266250051
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7359427389743512299}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7359427389866178188
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,6 +262,7 @@ GameObject:
   - component: {fileID: 7359427390376715446}
   - component: {fileID: 7359427390376715447}
   - component: {fileID: 7359427390376715444}
+  - component: {fileID: 3040567469447582723}
   m_Layer: 0
   m_Name: Inventory Content
   m_TagString: Untagged
@@ -362,3 +376,15 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &3040567469447582723
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7359427390376715466}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
