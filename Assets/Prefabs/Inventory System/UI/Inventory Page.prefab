@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
-  itemUIPrefab: {fileID: 1621551525188174461, guid: 354d6157213e03147a96b033c0ea23e7, type: 3}
+  inventoryItem: {fileID: 1621551525188174461, guid: 354d6157213e03147a96b033c0ea23e7, type: 3}
   inventoryDescription: {fileID: 3583172517979343147}
   contentPanel1: {fileID: 8080662105995221098}
   contentPanel2: {fileID: 1586876096864534217}

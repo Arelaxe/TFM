@@ -1,26 +1,15 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryItem : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler
+public class InventoryItem : Selectable, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler, ISubmitHandler
 {
     [SerializeField]
     private Image itemImage;
 
-    [SerializeField]
-    private Image borderImage;
-
-    public event Action<InventoryItem> OnItemClicked, OnItemDroppedOn, OnItemBeginDrag, OnItemEndDrag;
+    public event Action<InventoryItem> OnItemClicked, OnItemDroppedOn, OnItemBeginDrag, OnItemEndDrag, OnItemSelected, OnItemSubmit;
     private bool empty = true;
-
-    public void Awake()
-    {
-        ResetData();
-        Deselect();
-    }
 
     public void SetData(Sprite sprite)
     {
@@ -35,15 +24,21 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler, IBeginDragHand
         empty = true;
     }
 
-    public void Select()
+    public override void OnSelect(BaseEventData eventData)
     {
-        borderImage.enabled = true;
+        base.OnSelect(eventData);
+        OnItemSelected?.Invoke(this);
     }
 
-    public void Deselect()
+    public void OnSubmit(BaseEventData eventData)
     {
-        borderImage.enabled = false;
+        if (!empty)
+        {
+            OnItemSubmit?.Invoke(this);
+        }
     }
+
+    // Mouse events
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -78,4 +73,6 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler, IBeginDragHand
     {
         // Mandatory for OnBeginDrag
     }
+
+    public bool Empty { get => empty; }
 }

@@ -1,6 +1,6 @@
 using UnityEditor;
 
-[CustomEditor(typeof(PlayerController))]
+[CustomEditor(typeof(DualCharacterController))]
 public class PlayerControllerEditor : Editor
 {
     private Editor cachedEditor;
@@ -12,11 +12,11 @@ public class PlayerControllerEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        PlayerController editedMonobehaviour = (PlayerController) target;
+        DualCharacterController editedMonobehaviour = (DualCharacterController) target;
 
         if (cachedEditor == null)
         {
-            cachedEditor = CreateEditor(editedMonobehaviour.PlayerParams);
+            cachedEditor = CreateEditor(editedMonobehaviour.Params);
         }
 
         base.OnInspectorGUI();
