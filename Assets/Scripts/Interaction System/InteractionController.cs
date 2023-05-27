@@ -5,17 +5,12 @@ using TMPro;
 using System;
 using System.Collections.Generic;
 
-public class PlayerInteractor : MonoBehaviour
+public class InteractionController : MonoBehaviour
 {
-    private PlayerController playerController;
-    private InventoryController inventoryController;
-
-    private PlayerInput input;
-    private InputAction interactAction;
-
     private Vector2 position;
     private Vector2 size;
 
+    private bool canInteract = true;
     private readonly Collider2D[] colliders = new Collider2D[3];
     private int foundInteractables;
 
@@ -31,13 +26,6 @@ public class PlayerInteractor : MonoBehaviour
     private float spacing;
     private List<GameObject> interactions = new();
 
-    private void Start()
-    {
-        playerController = GetComponent<PlayerController>();
-        inventoryController = GetComponent<InventoryController>();
-        InitInputActions();
-    }
-
     void Update()
     {
         SetInteractionArea();
@@ -46,36 +34,43 @@ public class PlayerInteractor : MonoBehaviour
         if (foundInteractables > 0)
         {
             Interactable interactable = colliders[0].GetComponent<Interactable>();
-            if (interactable != null && interactions.Count == 0)
+            if (interactable != null && interactions.Count == 0 && canInteract)
             {
                 InstantiateInteractions(interactable);
             }
         }
     }
 
-    private void InitInputActions()
-    {
-        input = playerController.GetComponent<PlayerInput>();
-        interactAction = input.actions[PlayerConstants.ActionInteract];
-    }
-
     private void SetInteractionArea()
     {
+        DualCharacterController playerController = PlayerManager.Instance.GetDualCharacterController();
         Tuple<bool, bool> lookingAt = playerController.GetLookingAt();
-        BoxCollider2D playerCol = playerController.GetPlayerCollider();
+        BoxCollider2D playerCol = playerController.Collider;
         if (lookingAt.Item1)
         {
             position = new Vector2(playerCol.bounds.center.x, lookingAt.Item2 ? playerCol.bounds.max.y : playerCol.bounds.min.y);
-            size = new Vector2(playerCol.size.x, playerController.PlayerParams.InteractionRange);
+            size = new Vector2(playerCol.size.x, playerController.Params.InteractionRange);
         }
         else
         {
             position = new Vector2(lookingAt.Item2 ? playerCol.bounds.max.x : playerCol.bounds.min.x, playerCol.bounds.center.y);
-            size = new Vector2(playerController.PlayerParams.InteractionRange, playerCol.size.y);
+            size = new Vector2(playerController.Params.InteractionRange, playerCol.size.y);
         }
     }
 
     private void InstantiateInteractions(Interactable interactable)
+    {
+        CreateButtonList(interactable);
+
+        SelectLastInteractableButton();
+
+        foreach (var interaction in interactions)
+        {
+            interaction.SetActive(true);
+        }
+    }
+
+    private void CreateButtonList(Interactable interactable)
     {
         int shown = 0;
         for (int i = 0; i < interactable.Interactions.Length; i++)
@@ -87,7 +82,7 @@ public class PlayerInteractor : MonoBehaviour
                 GameObject goButton = Instantiate(interactionBtn);
                 goButton.transform.SetParent(interactionCanvas, false);
 
-                SpriteRenderer spriteRenderer = playerController.GetPlayerSpriteRenderer();
+                SpriteRenderer spriteRenderer = PlayerManager.Instance.GetDualCharacterController().SpriteRenderer;
                 goButton.transform.position = new Vector3(spriteRenderer.bounds.center.x, spriteRenderer.bounds.max.y + bottomOffset + spacing * shown, goButton.transform.position.z);
                 goButton.transform.localScale = new Vector3(1, 1, 1);
 
@@ -116,21 +111,39 @@ public class PlayerInteractor : MonoBehaviour
         {
             tempButton.interactable = false;
         }
-        goButton.SetActive(true);
+    }
+
+    private void SelectLastInteractableButton()
+    {
+        Button interactableButton = null;
+        foreach (var interaction in interactions)
+        {
+            Button tempButton = interaction.GetComponent<Button>();
+            if (tempButton.interactable)
+            {
+                interactableButton = tempButton;
+            }
+        }
+        if (interactableButton)
+        {
+            interactableButton.Select();
+        }
     }
 
     private bool IsNotInteractable(Interaction interaction)
     {
-        bool isCharacter1 = playerController.IsCharacter1(false);
+        InventoryController inventoryController = PlayerManager.Instance.GetInventoryController();
 
-        bool hackingConstraint = interaction.Type.Equals(Interaction.ActionType.Hacking) && !isCharacter1;
-        bool spiritualConstraint = interaction.Type.Equals(Interaction.ActionType.Spiritual) && isCharacter1;
-        bool itemConstraint = interaction.RequiredItem != null && !inventoryController.HasCharacterItem(isCharacter1, interaction.RequiredItem);
+        bool selectedCharacterOne = PlayerManager.Instance.selectedCharacterOne;
+
+        bool hackingConstraint = interaction.Type.Equals(Interaction.ActionType.Hacking) && !selectedCharacterOne;
+        bool spiritualConstraint = interaction.Type.Equals(Interaction.ActionType.Spiritual) && selectedCharacterOne;
+        bool itemConstraint = interaction.RequiredItem != null && !inventoryController.HasCharacterItem(selectedCharacterOne, interaction.RequiredItem);
 
         bool pickUpConstraint = false;
         if (interaction.Action is PickUpAction)
         {
-            pickUpConstraint = inventoryController.IsCharacterInventoryFull(isCharacter1);
+            pickUpConstraint = inventoryController.IsCharacterInventoryFull(selectedCharacterOne);
         }
 
         return hackingConstraint || spiritualConstraint || itemConstraint || pickUpConstraint;
@@ -143,9 +156,9 @@ public class PlayerInteractor : MonoBehaviour
         {
             if (interaction.RequiredItem)
             {
-                inventoryController.RemoveItem(interaction.RequiredItem);
+                PlayerManager.Instance.GetInventoryController().RemoveItem(interaction.RequiredItem);
             }
-            action.Execute(playerController);
+            action.Execute();
         }
     }
 
@@ -164,5 +177,12 @@ public class PlayerInteractor : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(position, size);
+    }
+
+    // Auxiliar methods
+
+    public void SetInteractivity(bool canInteract)
+    {
+        this.canInteract = canInteract;
     }
 }

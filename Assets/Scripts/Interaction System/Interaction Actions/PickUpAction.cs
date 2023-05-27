@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PickUpAction : Action
@@ -7,12 +5,12 @@ public class PickUpAction : Action
     [SerializeField]
     private Item item;
 
-    public override void Execute(PlayerController playerController)
+    public override void Execute()
     {
-        InventoryController inventoryController = playerController.GetComponent<InventoryController>();
-        inventoryController.AddItem(playerController.IsCharacter1(false), item);
+        InventoryController inventoryController = PlayerManager.Instance.GetInventoryController();
+        inventoryController.AddItem(PlayerManager.Instance.selectedCharacterOne, item);
         
-        PlayerInteractor interactor = playerController.GetComponent<PlayerInteractor>();
+        InteractionController interactor = PlayerManager.Instance.GetInteractionController();
         interactor.DestroyInteractions();
 
         Destroy(gameObject);

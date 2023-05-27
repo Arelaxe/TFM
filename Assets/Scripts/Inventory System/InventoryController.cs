@@ -1,15 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
-using System;
 
 public class InventoryController : MonoBehaviour
 {
     private PlayerInput input;
     private InputAction inventoryAction;
-
-    private PlayerController playerController;
 
     [SerializeField]
     private InventoryPage page;
@@ -22,8 +17,6 @@ public class InventoryController : MonoBehaviour
 
     public void Start()
     {
-        playerController = GetComponent<PlayerController>();
-
         InitInputActions();
         InitPage();
     }
@@ -32,13 +25,23 @@ public class InventoryController : MonoBehaviour
     {
         if (inventoryAction.triggered)
         {
+            DualCharacterController playerController = PlayerManager.Instance.GetDualCharacterController();
+            InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
+
             if (!page.isActiveAndEnabled)
             {
-                page.LoadItems(inventory1, inventory2);
+                playerController.SetMobility(false);
+                interactionController.SetInteractivity(false);
+                interactionController.DestroyInteractions();
+
+                page.LoadItems(inventory1);
+                page.LoadItems(inventory2);
                 page.Show();
             }
             else
             {
+                playerController.SetMobility(true);
+                interactionController.SetInteractivity(true);
                 page.Hide();
             }
         }
@@ -52,20 +55,9 @@ public class InventoryController : MonoBehaviour
 
     private void InitPage()
     {
-        if (inventory2)
-        {
-            page.InitInventoriesUI(inventory1.Size, inventory2.Size);
-        }
-        else if (inventory1)
-        {
-            page.InitInventoriesUI(inventory1.Size, 0);
-        }
-        else
-        {
-            page.InitInventoriesUI(0, 0);
-        }
-
+        page.InitInventoriesUI(inventory1.Size, inventory2.Size);
         page.OnDescriptionRequested += HandleDescriptionRequest;
+        page.OnSwitchInventory += HandleSwitchInventory;
         page.OnSwapItems += HandleSwapItems;
         page.OnStartDragging += HandleDragging;
     }
@@ -77,7 +69,7 @@ public class InventoryController : MonoBehaviour
         bool hasItemChar1 = inventory1.GetItems().Contains(item);
         bool hasItemChar2 = inventory2.GetItems().Contains(item);
 
-        if (playerController.AreGrouped())
+        if (PlayerManager.Instance.GetDualCharacterController().Grouped)
         {
             hasItem = hasItemChar1 || hasItemChar2;
         }
@@ -96,7 +88,7 @@ public class InventoryController : MonoBehaviour
         bool isChar1Full = inventory1.isFull;
         bool isChar2Full = inventory2.isFull;
 
-        if (playerController.AreGrouped())
+        if (PlayerManager.Instance.GetDualCharacterController().Grouped)
         {
             isFull = isChar1Full && isChar2Full;
         }
@@ -125,19 +117,21 @@ public class InventoryController : MonoBehaviour
         if (isCharacter1)
         {
             inventory1.AddItem(item);
+            page.UpdateItems(inventory1);
         }
         else
         {
             inventory2.AddItem(item);
+            page.UpdateItems(inventory2);
         }
-        page.UpdateItems(inventory1, inventory2);
     }
 
     public void RemoveItem(Item item)
     {
         inventory1.GetItems().Remove(item);
         inventory2.GetItems().Remove(item);
-        page.UpdateItems(inventory1, inventory2);
+        page.UpdateItems(inventory1);
+        page.UpdateItems(inventory2);
     }
 
     public void UpdateItemPanelsForSwitch(bool isCharacter1, bool grouped)
@@ -146,6 +140,7 @@ public class InventoryController : MonoBehaviour
         {
             page.EnableContentPanel(isCharacter1);
             page.DisableContentPanel(!isCharacter1);
+            page.SelectFirstItemAvailable();
         }
     }
 
@@ -166,47 +161,56 @@ public class InventoryController : MonoBehaviour
     private void HandleDescriptionRequest(int inventoryIndex, int itemIndex)
     {
         Inventory inventory = inventoryIndex == 1 ? inventory1 : inventory2;
+        Item item = null;
         if (itemIndex < inventory.GetItems().Count)
         {
-            Item item = inventory.GetItems()[itemIndex];
-            page.UpdateDescription(inventoryIndex, itemIndex, item);
+            item = inventory.GetItems()[itemIndex];
         }
+        page.UpdateSelected(inventoryIndex, itemIndex, item);
     }
 
     private void HandleSwapItems(int draggedItemInventoryIndex, int draggedItemIndex, int droppedOnInventoryIndex, int droppedOnItemIndex)
     {
-        Tuple<Item, int> dragItemResult;
+        MoveItems(draggedItemInventoryIndex, draggedItemIndex, droppedOnInventoryIndex, droppedOnItemIndex);
+        
+        Inventory droppedOnInventory = droppedOnInventoryIndex == 1 ? inventory1 : inventory2;
+        if (droppedOnItemIndex >= droppedOnInventory.GetItems().Count)
+        {
+            droppedOnItemIndex = droppedOnInventory.GetItems().Count - 1;
+        }
+
+        HandleDescriptionRequest(droppedOnInventoryIndex, droppedOnItemIndex);
+    }
+
+    private void HandleSwitchInventory(int draggedItemInventoryIndex, int draggedItemIndex, int droppedOnInventoryIndex, int droppedOnItemIndex)
+    {
+        MoveItems(draggedItemInventoryIndex, draggedItemIndex, droppedOnInventoryIndex, droppedOnItemIndex);
+        HandleDescriptionRequest(draggedItemInventoryIndex, draggedItemIndex);
+    }
+
+    private void MoveItems(int draggedItemInventoryIndex, int draggedItemIndex, int droppedOnInventoryIndex, int droppedOnItemIndex)
+    {
         if (draggedItemInventoryIndex == droppedOnInventoryIndex)
         {
-            if (draggedItemInventoryIndex == 1)
-            {
-                dragItemResult = SwapItems(inventory1, inventory1, draggedItemIndex, droppedOnItemIndex);
-            }
-            else
-            {
-                dragItemResult = SwapItems(inventory2, inventory2, draggedItemIndex, droppedOnItemIndex);
-            }
+            Inventory inventory = draggedItemInventoryIndex == 1 ? ref inventory1 : ref inventory2;
+            MoveItems(inventory, inventory, draggedItemIndex, droppedOnItemIndex);
+
+            page.UpdateItems(inventory);
         }
         else
         {
-            if (draggedItemInventoryIndex == 1)
-            {
-                dragItemResult = SwapItems(inventory1, inventory2, draggedItemIndex, droppedOnItemIndex);
-            }
-            else
-            {
-                dragItemResult = SwapItems(inventory2, inventory1, draggedItemIndex, droppedOnItemIndex);
-            }
-        }
+            Inventory draggedInventory = draggedItemInventoryIndex == 1 ? ref inventory1 : ref inventory2;
+            Inventory droppedOnInventory = draggedItemInventoryIndex == 1 ? ref inventory2 : ref inventory1;
+            MoveItems(draggedInventory, droppedOnInventory, draggedItemIndex, droppedOnItemIndex);
 
-        page.UpdateItems(inventory1, inventory2);
-        page.UpdateDescription(droppedOnInventoryIndex, dragItemResult.Item2, dragItemResult.Item1);
+            page.UpdateItems(draggedInventory);
+            page.UpdateItems(droppedOnInventory);
+        }
     }
 
-    private Tuple<Item, int> SwapItems(Inventory draggedInventory, Inventory droppedOnInventory, int draggedItemIndex, int droppedOnItemIndex)
+    private void MoveItems(Inventory draggedInventory, Inventory droppedOnInventory, int draggedItemIndex, int droppedOnItemIndex)
     {
         Item draggedItem = draggedInventory.GetItems()[draggedItemIndex];
-        int selectedIndex = draggedItemIndex;
 
         if (droppedOnItemIndex < droppedOnInventory.GetItems().Count)
         {
@@ -214,18 +218,12 @@ public class InventoryController : MonoBehaviour
 
             droppedOnInventory.GetItems()[droppedOnItemIndex] = draggedItem;
             draggedInventory.GetItems()[draggedItemIndex] = droppedOnItem;
-
-            selectedIndex = droppedOnItemIndex;
         }
-        else if (draggedInventory != droppedOnInventory)
+        else
         {
             draggedInventory.GetItems().RemoveAt(draggedItemIndex);
             droppedOnInventory.AddItem(draggedItem);
-
-            selectedIndex = droppedOnInventory.GetItems().IndexOf(draggedItem);
         }
-
-        return Tuple.Create(draggedItem, selectedIndex);
     }
 
     private void HandleDragging(int inventoryIndex, int itemIndex)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DestroyAction : Action
 {
-    public override void Execute(PlayerController playerController)
+    public override void Execute()
     {
         Destroy(gameObject);
     }

@@ -4,21 +4,19 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 
-public class PlayerController: MonoBehaviour
+public class DualCharacterController: MonoBehaviour
 {
     // General
     private PlayerInput input;
     private Rigidbody2D rb;
     private BoxCollider2D col;
     private SpriteRenderer spriteRenderer;
-
-    private PlayerInteractor interactor;
-    private InventoryController inventoryController;
     
     [SerializeField]
     private PlayerParams playerParams;
 
     // Movement
+    private bool canMove = true;
     private Vector2 inputMovement;
     private Tuple<bool, bool> lookingAt1 = Tuple.Create(true, false);
     private Tuple<bool, bool> lookingAt2 = Tuple.Create(true, false);
@@ -33,7 +31,6 @@ public class PlayerController: MonoBehaviour
     private NavMeshAgent navAgent2;
     private Animator animator2;
 
-    private bool selectedCharacter1 = true;
     private bool grouped = true;
     private Vector3 followerVelocity = Vector3.zero;
 
@@ -41,19 +38,12 @@ public class PlayerController: MonoBehaviour
     [SerializeField]
     private Animator cameraAnimator;
 
-    private void Awake()
-    {
-        Physics2D.IgnoreLayerCollision(GlobalConstants.LayerIntTerrenal, GlobalConstants.LayerIntSpiritual, true); // TODO extraer en clase de inicialización
-    }
-
     void Start()
     {
         InitInputActions();
         InitSelectedPlayer();
         InitNavAgents();
         InitAnimators();
-        interactor = GetComponent<PlayerInteractor>();
-        inventoryController = GetComponent<InventoryController>();
     }
 
     private void Update()
@@ -63,7 +53,10 @@ public class PlayerController: MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if (canMove)
+        {
+            Move();
+        }
         Follow();
     }
 
@@ -100,8 +93,8 @@ public class PlayerController: MonoBehaviour
             InitNavAgent(navAgent2);
         }
 
-        navAgent1.enabled = !selectedCharacter1;
-        navAgent2.enabled = selectedCharacter1;
+        navAgent1.enabled = !PlayerManager.Instance.selectedCharacterOne;
+        navAgent2.enabled = PlayerManager.Instance.selectedCharacterOne;
     }
 
     private void InitNavAgent(NavMeshAgent navAgent)
@@ -122,11 +115,11 @@ public class PlayerController: MonoBehaviour
     private void Move()
     {
         rb.velocity = inputMovement * playerParams.Speed;
-        SetMoveAnimParams(rb.velocity, selectedCharacter1 ? animator1 : animator2, false);
+        SetMoveAnimParams(rb.velocity, PlayerManager.Instance.selectedCharacterOne ? animator1 : animator2, false);
 
         if (rb.velocity.sqrMagnitude != 0)
         {
-            interactor.DestroyInteractions();
+            PlayerManager.Instance.GetInteractionController().DestroyInteractions();
         }
     }
 
@@ -134,7 +127,7 @@ public class PlayerController: MonoBehaviour
     {
         if (grouped)
         {
-            if (selectedCharacter1)
+            if (PlayerManager.Instance.selectedCharacterOne)
             {
                 FollowMovement(character1, character2, navAgent2, animator2);
             }
@@ -224,12 +217,12 @@ public class PlayerController: MonoBehaviour
 
     private void SwitchCharacter()
     {
-        selectedCharacter1 = !selectedCharacter1;
+        PlayerManager.Instance.SwitchSelectedCharacter();
         rb.velocity = Vector2.zero;
         InitSelectedPlayer();
         InitNavAgents();
 
-        if (selectedCharacter1)
+        if (PlayerManager.Instance.selectedCharacterOne)
         {
             cameraAnimator.Play(PlayerConstants.CameraStateRyo);
         }
@@ -238,8 +231,8 @@ public class PlayerController: MonoBehaviour
             cameraAnimator.Play(PlayerConstants.CameraStateShinen);
         }
 
-        interactor.DestroyInteractions();
-        inventoryController.UpdateItemPanelsForSwitch(IsCharacter1(false), grouped);
+        PlayerManager.Instance.GetInteractionController().DestroyInteractions();
+        PlayerManager.Instance.GetInventoryController().UpdateItemPanelsForSwitch(PlayerManager.Instance.selectedCharacterOne, grouped);
     }
 
     private void SwitchGrouping()
@@ -247,7 +240,7 @@ public class PlayerController: MonoBehaviour
         grouped = !grouped;
         GetUnselectedCharacterAgent().enabled = grouped;
 
-        inventoryController.UpdateItemPanelsForGrouping(IsCharacter1(false), grouped);
+        PlayerManager.Instance.GetInventoryController().UpdateItemPanelsForGrouping(PlayerManager.Instance.selectedCharacterOne, grouped);
     }
 
     private bool CanGroup()
@@ -280,41 +273,33 @@ public class PlayerController: MonoBehaviour
     }
 
     // Auxiliar methods
+    public PlayerParams Params { get => playerParams; }
+    public BoxCollider2D Collider { get => col; }
+    public SpriteRenderer SpriteRenderer { get => spriteRenderer; }
+    public bool Grouped { get => grouped; }
 
     public GameObject GetSelectedCharacter()
     {
-        return selectedCharacter1 ? character1 : character2;
+        return PlayerManager.Instance.selectedCharacterOne ? character1 : character2;
     }
 
     private NavMeshAgent GetUnselectedCharacterAgent()
     {
-        return selectedCharacter1 ? navAgent2 : navAgent1;
-    }
-
-    public bool IsCharacter1(bool isFollower)
-    {
-        return isFollower ? !selectedCharacter1 : selectedCharacter1;
+        return PlayerManager.Instance.selectedCharacterOne ? navAgent2 : navAgent1;
     }
 
     public Tuple<bool, bool> GetLookingAt()
     {
-        return selectedCharacter1 ? lookingAt1 : lookingAt2;
+        return PlayerManager.Instance.selectedCharacterOne ? lookingAt1 : lookingAt2;
     }
 
-    public BoxCollider2D GetPlayerCollider()
+    public bool IsCharacter1(bool isFollower)
     {
-        return col;
+        return isFollower ? !PlayerManager.Instance.selectedCharacterOne : PlayerManager.Instance.selectedCharacterOne;
     }
 
-    public SpriteRenderer GetPlayerSpriteRenderer()
+    public void SetMobility(bool canMove)
     {
-        return spriteRenderer;
+        this.canMove = canMove;
     }
-
-    public bool AreGrouped()
-    {
-        return grouped;
-    }
-
-    public PlayerParams PlayerParams { get => playerParams; }
 }

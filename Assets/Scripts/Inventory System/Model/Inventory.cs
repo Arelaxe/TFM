@@ -7,6 +7,10 @@ using System;
 public class Inventory : ScriptableObject
 {
     [SerializeField]
+    private int inventoryIndex;
+    public int Index { get => inventoryIndex; }
+
+    [SerializeField]
     private List<Item> items;
     [field: SerializeField]
     public int Size { get; set; }
