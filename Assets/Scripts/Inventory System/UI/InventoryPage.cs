@@ -133,13 +133,13 @@ public class InventoryPage : MonoBehaviour, IEventSystemHandler
     public void SelectFirstItemAvailable()
     {
         InventoryItem item = null;
-        if (PlayerManager.Instance.selectedCharacterOne)
+        if (PlayerManager.Instance.SelectedCharacterOne)
         {
             if (!items1[0].Empty)
             {
                 item = items1[0];
             }
-            else if (PlayerManager.Instance.GetDualCharacterController().Grouped && !items2[0].Empty)
+            else if (PlayerManager.Instance.Grouped && !items2[0].Empty)
             {
                 item = items2[0];
             }
@@ -150,7 +150,7 @@ public class InventoryPage : MonoBehaviour, IEventSystemHandler
             {
                 item = items2[0];
             }
-            else if (PlayerManager.Instance.GetDualCharacterController().Grouped && !items1[0].Empty)
+            else if (PlayerManager.Instance.Grouped && !items1[0].Empty)
             {
                 item = items1[0];
             }
@@ -228,7 +228,7 @@ public class InventoryPage : MonoBehaviour, IEventSystemHandler
         int droppedOnItemIndex = droppedOnInventoryIndex == 1 ? items1.IndexOf(item) : items2.IndexOf(item);
 
         if (currentDraggedInventoryIndex == droppedOnInventoryIndex 
-            || currentDraggedInventoryIndex != droppedOnInventoryIndex && PlayerManager.Instance.GetDualCharacterController().Grouped)
+            || currentDraggedInventoryIndex != droppedOnInventoryIndex && PlayerManager.Instance.Grouped)
         {
             OnSwapItems?.Invoke(currentDraggedInventoryIndex, currentDraggedItemIndex, droppedOnInventoryIndex, droppedOnItemIndex);
         }
@@ -242,7 +242,7 @@ public class InventoryPage : MonoBehaviour, IEventSystemHandler
         int currentSubmitItemIndex = switchInventoryIndex == 1 ? items2.IndexOf(item) : items1.IndexOf(item);
         int switchItemIndex = switchInventoryIndex == 1 ? items1.Count - 1 : items2.Count - 1;
 
-        if (PlayerManager.Instance.GetDualCharacterController().Grouped)
+        if (PlayerManager.Instance.Grouped)
         {
             OnSwitchInventory?.Invoke(currentSubmitInventoryIndex, currentSubmitItemIndex, switchInventoryIndex, switchItemIndex);
         }
