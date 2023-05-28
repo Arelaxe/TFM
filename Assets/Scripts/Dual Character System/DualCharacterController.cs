@@ -2,6 +2,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using System;
 
 public class DualCharacterController: MonoBehaviour
@@ -10,7 +11,6 @@ public class DualCharacterController: MonoBehaviour
     private PlayerInput input;
     private Rigidbody2D rb;
     private BoxCollider2D col;
-    private SpriteRenderer spriteRenderer;
     
     [SerializeField]
     private PlayerParams playerParams;
@@ -31,6 +31,10 @@ public class DualCharacterController: MonoBehaviour
     private NavMeshAgent navAgent2;
     private Animator animator2;
 
+    private InputAction splitAction;
+    [SerializeField]
+    private Slider groupSlider;
+
     private bool grouped = true;
     private Vector3 followerVelocity = Vector3.zero;
 
@@ -49,6 +53,7 @@ public class DualCharacterController: MonoBehaviour
     private void Update()
     {
         CheckSplit();
+        UpdateSplitBar();
     }
 
     private void FixedUpdate()
@@ -69,7 +74,7 @@ public class DualCharacterController: MonoBehaviour
         moveAction.performed += (ctx) => { inputMovement = ctx.ReadValue<Vector2>().normalized; };
         moveAction.canceled += (ctx) => { inputMovement = Vector2.zero; };
 
-        InputAction splitAction = input.actions[PlayerConstants.ActionSplit];
+        splitAction = input.actions[PlayerConstants.ActionSplit];
         splitAction.performed += SwitchCharacterAndGrouping;
     }
 
@@ -77,7 +82,6 @@ public class DualCharacterController: MonoBehaviour
     {
         rb = GetSelectedCharacter().GetComponent<Rigidbody2D>();
         col = GetSelectedCharacter().GetComponent<BoxCollider2D>();
-        spriteRenderer = GetSelectedCharacter().GetComponent<SpriteRenderer>();
     }
 
     private void InitNavAgents()
@@ -253,7 +257,7 @@ public class DualCharacterController: MonoBehaviour
         int i = 0;
         while (i < hitColliders.Length)
         {
-            if (hitColliders[i].tag == GlobalConstants.TagPlayer)
+            if (hitColliders[i].CompareTag(GlobalConstants.TagPlayer))
             {
                 canGroup = true;
                 break;
@@ -272,10 +276,23 @@ public class DualCharacterController: MonoBehaviour
         }
     }
 
+    private void UpdateSplitBar()
+    {
+        if (splitAction.inProgress && splitAction.GetTimeoutCompletionPercentage() > 0.1 && splitAction.GetTimeoutCompletionPercentage() < 1)
+        {
+            groupSlider.gameObject.SetActive(true);
+            groupSlider.value = splitAction.GetTimeoutCompletionPercentage();
+        }
+        else if (groupSlider.gameObject.activeSelf)
+        {
+            groupSlider.value = 0;
+            groupSlider.gameObject.SetActive(false);
+        }
+    }
+
     // Auxiliar methods
     public PlayerParams Params { get => playerParams; }
     public BoxCollider2D Collider { get => col; }
-    public SpriteRenderer SpriteRenderer { get => spriteRenderer; }
     public bool Grouped { get => grouped; }
 
     public GameObject GetSelectedCharacter()
