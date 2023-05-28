@@ -129,7 +129,7 @@ public class InteractionController : MonoBehaviour
     {
         InventoryController inventoryController = PlayerManager.Instance.GetInventoryController();
 
-        bool selectedCharacterOne = PlayerManager.Instance.selectedCharacterOne;
+        bool selectedCharacterOne = PlayerManager.Instance.SelectedCharacterOne;
 
         bool hackingConstraint = interaction.Type.Equals(Interaction.ActionType.Hacking) && !selectedCharacterOne;
         bool spiritualConstraint = interaction.Type.Equals(Interaction.ActionType.Spiritual) && selectedCharacterOne;

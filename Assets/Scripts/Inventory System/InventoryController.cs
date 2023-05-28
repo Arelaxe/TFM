@@ -69,7 +69,7 @@ public class InventoryController : MonoBehaviour
         bool hasItemChar1 = inventory1.GetItems().Contains(item);
         bool hasItemChar2 = inventory2.GetItems().Contains(item);
 
-        if (PlayerManager.Instance.GetDualCharacterController().Grouped)
+        if (PlayerManager.Instance.Grouped)
         {
             hasItem = hasItemChar1 || hasItemChar2;
         }
@@ -88,7 +88,7 @@ public class InventoryController : MonoBehaviour
         bool isChar1Full = inventory1.isFull;
         bool isChar2Full = inventory2.isFull;
 
-        if (PlayerManager.Instance.GetDualCharacterController().Grouped)
+        if (PlayerManager.Instance.Grouped)
         {
             isFull = isChar1Full && isChar2Full;
         }
