@@ -45,8 +45,8 @@ public class InventoryPage : MonoBehaviour, IEventSystemHandler
     {
         for (int i = 0; i < inventorySize; i++)
         {
-            InventoryItem item = Instantiate(inventoryItem, Vector3.zero, Quaternion.identity);
-            item.transform.SetParent(contentPanel);
+            InventoryItem item = Instantiate(inventoryItem, Vector3.zero, Quaternion.identity, contentPanel);
+            item.transform.localPosition = new Vector3(item.transform.position.x, item.transform.position.y, 0);
             item.transform.localScale = new Vector3(1, 1, 1);
             itemList.Add(item);
 

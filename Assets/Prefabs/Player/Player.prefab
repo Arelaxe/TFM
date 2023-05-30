@@ -912,6 +912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8336605228708046906}
   - component: {fileID: 8336605228708046907}
+  - component: {fileID: 2015570656179623256}
   m_Layer: 0
   m_Name: Shinen Camera
   m_TagString: Untagged
@@ -957,7 +958,7 @@ MonoBehaviour:
   m_Follow: {fileID: 8336605227755948325}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 4
+    OrthographicSize: 3
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -973,6 +974,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 8336605229378331946}
+--- !u!114 &2015570656179623256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8336605228708046884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8336605228829498734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,6 +1084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8336605229122867052}
   - component: {fileID: 8336605229122867053}
+  - component: {fileID: 5927972666686305586}
   m_Layer: 0
   m_Name: Ryo Camera
   m_TagString: Untagged
@@ -1116,7 +1130,7 @@ MonoBehaviour:
   m_Follow: {fileID: 8336605228558245114}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 4
+    OrthographicSize: 3
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -1132,6 +1146,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 8336605228829498733}
+--- !u!114 &5927972666686305586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8336605229122867054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8336605229212422970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,6 +1242,7 @@ MonoBehaviour:
   playerParams: {fileID: 11400000, guid: 4ca37fbb4eb9b2f47b3012f3af91f7b4, type: 2}
   character1: {fileID: 8336605228558245094}
   character2: {fileID: 8336605227755948323}
+  selectedCharacterOne: 1
   groupSlider: {fileID: 7285216572322308115}
   cameraAnimator: {fileID: 8336605227977791372}
 --- !u!114 &964195187427333800
