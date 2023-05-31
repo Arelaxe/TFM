@@ -8,7 +8,7 @@ public class PickUpAction : Action
     public override void Execute()
     {
         InventoryController inventoryController = PlayerManager.Instance.GetInventoryController();
-        inventoryController.AddItem(PlayerManager.Instance.selectedCharacterOne, item);
+        inventoryController.AddItem(PlayerManager.Instance.SelectedCharacterOne, item);
         
         InteractionController interactor = PlayerManager.Instance.GetInteractionController();
         interactor.DestroyInteractions();

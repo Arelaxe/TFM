@@ -2,6 +2,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using System;
 
 public class DualCharacterController: MonoBehaviour
@@ -10,7 +11,6 @@ public class DualCharacterController: MonoBehaviour
     private PlayerInput input;
     private Rigidbody2D rb;
     private BoxCollider2D col;
-    private SpriteRenderer spriteRenderer;
     
     [SerializeField]
     private PlayerParams playerParams;
@@ -31,6 +31,12 @@ public class DualCharacterController: MonoBehaviour
     private NavMeshAgent navAgent2;
     private Animator animator2;
 
+    public bool selectedCharacterOne = true;
+
+    private InputAction splitAction;
+    [SerializeField]
+    private Slider groupSlider;
+
     private bool grouped = true;
     private Vector3 followerVelocity = Vector3.zero;
 
@@ -49,6 +55,7 @@ public class DualCharacterController: MonoBehaviour
     private void Update()
     {
         CheckSplit();
+        UpdateSplitBar();
     }
 
     private void FixedUpdate()
@@ -69,7 +76,7 @@ public class DualCharacterController: MonoBehaviour
         moveAction.performed += (ctx) => { inputMovement = ctx.ReadValue<Vector2>().normalized; };
         moveAction.canceled += (ctx) => { inputMovement = Vector2.zero; };
 
-        InputAction splitAction = input.actions[PlayerConstants.ActionSplit];
+        splitAction = input.actions[PlayerConstants.ActionSplit];
         splitAction.performed += SwitchCharacterAndGrouping;
     }
 
@@ -77,7 +84,6 @@ public class DualCharacterController: MonoBehaviour
     {
         rb = GetSelectedCharacter().GetComponent<Rigidbody2D>();
         col = GetSelectedCharacter().GetComponent<BoxCollider2D>();
-        spriteRenderer = GetSelectedCharacter().GetComponent<SpriteRenderer>();
     }
 
     private void InitNavAgents()
@@ -93,8 +99,8 @@ public class DualCharacterController: MonoBehaviour
             InitNavAgent(navAgent2);
         }
 
-        navAgent1.enabled = !PlayerManager.Instance.selectedCharacterOne;
-        navAgent2.enabled = PlayerManager.Instance.selectedCharacterOne;
+        navAgent1.enabled = !selectedCharacterOne;
+        navAgent2.enabled = selectedCharacterOne;
     }
 
     private void InitNavAgent(NavMeshAgent navAgent)
@@ -115,7 +121,7 @@ public class DualCharacterController: MonoBehaviour
     private void Move()
     {
         rb.velocity = inputMovement * playerParams.Speed;
-        SetMoveAnimParams(rb.velocity, PlayerManager.Instance.selectedCharacterOne ? animator1 : animator2, false);
+        SetMoveAnimParams(rb.velocity, selectedCharacterOne ? animator1 : animator2, false);
 
         if (rb.velocity.sqrMagnitude != 0)
         {
@@ -127,7 +133,7 @@ public class DualCharacterController: MonoBehaviour
     {
         if (grouped)
         {
-            if (PlayerManager.Instance.selectedCharacterOne)
+            if (selectedCharacterOne)
             {
                 FollowMovement(character1, character2, navAgent2, animator2);
             }
@@ -217,12 +223,12 @@ public class DualCharacterController: MonoBehaviour
 
     private void SwitchCharacter()
     {
-        PlayerManager.Instance.SwitchSelectedCharacter();
+        SwitchSelectedCharacter();
         rb.velocity = Vector2.zero;
         InitSelectedPlayer();
         InitNavAgents();
 
-        if (PlayerManager.Instance.selectedCharacterOne)
+        if (selectedCharacterOne)
         {
             cameraAnimator.Play(PlayerConstants.CameraStateRyo);
         }
@@ -232,7 +238,7 @@ public class DualCharacterController: MonoBehaviour
         }
 
         PlayerManager.Instance.GetInteractionController().DestroyInteractions();
-        PlayerManager.Instance.GetInventoryController().UpdateItemPanelsForSwitch(PlayerManager.Instance.selectedCharacterOne, grouped);
+        PlayerManager.Instance.GetInventoryController().UpdateItemPanelsForSwitch(selectedCharacterOne, grouped);
     }
 
     private void SwitchGrouping()
@@ -240,7 +246,7 @@ public class DualCharacterController: MonoBehaviour
         grouped = !grouped;
         GetUnselectedCharacterAgent().enabled = grouped;
 
-        PlayerManager.Instance.GetInventoryController().UpdateItemPanelsForGrouping(PlayerManager.Instance.selectedCharacterOne, grouped);
+        PlayerManager.Instance.GetInventoryController().UpdateItemPanelsForGrouping(selectedCharacterOne, grouped);
     }
 
     private bool CanGroup()
@@ -253,7 +259,7 @@ public class DualCharacterController: MonoBehaviour
         int i = 0;
         while (i < hitColliders.Length)
         {
-            if (hitColliders[i].tag == GlobalConstants.TagPlayer)
+            if (hitColliders[i].CompareTag(GlobalConstants.TagPlayer))
             {
                 canGroup = true;
                 break;
@@ -272,30 +278,49 @@ public class DualCharacterController: MonoBehaviour
         }
     }
 
+    private void UpdateSplitBar()
+    {
+        if (splitAction.inProgress && splitAction.GetTimeoutCompletionPercentage() > 0.1 && splitAction.GetTimeoutCompletionPercentage() < 1)
+        {
+            groupSlider.gameObject.SetActive(true);
+            groupSlider.value = splitAction.GetTimeoutCompletionPercentage();
+        }
+        else if (groupSlider.gameObject.activeSelf)
+        {
+            groupSlider.value = 0;
+            groupSlider.gameObject.SetActive(false);
+        }
+    }
+
     // Auxiliar methods
     public PlayerParams Params { get => playerParams; }
     public BoxCollider2D Collider { get => col; }
-    public SpriteRenderer SpriteRenderer { get => spriteRenderer; }
+    public bool SelectedCharacterOne { get => selectedCharacterOne; }
     public bool Grouped { get => grouped; }
 
     public GameObject GetSelectedCharacter()
     {
-        return PlayerManager.Instance.selectedCharacterOne ? character1 : character2;
+        return selectedCharacterOne ? character1 : character2;
     }
 
     private NavMeshAgent GetUnselectedCharacterAgent()
     {
-        return PlayerManager.Instance.selectedCharacterOne ? navAgent2 : navAgent1;
+        return selectedCharacterOne ? navAgent2 : navAgent1;
     }
 
     public Tuple<bool, bool> GetLookingAt()
     {
-        return PlayerManager.Instance.selectedCharacterOne ? lookingAt1 : lookingAt2;
+        return selectedCharacterOne ? lookingAt1 : lookingAt2;
     }
 
     public bool IsCharacter1(bool isFollower)
     {
-        return isFollower ? !PlayerManager.Instance.selectedCharacterOne : PlayerManager.Instance.selectedCharacterOne;
+        return isFollower ? !selectedCharacterOne : selectedCharacterOne;
+    }
+
+    public void SwitchSelectedCharacter()
+    {
+        selectedCharacterOne = !selectedCharacterOne;
     }
 
     public void SetMobility(bool canMove)

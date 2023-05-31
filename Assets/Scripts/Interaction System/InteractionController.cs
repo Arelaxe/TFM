@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 using System;
@@ -20,8 +19,6 @@ public class InteractionController : MonoBehaviour
     [Space]
     [SerializeField]
     private GameObject interactionBtn;
-    [SerializeField]
-    private float bottomOffset;
     [SerializeField]
     private float spacing;
     private List<GameObject> interactions = new();
@@ -81,9 +78,7 @@ public class InteractionController : MonoBehaviour
             {
                 GameObject goButton = Instantiate(interactionBtn);
                 goButton.transform.SetParent(interactionCanvas, false);
-
-                SpriteRenderer spriteRenderer = PlayerManager.Instance.GetDualCharacterController().SpriteRenderer;
-                goButton.transform.position = new Vector3(spriteRenderer.bounds.center.x, spriteRenderer.bounds.max.y + bottomOffset + spacing * shown, goButton.transform.position.z);
+                goButton.transform.position = new Vector3(interactionCanvas.position.x, interactionCanvas.position.y + spacing * shown, goButton.transform.position.z);
                 goButton.transform.localScale = new Vector3(1, 1, 1);
 
                 CustomButton(interaction, goButton);
@@ -134,7 +129,7 @@ public class InteractionController : MonoBehaviour
     {
         InventoryController inventoryController = PlayerManager.Instance.GetInventoryController();
 
-        bool selectedCharacterOne = PlayerManager.Instance.selectedCharacterOne;
+        bool selectedCharacterOne = PlayerManager.Instance.SelectedCharacterOne;
 
         bool hackingConstraint = interaction.Type.Equals(Interaction.ActionType.Hacking) && !selectedCharacterOne;
         bool spiritualConstraint = interaction.Type.Equals(Interaction.ActionType.Spiritual) && selectedCharacterOne;
