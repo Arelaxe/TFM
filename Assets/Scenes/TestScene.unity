@@ -922,6 +922,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialog Container
       objectReference: {fileID: 0}
+    - target: {fileID: 316405213286054074, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 466055851080198182, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3276,10 +3280,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5573282786399436612, guid: 08cac95c634923d4096e91ce30fa703b, type: 3}
-      propertyPath: orthographic size
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5573282786399436615, guid: 08cac95c634923d4096e91ce30fa703b, type: 3}
       propertyPath: m_Name
       value: Main Camera
