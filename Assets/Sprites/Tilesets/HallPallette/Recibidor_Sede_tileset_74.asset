@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Recibidor_Sede_tileset_20
+  m_Name: Recibidor_Sede_tileset_74
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 1750644004, guid: b1d7cd6407918b04a846eddb3a3b4e23, type: 3}
+  m_Sprite: {fileID: 1771149286, guid: b1d7cd6407918b04a846eddb3a3b4e23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
