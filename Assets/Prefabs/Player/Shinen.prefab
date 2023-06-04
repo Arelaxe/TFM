@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1183464629
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: -1682057158, guid: 639c0c5d14c9e9a4597e37aeecfc3ac7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -101,18 +101,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00040717423, y: 0.14013432}
+  m_Offset: {x: 0.001586169, y: 0.21418357}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.22, y: 0.5}
+    oldSize: {x: 0.6875, y: 1.5625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.21991467, y: 0.28102055}
+  m_Size: {x: 0.6862524, y: 0.42839545}
   m_EdgeRadius: 0
 --- !u!50 &6557458630353862924
 Rigidbody2D:
@@ -144,8 +144,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 6557458630353862927}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 0.11
-  m_Speed: 2
+  m_Radius: 0.34
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -153,7 +153,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 0.28
+  m_Height: 0.43
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
