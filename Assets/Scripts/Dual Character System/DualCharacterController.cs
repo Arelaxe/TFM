@@ -326,5 +326,9 @@ public class DualCharacterController: MonoBehaviour
     public void SetMobility(bool canMove)
     {
         this.canMove = canMove;
+        if (!canMove)
+        {
+            rb.velocity = Vector3.zero;
+        }
     }
 }

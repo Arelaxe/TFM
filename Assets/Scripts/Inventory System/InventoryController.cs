@@ -30,6 +30,12 @@ public class InventoryController : MonoBehaviour
 
             if (!page.isActiveAndEnabled)
             {
+                DocumentationController documentationController = PlayerManager.Instance.GetDocumentationController();
+                if (documentationController.IsActive())
+                {
+                    documentationController.Hide();
+                }
+
                 playerController.SetMobility(false);
                 interactionController.SetInteractivity(false);
                 interactionController.DestroyInteractions();
@@ -60,6 +66,16 @@ public class InventoryController : MonoBehaviour
         page.OnSwitchInventory += HandleSwitchInventory;
         page.OnSwapItems += HandleSwapItems;
         page.OnStartDragging += HandleDragging;
+    }
+
+    public bool IsActive()
+    {
+        return page.isActiveAndEnabled;
+    }
+
+    public void Hide()
+    {
+        page.Hide();
     }
 
     public bool HasCharacterItem(bool isCharacter1, Item item)

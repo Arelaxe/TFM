@@ -5,6 +5,7 @@ public static class PlayerConstants
     public static string ActionSplit = "Split";
     public static string ActionInteract = "Interact";
     public static string ActionInventory = "Inventory";
+    public static string ActionDocumentation = "Documentation";
     public static string ActionMousePos = "MousePosition";
 
     // Camera states
