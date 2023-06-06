@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Inventory System/Item")]
@@ -13,4 +11,12 @@ public class Item : ScriptableObject
     public string Description { get; set; }
     [field: SerializeField]
     public Sprite ItemImage { get; set; }
+    [field: SerializeField]
+    public ItemType Type = ItemType.Basic;
+
+    public enum ItemType 
+    {
+        Basic, 
+        Document
+    }
 }

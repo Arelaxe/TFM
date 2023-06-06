@@ -26,4 +26,9 @@ public class PlayerManager : Singleton<PlayerManager>
         return player.GetComponent<InventoryController>();
     }
 
+    public DocumentationController GetDocumentationController()
+    {
+        return player.GetComponent<DocumentationController>();
+    }
+
 }
