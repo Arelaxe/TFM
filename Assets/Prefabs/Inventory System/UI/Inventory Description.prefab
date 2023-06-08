@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 987021331892363830}
   - component: {fileID: 573166550356015232}
   m_Layer: 0
-  m_Name: Name
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -653,6 +653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930839b5019a0cf49bf5444f4ef1638c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 567815278643804690}
-  itemName: {fileID: 987021331892363830}
-  itemDescription: {fileID: 4210410008496730313}
+  image: {fileID: 567815278643804690}
+  title: {fileID: 987021331892363830}
+  description: {fileID: 4210410008496730313}

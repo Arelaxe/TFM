@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class DocumentDescription : MonoBehaviour
 {
     [SerializeField]
-    private Image documentImage;
+    private Image image;
 
     [SerializeField]
-    private TMP_Text documentDescription;
+    private TMP_Text description;
 
     [SerializeField]
     private Scrollbar scrollbar;
@@ -20,27 +20,27 @@ public class DocumentDescription : MonoBehaviour
 
     public void ResetDescription()
     {
-        documentImage.gameObject.SetActive(false);
-        documentDescription.text = "";
+        image.gameObject.SetActive(false);
+        description.text = "";
         
         scrollbar.value = 1;
     }
 
-    public void SetDescription(Sprite sprite, string documentDescription)
+    public void SetDescription(Sprite sprite, string description)
     {
-        documentImage.gameObject.SetActive(true);
-        documentImage.sprite = sprite;
-        this.documentDescription.text = documentDescription;
+        image.gameObject.SetActive(true);
+        image.sprite = sprite;
+        this.description.text = description;
         
         scrollbar.value = 1;
         scrollbar.Select();
     }
 
-    public void SetNavigation(DocumentItem documentItem)
+    public void SetNavigation(DocumentElement element)
     {
         Navigation navToSelected = new();
         navToSelected.mode = Navigation.Mode.Explicit;
-        navToSelected.selectOnLeft = documentItem;
+        navToSelected.selectOnLeft = element;
         scrollbar.navigation = navToSelected;
     }
 }

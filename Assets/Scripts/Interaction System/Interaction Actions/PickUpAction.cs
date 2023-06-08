@@ -15,7 +15,7 @@ public class PickUpAction : Action
         else if (item.Type.Equals(Item.ItemType.Document))
         {
             DocumentationController documentationController = PlayerManager.Instance.GetDocumentationController();
-            documentationController.AddDocument(item);
+            documentationController.Add(item);
         }
         
         InteractionController interactor = PlayerManager.Instance.GetInteractionController();
