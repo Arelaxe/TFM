@@ -118,9 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1cc3f4af45a071488e892f83298f73c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  documentItem: {fileID: 1899631466687718689, guid: 53bf010e09a6b334292fe11d7f6694dc, type: 3}
-  documentDescription: {fileID: 5945334502311105891}
   contentPanel: {fileID: 228749317946877901}
+  element: {fileID: 1899631466687718689, guid: 53bf010e09a6b334292fe11d7f6694dc, type: 3}
+  description: {fileID: 5945334502311105891}
   scrollbar: {fileID: 123731458927354115}
 --- !u!1001 &7229482881518546292
 PrefabInstance:
@@ -573,7 +573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9132245433984883389, guid: cdb815868309e4f4aa95d6cadaf4a429, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 37.593903
+      value: -0.000091552734
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdb815868309e4f4aa95d6cadaf4a429, type: 3}

@@ -3,24 +3,24 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryItem : Selectable, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler, ISubmitHandler
+public class InventoryElement : Selectable, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler, ISubmitHandler
 {
     [SerializeField]
-    private Image itemImage;
+    private Image icon;
 
-    public event Action<InventoryItem> OnItemClicked, OnItemDroppedOn, OnItemBeginDrag, OnItemEndDrag, OnItemSelected, OnItemSubmit;
+    public event Action<InventoryElement> OnItemClicked, OnItemDroppedOn, OnItemBeginDrag, OnItemEndDrag, OnItemSelected, OnItemSubmit;
     private bool empty = true;
 
     public void SetData(Sprite sprite)
     {
-        itemImage.gameObject.SetActive(true);
-        itemImage.sprite = sprite;
+        icon.gameObject.SetActive(true);
+        icon.sprite = sprite;
         empty = false;
     }
 
     public void ResetData()
     {
-        itemImage.gameObject.SetActive(false);
+        icon.gameObject.SetActive(false);
         empty = true;
     }
 

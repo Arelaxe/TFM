@@ -7,16 +7,16 @@ public class Documentation : ScriptableObject
     [SerializeField]
     private List<Item> documents;
 
-    public void AddDocument(Item item)
+    public void AddItem(Item item)
     {
         documents.Add(item);
     }
-    public void AddDocument(int index, Item item)
+    public void AddItem(int index, Item item)
     {
         documents.Insert(index, item);
     }
 
-    public List<Item> GetDocuments()
+    public List<Item> GetItems()
     {
         return documents;
     }

@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class InventoryPage : MonoBehaviour, IEventSystemHandler
+public class InventoryPage : Page
 {
     [SerializeField]
-    private InventoryItem inventoryItem;
+    private InventoryElement element;
 
     [SerializeField]
-    private InventoryDescription inventoryDescription;
-
-    [SerializeField]
-    private RectTransform contentPanel1;
+    private InventoryDescription description;
 
     [SerializeField]
     private RectTransform contentPanel2;
@@ -20,8 +17,8 @@ public class InventoryPage : MonoBehaviour, IEventSystemHandler
     [SerializeField]
     private MouseFollower mouseFollower;
 
-    private List<InventoryItem> items1 = new();
-    private List<InventoryItem> items2 = new();
+    private List<InventoryElement> elementList = new();
+    private List<InventoryElement> elementList2 = new();
 
     private int currentDraggedItemIndex = -1;
     private int currentDraggedInventoryIndex = -1;
@@ -32,37 +29,42 @@ public class InventoryPage : MonoBehaviour, IEventSystemHandler
     private void Awake()
     {
         mouseFollower.Toggle(false);
-        inventoryDescription.ResetDescription();
+        description.ResetDescription();
     }
 
-    public void InitInventoriesUI(int inventorySize1, int inventorySize2)
+    public void InitUI(int inventorySize, int inventorySize2)
     {
-        InitInventoryUI(inventorySize1, contentPanel1, items1);
-        InitInventoryUI(inventorySize2, contentPanel2, items2);
+        InitUIElementList(inventorySize, contentPanel, elementList);
+        InitUIElementList(inventorySize2, contentPanel2, elementList2);
     }
 
-    private void InitInventoryUI(int inventorySize, RectTransform contentPanel, List<InventoryItem> itemList)
+    private void InitUIElementList(int inventorySize, RectTransform contentPanel, List<InventoryElement> elementList)
     {
         for (int i = 0; i < inventorySize; i++)
         {
-            InventoryItem item = Instantiate(inventoryItem, Vector3.zero, Quaternion.identity, contentPanel);
-            item.transform.localPosition = new Vector3(item.transform.position.x, item.transform.position.y, 0);
-            item.transform.localScale = new Vector3(1, 1, 1);
-            itemList.Add(item);
-
-            item.OnItemSelected += HandleItemSelection;
-            item.OnItemSubmit += HandleSwitch;
-
-            item.OnItemClicked += HandleItemSelection;
-            item.OnItemBeginDrag += HandleBeginDrag;            
-            item.OnItemEndDrag += HandleEndDrag;
-            item.OnItemDroppedOn += HandleSwap;
+            InitUIElement(contentPanel, elementList);
         }
     }
 
-    public void LoadItems(Inventory inventory)
+    private void InitUIElement(RectTransform contentPanel, List<InventoryElement> elementList)
     {
-        List<InventoryItem> items = inventory.Index == 1 ? ref items1 : ref items2;
+        InventoryElement item = Instantiate(element, Vector3.zero, Quaternion.identity, contentPanel);
+        item.transform.localPosition = new Vector3(item.transform.position.x, item.transform.position.y, 0);
+        item.transform.localScale = new Vector3(1, 1, 1);
+        elementList.Add(item);
+
+        item.OnItemSelected += HandleSelect;
+        item.OnItemSubmit += HandleSwitch;
+
+        item.OnItemClicked += HandleSelect;
+        item.OnItemBeginDrag += HandleBeginDrag;
+        item.OnItemEndDrag += HandleEndDrag;
+        item.OnItemDroppedOn += HandleSwap;
+    }
+
+    public void LoadData(Inventory inventory)
+    {
+        List<InventoryElement> items = inventory.Index == 1 ? ref elementList : ref elementList2;
 
         for (int i = 0; i < inventory.GetItems().Count; i++)
         {
@@ -70,9 +72,9 @@ public class InventoryPage : MonoBehaviour, IEventSystemHandler
         }
     }
 
-    public void UpdateItems(Inventory inventory)
+    public void UpdateData(Inventory inventory)
     {
-        List<InventoryItem> items = inventory.Index == 1 ? ref items1 : ref items2;
+        List<InventoryElement> items = inventory.Index == 1 ? ref elementList : ref elementList2;
         for (int i = 0; i < items.Count; i++)
         {
             if (i < inventory.GetItems().Count)
@@ -90,19 +92,19 @@ public class InventoryPage : MonoBehaviour, IEventSystemHandler
     {
         if (item)
         {
-            inventoryDescription.SetDescription(item.ItemImage, item.Name, item.Description);
+            description.SetDescription(item.ItemImage, item.Name, item.Description);
             if (inventoryIndex == 1)
             {
-                items1[itemIndex].Select();
+                elementList[itemIndex].Select();
             }
             else
             {
-                items2[itemIndex].Select();
+                elementList2[itemIndex].Select();
             }
         }
         else
         {
-            inventoryDescription.ResetDescription();
+            description.ResetDescription();
         }
     }
 
@@ -117,42 +119,42 @@ public class InventoryPage : MonoBehaviour, IEventSystemHandler
         mouseFollower.Toggle(false);
     }
 
-    public void Show()
+    public override void Show()
     {
-        gameObject.SetActive(true);
-        inventoryDescription.ResetDescription();
-        SelectFirstItemAvailable();
+        base.Show();
+        description.ResetDescription();
+        SelectFirstAvailable();
     }
 
-    public void Hide()
+    public override void Hide()
     {
-        gameObject.SetActive(false);
+        base.Hide();
         EventSystem.current.SetSelectedGameObject(null);
     }
 
-    public void SelectFirstItemAvailable()
+    public void SelectFirstAvailable()
     {
-        InventoryItem item = null;
+        InventoryElement item = null;
         if (PlayerManager.Instance.SelectedCharacterOne)
         {
-            if (!items1[0].Empty)
+            if (!elementList[0].Empty)
             {
-                item = items1[0];
+                item = elementList[0];
             }
-            else if (PlayerManager.Instance.Grouped && !items2[0].Empty)
+            else if (PlayerManager.Instance.Grouped && !elementList2[0].Empty)
             {
-                item = items2[0];
+                item = elementList2[0];
             }
         }
         else
         {
-            if (!items2[0].Empty)
+            if (!elementList2[0].Empty)
             {
-                item = items2[0];
+                item = elementList2[0];
             }
-            else if (PlayerManager.Instance.Grouped && !items1[0].Empty)
+            else if (PlayerManager.Instance.Grouped && !elementList[0].Empty)
             {
-                item = items1[0];
+                item = elementList[0];
             }
         }
 
@@ -188,44 +190,44 @@ public class InventoryPage : MonoBehaviour, IEventSystemHandler
 
     // Event handlers
 
-    private void HandleItemSelection(InventoryItem item)
+    private void HandleSelect(InventoryElement item)
     {
-        if (items1.Contains(item))
+        if (elementList.Contains(item))
         {
-            OnDescriptionRequested?.Invoke(1, items1.IndexOf(item));
+            OnDescriptionRequested?.Invoke(1, elementList.IndexOf(item));
         }
         else
         {
-            OnDescriptionRequested?.Invoke(2, items2.IndexOf(item));
+            OnDescriptionRequested?.Invoke(2, elementList2.IndexOf(item));
         }
     }
 
-    private void HandleBeginDrag(InventoryItem item)
+    private void HandleBeginDrag(InventoryElement item)
     {
-        HandleItemSelection(item);
-        if (items1.Contains(item))
+        HandleSelect(item);
+        if (elementList.Contains(item))
         {
-            currentDraggedItemIndex = items1.IndexOf(item);
+            currentDraggedItemIndex = elementList.IndexOf(item);
             currentDraggedInventoryIndex = 1;
-            OnStartDragging?.Invoke(1, items1.IndexOf(item));
+            OnStartDragging?.Invoke(1, elementList.IndexOf(item));
         }
         else
         {
-            currentDraggedItemIndex = items2.IndexOf(item);
+            currentDraggedItemIndex = elementList2.IndexOf(item);
             currentDraggedInventoryIndex = 2;
-            OnStartDragging?.Invoke(2, items2.IndexOf(item));
+            OnStartDragging?.Invoke(2, elementList2.IndexOf(item));
         }
     }
 
-    private void HandleEndDrag(InventoryItem item)
+    private void HandleEndDrag(InventoryElement item)
     {
         ResetDraggedItem();
     }
 
-    private void HandleSwap(InventoryItem item)
+    private void HandleSwap(InventoryElement item)
     {
-        int droppedOnInventoryIndex = items1.Contains(item) ? 1 : 2;
-        int droppedOnItemIndex = droppedOnInventoryIndex == 1 ? items1.IndexOf(item) : items2.IndexOf(item);
+        int droppedOnInventoryIndex = elementList.Contains(item) ? 1 : 2;
+        int droppedOnItemIndex = droppedOnInventoryIndex == 1 ? elementList.IndexOf(item) : elementList2.IndexOf(item);
 
         if (currentDraggedInventoryIndex == droppedOnInventoryIndex 
             || currentDraggedInventoryIndex != droppedOnInventoryIndex && PlayerManager.Instance.Grouped)
@@ -234,13 +236,13 @@ public class InventoryPage : MonoBehaviour, IEventSystemHandler
         }
     }
 
-    private void HandleSwitch(InventoryItem item)
+    private void HandleSwitch(InventoryElement item)
     {
-        int currentSubmitInventoryIndex = items1.Contains(item) ? 1 : 2;
-        int switchInventoryIndex = items1.Contains(item) ? 2 : 1;
+        int currentSubmitInventoryIndex = elementList.Contains(item) ? 1 : 2;
+        int switchInventoryIndex = elementList.Contains(item) ? 2 : 1;
 
-        int currentSubmitItemIndex = switchInventoryIndex == 1 ? items2.IndexOf(item) : items1.IndexOf(item);
-        int switchItemIndex = switchInventoryIndex == 1 ? items1.Count - 1 : items2.Count - 1;
+        int currentSubmitItemIndex = switchInventoryIndex == 1 ? elementList2.IndexOf(item) : elementList.IndexOf(item);
+        int switchItemIndex = switchInventoryIndex == 1 ? elementList.Count - 1 : elementList2.Count - 1;
 
         if (PlayerManager.Instance.Grouped)
         {
@@ -252,11 +254,11 @@ public class InventoryPage : MonoBehaviour, IEventSystemHandler
 
     private RectTransform GetCharacterContentPanel(bool characterOne)
     {
-        return characterOne ? contentPanel1 : contentPanel2;
+        return characterOne ? contentPanel : contentPanel2;
     }
 
-    private List<InventoryItem> GetCharacterItems(bool characterOne)
+    private List<InventoryElement> GetCharacterItems(bool characterOne)
     {
-        return characterOne ? items1 : items2;
+        return characterOne ? elementList : elementList2;
     }
 }

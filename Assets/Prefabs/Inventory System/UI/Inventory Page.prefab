@@ -119,9 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e93f8ccae07b649bad265425fa8bdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryItem: {fileID: 1621551525188174461, guid: 354d6157213e03147a96b033c0ea23e7, type: 3}
-  inventoryDescription: {fileID: 3583172517979343147}
-  contentPanel1: {fileID: 8080662105995221098}
+  contentPanel: {fileID: 8080662105995221098}
+  element: {fileID: 1621551525188174461, guid: 354d6157213e03147a96b033c0ea23e7, type: 3}
+  description: {fileID: 3583172517979343147}
   contentPanel2: {fileID: 1586876096864534217}
   mouseFollower: {fileID: 0}
 --- !u!1001 &144024544609438312

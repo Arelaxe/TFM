@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 [CreateAssetMenu(menuName = "Inventory System/Inventory")]
 public class Inventory : ScriptableObject
@@ -12,20 +10,21 @@ public class Inventory : ScriptableObject
 
     [SerializeField]
     private List<Item> items;
+
     [field: SerializeField]
     public int Size { get; set; }
-    public bool isFull => items.Count == Size;
+    public bool IsFull => items.Count == Size;
 
     public void AddItem(Item item)
     {
-        if (!isFull)
+        if (!IsFull)
         {
             items.Add(item);
         }
     }
     public void AddItem(int index, Item item)
     {
-        if (!isFull)
+        if (!IsFull)
         {
             items.Insert(index, item);
         }

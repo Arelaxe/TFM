@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class MouseFollower : MonoBehaviour
 {
     private Canvas canvas;
-    private InventoryItem item;
+    private InventoryElement item;
 
     [SerializeField]
     private PlayerInput input;
@@ -15,7 +15,7 @@ public class MouseFollower : MonoBehaviour
     public void Awake()
     {
         canvas = transform.parent.GetComponent<Canvas>();
-        item = GetComponentInChildren<InventoryItem>();
+        item = GetComponentInChildren<InventoryElement>();
         mousePositionAction = input.actions[PlayerConstants.ActionMousePos];
     }
 

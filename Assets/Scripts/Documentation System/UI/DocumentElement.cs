@@ -4,35 +4,35 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class DocumentItem : Selectable, IPointerClickHandler, ISubmitHandler
+public class DocumentElement : Selectable, IPointerClickHandler, ISubmitHandler
 {
     [SerializeField]
-    private TMP_Text documentName;
+    private TMP_Text title;
 
-    public event Action<DocumentItem> OnDocumentSelect, OnDocumentSubmit;
+    public event Action<DocumentElement> OnElementSelect, OnElementSubmit;
 
-    public void SetData(string name)
+    public void SetData(string title)
     {
-        documentName.text = name;
+        this.title.text = title;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            OnDocumentSubmit?.Invoke(this);
+            OnElementSubmit?.Invoke(this);
         }
     }
 
     public override void OnSelect(BaseEventData eventData)
     {
         base.OnSelect(eventData);
-        OnDocumentSelect?.Invoke(this);
+        OnElementSelect?.Invoke(this);
     }
 
     public void OnSubmit(BaseEventData eventData)
     {
-        OnDocumentSubmit?.Invoke(this);
+        OnElementSubmit?.Invoke(this);
     }
     
 }

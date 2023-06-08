@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,13 +5,13 @@ using UnityEngine.UI;
 public class InventoryDescription : MonoBehaviour
 {
     [SerializeField]
-    private Image itemImage;
+    private Image image;
 
     [SerializeField]
-    private TMP_Text itemName;
+    private TMP_Text title;
 
     [SerializeField]
-    private TMP_Text itemDescription;
+    private TMP_Text description;
 
     public void Awake()
     {
@@ -23,16 +20,16 @@ public class InventoryDescription : MonoBehaviour
 
     public void ResetDescription()
     {
-        itemImage.gameObject.SetActive(false);
-        itemName.text = "";
-        itemDescription.text = "";
+        image.gameObject.SetActive(false);
+        title.text = "";
+        description.text = "";
     }
 
-    public void SetDescription(Sprite sprite, string itemName, string itemDescription)
+    public void SetDescription(Sprite sprite, string title, string description)
     {
-        itemImage.gameObject.SetActive(true);
-        itemImage.sprite = sprite;
-        this.itemName.text = itemName;
-        this.itemDescription.text = itemDescription;
+        image.gameObject.SetActive(true);
+        image.sprite = sprite;
+        this.title.text = title;
+        this.description.text = description;
     }
 }
