@@ -2,13 +2,28 @@ using UnityEngine;
 
 public class PlayerManager : Singleton<PlayerManager>
 {
-    public GameObject player;
+    private GameObject player;
+
     public bool SelectedCharacterOne { get => GetDualCharacterController().SelectedCharacterOne; }
     public bool Grouped { get => GetDualCharacterController().Grouped; }
 
     protected override void LoadData()
     {
-        player = GameObject.Find("Player");
+        GameObject playerUtils = Instantiate(SceneLoadManager.Instance.PlayerUtils, Vector3.zero, Quaternion.identity);
+
+        int childCount = playerUtils.transform.childCount;
+        for (int i = 0; i < childCount; i++)
+        {
+            Transform child = playerUtils.transform.GetChild(0);
+            child.parent = transform;
+            
+            if (i == 1)
+            {
+                player = child.gameObject;
+            }
+        }
+
+        Destroy(playerUtils);
     }
 
     public DualCharacterController GetDualCharacterController()

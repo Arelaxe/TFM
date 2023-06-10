@@ -15,4 +15,5 @@ MonoBehaviour:
   movementSpeed: 4
   interactionRange: 0.22
   groupingMaxDistance: 4.5
+  distanceOnLoadScene: 0.85
   inventorySize: 9

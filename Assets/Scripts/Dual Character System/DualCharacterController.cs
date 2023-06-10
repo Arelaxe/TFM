@@ -3,6 +3,8 @@ using UnityEngine.InputSystem.Interactions;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using Cinemachine;
+using System.Collections;
 using System;
 
 public class DualCharacterController: MonoBehaviour
@@ -17,6 +19,7 @@ public class DualCharacterController: MonoBehaviour
 
     // Movement
     private bool canMove = true;
+    private bool canFollowerMove = true;
     private Vector2 inputMovement;
     private Tuple<bool, bool> lookingAt1 = Tuple.Create(true, false);
     private Tuple<bool, bool> lookingAt2 = Tuple.Create(true, false);
@@ -32,6 +35,7 @@ public class DualCharacterController: MonoBehaviour
     private Animator animator2;
 
     public bool selectedCharacterOne = true;
+    private bool canSwitch = true;
 
     private InputAction splitAction;
     [SerializeField]
@@ -42,14 +46,16 @@ public class DualCharacterController: MonoBehaviour
 
     // Camera
     [SerializeField]
-    private Animator cameraAnimator;
+    private CinemachineStateDrivenCamera stateDrivenCamera;
+    private float defaultTransitionTime;
 
-    void Start()
+    private void Awake()
     {
         InitInputActions();
         InitSelectedPlayer();
         InitNavAgents();
         InitAnimators();
+        InitCamera();
     }
 
     private void Update()
@@ -64,7 +70,10 @@ public class DualCharacterController: MonoBehaviour
         {
             Move();
         }
-        Follow();
+        if (canFollowerMove)
+        {
+            Follow();
+        }
     }
 
     // Initialization
@@ -114,6 +123,11 @@ public class DualCharacterController: MonoBehaviour
     {
         animator1 = character1.GetComponent<Animator>();
         animator2 = character2.GetComponent<Animator>();
+    }
+
+    private void InitCamera()
+    {
+        defaultTransitionTime = stateDrivenCamera.m_DefaultBlend.m_Time;
     }
 
     // Movement
@@ -204,13 +218,35 @@ public class DualCharacterController: MonoBehaviour
         return Tuple.Create(currentVerticalMovement, currentPositiveMovement);
     }
 
+    public void SetSelectedCharacterLookingAt(Tuple<bool, bool> lookingAt)
+    {
+        Animator animator = selectedCharacterOne ? ref animator1 : ref animator2;
+        SetCharacterLookingAt(animator, lookingAt);
+    }
+
+    public void SetUnselectedCharacterLookingAt(Tuple<bool, bool> lookingAt)
+    {
+        Animator animator = selectedCharacterOne ? ref animator2 : ref animator1;
+        SetCharacterLookingAt(animator, lookingAt);
+    }
+
+    private void SetCharacterLookingAt(Animator animator, Tuple<bool, bool> lookingAt)
+    {
+        animator.SetInteger(PlayerConstants.AnimParamVelocity, 1);
+        animator.SetBool(PlayerConstants.AnimParamVerticalMovement, lookingAt.Item1);
+        animator.SetBool(PlayerConstants.AnimParamPositiveMovement, lookingAt.Item2);
+    }
+
     // Switch and group
 
     private void SwitchCharacterAndGrouping(InputAction.CallbackContext context)
     {
         if (context.interaction is PressInteraction)
         {
-            SwitchCharacter();
+            if (canSwitch)
+            {
+                StartCoroutine(SwitchCharacter());
+            }
         }
         else if (context.interaction is HoldInteraction)
         {
@@ -221,13 +257,18 @@ public class DualCharacterController: MonoBehaviour
         }
     }
 
-    private void SwitchCharacter()
+    private IEnumerator SwitchCharacter()
     {
+        canSwitch = false;
+
+        yield return StartCoroutine(SceneLoadManager.Instance.TryLoadSceneOnSwitch());
+
         SwitchSelectedCharacter();
         rb.velocity = Vector2.zero;
         InitSelectedPlayer();
         InitNavAgents();
 
+        Animator cameraAnimator = stateDrivenCamera.GetComponent<Animator>();
         if (selectedCharacterOne)
         {
             cameraAnimator.Play(PlayerConstants.CameraStateRyo);
@@ -239,11 +280,25 @@ public class DualCharacterController: MonoBehaviour
 
         PlayerManager.Instance.GetInteractionController().DestroyInteractions();
         PlayerManager.Instance.GetInventoryController().UpdateItemPanelsForSwitch(selectedCharacterOne, grouped);
+
+        if (stateDrivenCamera.m_DefaultBlend.m_Time.Equals(0))
+        {
+            yield return StartCoroutine(SceneLoadManager.Instance.Fade(false));
+            SetCameraTransitionTime(false);
+        }
+
+        canSwitch = true;
     }
 
     private void SwitchGrouping()
     {
         grouped = !grouped;
+
+        if (grouped)
+        {
+            SceneLoadManager.Instance.ResetFollowerInSceneData();
+        }
+
         GetUnselectedCharacterAgent().enabled = grouped;
 
         PlayerManager.Instance.GetInventoryController().UpdateItemPanelsForGrouping(selectedCharacterOne, grouped);
@@ -303,14 +358,24 @@ public class DualCharacterController: MonoBehaviour
         return selectedCharacterOne ? character1 : character2;
     }
 
+    public GameObject GetUnselectedCharacter()
+    {
+        return selectedCharacterOne ? character2 : character1;
+    }
+
     private NavMeshAgent GetUnselectedCharacterAgent()
     {
         return selectedCharacterOne ? navAgent2 : navAgent1;
     }
 
-    public Tuple<bool, bool> GetLookingAt()
+    public Tuple<bool, bool> GetSelectedCharacterLookingAt()
     {
         return selectedCharacterOne ? lookingAt1 : lookingAt2;
+    }
+
+    public Tuple<bool, bool> GetUnselectedCharacterLookingAt()
+    {
+        return selectedCharacterOne ? lookingAt2 : lookingAt1;
     }
 
     public bool IsCharacter1(bool isFollower)
@@ -323,7 +388,7 @@ public class DualCharacterController: MonoBehaviour
         selectedCharacterOne = !selectedCharacterOne;
     }
 
-    public void SetMobility(bool canMove)
+    public void SetSelectedCharacterMobility(bool canMove)
     {
         this.canMove = canMove;
         if (!canMove)
@@ -331,4 +396,29 @@ public class DualCharacterController: MonoBehaviour
             rb.velocity = Vector3.zero;
         }
     }
+
+    public void SetUnselectedCharacterMobility(bool canMove)
+    {
+        canFollowerMove = canMove;
+        GetUnselectedCharacterAgent().enabled = canMove;
+    }
+
+    public void SetMobility(bool canMove)
+    {
+        SetSelectedCharacterMobility(canMove);
+        SetUnselectedCharacterMobility(canMove);
+    }
+
+    public void SetSwitchAvailability(bool canSwitch)
+    {
+        this.canSwitch = canSwitch;
+    }
+
+    public void SetCameraTransitionTime(bool insta)
+    {
+        CinemachineBlendDefinition blend = stateDrivenCamera.m_DefaultBlend;
+        blend.m_Time = insta ? 0 : defaultTransitionTime;
+        stateDrivenCamera.m_DefaultBlend = blend;
+    }
+
 }
