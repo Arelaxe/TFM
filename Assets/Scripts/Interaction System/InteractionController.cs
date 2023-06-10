@@ -41,7 +41,7 @@ public class InteractionController : MonoBehaviour
     private void SetInteractionArea()
     {
         DualCharacterController playerController = PlayerManager.Instance.GetDualCharacterController();
-        Tuple<bool, bool> lookingAt = playerController.GetLookingAt();
+        Tuple<bool, bool> lookingAt = playerController.GetSelectedCharacterLookingAt();
         BoxCollider2D playerCol = playerController.Collider;
         if (lookingAt.Item1)
         {

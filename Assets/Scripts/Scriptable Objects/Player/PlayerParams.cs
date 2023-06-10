@@ -16,6 +16,9 @@ public class PlayerParams : ScriptableObject
     [SerializeField]
     private float groupingMaxDistance;
 
+    [SerializeField]
+    private float distanceOnLoadScene;
+
     [Header("Inventory")]
     [SerializeField]
     private int inventorySize;
@@ -23,5 +26,6 @@ public class PlayerParams : ScriptableObject
     public float Speed { get => movementSpeed; }
     public float InteractionRange { get => interactionRange; }
     public float GroupingMaxDistance { get => groupingMaxDistance; }
+    public float DistanceOnLoadScene { get => distanceOnLoadScene; }
     public int InventorySize { get => inventorySize; }
 }
