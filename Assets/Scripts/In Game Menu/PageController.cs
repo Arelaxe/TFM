@@ -48,7 +48,7 @@ public abstract class PageController : MonoBehaviour
         DualCharacterController playerController = PlayerManager.Instance.GetDualCharacterController();
         InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
 
-        playerController.SetSelectedCharacterMobility(false);
+        playerController.SetCharacterMobility(true, false);
         interactionController.SetInteractivity(false);
         interactionController.DestroyInteractions();
 
@@ -61,7 +61,7 @@ public abstract class PageController : MonoBehaviour
         DualCharacterController playerController = PlayerManager.Instance.GetDualCharacterController();
         InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
 
-        playerController.SetSelectedCharacterMobility(true);
+        playerController.SetCharacterMobility(true, true);
         interactionController.SetInteractivity(true);
 
         HidePage();

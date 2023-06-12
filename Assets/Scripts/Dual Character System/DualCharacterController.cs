@@ -91,8 +91,8 @@ public class DualCharacterController: MonoBehaviour
 
     private void InitSelectedPlayer()
     {
-        rb = GetSelectedCharacter().GetComponent<Rigidbody2D>();
-        col = GetSelectedCharacter().GetComponent<BoxCollider2D>();
+        rb = GetCharacter(true).GetComponent<Rigidbody2D>();
+        col = GetCharacter(true).GetComponent<BoxCollider2D>();
     }
 
     private void InitNavAgents()
@@ -174,23 +174,23 @@ public class DualCharacterController: MonoBehaviour
     {
         SetLookingAt(isFollower);
         characterAnimator.SetInteger(PlayerConstants.AnimParamVelocity, (int)velocity.sqrMagnitude);
-        characterAnimator.SetBool(PlayerConstants.AnimParamVerticalMovement, IsCharacter1(isFollower) ? lookingAt1.Item1 : lookingAt2.Item1);
-        characterAnimator.SetBool(PlayerConstants.AnimParamPositiveMovement, IsCharacter1(isFollower) ? lookingAt1.Item2 : lookingAt2.Item2);
+        characterAnimator.SetBool(PlayerConstants.AnimParamVerticalMovement, IsCharacterOne(isFollower) ? lookingAt1.Item1 : lookingAt2.Item1);
+        characterAnimator.SetBool(PlayerConstants.AnimParamPositiveMovement, IsCharacterOne(isFollower) ? lookingAt1.Item2 : lookingAt2.Item2);
     }
 
     private void SetLookingAt(bool isFollower)
     {
-      Vector2 velocity = rb.velocity;
+        Vector2 velocity = rb.velocity;
         if (isFollower)
         {
-            velocity = IsCharacter1(isFollower) ? navAgent1.velocity : navAgent2.velocity;
+            velocity = IsCharacterOne(isFollower) ? navAgent1.velocity : navAgent2.velocity;
         }
 
-        bool verticalMovement = IsCharacter1(isFollower) ? lookingAt1.Item1 : lookingAt2.Item1;
-        bool positiveMovement = IsCharacter1(isFollower) ? lookingAt1.Item2 : lookingAt2.Item2;
+        bool verticalMovement = IsCharacterOne(isFollower) ? lookingAt1.Item1 : lookingAt2.Item1;
+        bool positiveMovement = IsCharacterOne(isFollower) ? lookingAt1.Item2 : lookingAt2.Item2;
 
         Tuple<bool, bool> currentLookingAt = CalculateLookingAt(velocity, verticalMovement, positiveMovement);
-        if (IsCharacter1(isFollower))
+        if (IsCharacterOne(isFollower))
         {
             lookingAt1 = currentLookingAt;
         }
@@ -283,7 +283,10 @@ public class DualCharacterController: MonoBehaviour
 
         if (stateDrivenCamera.m_DefaultBlend.m_Time.Equals(0))
         {
-            yield return StartCoroutine(SceneLoadManager.Instance.Fade(false));
+            SceneLoadManager sceneLoadManager = SceneLoadManager.Instance;
+            yield return StartCoroutine(sceneLoadManager.Fade(false));
+            sceneLoadManager.PostFade();
+
             SetCameraTransitionTime(false);
         }
 
@@ -307,10 +310,10 @@ public class DualCharacterController: MonoBehaviour
     private bool CanGroup()
     {
         bool canGroup = false;
-        int layer = GetSelectedCharacter().layer == GlobalConstants.LayerIntTerrenal ? GlobalConstants.LayerIntSpiritual : GlobalConstants.LayerIntTerrenal;
+        int layer = GetCharacter(true).layer == GlobalConstants.LayerIntTerrenal ? GlobalConstants.LayerIntSpiritual : GlobalConstants.LayerIntTerrenal;
         LayerMask layerMask = LayerMask.GetMask(LayerMask.LayerToName(layer));
 
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(GetSelectedCharacter().transform.position, playerParams.GroupingMaxDistance, layerMask);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(GetCharacter(true).transform.position, playerParams.GroupingMaxDistance, layerMask);
         int i = 0;
         while (i < hitColliders.Length)
         {
@@ -353,14 +356,44 @@ public class DualCharacterController: MonoBehaviour
     public bool SelectedCharacterOne { get => selectedCharacterOne; }
     public bool Grouped { get => grouped; }
 
-    public GameObject GetSelectedCharacter()
+    public GameObject GetCharacter(bool selected)
     {
-        return selectedCharacterOne ? character1 : character2;
+        GameObject character;
+        if (selected)
+        {
+            character = selectedCharacterOne ? character1 : character2;
+        }
+        else
+        {
+            character = selectedCharacterOne ? character2 : character1;
+        }
+        return character;
     }
 
-    public GameObject GetUnselectedCharacter()
+    public void SetCharacterActive(bool selected, bool active)
     {
-        return selectedCharacterOne ? character2 : character1;
+        GameObject character = GetCharacter(selected);
+        character.GetComponent<SpriteRenderer>().enabled = active;
+        character.GetComponent<Collider2D>().enabled = active;
+    }
+
+    public Tuple<bool, bool> GetCharacterLookingAt(bool selected)
+    {
+        Tuple<bool, bool> lookingAt;
+        if (selected)
+        {
+            lookingAt = selectedCharacterOne ? lookingAt1 : lookingAt2;
+        }
+        else
+        {
+            lookingAt = selectedCharacterOne ? lookingAt2 : lookingAt1;
+        }
+        return lookingAt;
+    }
+
+    public bool IsCharacterOne(bool isFollower)
+    {
+        return isFollower ? !selectedCharacterOne : selectedCharacterOne;
     }
 
     private NavMeshAgent GetUnselectedCharacterAgent()
@@ -368,52 +401,41 @@ public class DualCharacterController: MonoBehaviour
         return selectedCharacterOne ? navAgent2 : navAgent1;
     }
 
-    public Tuple<bool, bool> GetSelectedCharacterLookingAt()
-    {
-        return selectedCharacterOne ? lookingAt1 : lookingAt2;
-    }
-
-    public Tuple<bool, bool> GetUnselectedCharacterLookingAt()
-    {
-        return selectedCharacterOne ? lookingAt2 : lookingAt1;
-    }
-
-    public bool IsCharacter1(bool isFollower)
-    {
-        return isFollower ? !selectedCharacterOne : selectedCharacterOne;
-    }
+    // Flags
 
     public void SwitchSelectedCharacter()
     {
         selectedCharacterOne = !selectedCharacterOne;
     }
 
-    public void SetSelectedCharacterMobility(bool canMove)
+    public void SetCharacterMobility(bool selected, bool canMove)
     {
-        this.canMove = canMove;
-        if (!canMove)
+        if (selected)
         {
-            rb.velocity = Vector3.zero;
+            this.canMove = canMove;
+            if (!canMove)
+            {
+                rb.velocity = Vector3.zero;
+            }
         }
-    }
-
-    public void SetUnselectedCharacterMobility(bool canMove)
-    {
-        canFollowerMove = canMove;
-        GetUnselectedCharacterAgent().enabled = canMove;
+        else
+        {
+            canFollowerMove = canMove;
+            GetUnselectedCharacterAgent().enabled = canMove;
+        }
     }
 
     public void SetMobility(bool canMove)
     {
-        SetSelectedCharacterMobility(canMove);
-        SetUnselectedCharacterMobility(canMove);
+        SetCharacterMobility(true, canMove);
+        SetCharacterMobility(false, canMove);
     }
 
     public void SetSwitchAvailability(bool canSwitch)
     {
         this.canSwitch = canSwitch;
     }
-
+    
     public void SetCameraTransitionTime(bool insta)
     {
         CinemachineBlendDefinition blend = stateDrivenCamera.m_DefaultBlend;

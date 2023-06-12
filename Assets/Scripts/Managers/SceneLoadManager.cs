@@ -36,7 +36,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     {
         DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
         dualCharacterController.SetMobility(false);
-        SetInScenePosition(dualCharacterController, -1, false);
+        SetInScenePosition(-1, false);
         dualCharacterController.SetMobility(true);
         DisableFadePanel();
     }
@@ -61,11 +61,9 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     public IEnumerator LoadSceneCouroutine(string destinationScene, int destinationPassage, bool reverseLookingAt)
     {
-        InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
+        PreFade();
+
         DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
-
-        PreCharacterControl(interactionController, dualCharacterController);
-
         if (!dualCharacterController.Grouped && !destinationScene.Equals(unselectedScene))
         {
             unselectedScene = SceneManager.GetActiveScene().name;
@@ -77,12 +75,12 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         SetBoundaries();
 
-        SetInScenePosition(dualCharacterController, destinationPassage, reverseLookingAt);
+        SetInScenePosition(destinationPassage, reverseLookingAt);
 
         if (dualCharacterController.Grouped || destinationScene.Equals(unselectedScene))
         {
-            SetCharacterActive(dualCharacterController.GetUnselectedCharacter(), true);
-            dualCharacterController.SetUnselectedCharacterMobility(true);
+            dualCharacterController.SetCharacterActive(false, true);
+            dualCharacterController.SetCharacterMobility(false, true);
 
             if (destinationScene.Equals(unselectedScene))
             {
@@ -91,22 +89,19 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         }
         else
         {
-            SetCharacterActive(dualCharacterController.GetUnselectedCharacter(), false);
+            dualCharacterController.SetCharacterActive(false, false);
         }
         
-        dualCharacterController.SetSelectedCharacterMobility(true);
+        dualCharacterController.SetCharacterMobility(true, true);
 
         yield return StartCoroutine(Fade(false));
 
-        PostCharacterControl(interactionController, dualCharacterController);
+        PostFade();
     }
 
     public IEnumerator LoadSceneSwitchCouroutine()
     {
-        InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
-        DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
-
-        PreCharacterControl(interactionController, dualCharacterController);
+        PreFade();
 
         string newFollowerScene = SceneManager.GetActiveScene().name;
 
@@ -118,13 +113,12 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         unselectedScene = newFollowerScene;
 
-        SetCharacterActive(dualCharacterController.GetSelectedCharacter(), false);
-        SetCharacterActive(dualCharacterController.GetUnselectedCharacter(), true);
+        DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
+        dualCharacterController.SetCharacterActive(true, false);
+        dualCharacterController.SetCharacterActive(false, true);
 
-        dualCharacterController.SetSelectedCharacterMobility(true);
+        dualCharacterController.SetCharacterMobility(true, true);
         dualCharacterController.SetCameraTransitionTime(true);
-
-        PostCharacterControl(interactionController, dualCharacterController);
     }
 
     public IEnumerator LoadSceneFromMenuCouroutine(string destinationScene)
@@ -133,34 +127,34 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         yield return StartCoroutine(LoadDestinationScene(destinationScene));
 
-        InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
-        DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
-
-        PreCharacterControl(interactionController, dualCharacterController);
+        PreFade();
 
         SetBoundaries();
 
-        SetInScenePosition(dualCharacterController, -1, false);
+        SetInScenePosition(-1, false);
 
-        dualCharacterController.SetMobility(true);
+        PlayerManager.Instance.GetDualCharacterController().SetMobility(true);
 
         yield return StartCoroutine(Fade(false));
 
-        PostCharacterControl(interactionController, dualCharacterController);
+        PostFade();
     }
 
-    private void PreCharacterControl(InteractionController interactionController, DualCharacterController dualCharacterController)
+    public void PreFade()
     {
+        InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
         interactionController.DestroyInteractions();
         interactionController.SetInteractivity(false);
+
+        DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
         dualCharacterController.SetMobility(false);
         dualCharacterController.SetSwitchAvailability(false);
     }
 
-    private void PostCharacterControl(InteractionController interactionController, DualCharacterController dualCharacterController)
+    public void PostFade()
     {
-        interactionController.SetInteractivity(true);
-        dualCharacterController.SetSwitchAvailability(true);
+        PlayerManager.Instance.GetInteractionController().SetInteractivity(true);
+        PlayerManager.Instance.GetDualCharacterController().SetSwitchAvailability(true);
     }
 
     private IEnumerator LoadDestinationScene(string destinationScene)
@@ -182,17 +176,19 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         }
     }
 
-    private void SetInScenePosition(DualCharacterController dualCharacterController, int destinationPassage, bool reverseLookingAt)
+    private void SetInScenePosition(int destinationPassage, bool reverseLookingAt)
     {
+        DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
+
         Transform inSceneTransform = GetInSceneTransform(destinationPassage);
         Tuple<bool, bool> inSceneLookingAt = GetInSceneLookingAt(inSceneTransform, reverseLookingAt);
 
-        dualCharacterController.GetSelectedCharacter().transform.position = inSceneTransform.position;
+        dualCharacterController.GetCharacter(true).transform.position = inSceneTransform.position;
         dualCharacterController.SetSelectedCharacterLookingAt(inSceneLookingAt);
 
         if (dualCharacterController.Grouped)
         {
-            dualCharacterController.GetUnselectedCharacter().transform.position = GetUnselectedCharacterPosition(inSceneTransform.position, inSceneLookingAt);
+            dualCharacterController.GetCharacter(false).transform.position = GetUnselectedCharacterPosition(inSceneTransform.position, inSceneLookingAt);
             dualCharacterController.SetUnselectedCharacterLookingAt(inSceneLookingAt);
         }
     }
@@ -291,12 +287,6 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         Color objectColor = fadingPanel.color;
         objectColor = new(objectColor.r, objectColor.g, objectColor.b, 0);
         fadingPanel.color = objectColor;
-    }
-
-    private void SetCharacterActive(GameObject gameObject, bool active)
-    {
-        gameObject.GetComponent<SpriteRenderer>().enabled = active;
-        gameObject.GetComponent<Collider2D>().enabled = active;
     }
 
     public void ResetFollowerInSceneData()
