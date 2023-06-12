@@ -245,7 +245,14 @@ public class DualCharacterController: MonoBehaviour
         {
             if (canSwitch)
             {
-                StartCoroutine(SwitchCharacter());
+                if (!SceneLoadManager.Instance.LoadSceneOnSwitch)
+                {
+                    SwitchCharacter();
+                }
+                else
+                {
+                    StartCoroutine(SceneLoadManager.Instance.LoadSceneSwitchCouroutine());
+                }
             }
         }
         else if (context.interaction is HoldInteraction)
@@ -257,12 +264,8 @@ public class DualCharacterController: MonoBehaviour
         }
     }
 
-    private IEnumerator SwitchCharacter()
+    public void SwitchCharacter()
     {
-        canSwitch = false;
-
-        yield return StartCoroutine(SceneLoadManager.Instance.TryLoadSceneOnSwitch());
-
         SwitchSelectedCharacter();
         rb.velocity = Vector2.zero;
         InitSelectedPlayer();
@@ -280,17 +283,6 @@ public class DualCharacterController: MonoBehaviour
 
         PlayerManager.Instance.GetInteractionController().DestroyInteractions();
         PlayerManager.Instance.GetInventoryController().UpdateItemPanelsForSwitch(selectedCharacterOne, grouped);
-
-        if (stateDrivenCamera.m_DefaultBlend.m_Time.Equals(0))
-        {
-            SceneLoadManager sceneLoadManager = SceneLoadManager.Instance;
-            yield return StartCoroutine(sceneLoadManager.Fade(false));
-            sceneLoadManager.PostFade();
-
-            SetCameraTransitionTime(false);
-        }
-
-        canSwitch = true;
     }
 
     private void SwitchGrouping()

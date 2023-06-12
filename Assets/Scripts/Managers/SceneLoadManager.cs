@@ -51,14 +51,6 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         StartCoroutine(LoadSceneFromMenuCouroutine(destinationScene));
     }
 
-    public IEnumerator TryLoadSceneOnSwitch()
-    {
-        if (unselectedScene != null)
-        {
-            yield return StartCoroutine(LoadSceneSwitchCouroutine());
-        }
-    }
-
     public IEnumerator LoadSceneCouroutine(string destinationScene, int destinationPassage, bool reverseLookingAt)
     {
         PreFade();
@@ -73,7 +65,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         yield return StartCoroutine(LoadDestinationScene(destinationScene));
 
-        SetBoundaries();
+        AfterLoad();
 
         SetInScenePosition(destinationPassage, reverseLookingAt);
 
@@ -101,6 +93,9 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     public IEnumerator LoadSceneSwitchCouroutine()
     {
+        DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
+        dualCharacterController.SetSwitchAvailability(false);
+        
         PreFade();
 
         string newFollowerScene = SceneManager.GetActiveScene().name;
@@ -109,16 +104,26 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         yield return StartCoroutine(LoadDestinationScene(unselectedScene));
 
-        SetBoundaries();
+        AfterLoad();
 
         unselectedScene = newFollowerScene;
 
-        DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
+        // Change character which is active
         dualCharacterController.SetCharacterActive(true, false);
         dualCharacterController.SetCharacterActive(false, true);
 
         dualCharacterController.SetCharacterMobility(true, true);
+
+        // Switch character without camera transition
         dualCharacterController.SetCameraTransitionTime(true);
+        dualCharacterController.SwitchCharacter();
+        dualCharacterController.SetCameraTransitionTime(false);
+
+        yield return StartCoroutine(Fade(false));
+
+        PostFade();
+
+        dualCharacterController.SetSwitchAvailability(true);
     }
 
     public IEnumerator LoadSceneFromMenuCouroutine(string destinationScene)
@@ -129,7 +134,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         PreFade();
 
-        SetBoundaries();
+        AfterLoad();
 
         SetInScenePosition(-1, false);
 
@@ -166,7 +171,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         }
     }
 
-    private void SetBoundaries()
+    private void AfterLoad()
     {
         PolygonCollider2D boundaries = GameObject.Find(GlobalConstants.PathBoundaries).GetComponent<PolygonCollider2D>();
         GameObject[] vCams = GameObject.FindGameObjectsWithTag(GlobalConstants.TagVirtualCamera);
@@ -295,4 +300,5 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     }
 
     public GameObject PlayerUtils { get => playerUtils; }
+    public bool LoadSceneOnSwitch { get => unselectedScene != null; }
 }
