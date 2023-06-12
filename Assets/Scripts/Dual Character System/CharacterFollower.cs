@@ -11,7 +11,7 @@ public class CharacterFollower : MonoBehaviour
 
     void Update()
     {
-        GameObject selectedCharacter = PlayerManager.Instance.GetDualCharacterController().GetSelectedCharacter();
+        GameObject selectedCharacter = PlayerManager.Instance.GetDualCharacterController().GetCharacter(true);
         rectTransform.position = new Vector3(selectedCharacter.transform.position.x, selectedCharacter.transform.position.y, rectTransform.position.z);
     }
 }
