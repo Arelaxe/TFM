@@ -56,7 +56,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         PreFade();
 
         DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
-        if (!dualCharacterController.Grouped && !destinationScene.Equals(unselectedScene))
+        if (!dualCharacterController.Grouped && unselectedScene == null)
         {
             unselectedScene = SceneManager.GetActiveScene().name;
         }
@@ -69,19 +69,26 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         SetInScenePosition(destinationPassage, reverseLookingAt);
 
-        if (dualCharacterController.Grouped || destinationScene.Equals(unselectedScene))
+        // Disable/enable unselected character in scene
+        if (dualCharacterController.IsCharacterActive(false))
         {
-            dualCharacterController.SetCharacterActive(false, true);
-            dualCharacterController.SetCharacterMobility(false, true);
-
-            if (destinationScene.Equals(unselectedScene))
+            if (!dualCharacterController.Grouped && !destinationScene.Equals(unselectedScene))
             {
-                ResetFollowerInSceneData();
+                dualCharacterController.SetCharacterActive(false, false);
             }
         }
         else
         {
-            dualCharacterController.SetCharacterActive(false, false);
+            if (!dualCharacterController.Grouped && destinationScene.Equals(unselectedScene))
+            {
+                dualCharacterController.SetCharacterActive(false, true);
+            }
+        }
+
+        // Enable unselected character movement
+        if (dualCharacterController.IsCharacterActive(false))
+        {
+            dualCharacterController.SetCharacterMobility(false, true);
         }
         
         dualCharacterController.SetCharacterMobility(true, true);
@@ -117,12 +124,12 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         // Switch character without camera transition
         dualCharacterController.SetCameraTransitionTime(true);
         dualCharacterController.SwitchCharacter();
-        dualCharacterController.SetCameraTransitionTime(false);
 
         yield return StartCoroutine(Fade(false));
 
         PostFade();
 
+        dualCharacterController.SetCameraTransitionTime(false);
         dualCharacterController.SetSwitchAvailability(true);
     }
 
@@ -145,7 +152,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         PostFade();
     }
 
-    public void PreFade()
+    private void PreFade()
     {
         InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
         interactionController.DestroyInteractions();
@@ -156,7 +163,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         dualCharacterController.SetSwitchAvailability(false);
     }
 
-    public void PostFade()
+    private void PostFade()
     {
         PlayerManager.Instance.GetInteractionController().SetInteractivity(true);
         PlayerManager.Instance.GetDualCharacterController().SetSwitchAvailability(true);
@@ -300,5 +307,5 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     }
 
     public GameObject PlayerUtils { get => playerUtils; }
-    public bool LoadSceneOnSwitch { get => unselectedScene != null; }
+    public bool LoadSceneOnSwitch { get => unselectedScene != null && !SceneManager.GetActiveScene().name.Equals(unselectedScene); }
 }
