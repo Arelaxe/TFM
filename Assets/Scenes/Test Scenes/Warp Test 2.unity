@@ -245,7 +245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2602562065746616189, guid: 50a452012580db343a1c23c95bce2f59, type: 3}
       propertyPath: destinationScene
-      value: Warp Test 1
+      value: Warp Test 3
       objectReference: {fileID: 0}
     - target: {fileID: 2602562065746616189, guid: 50a452012580db343a1c23c95bce2f59, type: 3}
       propertyPath: destinationPassage

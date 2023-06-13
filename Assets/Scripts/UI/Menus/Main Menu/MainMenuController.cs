@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MenuTest : MonoBehaviour
+public class MainMenuController : MonoBehaviour
 {
     private bool loading;
 
