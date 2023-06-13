@@ -58,7 +58,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8080662105403298826}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -94,12 +94,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 10
-    m_Right: 10
-    m_Top: 10
-    m_Bottom: 10
+    m_Left: 150
+    m_Right: 150
+    m_Top: 200
+    m_Bottom: 200
   m_ChildAlignment: 0
-  m_Spacing: 10
+  m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -119,10 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e93f8ccae07b649bad265425fa8bdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  inventoryItem: {fileID: 1621551525188174461, guid: 354d6157213e03147a96b033c0ea23e7, type: 3}
-  inventoryDescription: {fileID: 3583172517979343147}
-  contentPanel1: {fileID: 8080662105995221098}
+  contentPanel: {fileID: 8080662105995221098}
+  element: {fileID: 1621551525188174461, guid: 354d6157213e03147a96b033c0ea23e7, type: 3}
+  description: {fileID: 3583172517979343147}
   contentPanel2: {fileID: 1586876096864534217}
   mouseFollower: {fileID: 0}
 --- !u!1001 &144024544609438312

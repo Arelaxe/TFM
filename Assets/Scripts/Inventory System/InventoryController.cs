@@ -1,65 +1,34 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
 
-public class InventoryController : MonoBehaviour
+public class InventoryController : PageController
 {
-    private PlayerInput input;
-    private InputAction inventoryAction;
-
     [SerializeField]
     private InventoryPage page;
-
+    
     [SerializeField]
     private Inventory inventory1;
     
     [SerializeField]
     private Inventory inventory2;
 
-    public void Start()
+    public override Page Page => page;
+
+    public override string MenuAction => PlayerConstants.ActionInventory;
+
+    protected override void InitPage()
     {
-        InitInputActions();
-        InitPage();
-    }
-
-    void Update()
-    {
-        if (inventoryAction.triggered)
-        {
-            DualCharacterController playerController = PlayerManager.Instance.GetDualCharacterController();
-            InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
-
-            if (!page.isActiveAndEnabled)
-            {
-                playerController.SetMobility(false);
-                interactionController.SetInteractivity(false);
-                interactionController.DestroyInteractions();
-
-                page.LoadItems(inventory1);
-                page.LoadItems(inventory2);
-                page.Show();
-            }
-            else
-            {
-                playerController.SetMobility(true);
-                interactionController.SetInteractivity(true);
-                page.Hide();
-            }
-        }
-    }
-
-    private void InitInputActions()
-    {
-        input = GetComponent<PlayerInput>();
-        inventoryAction = input.actions[PlayerConstants.ActionInventory];
-    }
-
-    private void InitPage()
-    {
-        page.InitInventoriesUI(inventory1.Size, inventory2.Size);
+        page.InitUI(inventory1.Size, inventory2.Size);
         page.OnDescriptionRequested += HandleDescriptionRequest;
         page.OnSwitchInventory += HandleSwitchInventory;
         page.OnSwapItems += HandleSwapItems;
         page.OnStartDragging += HandleDragging;
+    }
+
+    protected override void LoadData()
+    {
+        page.LoadData(inventory1);
+        page.LoadData(inventory2);
     }
 
     public bool HasCharacterItem(bool isCharacter1, Item item)
@@ -85,8 +54,8 @@ public class InventoryController : MonoBehaviour
     {
         bool isFull;
 
-        bool isChar1Full = inventory1.isFull;
-        bool isChar2Full = inventory2.isFull;
+        bool isChar1Full = inventory1.IsFull;
+        bool isChar2Full = inventory2.IsFull;
 
         if (PlayerManager.Instance.Grouped)
         {
@@ -104,11 +73,11 @@ public class InventoryController : MonoBehaviour
     {
         if (isCharacter1)
         {
-            AddItemToCharacter(!inventory1.isFull, item);
+            AddItemToCharacter(!inventory1.IsFull, item);
         }
         else
         {
-            AddItemToCharacter(inventory2.isFull, item);
+            AddItemToCharacter(inventory2.IsFull, item);
         }
     }
 
@@ -117,12 +86,12 @@ public class InventoryController : MonoBehaviour
         if (isCharacter1)
         {
             inventory1.AddItem(item);
-            page.UpdateItems(inventory1);
+            page.UpdateData(inventory1);
         }
         else
         {
             inventory2.AddItem(item);
-            page.UpdateItems(inventory2);
+            page.UpdateData(inventory2);
         }
     }
 
@@ -130,8 +99,8 @@ public class InventoryController : MonoBehaviour
     {
         inventory1.GetItems().Remove(item);
         inventory2.GetItems().Remove(item);
-        page.UpdateItems(inventory1);
-        page.UpdateItems(inventory2);
+        page.UpdateData(inventory1);
+        page.UpdateData(inventory2);
     }
 
     public void UpdateItemPanelsForSwitch(bool isCharacter1, bool grouped)
@@ -140,7 +109,7 @@ public class InventoryController : MonoBehaviour
         {
             page.EnableContentPanel(isCharacter1);
             page.DisableContentPanel(!isCharacter1);
-            page.SelectFirstItemAvailable();
+            page.SelectFirstAvailable();
         }
     }
 
@@ -195,7 +164,7 @@ public class InventoryController : MonoBehaviour
             Inventory inventory = draggedItemInventoryIndex == 1 ? ref inventory1 : ref inventory2;
             MoveItems(inventory, inventory, draggedItemIndex, droppedOnItemIndex);
 
-            page.UpdateItems(inventory);
+            page.UpdateData(inventory);
         }
         else
         {
@@ -203,8 +172,8 @@ public class InventoryController : MonoBehaviour
             Inventory droppedOnInventory = draggedItemInventoryIndex == 1 ? ref inventory2 : ref inventory1;
             MoveItems(draggedInventory, droppedOnInventory, draggedItemIndex, droppedOnItemIndex);
 
-            page.UpdateItems(draggedInventory);
-            page.UpdateItems(droppedOnInventory);
+            page.UpdateData(draggedInventory);
+            page.UpdateData(droppedOnInventory);
         }
     }
 

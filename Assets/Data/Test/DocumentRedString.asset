@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
+  m_Name: DocumentRedString
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: El hilo rojo del destino
+  <Description>k__BackingField: "\r    Cuenta una antigua leyenda que, hace muchos
+    a\xF1os, un emperador invit\xF3 a una poderosa bruja que ten\xEDa la capacidad
+    para ver el hilo rojo del destino.\r\n\r\n    Cuando la hechicera lleg\xF3 a
+    palacio, el emperador le pidi\xF3 que siguiera el hilo rojo de su destino y lo
+    condujera hacia la que ser\xEDa su esposa. La bruja accedi\xF3 y sigui\xF3 el
+    hilo, desde el dedo me\xF1ique del emperador, que la llev\xF3 hacia un mercado.
+    All\xED se detuvo frente a una campesina en cuyos brazos sosten\xEDa a un beb\xE9.
+    El emperador, enojado, pens\xF3 que se trataba de una burla de la bruja e hizo
+    caer a la joven al suelo, provocando que la reci\xE9n nacida se hiriera la frente.
+    Luego, orden\xF3 que los guardias se llevaran a la bruja y pidi\xF3 su cabeza.\r\n\r\n   
+    A\xF1os despu\xE9s, el emperador decidi\xF3 casarse con la hija de un poderoso
+    terrateniente a la que no conoc\xEDa. Durante la ceremonia, al ver por primera
+    vez el rostro de su futura esposa, el emperador observ\xF3 una cicatriz peculiar
+    en su frente.\r"
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: 8a280abaab43102498a6393f30a25c22, type: 3}
+  Type: 1

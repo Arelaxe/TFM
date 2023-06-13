@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
+  m_Name: DocumentCorn
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: "Quetzalc\xF3atl y el ma\xEDz"
+  <Description>k__BackingField: "\r    Cuenta la leyenda que, antes de la llegada
+    del Dios Quetzalc\xF3atl, los aztecas solo se alimentaba de ra\xEDces y alg\xFAn
+    que otro animal que pod\xEDan cazar.\r\n\r\n    El ma\xEDz era un alimento inaccesible
+    porque estaba oculto en un rec\xF3ndito lugar situado m\xE1s all\xE1 de las monta\xF1as.\r\n\r\n   
+    Los antiguos dioses intentaron por todos los modos acceder quitando las monta\xF1as
+    del lugar, pero no pudieron conseguirlo. Entonces, los aztecas recurrieron a
+    Quetzalc\xF3atl, quien prometi\xF3 traer ma\xEDz. A diferencia de los dioses,
+    este utiliz\xF3 su poder para convertirse en una hormiga negra y, acompa\xF1ado
+    de una hormiga roja, se march\xF3 por las monta\xF1as en busca del cereal.\r\n\r\n   
+    El proceso no fue nada f\xE1cil y las hormigas tuvieron que esquivar toda clase
+    de obst\xE1culos que lograron superar con valent\xEDa. Cuando llegaron a la planta
+    del ma\xEDz, tomaron un grano y regresaron al pueblo. Pronto, los aztecas sembraron
+    el ma\xEDz y obtuvieron grandes cosechas y, con ellas, aumentaron sus riquezas.
+    Con todos los beneficios, se cuenta, que construyeron grandes ciudades y palacios.\r\n\r\n   
+    Desde aquel momento, el pueblo azteca adora al Dios Quetzalc\xF3atl, quien les
+    trajo el ma\xEDz y, con ello, la dicha.\r\n"
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: e76db9283a8d6a347ad027cce2a2d97e, type: 3}
+  Type: 1
