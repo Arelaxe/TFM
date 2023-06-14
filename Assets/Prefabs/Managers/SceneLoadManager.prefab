@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testMode: 0
+  progress: {fileID: 11400000, guid: 9dcfe3c92d1292e45b94cad8f9a4ea81, type: 2}
   playerUtils: {fileID: 6558404035773667762, guid: 34f363cfdea111f469aa53e765a36ff9, type: 3}
   fadingPanel: {fileID: 6092282611766972633}
   fadingSpeed: 1.5

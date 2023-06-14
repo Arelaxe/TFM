@@ -422,6 +422,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6092282611859858856, guid: 723afa300fc941b469d700c39d0008b3, type: 3}
+      propertyPath: progress
+      value: 
+      objectReference: {fileID: 11400000, guid: 9dcfe3c92d1292e45b94cad8f9a4ea81, type: 2}
+    - target: {fileID: 6092282611859858856, guid: 723afa300fc941b469d700c39d0008b3, type: 3}
       propertyPath: testMode
       value: 1
       objectReference: {fileID: 0}
@@ -488,6 +492,7 @@ GameObject:
   - component: {fileID: 1193833240}
   - component: {fileID: 1193833237}
   - component: {fileID: 1193833236}
+  - component: {fileID: 1193833241}
   m_Layer: 3
   m_Name: Banana
   m_TagString: Untagged
@@ -619,6 +624,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &1193833241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193833235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dab8060ea148294c976f9bfd1479b2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectState:
+    guid: dbe7f430-0b1b-4698-8e6f-79ffaeb7a89f
+    objectName: 
+    objectTag: 
+    objectLayer: 0
+    objectPosition: {x: 0, y: 0}
 --- !u!1001 &1360480584
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1360480585}
     m_Modifications:
+    - target: {fileID: 917547657789523857, guid: 50a452012580db343a1c23c95bce2f59, type: 3}
+      propertyPath: objectState.guid
+      value: 46d45131-bf35-431c-809e-73d47ca7a799
+      objectReference: {fileID: 0}
     - target: {fileID: 2602562065746616184, guid: 50a452012580db343a1c23c95bce2f59, type: 3}
       propertyPath: m_Name
       value: Passage (3)
@@ -195,6 +199,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1360480585}
     m_Modifications:
+    - target: {fileID: 917547657789523857, guid: 50a452012580db343a1c23c95bce2f59, type: 3}
+      propertyPath: objectState.guid
+      value: 4054a501-6a2f-466a-83bc-11a76c5c115d
+      objectReference: {fileID: 0}
     - target: {fileID: 2602562065746616184, guid: 50a452012580db343a1c23c95bce2f59, type: 3}
       propertyPath: m_Name
       value: Passage
@@ -263,6 +271,10 @@ PrefabInstance:
     - target: {fileID: 2674175183935749043, guid: d3e466d5efaae47478c3815ce1460e4f, type: 3}
       propertyPath: m_Name
       value: Level Structure
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710935527408923631, guid: d3e466d5efaae47478c3815ce1460e4f, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5287808873477003248, guid: d3e466d5efaae47478c3815ce1460e4f, type: 3}
       propertyPath: m_Size.x
@@ -21084,7 +21096,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: d3e466d5efaae47478c3815ce1460e4f, type: 3}
 --- !u!4 &1360480585 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2103865221480468965, guid: d3e466d5efaae47478c3815ce1460e4f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3710935527408923631, guid: d3e466d5efaae47478c3815ce1460e4f, type: 3}
   m_PrefabInstance: {fileID: 1360480584}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1608344571
@@ -21094,6 +21106,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1360480585}
     m_Modifications:
+    - target: {fileID: 917547657789523857, guid: 50a452012580db343a1c23c95bce2f59, type: 3}
+      propertyPath: objectState.guid
+      value: 81e2f461-9af0-4f91-95aa-3b5488d34646
+      objectReference: {fileID: 0}
     - target: {fileID: 2602562065746616184, guid: 50a452012580db343a1c23c95bce2f59, type: 3}
       propertyPath: m_Name
       value: Passage (2)
@@ -21159,6 +21175,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1360480585}
     m_Modifications:
+    - target: {fileID: 917547657789523857, guid: 50a452012580db343a1c23c95bce2f59, type: 3}
+      propertyPath: objectState.guid
+      value: d66448ef-bf2d-4c50-a723-ac22477cca13
+      objectReference: {fileID: 0}
     - target: {fileID: 2602562065746616184, guid: 50a452012580db343a1c23c95bce2f59, type: 3}
       propertyPath: m_Name
       value: Passage (1)
