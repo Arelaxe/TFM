@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using System.Collections;
+using System;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
-using System;
 
 public class SceneLoadManager : Singleton<SceneLoadManager>
 {
@@ -11,6 +12,8 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     private bool testMode;
 
     [Space]
+    [SerializeField]
+    private Progress progress;
     [SerializeField]
     private GameObject playerUtils;
 
@@ -30,6 +33,10 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         {
             TestLoad();
         }
+        else
+        {
+            // TODO: Load progress from binary
+        }
     }
 
     private void TestLoad()
@@ -37,6 +44,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
         dualCharacterController.SetMobility(false);
         SetInScenePosition(-1, false);
+        AfterLoad();
         dualCharacterController.SetMobility(true);
         DisableFadePanel();
     }
@@ -62,6 +70,8 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         }
 
         yield return StartCoroutine(Fade(true));
+
+        SaveSceneProgress();
 
         yield return StartCoroutine(LoadDestinationScene(destinationScene));
 
@@ -108,6 +118,8 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         string newFollowerScene = SceneManager.GetActiveScene().name;
 
         yield return StartCoroutine(Fade(true));
+
+        SaveSceneProgress();
 
         yield return StartCoroutine(LoadDestinationScene(unselectedScene));
 
@@ -169,6 +181,21 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         PlayerManager.Instance.GetDualCharacterController().SetSwitchAvailability(true);
     }
 
+    private void SaveSceneProgress()
+    {
+        GameObject rootDynamicObjects = GameObject.Find(GlobalConstants.PathDynamicObjectsRoot);
+        Dictionary<string, ObjectState> objectStates = ObjectStateUtils.SaveObjects(rootDynamicObjects);
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (progress.sceneRootDynamicObjects.ContainsKey(sceneName))
+        {
+            progress.sceneRootDynamicObjects[sceneName] = objectStates;
+        }
+        else
+        {
+            progress.sceneRootDynamicObjects.Add(sceneName, objectStates);
+        }
+    }
+
     private IEnumerator LoadDestinationScene(string destinationScene)
     {
         AsyncOperation asyncLoadLevel = SceneManager.LoadSceneAsync(destinationScene, LoadSceneMode.Single);
@@ -186,6 +213,14 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         {
             vCam.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = boundaries;
         }
+
+        GameObject rootGameObject = GameObject.Find(GlobalConstants.PathDynamicObjectsRoot);
+        Dictionary<string, ObjectState> objectStates = new();
+        if (progress.sceneRootDynamicObjects.ContainsKey(SceneManager.GetActiveScene().name))
+        {
+            objectStates = progress.sceneRootDynamicObjects[SceneManager.GetActiveScene().name];
+        }
+        ObjectStateUtils.LoadObjects(rootGameObject, objectStates);
     }
 
     private void SetInScenePosition(int destinationPassage, bool reverseLookingAt)

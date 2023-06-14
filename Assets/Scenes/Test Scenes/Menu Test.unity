@@ -404,6 +404,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6092282611859858856, guid: 723afa300fc941b469d700c39d0008b3, type: 3}
+      propertyPath: progress
+      value: 
+      objectReference: {fileID: 11400000, guid: 9dcfe3c92d1292e45b94cad8f9a4ea81, type: 2}
+    - target: {fileID: 6092282611859858856, guid: 723afa300fc941b469d700c39d0008b3, type: 3}
       propertyPath: testMode
       value: 0
       objectReference: {fileID: 0}
@@ -706,7 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3db551cc96adfa246a0ce3d1a037c247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destinationScene: Warp Test 1
+  destinationScene: Warp Test 2
 --- !u!1 &2129974569
 GameObject:
   m_ObjectHideFlags: 0
