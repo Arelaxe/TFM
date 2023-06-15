@@ -106,9 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dab8060ea148294c976f9bfd1479b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  guid: 
   objectState:
-    guid: 
-    objectName: 
-    objectTag: 
-    objectLayer: 0
-    objectPosition: {x: 0, y: 0}
+    positionX: 0
+    positionY: 0

@@ -1,0 +1,95 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using Newtonsoft.Json;
+
+public static class PersistenceUtils
+{
+    public static void Save()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        string unselectedScene = SceneLoadManager.Instance.UnselectedScene;
+        SceneLoadManager.Instance.Progress.player.Save(currentScene, unselectedScene);
+
+        string json = JsonConvert.SerializeObject(SceneLoadManager.Instance.Progress, Formatting.Indented);
+        File.WriteAllText(Application.persistentDataPath + "\\save.json", json);
+    }
+
+    public static SavedProgress Load()
+    {
+        SavedProgress savedProgress = null;
+        try
+        {
+            string json = File.ReadAllText(Application.persistentDataPath + "\\save.json");
+            savedProgress = JsonConvert.DeserializeObject<SavedProgress>(json);
+        }
+        catch (FileNotFoundException)
+        {
+        }
+        return savedProgress;
+    }
+
+    public static Dictionary<string, ObjectState> SaveObjects(GameObject rootObject)
+    {
+        Dictionary<string, ObjectState> objectStates = new();
+
+        foreach (DynamicObject dynamicObject in rootObject.GetComponentsInChildren<DynamicObject>())
+        {
+            dynamicObject.State.Save(dynamicObject.gameObject);
+            objectStates[dynamicObject.Guid] = dynamicObject.State;
+        }
+
+        return objectStates;
+    }
+
+    public static void LoadObjects(GameObject rootObject, Dictionary<string, ObjectState> objectStates)
+    {
+        if (objectStates.Count > 0)
+        {
+            foreach (DynamicObject dynamicObject in rootObject.GetComponentsInChildren<DynamicObject>())
+            {
+                string objectStateGuid = dynamicObject.Guid;
+                if (objectStates.ContainsKey(objectStateGuid))
+                {
+                    ObjectState savedObjectState = objectStates[objectStateGuid];
+                    dynamicObject.gameObject.transform.position = savedObjectState.Position;
+                    dynamicObject.Load(savedObjectState);
+                }
+                else
+                {
+                    UnityEngine.Object.Destroy(dynamicObject.gameObject);
+                }
+            }
+        }
+    }
+
+    public static T Get<T>(object obj)
+    {
+        T result;
+        try
+        {
+            result = (T)obj;
+        }
+        catch (InvalidCastException)
+        {
+            result = JsonConvert.DeserializeObject<T>(obj.ToString());
+        }
+        return result;
+    }
+
+    public static List<T> GetList<T>(object list)
+    {
+        List<T> result;
+        try
+        {
+            result = (List<T>)list;
+        }
+        catch (InvalidCastException)
+        {
+            result = JsonConvert.DeserializeObject<List<T>>(list.ToString());
+        }
+        return result;
+    }
+}

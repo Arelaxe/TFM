@@ -15,4 +15,14 @@ public class MainMenuController : MonoBehaviour
             SceneLoadManager.Instance.LoadSceneFromMenu(destinationScene);
         }
     }
+
+    public void Continue()
+    {
+        if (!loading)
+        {
+            loading = true;
+            string continueScene = SceneLoadManager.Instance.Progress.player.selectedCharacter.scene;
+            SceneLoadManager.Instance.LoadSceneFromMenu(continueScene, false);
+        }
+    }
 }
