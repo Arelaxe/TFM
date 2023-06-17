@@ -25,6 +25,7 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
     private DialogueNode m_NextNode = null;
 
     private bool dialogEnded = false;
+    private bool choiceDialog = false;
     private string currentText;
 
     private void Awake()
@@ -33,7 +34,7 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
         m_DialogueChannel.OnDialogueNodeEnd += OnDialogueNodeEnd;
 
         gameObject.SetActive(false);
-        //m_ChoicesBoxTransform.gameObject.SetActive(false);
+        m_ChoicesBoxTransform.gameObject.SetActive(false);
     }
 
     private void OnDestroy()
@@ -47,11 +48,13 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
         if (m_ListenToInput && Input.GetButtonDown("Submit"))
         {
             if (dialogEnded){
-                m_DialogueChannel.RaiseRequestDialogueNode(m_NextNode);
+                if (!choiceDialog){
+                    m_DialogueChannel.RaiseRequestDialogueNode(m_NextNode);
+                }
             }
             else{
                 dialogEnded = true;
-                m_DialogueText.text =  currentText;
+                m_DialogueText.text = currentText;
             }
         }
     }
@@ -87,30 +90,33 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
         m_ListenToInput = false;
         m_DialogueText.text = "";
         m_SpeakerText.text = "";
-/*
+
         foreach (Transform child in m_ChoicesBoxTransform)
         {
             Destroy(child.gameObject);
-        }*/
+        }
 
         gameObject.SetActive(false);
-        //m_ChoicesBoxTransform.gameObject.SetActive(false);
+        m_ChoicesBoxTransform.gameObject.SetActive(false);
     }
 
     public void Visit(BasicDialogueNode node)
     {
+        choiceDialog = false;
         m_ListenToInput = true;
         m_NextNode = node.NextNode;
     }
 
     public void Visit(ChoiceDialogueNode node)
     {
-        //m_ChoicesBoxTransform.gameObject.SetActive(true);
+        choiceDialog = true;
+        m_ListenToInput = true;
+        m_ChoicesBoxTransform.gameObject.SetActive(true);
 
         foreach (DialogueChoice choice in node.Choices)
         {
-           // UIDialogueChoiceController newChoice = Instantiate(m_ChoiceControllerPrefab, m_ChoicesBoxTransform);
-           // newChoice.Choice = choice;
+            UIDialogueChoiceController newChoice = Instantiate(m_ChoiceControllerPrefab, m_ChoicesBoxTransform);
+            newChoice.Choice = choice;
         }
     }
 }

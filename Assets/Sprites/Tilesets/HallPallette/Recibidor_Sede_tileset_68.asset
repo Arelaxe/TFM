@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Recibidor_Sede_tileset_68
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 1950953497, guid: b1d7cd6407918b04a846eddb3a3b4e23, type: 3}
+  m_Sprite: {fileID: 1745234872, guid: 18527156ccc18f446a506dcfb818d7a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -33,4 +33,4 @@ MonoBehaviour:
     e33: 1
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
-  m_ColliderType: 0
+  m_ColliderType: 1

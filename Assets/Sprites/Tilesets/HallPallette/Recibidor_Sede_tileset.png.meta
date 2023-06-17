@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b1d7cd6407918b04a846eddb3a3b4e23
+guid: 18527156ccc18f446a506dcfb818d7a3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,11 +105,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_0
+      name: Recibidor_Sede_tileset2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
+        y: 288
         width: 32
         height: 32
       alignment: 0
@@ -119,18 +119,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74fb057b440830e48bcb4578d50159c2
-      internalID: -1745180622
+      spriteID: e46e15b8f041ea64abfa5fff0b849056
+      internalID: 65729827
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_1
+      name: Recibidor_Sede_tileset2_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 192
+        y: 288
         width: 32
         height: 32
       alignment: 0
@@ -140,18 +140,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 484d19c25a505b7419fe41b69ab8975e
-      internalID: 822787061
+      spriteID: 621918244e1a4324bb45da5bc10566f7
+      internalID: -380482183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_2
+      name: Recibidor_Sede_tileset2_2
       rect:
         serializedVersion: 2
         x: 64
-        y: 192
+        y: 288
         width: 32
         height: 32
       alignment: 0
@@ -161,18 +161,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bdd840dab6f525248bcbef34a311a491
-      internalID: 141868822
+      spriteID: 25e7665551bdc264b8f1ee104228c35f
+      internalID: -36991748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_3
+      name: Recibidor_Sede_tileset2_3
       rect:
         serializedVersion: 2
         x: 96
-        y: 192
+        y: 288
         width: 32
         height: 32
       alignment: 0
@@ -182,391 +182,39 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6090ff338e92b1a469dfb37d02e966bd
-      internalID: -1528380488
+      spriteID: 5ab5818fb8035aa4da4ac78b997cba20
+      internalID: -2110340966
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_4
+      name: Recibidor_Sede_tileset2_4
       rect:
         serializedVersion: 2
         x: 128
-        y: 192
+        y: 288
         width: 32
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 10, y: -16}
-        - {x: 10, y: 16}
-        - {x: -16, y: 16}
-        - {x: -16, y: -16}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5de33c09cae32124390e2690fb084675
-      internalID: 174637053
+      spriteID: eefb207b05f729742b1044a0380d1a35
+      internalID: -1629417585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_5
+      name: Recibidor_Sede_tileset2_5
       rect:
         serializedVersion: 2
         x: 160
-        y: 192
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 60934ac659fd113459f6eb342c513358
-      internalID: -1902028992
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 192
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: -1}
-        - {x: 16, y: -1}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2351eee6170d7af4d92b7c93913981ad
-      internalID: 385147683
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 192
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: -1}
-        - {x: 16, y: -1}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: f63f88733175e4a4dbba44d28cc451ca
-      internalID: -866364895
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_8
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 192
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: -1}
-        - {x: 16, y: -1}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 45ea47bd035b13648b7e7f45199e7345
-      internalID: -490486723
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_9
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1de5a09318ba97f44996acabd796c40f
-      internalID: 893889637
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_10
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 51601f5c5bc34f44da762da5e5a0e29c
-      internalID: -1534655493
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_11
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 160
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 8}
-        - {x: 16, y: 8}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: c9211395de7ba0047928c99f13886251
-      internalID: 1879249763
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_12
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 160
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 8}
-        - {x: 16, y: 8}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc884750e911ae640a8b3e2731dd8193
-      internalID: -1173469302
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_13
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 160
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: 16}
-        - {x: -16, y: -16}
-        - {x: 2, y: -16}
-        - {x: 10, y: -6}
-        - {x: 10, y: 16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5ed35974a62e9be4b9ccfeae2cdd9ffb
-      internalID: -2012685562
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_14
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 160
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 13, y: -15}
-        - {x: -14, y: -15}
-        - {x: -14, y: -16}
-        - {x: 13, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: e9d06eb33a62bcc43807229ec1642920
-      internalID: -1058089754
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_15
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 160
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 87d7726af48154b4eb43e0e446d0d9b6
-      internalID: -1518027339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_16
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 160
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 136681545407c5746b102cc2f9c54c73
-      internalID: 1569830025
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_17
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 160
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c19ea38800f7dcc49a7b04187a12a453
-      internalID: 1411756790
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_18
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a03f172da829b434a8d94f7a4eb37521
-      internalID: 1675910302
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_19
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 16, y: -16}
-        - {x: 16, y: -16}
-        - {x: 16, y: -16}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: ce8689f7e3f95834b8f26623794891e3
-      internalID: -1460376054
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_20
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 128
+        y: 288
         width: 32
         height: 32
       alignment: 0
@@ -575,649 +223,65 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -16, y: -16}
-        - {x: -16, y: -16}
-        - {x: -16, y: -16}
-        - {x: -16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 80a6cbf7690e675438f1c0895890beb8
-      internalID: 1750644004
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_21
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: -16}
-        - {x: -16, y: -16}
-        - {x: -16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: a68d2b1991b2bbe4d88b736c22a19229
-      internalID: 1355829416
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_22
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6338499006723e849a618bba16783eb4
-      internalID: -635417918
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_23
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 954a8750fbcf5014b88369f0ecef1945
-      internalID: 348127979
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_24
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 128
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -14, y: 16}
-        - {x: -14, y: -5}
-        - {x: -6, y: -12}
-        - {x: 5, y: -12}
-        - {x: 13, y: -6}
-        - {x: 13, y: 16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2d50caa300d693e45b78775c969e6cfa
-      internalID: -474576446
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_25
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8bf4d04f149bb97439ec99204fc3b69b
-      internalID: 940759722
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_26
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ec8ed65f5bced924db8e860f5c0dc008
-      internalID: 801248215
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_27
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df1b19bc58a9b3f4880a95e6db841e32
-      internalID: -541987095
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_28
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4c3d0e64cad1f594e991e85d8f31c11d
-      internalID: -1340393130
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_29
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 923e1e1d214e04243ac1d0878ac4cfa5
-      internalID: 47277872
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_30
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 91dcff0764f2e104096007eab95e0019
-      internalID: -976502448
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_31
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c0c55a7c48e7f53489d31707c09ee36c
-      internalID: 1177098540
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_32
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: -7}
-        - {x: -12, y: 0}
-        - {x: -12, y: 5}
-        - {x: 16, y: 5}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: f06c5500ed7cda34387da9bc40fe8509
-      internalID: 678369974
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_33
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 5}
-        - {x: 16, y: 5}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8f71a33ef08385b4b94aaaab4504122d
-      internalID: -765406812
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_34
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 5}
-        - {x: 8, y: 5}
-        - {x: 8, y: 0}
-        - {x: 13, y: -7}
-        - {x: 12, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: c224d166a0bbf574b877b928e74417ac
-      internalID: -669385393
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_35
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dbac5c747d7aaa64aa76198dc9b8b676
-      internalID: 174098096
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_36
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f7fc6e31bf52cb84f91b18674fc3c315
-      internalID: -991496449
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_37
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 96
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d03a81947d0b9104d9629044d7c333e2
-      internalID: 117749954
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_38
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 96
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 61fb2d3876438644383cb2f1aa50810c
-      internalID: -1958826940
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_39
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e2b14fac7d76ef84e92504aa857e02f7
-      internalID: -1574528593
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_40
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: abb0f096d18af0d438b391487bc5458c
-      internalID: 325277847
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_41
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d4685d71a1023346bcdc1c4d440f741
-      internalID: 1717877183
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_42
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e71ebb55fd32de44a8c1347c53451be4
-      internalID: 1770714390
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_43
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e311f409758b657439481af5d5f34a8a
-      internalID: -321040757
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_44
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -9, y: 1}
-        - {x: -15, y: 16}
-        - {x: 16, y: 16}
-        - {x: 16, y: 1}
-      tessellationDetail: 0
-      bones: []
-      spriteID: e9b5039e19c2a2f4b9ffd5cab152d144
-      internalID: -1712288533
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_45
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: 1}
         - {x: -16, y: 16}
-        - {x: 16, y: 16}
-        - {x: 16, y: 1}
+        - {x: 8, y: 16}
+        - {x: 8, y: -16}
       tessellationDetail: 0
       bones: []
-      spriteID: ff27882b401f2a3468ddbecf311c9f10
-      internalID: 178909242
+      spriteID: 36a8cd92f0c90ac45948d48d773b5e48
+      internalID: -431102546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_46
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: 1}
-        - {x: -16, y: 16}
-        - {x: 11, y: 16}
-        - {x: 5, y: 1}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3102c7bf3e425244dba19c0ea68d2a4c
-      internalID: -1827729393
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_47
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eaff8671db46bcb4bad0718a377373d8
-      internalID: -1904461305
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_48
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e5aa77ac91e615b43af11af84fe88ace
-      internalID: 1219876932
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_49
+      name: Recibidor_Sede_tileset2_6
       rect:
         serializedVersion: 2
         x: 192
-        y: 64
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3d5e1917621cc349b3ddbb71bffbd46
+      internalID: -670722116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c7286494d65c3440ae2fb8a301c6c90
+      internalID: -1529983170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 288
         width: 32
         height: 32
       alignment: 7
@@ -1226,23 +290,23 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: 6, y: -16}
-        - {x: 11, y: -12}
-        - {x: 16, y: -12}
+        - {x: 8, y: -14}
+        - {x: 16, y: -14}
         - {x: 16, y: -16}
       tessellationDetail: 0
       bones: []
-      spriteID: 6595c0e7c2e83584b85cb0faf1f0716e
-      internalID: 1600691922
+      spriteID: 02163846606a8f747a8195d4f0afc494
+      internalID: -772440390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_50
+      name: Recibidor_Sede_tileset2_9
       rect:
         serializedVersion: 2
-        x: 224
-        y: 64
+        x: 288
+        y: 288
         width: 32
         height: 32
       alignment: 7
@@ -1251,128 +315,23 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -16, y: -16}
-        - {x: -16, y: -12}
-        - {x: 9, y: -12}
+        - {x: -16, y: -14}
+        - {x: 9, y: -14}
         - {x: 15, y: -16}
       tessellationDetail: 0
       bones: []
-      spriteID: 3dd45de983e8cc14f89162ccb23f0a38
-      internalID: -1548426377
+      spriteID: 2e9c286565469ad4480ece9cfc6ea6ef
+      internalID: -890050921
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_51
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cb340d841c1e01842a699a2bcd50ffa7
-      internalID: -989204717
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_52
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 78497e2d3d325f543b01629f90410519
-      internalID: -466396906
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_53
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db6984b61c11d4248a0ccc038ee3d2ee
-      internalID: -137336072
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_54
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 09bdbd400c08d8842b1c9e625fc0427f
-      internalID: -1746362737
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_55
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d5151e5863a5b241913121f58072db3
-      internalID: -1018444961
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_56
+      name: Recibidor_Sede_tileset2_10
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 256
         width: 32
         height: 32
       alignment: 0
@@ -1382,18 +341,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 757a0a2d40118324cb6bdbe3d8351074
-      internalID: -540063842
+      spriteID: fce6997576a3c154ab9798fe75d73104
+      internalID: 2124495745
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_57
+      name: Recibidor_Sede_tileset2_11
       rect:
         serializedVersion: 2
         x: 32
-        y: 32
+        y: 256
         width: 32
         height: 32
       alignment: 0
@@ -1403,39 +362,43 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da6b4b2bea4d2ce45a60b3cfa8b190f6
-      internalID: -1233105780
+      spriteID: fd55fb8da400fbc4482ab302e768b33a
+      internalID: -1782517197
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_58
+      name: Recibidor_Sede_tileset2_12
       rect:
         serializedVersion: 2
         x: 64
-        y: 32
+        y: 256
         width: 32
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -16, y: -16}
+        - {x: -16, y: 3}
+        - {x: 8, y: 3}
+        - {x: 8, y: -16}
       tessellationDetail: 0
       bones: []
-      spriteID: a718136e14a80c54682b5d84dde60a5e
-      internalID: 679602880
+      spriteID: ada9a78eaaa6e6b4c9986b61217e17dd
+      internalID: 1277290214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_59
+      name: Recibidor_Sede_tileset2_13
       rect:
         serializedVersion: 2
         x: 96
-        y: 32
+        y: 256
         width: 32
         height: 32
       alignment: 0
@@ -1445,39 +408,65 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b763abc85387d04ca7d43d5961fee36
-      internalID: 1996392947
+      spriteID: 134dfe90b21b3924ea8eda642e28c95b
+      internalID: 1148121170
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_60
+      name: Recibidor_Sede_tileset2_14
       rect:
         serializedVersion: 2
         x: 128
-        y: 32
+        y: 256
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8b6735395e350c488756752b390a618
-      internalID: 787365904
+      spriteID: fb225df8bb2f8a84f9022bc73cea1b78
+      internalID: 2083716168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_61
+      name: Recibidor_Sede_tileset2_15
       rect:
         serializedVersion: 2
         x: 160
-        y: 32
+        y: 256
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -16}
+        - {x: -16, y: 16}
+        - {x: 8, y: 16}
+        - {x: 8, y: -6}
+        - {x: 0, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: df370875245240747bd19627a2b52f15
+      internalID: 1692202082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
         width: 32
         height: 32
       alignment: 0
@@ -1487,18 +476,39 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c333874091ec4a646b1dc0a4a42e82ff
-      internalID: -807419599
+      spriteID: fa5f4f00e993ca94c86f73d1402706e3
+      internalID: -696493227
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_62
+      name: Recibidor_Sede_tileset2_17
       rect:
         serializedVersion: 2
-        x: 192
-        y: 32
+        x: 224
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eabf8691c7a03f448b340b90c1737b58
+      internalID: -79875762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_18
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
         width: 32
         height: 32
       alignment: 7
@@ -1512,18 +522,18 @@ TextureImporter:
         - {x: 16, y: -16}
       tessellationDetail: 0
       bones: []
-      spriteID: 83c960f0d9bb8bb4986e1906819fdda6
-      internalID: -1566889488
+      spriteID: fbe3149bffd14bb4686d8e97b4e84906
+      internalID: -2085798567
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_63
+      name: Recibidor_Sede_tileset2_19
       rect:
         serializedVersion: 2
-        x: 224
-        y: 32
+        x: 288
+        y: 256
         width: 32
         height: 32
       alignment: 7
@@ -1537,340 +547,1433 @@ TextureImporter:
         - {x: 15, y: -16}
       tessellationDetail: 0
       bones: []
-      spriteID: c4643e476c2a43442b49ad6bd3971757
-      internalID: 2132562269
+      spriteID: be0187c83429857459bbafc7f871c54f
+      internalID: 1218487450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_64
+      name: Recibidor_Sede_tileset2_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -13, y: -16}
+        - {x: -12, y: -13}
+        - {x: 16, y: -13}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c0bd80760534fa4db3a6bcadca993e4
+      internalID: -506866041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_21
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 224
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -16}
+        - {x: -16, y: -13}
+        - {x: 16, y: -13}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc16bf26467179e4c9f5cacabbacce96
+      internalID: 1631437962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_22
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 224
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -16}
+        - {x: -16, y: -13}
+        - {x: 7, y: -13}
+        - {x: 8, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b2ab9e0f58529548b6adc7a39ed6d72
+      internalID: 1651300233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_23
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 224
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -14, y: -16}
+        - {x: -14, y: -6}
+        - {x: -11, y: -1}
+        - {x: -7, y: 3}
+        - {x: 6, y: 3}
+        - {x: 10, y: -1}
+        - {x: 13, y: -6}
+        - {x: 13, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3976bf28bfdb5ec47a2390e63b4281c1
+      internalID: 986410700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_24
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 083a3b15c8e7d6141bafdc552bf7959f
+      internalID: -847985797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_25
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cd0ad18fcd86d84e8d3df229934f260
+      internalID: -2075876824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_26
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d2a098642f672a4a88aceb622ab7279
+      internalID: -168926388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_27
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 224
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: -14}
+        - {x: 6, y: -9}
+        - {x: 6, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: -14}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ed78a77be1c1bd4daaae42ce6e4d8ee
+      internalID: 1691135731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_28
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 224
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -14}
+        - {x: -16, y: 16}
+        - {x: 15, y: 16}
+        - {x: 15, y: -11}
+        - {x: 10, y: -14}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cf466fc57c4e8444b25381d548449ed
+      internalID: -2010543826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -10, y: -13}
+        - {x: -12, y: -3}
+        - {x: -16, y: 1}
+        - {x: -16, y: 11}
+        - {x: -13, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: -13}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46e850859f16ad741a17d3c0bf5df3ee
+      internalID: -1993850381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_30
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 192
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -13}
+        - {x: -16, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: -13}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8f54da098a070149afa10bd0476d8f5
+      internalID: -1681468549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_31
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -13}
+        - {x: -16, y: 16}
+        - {x: 8, y: 16}
+        - {x: 11, y: 12}
+        - {x: 11, y: 2}
+        - {x: 5, y: -13}
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfe6c78604a8b5442b30d24d8828b016
+      internalID: 2082894686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_32
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -12, y: -12}
+        - {x: -14, y: 2}
+        - {x: -14, y: 16}
+        - {x: 13, y: 16}
+        - {x: 13, y: 1}
+        - {x: 10, y: -12}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c263d2b0e138ef4eb5da7224045083c
+      internalID: 499339930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_33
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f94846e12fe14a4b8a574b8be1a12bf
+      internalID: 1071002345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_34
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70bb33f7a775a2b43801626495dd2bce
+      internalID: -448760049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_35
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b79d268db83392f46b2716ee5b609f6a
+      internalID: 245162847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49dea9ce745736d41b56973a7dd27914
+      internalID: 1532542473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_37
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be9253a7f308b094aa10831c109fc3b5
+      internalID: -1013321357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_38
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d83eae3817161fc4fb47a53d331194e6
+      internalID: -1759645400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_39
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 220360b535764bf48872a8a0a9052052
+      internalID: -982568669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_40
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3c7db231ec6f474dac9931ff9515f9d
+      internalID: 1834611908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_41
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 390e61c3cf3bc80419c43bd4bd8445c8
+      internalID: -323594531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_42
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29c548f87200c1143b9841aeedd320e0
+      internalID: 1958353868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_43
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51cc855d8b041da478be2ed1be25d610
+      internalID: -402036479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_44
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fd05f2bead943047a2ad08e40cc6c4e
+      internalID: -523366321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_45
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -16}
+        - {x: -16, y: 3}
+        - {x: 16, y: 3}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc50979f9e3489748aad94adc5197533
+      internalID: -1138981422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_46
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20f3466d5234e7d4e9b152557454777e
+      internalID: -231719026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_47
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da86fe1b285a11d48b543c63848dd94d
+      internalID: -1977345341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_48
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f680ef7e6b89e347b3ca927c4f06aba
+      internalID: -2130506627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_49
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcb9c67f98c001e4eb7ffd0af1208ef7
+      internalID: 1342262895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_50
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d71c49550b5bcda4ea4aca3a7fcb6f6b
+      internalID: 828687176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_51
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84ca83083b130484cab191a94dd92168
+      internalID: -1996419197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_52
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79d259b6f2e7e3d4fa5e9a0beb3b83dd
+      internalID: 1681375713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_53
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 198fcffc995ab8f4e91432e48d750c19
+      internalID: 183019066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_54
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11074a553bcd2f74797172b0cedc18e7
+      internalID: -1591456287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_55
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -7, y: -16}
+        - {x: -7, y: 16}
+        - {x: 2, y: 16}
+        - {x: 2, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c74fb71ba1d19546826482dc4c40041
+      internalID: 718455521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af3a981ec5b87534482c391fed55acea
+      internalID: 24279988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_57
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85719d1ccef66d84aba627f78064b20e
+      internalID: -1432430290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_58
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7a408f7f8c0e1a4eb22d4cfe42e5a4d
+      internalID: -1766245173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_59
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 899ba9ec66eccb8459893b063c818711
+      internalID: -228274700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_60
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a012f4e27187dff4ea75912f3edcfa3e
+      internalID: 177998288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_61
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abe77ac1f4708ba4db8f63aa30542c89
+      internalID: 1832348631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_62
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52033fdb056c288498b10b8dceca860c
+      internalID: 1517651976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_63
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99a584f1d0fbead40871222f0d20cdf7
+      internalID: -62843688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_64
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf2366dcfd64db045a2b2c147dd9ca83
+      internalID: -1103140995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_65
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -16}
+        - {x: -16, y: -1}
+        - {x: -7, y: -1}
+        - {x: -7, y: 16}
+        - {x: 2, y: 16}
+        - {x: 2, y: -1}
+        - {x: 16, y: -1}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f5587aee45d8f447bebada1ae49f1e9
+      internalID: -1556247347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_66
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca06365b1775f644ab7f591dcae40401
+      internalID: -209558757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_67
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2813d405beb10a64ca23a7af617d9025
+      internalID: 889169355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_68
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5654cc4205addff4e9d48ab3ff4cd0fb
+      internalID: 1745234872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_69
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13a768f73125e1a49a893366bacd575f
+      internalID: 1643141272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_70
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b88a1751f19f041990c3c8f9b25cf2
+      internalID: -114939408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_71
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 376baf39a9b09c942b47a54ac440ade6
+      internalID: 383775059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_72
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 129220f0a94067f47a17459a8c964e0a
+      internalID: -251028300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_73
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca4a78ef44a2724dabf56e980374399
+      internalID: -1242602720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_74
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -16}
+        - {x: -16, y: -6}
+        - {x: 16, y: -6}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1516aef2ec37b0d438cc36dae65fea10
+      internalID: 1177006282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_75
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -16}
+        - {x: -16, y: -6}
+        - {x: 16, y: -6}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66aa54ab25f075f4fbe8b0d30e537006
+      internalID: -33139657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_76
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -16}
+        - {x: -16, y: -6}
+        - {x: 16, y: -6}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94380191e7001214aa2b677b33e1e756
+      internalID: -2139064558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_77
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6158f3f3d94295343a3f0ecfdecb1e65
+      internalID: 974053721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_78
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fa0fa6573bbe734e87a22217f7084dc
+      internalID: -494210185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_79
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 572a28953fa44c14ebc1e637a6153f31
+      internalID: 117580990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_80
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd9f6c53df2dbfa4580d8a26b89a4ab9
+      internalID: -1888626756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recibidor_Sede_tileset2_81
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70b45f4fd24a808408ece1e77e5bb80c
-      internalID: 1976136705
+      spriteID: c619fb12086b5844d9714ccb556fbb49
+      internalID: 1718136520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_65
+      name: Recibidor_Sede_tileset2_82
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d0df3a10d0e8e945bdfe1c30b6fcd36
-      internalID: 1591721281
+      spriteID: 87781449731811b4bb0b1d3a4ff91f15
+      internalID: 267602828
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Recibidor_Sede_tileset_66
+      name: Recibidor_Sede_tileset2_83
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77f14ed317b405542afa59933ba32b56
-      internalID: -1807880605
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_67
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 594744a77f2e0ff4fbb48e0d24ad813d
-      internalID: 1924988447
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_68
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d06b8b729d20ef4586f2169d0619aa8
-      internalID: 1950953497
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_69
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b61268a1cda808f4ead2720a191126c2
-      internalID: 2115244404
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_70
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 192
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -11, y: -13}
-        - {x: -14, y: -16}
-        - {x: 16, y: -16}
-        - {x: 16, y: -13}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0be11559abbb2584baff7c6ab062f24f
-      internalID: 1301328094
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_71
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 192
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -13}
-        - {x: -16, y: -16}
-        - {x: 16, y: -16}
-        - {x: 16, y: -13}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 819806b5364544e4e937aca6d9dd8c4c
-      internalID: 1323869584
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_72
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 192
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -13}
-        - {x: -16, y: -16}
-        - {x: 10, y: -16}
-        - {x: 7, y: -13}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 78e71f79f23992b4480162a39b1fd696
-      internalID: -608383399
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_73
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 160
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -13, y: 16}
-        - {x: -16, y: 11}
-        - {x: -16, y: 0}
-        - {x: -10, y: -13}
-        - {x: 16, y: -13}
-        - {x: 16, y: 16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ea0a88bb04134c4d953cbc5396069c2
-      internalID: 1528288601
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_74
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 160
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: 16}
-        - {x: -16, y: -13}
-        - {x: 16, y: -13}
-        - {x: 16, y: 16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 34c4c3494a5df104ab6d97b4fd057b46
-      internalID: 1771149286
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_75
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 160
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: 16}
-        - {x: -16, y: -13}
-        - {x: 7, y: -13}
-        - {x: 10, y: -3}
-        - {x: 13, y: 11}
-        - {x: 10, y: 16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7ecd5f453be2390438ccb0c859f75967
-      internalID: 75460730
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_76
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 6, y: 16}
-        - {x: 6, y: -9}
-        - {x: 11, y: -13}
-        - {x: 16, y: -13}
-        - {x: 16, y: 16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9cc4336f9021b084fbdeca6bf336c76c
-      internalID: -1638929624
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Recibidor_Sede_tileset_77
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: 16}
-        - {x: -16, y: -13}
-        - {x: 10, y: -13}
-        - {x: 15, y: -9}
-        - {x: 15, y: 16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 760f70b809b3c0d4b830a3246bbb5192
-      internalID: 1711973218
+      spriteID: 3f69837eb13c3bd4db3138768ef6dcaa
+      internalID: 214437125
       vertices: []
       indices: 
       edges: []
@@ -1886,84 +1989,90 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Recibidor_Sede_tileset_23: 348127979
-      Recibidor_Sede_tileset_27: -541987095
-      Recibidor_Sede_tileset_35: 174098096
-      Recibidor_Sede_tileset_39: -1574528593
-      Recibidor_Sede_tileset_76: -742358930
-      Recibidor_Sede_tileset_28: -1340393130
-      Recibidor_Sede_tileset_33: -765406812
-      Recibidor_Sede_tileset_56: -540063842
-      Recibidor_Sede_tileset_24: -474576446
-      Recibidor_Sede_tileset_48: 1219876932
-      Recibidor_Sede_tileset_3: -1528380488
-      Recibidor_Sede_tileset_17: 1411756790
-      Recibidor_Sede_tileset_68: 1950953497
-      Recibidor_Sede_tileset_50: -1548426377
-      Recibidor_Sede_tileset_43: -321040757
-      Recibidor_Sede_tileset_21: 1355829416
-      Recibidor_Sede_tileset_61: -807419599
-      Recibidor_Sede_tileset_8: -490486723
-      Recibidor_Sede_tileset_15: -1518027339
-      Recibidor_Sede_tileset_52: -466396906
-      Recibidor_Sede_tileset_11: 1879249763
-      Recibidor_Sede_tileset_40: 325277847
-      Recibidor_Sede_tileset_62: -1566889488
-      Recibidor_Sede_tileset_57: -1233105780
-      Recibidor_Sede_tileset_69: 2115244404
-      Recibidor_Sede_tileset_6: 385147683
-      Recibidor_Sede_tileset_37: 117749954
-      Recibidor_Sede_tileset_59: 1996392947
-      Recibidor_Sede_tileset_38: -1958826940
-      Recibidor_Sede_tileset_46: -1827729393
-      Recibidor_Sede_tileset_41: 1717877183
-      Recibidor_Sede_tileset_45: 178909242
-      Recibidor_Sede_tileset_74: 1771149286
-      Recibidor_Sede_tileset_54: -1746362737
-      Recibidor_Sede_tileset_4: 174637053
-      Recibidor_Sede_tileset_32: 678369974
-      Recibidor_Sede_tileset_2: 141868822
-      Recibidor_Sede_tileset_44: -1712288533
-      Recibidor_Sede_tileset_5: -1902028992
-      Recibidor_Sede_tileset_58: 679602880
-      Recibidor_Sede_tileset_19: -1460376054
-      Recibidor_Sede_tileset_30: -976502448
-      Recibidor_Sede_tileset_16: 1569830025
-      Recibidor_Sede_tileset_70: 1301328094
-      Recibidor_Sede_tileset_71: 1323869584
-      Recibidor_Sede_tileset_25: 940759722
-      Recibidor_Sede_tileset_77: 901191502
-      Recibidor_Sede_tileset_42: 1770714390
-      Recibidor_Sede_tileset_36: -991496449
-      Recibidor_Sede_tileset_18: 1675910302
-      Recibidor_Sede_tileset_13: -2012685562
-      Recibidor_Sede_tileset_9: 893889637
-      Recibidor_Sede_tileset_26: 801248215
-      Recibidor_Sede_tileset_29: 47277872
-      Recibidor_Sede_tileset_20: 1750644004
-      Recibidor_Sede_tileset_73: 1528288601
-      Recibidor_Sede_tileset_75: 75460730
-      Recibidor_Sede_tileset_64: 1976136705
-      Recibidor_Sede_tileset_0: -1745180622
-      Recibidor_Sede_tileset_34: -669385393
-      Recibidor_Sede_tileset_7: -866364895
-      Recibidor_Sede_tileset_66: -1807880605
-      Recibidor_Sede_tileset_53: -137336072
-      Recibidor_Sede_tileset_14: -1058089754
-      Recibidor_Sede_tileset_49: 1600691922
-      Recibidor_Sede_tileset_65: 1591721281
-      Recibidor_Sede_tileset_10: -1534655493
-      Recibidor_Sede_tileset_22: -635417918
-      Recibidor_Sede_tileset_51: -989204717
-      Recibidor_Sede_tileset_1: 822787061
-      Recibidor_Sede_tileset_12: -1173469302
-      Recibidor_Sede_tileset_55: -1018444961
-      Recibidor_Sede_tileset_63: 2132562269
-      Recibidor_Sede_tileset_67: 1924988447
-      Recibidor_Sede_tileset_60: 787365904
-      Recibidor_Sede_tileset_47: -1904461305
-      Recibidor_Sede_tileset_72: -608383399
-      Recibidor_Sede_tileset_31: 1177098540
+      Recibidor_Sede_tileset2_1: -380482183
+      Recibidor_Sede_tileset2_18: -2085798567
+      Recibidor_Sede_tileset2_26: -168926388
+      Recibidor_Sede_tileset2_23: 986410700
+      Recibidor_Sede_tileset2_9: -890050921
+      Recibidor_Sede_tileset2_35: 245162847
+      Recibidor_Sede_tileset2_37: -1013321357
+      Recibidor_Sede_tileset2_70: -114939408
+      Recibidor_Sede_tileset2_71: 383775059
+      Recibidor_Sede_tileset2_32: 499339930
+      Recibidor_Sede_tileset2_6: -670722116
+      Recibidor_Sede_tileset2_33: 1071002345
+      Recibidor_Sede_tileset2_38: -1759645400
+      Recibidor_Sede_tileset2_79: 117580990
+      Recibidor_Sede_tileset2_17: -79875762
+      Recibidor_Sede_tileset2_52: 1681375713
+      Recibidor_Sede_tileset2_31: 2082894686
+      Recibidor_Sede_tileset2_81: 1718136520
+      Recibidor_Sede_tileset2_11: -1782517197
+      Recibidor_Sede_tileset2_46: -231719026
+      Recibidor_Sede_tileset2_48: -2130506627
+      Recibidor_Sede_tileset2_78: -494210185
+      Recibidor_Sede_tileset2_22: 1651300233
+      Recibidor_Sede_tileset2_67: 889169355
+      Recibidor_Sede_tileset2_76: -2139064558
+      Recibidor_Sede_tileset2_53: 183019066
+      Recibidor_Sede_tileset2_3: -2110340966
+      Recibidor_Sede_tileset2_41: -323594531
+      Recibidor_Sede_tileset2_39: -982568669
+      Recibidor_Sede_tileset2_28: -2010543826
+      Recibidor_Sede_tileset2_72: -251028300
+      Recibidor_Sede_tileset2_24: -847985797
+      Recibidor_Sede_tileset2_75: -33139657
+      Recibidor_Sede_tileset2_12: 1277290214
+      Recibidor_Sede_tileset2_65: -1556247347
+      Recibidor_Sede_tileset2_63: -62843688
+      Recibidor_Sede_tileset2_5: -431102546
+      Recibidor_Sede_tileset2_8: -772440390
+      Recibidor_Sede_tileset2_7: -1529983170
+      Recibidor_Sede_tileset2_10: 2124495745
+      Recibidor_Sede_tileset2_57: -1432430290
+      Recibidor_Sede_tileset2_51: -1996419197
+      Recibidor_Sede_tileset2_27: 1691135731
+      Recibidor_Sede_tileset2_50: 828687176
+      Recibidor_Sede_tileset2_44: -523366321
+      Recibidor_Sede_tileset2_19: 1218487450
+      Recibidor_Sede_tileset2_61: 1832348631
+      Recibidor_Sede_tileset2_73: -1242602720
+      Recibidor_Sede_tileset2_66: -209558757
+      Recibidor_Sede_tileset2_74: 1177006282
+      Recibidor_Sede_tileset2_34: -448760049
+      Recibidor_Sede_tileset2_30: -1681468549
+      Recibidor_Sede_tileset2_56: 24279988
+      Recibidor_Sede_tileset2_58: -1766245173
+      Recibidor_Sede_tileset2_13: 1148121170
+      Recibidor_Sede_tileset2_64: -1103140995
+      Recibidor_Sede_tileset2_49: 1342262895
+      Recibidor_Sede_tileset2_25: -2075876824
+      Recibidor_Sede_tileset2_2: -36991748
+      Recibidor_Sede_tileset2_62: 1517651976
+      Recibidor_Sede_tileset2_80: -1888626756
+      Recibidor_Sede_tileset2_45: -1138981422
+      Recibidor_Sede_tileset2_68: 1745234872
+      Recibidor_Sede_tileset2_14: 2083716168
+      Recibidor_Sede_tileset2_20: -506866041
+      Recibidor_Sede_tileset2_54: -1591456287
+      Recibidor_Sede_tileset2_36: 1532542473
+      Recibidor_Sede_tileset2_0: 65729827
+      Recibidor_Sede_tileset2_40: 1834611908
+      Recibidor_Sede_tileset2_43: -402036479
+      Recibidor_Sede_tileset2_16: -696493227
+      Recibidor_Sede_tileset2_59: -228274700
+      Recibidor_Sede_tileset2_77: 974053721
+      Recibidor_Sede_tileset2_4: -1629417585
+      Recibidor_Sede_tileset2_82: 267602828
+      Recibidor_Sede_tileset2_29: -1993850381
+      Recibidor_Sede_tileset2_55: 718455521
+      Recibidor_Sede_tileset2_69: 1643141272
+      Recibidor_Sede_tileset2_15: 1692202082
+      Recibidor_Sede_tileset2_83: 214437125
+      Recibidor_Sede_tileset2_60: 177998288
+      Recibidor_Sede_tileset2_42: 1958353868
+      Recibidor_Sede_tileset2_21: 1631437962
+      Recibidor_Sede_tileset2_47: -1977345341
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

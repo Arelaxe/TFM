@@ -154,6 +154,11 @@ public class InteractionController : MonoBehaviour
                 PlayerManager.Instance.GetInventoryController().RemoveItem(interaction.RequiredItem);
             }
             action.Execute();
+
+            if (action is TalkAction){
+                SetInteractivity(false);
+                DestroyInteractions();
+            }
         }
     }
 
