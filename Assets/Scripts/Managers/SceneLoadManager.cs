@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using System.Collections;
+using System;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
-using System;
 
 public class SceneLoadManager : Singleton<SceneLoadManager>
 {
@@ -11,6 +12,8 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     private bool testMode;
 
     [Space]
+    [SerializeField]
+    private Progress progress;
     [SerializeField]
     private GameObject playerUtils;
 
@@ -30,6 +33,10 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         {
             TestLoad();
         }
+        else
+        {
+            // TODO: Load progress from binary
+        }
     }
 
     private void TestLoad()
@@ -37,6 +44,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
         dualCharacterController.SetMobility(false);
         SetInScenePosition(-1, false);
+        AfterLoad();
         dualCharacterController.SetMobility(true);
         DisableFadePanel();
     }
@@ -56,12 +64,14 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         PreFade();
 
         DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
-        if (!dualCharacterController.Grouped && !destinationScene.Equals(unselectedScene))
+        if (!dualCharacterController.Grouped && unselectedScene == null)
         {
             unselectedScene = SceneManager.GetActiveScene().name;
         }
 
         yield return StartCoroutine(Fade(true));
+
+        SaveSceneProgress();
 
         yield return StartCoroutine(LoadDestinationScene(destinationScene));
 
@@ -69,19 +79,26 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         SetInScenePosition(destinationPassage, reverseLookingAt);
 
-        if (dualCharacterController.Grouped || destinationScene.Equals(unselectedScene))
+        // Disable/enable unselected character in scene
+        if (dualCharacterController.IsCharacterActive(false))
         {
-            dualCharacterController.SetCharacterActive(false, true);
-            dualCharacterController.SetCharacterMobility(false, true);
-
-            if (destinationScene.Equals(unselectedScene))
+            if (!dualCharacterController.Grouped && !destinationScene.Equals(unselectedScene))
             {
-                ResetFollowerInSceneData();
+                dualCharacterController.SetCharacterActive(false, false);
             }
         }
         else
         {
-            dualCharacterController.SetCharacterActive(false, false);
+            if (!dualCharacterController.Grouped && destinationScene.Equals(unselectedScene))
+            {
+                dualCharacterController.SetCharacterActive(false, true);
+            }
+        }
+
+        // Enable unselected character movement
+        if (dualCharacterController.IsCharacterActive(false))
+        {
+            dualCharacterController.SetCharacterMobility(false, true);
         }
         
         dualCharacterController.SetCharacterMobility(true, true);
@@ -102,6 +119,8 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         yield return StartCoroutine(Fade(true));
 
+        SaveSceneProgress();
+
         yield return StartCoroutine(LoadDestinationScene(unselectedScene));
 
         AfterLoad();
@@ -117,12 +136,12 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         // Switch character without camera transition
         dualCharacterController.SetCameraTransitionTime(true);
         dualCharacterController.SwitchCharacter();
-        dualCharacterController.SetCameraTransitionTime(false);
 
         yield return StartCoroutine(Fade(false));
 
         PostFade();
 
+        dualCharacterController.SetCameraTransitionTime(false);
         dualCharacterController.SetSwitchAvailability(true);
     }
 
@@ -145,7 +164,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         PostFade();
     }
 
-    public void PreFade()
+    private void PreFade()
     {
         InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
         interactionController.DestroyInteractions();
@@ -156,10 +175,25 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         dualCharacterController.SetSwitchAvailability(false);
     }
 
-    public void PostFade()
+    private void PostFade()
     {
         PlayerManager.Instance.GetInteractionController().SetInteractivity(true);
         PlayerManager.Instance.GetDualCharacterController().SetSwitchAvailability(true);
+    }
+
+    private void SaveSceneProgress()
+    {
+        GameObject rootDynamicObjects = GameObject.Find(GlobalConstants.PathDynamicObjectsRoot);
+        Dictionary<string, ObjectState> objectStates = ObjectStateUtils.SaveObjects(rootDynamicObjects);
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (progress.sceneRootDynamicObjects.ContainsKey(sceneName))
+        {
+            progress.sceneRootDynamicObjects[sceneName] = objectStates;
+        }
+        else
+        {
+            progress.sceneRootDynamicObjects.Add(sceneName, objectStates);
+        }
     }
 
     private IEnumerator LoadDestinationScene(string destinationScene)
@@ -179,6 +213,14 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         {
             vCam.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = boundaries;
         }
+
+        GameObject rootGameObject = GameObject.Find(GlobalConstants.PathDynamicObjectsRoot);
+        Dictionary<string, ObjectState> objectStates = new();
+        if (progress.sceneRootDynamicObjects.ContainsKey(SceneManager.GetActiveScene().name))
+        {
+            objectStates = progress.sceneRootDynamicObjects[SceneManager.GetActiveScene().name];
+        }
+        ObjectStateUtils.LoadObjects(rootGameObject, objectStates);
     }
 
     private void SetInScenePosition(int destinationPassage, bool reverseLookingAt)
@@ -300,5 +342,5 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     }
 
     public GameObject PlayerUtils { get => playerUtils; }
-    public bool LoadSceneOnSwitch { get => unselectedScene != null; }
+    public bool LoadSceneOnSwitch { get => unselectedScene != null && !SceneManager.GetActiveScene().name.Equals(unselectedScene); }
 }

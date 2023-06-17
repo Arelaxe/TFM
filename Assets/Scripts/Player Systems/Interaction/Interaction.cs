@@ -33,4 +33,9 @@ public class Interaction
     public ActionType Type { get => type; }
     public Item RequiredItem { get => item; }
     public Action Action { get => action; }
+
+    public void SetAvailable(bool available)
+    {
+        this.available = available;
+    }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2602562065746616186}
   - component: {fileID: 2602562065746616188}
   - component: {fileID: 2602562065746616189}
+  - component: {fileID: 917547657789523857}
   m_Layer: 3
   m_Name: Passage
   m_TagString: Passage
@@ -93,3 +94,21 @@ MonoBehaviour:
   destinationScene: Warp Test 2
   destinationPassage: 0
   reverseLookingAt: 0
+--- !u!114 &917547657789523857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2602562065746616184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dab8060ea148294c976f9bfd1479b2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectState:
+    guid: 
+    objectName: 
+    objectTag: 
+    objectLayer: 0
+    objectPosition: {x: 0, y: 0}

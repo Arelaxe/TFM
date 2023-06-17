@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using Cinemachine;
-using System.Collections;
 using System;
 
 public class DualCharacterController: MonoBehaviour
@@ -34,7 +33,7 @@ public class DualCharacterController: MonoBehaviour
     private NavMeshAgent navAgent2;
     private Animator animator2;
 
-    public bool selectedCharacterOne = true;
+    private bool selectedCharacterOne = true;
     private bool canSwitch = true;
 
     private InputAction splitAction;
@@ -360,6 +359,12 @@ public class DualCharacterController: MonoBehaviour
             character = selectedCharacterOne ? character2 : character1;
         }
         return character;
+    }
+
+    public bool IsCharacterActive(bool selected)
+    {
+        GameObject character = GetCharacter(selected);
+        return character.GetComponent<SpriteRenderer>().enabled && character.GetComponent<Collider2D>().enabled;
     }
 
     public void SetCharacterActive(bool selected, bool active)
