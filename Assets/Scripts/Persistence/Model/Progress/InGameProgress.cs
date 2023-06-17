@@ -12,4 +12,10 @@ public class InGameProgress : ScriptableObject
         player = savedProgress.player;
         scenes = savedProgress.scenes;
     }
+
+    public void Clear()
+    {
+        player = new();
+        scenes = new();
+    }
 }

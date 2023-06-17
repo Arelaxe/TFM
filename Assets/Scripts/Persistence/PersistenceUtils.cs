@@ -2,17 +2,14 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Newtonsoft.Json;
 
 public static class PersistenceUtils
 {
     public static void Save()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
-        string unselectedScene = SceneLoadManager.Instance.UnselectedScene;
-        SceneLoadManager.Instance.Progress.player.Save(currentScene, unselectedScene);
-
+        SceneLoadManager.Instance.SaveSceneProgress();
+        SceneLoadManager.Instance.Progress.player.Save();
         string json = JsonConvert.SerializeObject(SceneLoadManager.Instance.Progress, Formatting.Indented);
         File.WriteAllText(Application.persistentDataPath + "\\save.json", json);
     }

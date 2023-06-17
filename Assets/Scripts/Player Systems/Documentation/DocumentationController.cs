@@ -23,10 +23,18 @@ public class DocumentationController : PageController
         page.LoadData(documentation);
     }
 
-    public void Add(Item item)
+    public void Clear()
+    {
+        documentation.Clear();
+    }
+
+    public void Add(Item item, bool initUI = true)
     {
         documentation.AddItem(item);
-        page.InitUIElement();
+        if (initUI)
+        {
+            page.InitUIElement();
+        }
     }
 
     // Page Event Handlers
@@ -40,4 +48,6 @@ public class DocumentationController : PageController
         }
         page.UpdateSelected(document, documentItem);
     }
+
+    public Documentation Documents { get => documentation; }
 }

@@ -56,6 +56,10 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         {
             inGameProgress.Load(savedProgress);
         }
+        else
+        {
+            inGameProgress.Clear();
+        }
     }
 
     public void LoadScene(string destinationScene, int destinationPassage = -1, bool reverseLookingAt = false)
@@ -171,7 +175,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         }
         else
         {
-            LoadPlayerData();
+            LoadPlayer();
         }
 
         yield return StartCoroutine(Fade(false));
@@ -196,7 +200,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         PlayerManager.Instance.GetDualCharacterController().SetSwitchAvailability(true);
     }
 
-    private void SaveSceneProgress()
+    public void SaveSceneProgress()
     {
         GameObject rootDynamicObjects = GameObject.Find(GlobalConstants.PathDynamicObjectsRoot);
         Dictionary<string, ObjectState> objectStates = PersistenceUtils.SaveObjects(rootDynamicObjects);
@@ -208,6 +212,66 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         else
         {
             inGameProgress.scenes.Add(sceneName, objectStates);
+        }
+    }
+
+    private void LoadPlayer()
+    {
+        PlayerData playerData = inGameProgress.player;
+        LoadItems(playerData.itemsOne, playerData.itemsTwo);
+        LoadDocuments(playerData.documents);
+
+        DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
+        if (!playerData.selectedCharacterOne)
+        {
+            dualCharacterController.SwitchCharacter();
+        }
+        if (!playerData.grouped)
+        {
+            dualCharacterController.SwitchGrouping();
+        }
+
+        dualCharacterController.GetCharacter(true).transform.position = playerData.selectedCharacter.Position;
+        dualCharacterController.SetCharacterLookingAt(true, playerData.selectedCharacter.LookingAt);
+
+        dualCharacterController.GetCharacter(false).transform.position = playerData.unselectedCharacter.Position;
+        dualCharacterController.SetCharacterLookingAt(false, playerData.unselectedCharacter.LookingAt);
+
+        dualCharacterController.SetCharacterMobility(true, true);
+        if (!playerData.grouped && !playerData.selectedCharacter.scene.Equals(playerData.unselectedCharacter.scene))
+        {
+            unselectedScene = playerData.unselectedCharacter.scene;
+            dualCharacterController.SetCharacterActive(false, false);
+        }
+        else
+        {
+            dualCharacterController.SetCharacterMobility(false, true);
+        }
+    }
+
+    private void LoadItems(List<int> itemsOne, List<int> itemsTwo)
+    {
+        InventoryController inventoryController = PlayerManager.Instance.GetInventoryController();
+        inventoryController.Clear();
+
+        foreach (int itemId in itemsOne)
+        {
+            inventoryController.AddItem(true, ItemDataManager.Instance.Get(itemId));
+        }
+
+        foreach (int itemId in itemsTwo)
+        {
+            inventoryController.AddItem(false, ItemDataManager.Instance.Get(itemId));
+        }
+    }
+
+    private void LoadDocuments(List<int> documents)
+    {
+        DocumentationController documentationController = PlayerManager.Instance.GetDocumentationController();
+        documentationController.Clear();
+        foreach (int documentId in documents)
+        {
+            documentationController.Add(ItemDataManager.Instance.Get(documentId), false);
         }
     }
 
@@ -236,39 +300,6 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
             objectStates = inGameProgress.scenes[SceneManager.GetActiveScene().name];
         }
         PersistenceUtils.LoadObjects(rootGameObject, objectStates);
-    }
-
-    private void LoadPlayerData()
-    {
-        DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
-        if (!inGameProgress.player.selectedCharacterOne)
-        {
-            dualCharacterController.SwitchCharacter();
-        }
-        if (!inGameProgress.player.grouped)
-        {
-            dualCharacterController.SwitchGrouping();
-        }
-
-        CharacterData selectedCharacter = inGameProgress.player.selectedCharacter;
-        CharacterData unselectedCharacter = inGameProgress.player.unselectedCharacter;
-
-        dualCharacterController.GetCharacter(true).transform.position = selectedCharacter.Position;
-        dualCharacterController.SetCharacterLookingAt(true, selectedCharacter.LookingAt);
-
-        dualCharacterController.GetCharacter(false).transform.position = unselectedCharacter.Position;
-        dualCharacterController.SetCharacterLookingAt(false, unselectedCharacter.LookingAt);
-
-        dualCharacterController.SetCharacterMobility(true, true);
-        if (!inGameProgress.player.grouped && !selectedCharacter.scene.Equals(unselectedCharacter.scene))
-        {
-            unselectedScene = unselectedCharacter.scene;
-            dualCharacterController.SetCharacterActive(false, false);
-        }
-        else
-        {
-            dualCharacterController.SetCharacterMobility(false, true);
-        }
     }
 
     private void SetInScenePosition(int destinationPassage, bool reverseLookingAt)
@@ -391,6 +422,6 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     public InGameProgress Progress { get => inGameProgress; }
     public GameObject PlayerUtils { get => playerUtils; }
-    public string UnselectedScene { get => unselectedScene; }
+    public string UnselectedScene { get => unselectedScene; set => unselectedScene = value; }
     public bool LoadSceneOnSwitch { get => unselectedScene != null && !SceneManager.GetActiveScene().name.Equals(unselectedScene); }
 }
