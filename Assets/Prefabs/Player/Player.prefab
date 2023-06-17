@@ -1791,9 +1791,8 @@ MonoBehaviour:
   playerParams: {fileID: 11400000, guid: 4ca37fbb4eb9b2f47b3012f3af91f7b4, type: 2}
   character1: {fileID: 8336605228558245094}
   character2: {fileID: 8336605227755948323}
-  selectedCharacterOne: 1
   groupSlider: {fileID: 7285216572322308115}
-  cameraAnimator: {fileID: 8336605227977791372}
+  stateDrivenCamera: {fileID: 0}
 --- !u!114 &964195187427333800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1837,7 +1836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   page: {fileID: 5926759254861957546}
-  documentation: {fileID: 11400000, guid: 0c099bbb249f8a84b8f1eafa0db39d04, type: 2}
+  documentation: {fileID: 11400000, guid: 3cc0ba1738bedc1449153e3639ac910c, type: 2}
 --- !u!1 &8336605229378331947
 GameObject:
   m_ObjectHideFlags: 0
