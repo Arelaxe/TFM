@@ -40,6 +40,8 @@ public class DialogueInstigator : MonoBehaviour
 
     private void OnDialogueStart(Dialogue dialogue)
     {
+        DualCharacterController playerController = PlayerManager.Instance.GetDualCharacterController();
+        playerController.SetCharacterMobility(true, false);
         m_DialogueChannel.RaiseDialogueStart(dialogue);
 
         m_CachedFlowState = FlowStateMachine.Instance.CurrentState;
@@ -48,9 +50,13 @@ public class DialogueInstigator : MonoBehaviour
 
     private void OnDialogueEnd(Dialogue dialogue)
     {
+        DualCharacterController playerController = PlayerManager.Instance.GetDualCharacterController();
+        InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
         m_FlowChannel.RaiseFlowStateRequest(m_CachedFlowState);
         m_CachedFlowState = null;
 
         m_DialogueChannel.RaiseDialogueEnd(dialogue);
+        playerController.SetCharacterMobility(true, true);
+        interactionController.SetInteractivity(true);
     }
 }

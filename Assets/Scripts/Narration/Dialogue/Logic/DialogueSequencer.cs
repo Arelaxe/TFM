@@ -1,3 +1,4 @@
+using UnityEngine;
 
 public class DialogueException : System.Exception
 {
@@ -13,6 +14,7 @@ public class DialogueSequencer
     public delegate void DialogueNodeCallback(DialogueNode node);
 
     public DialogueCallback OnDialogueStart;
+    public DialogueCallback OnDialogueRequested;
     public DialogueCallback OnDialogueEnd;
     public DialogueNodeCallback OnDialogueNodeStart;
     public DialogueNodeCallback OnDialogueNodeEnd;
@@ -54,7 +56,7 @@ public class DialogueSequencer
     }
 
     public void StartDialogueNode(DialogueNode node)
-    {
+    {   
         if (CanStartNode(node))
         {
             StopDialogueNode(m_CurrentNode);
