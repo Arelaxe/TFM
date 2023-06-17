@@ -69,6 +69,12 @@ public class InventoryController : PageController
         return isFull;
     }
 
+    public void Clear()
+    {
+        inventory1.Clear();
+        inventory2.Clear();
+    }
+
     public void AddItem(bool isCharacter1, Item item)
     {
         if (isCharacter1)
@@ -204,4 +210,7 @@ public class InventoryController : PageController
             page.SetDraggedItem(item.ItemImage);
         }
     }
+
+    public Inventory InventoryOne { get => inventory1; }
+    public Inventory InventoryTwo { get => inventory2; }
 }

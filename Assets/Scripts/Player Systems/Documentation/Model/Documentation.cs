@@ -20,4 +20,9 @@ public class Documentation : ScriptableObject
     {
         return documents;
     }
+
+    public void Clear()
+    {
+        documents.Clear();
+    }
 }

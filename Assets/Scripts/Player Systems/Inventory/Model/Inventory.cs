@@ -34,4 +34,9 @@ public class Inventory : ScriptableObject
     {
         return items;
     }
+
+    public void Clear()
+    {
+        items.Clear();
+    }
 }

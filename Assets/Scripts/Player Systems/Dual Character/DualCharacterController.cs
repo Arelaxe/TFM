@@ -5,6 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using Cinemachine;
 using System;
+using System.Collections;
 
 public class DualCharacterController: MonoBehaviour
 {
@@ -217,23 +218,28 @@ public class DualCharacterController: MonoBehaviour
         return Tuple.Create(currentVerticalMovement, currentPositiveMovement);
     }
 
-    public void SetSelectedCharacterLookingAt(Tuple<bool, bool> lookingAt)
+    public void SetCharacterLookingAt(bool selected, Tuple<bool, bool> lookingAt)
     {
-        Animator animator = selectedCharacterOne ? ref animator1 : ref animator2;
-        SetCharacterLookingAt(animator, lookingAt);
-    }
-
-    public void SetUnselectedCharacterLookingAt(Tuple<bool, bool> lookingAt)
-    {
-        Animator animator = selectedCharacterOne ? ref animator2 : ref animator1;
-        SetCharacterLookingAt(animator, lookingAt);
-    }
-
-    private void SetCharacterLookingAt(Animator animator, Tuple<bool, bool> lookingAt)
-    {
+        Animator animator;
+        if (selected)
+        {
+            animator = selectedCharacterOne ? ref animator1 : ref animator2;
+        }
+        else
+        {
+            animator = selectedCharacterOne ? ref animator2 : ref animator1;
+        }
         animator.SetInteger(PlayerConstants.AnimParamVelocity, 1);
         animator.SetBool(PlayerConstants.AnimParamVerticalMovement, lookingAt.Item1);
         animator.SetBool(PlayerConstants.AnimParamPositiveMovement, lookingAt.Item2);
+
+        StartCoroutine(DisableAnimVelocity(animator));
+    }
+
+    private IEnumerator DisableAnimVelocity(Animator animator)
+    {
+        yield return null;
+        animator.SetInteger(PlayerConstants.AnimParamVelocity, 0);
     }
 
     // Switch and group
@@ -284,7 +290,7 @@ public class DualCharacterController: MonoBehaviour
         PlayerManager.Instance.GetInventoryController().UpdateItemPanelsForSwitch(selectedCharacterOne, grouped);
     }
 
-    private void SwitchGrouping()
+    public void SwitchGrouping()
     {
         grouped = !grouped;
 
