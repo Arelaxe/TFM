@@ -15,6 +15,8 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
     private RectTransform m_ChoicesBoxTransform;
     [SerializeField]
     private UIDialogueChoiceController m_ChoiceControllerPrefab;
+    [SerializeField]
+    private UIDialogueInventoryController m_InventoryControllerPrefab;
 
     [SerializeField]
     private DialogueChannel m_DialogueChannel;
@@ -117,6 +119,10 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
         {
             UIDialogueChoiceController newChoice = Instantiate(m_ChoiceControllerPrefab, m_ChoicesBoxTransform);
             newChoice.Choice = choice;
+        }
+
+        if (node.InventoryOption){
+            UIDialogueInventoryController opt = Instantiate(m_InventoryControllerPrefab);
         }
     }
 }

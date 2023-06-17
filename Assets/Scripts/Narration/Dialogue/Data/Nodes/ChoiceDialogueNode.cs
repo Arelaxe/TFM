@@ -21,7 +21,9 @@ public class ChoiceDialogueNode : DialogueNode
     [SerializeField]
     private DialogueChoice[] m_Choices;
     public DialogueChoice[] Choices => m_Choices;
-
+    [SerializeField]
+    private bool m_InventoryOption;
+    public bool InventoryOption => m_InventoryOption;
 
     public override bool CanBeFollowedByNode(DialogueNode node)
     {

@@ -20,3 +20,4 @@ MonoBehaviour:
     m_ChoiceNode: {fileID: 11400000, guid: cc6bc2cd0fe86cb44b2a64de43348ff3, type: 2}
   - m_ChoicePreview: Regular
     m_ChoiceNode: {fileID: 11400000, guid: 174c2a1b1e3d49141a84e4b73f2b43d3, type: 2}
+  m_InventoryOption: 1
