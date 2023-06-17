@@ -4,23 +4,20 @@ using System;
 [ExecuteInEditMode]
 public class DynamicObject : MonoBehaviour
 {
-    public ObjectState objectState = new();
-    private bool initGuid = false;
+    [SerializeField]
+    private string guid;
+
+    [SerializeField]
+    private ObjectState objectState = new();
 
     public event Action<ObjectState> OnPrepareToSave, OnLoadObjectState;
 
     private void Awake()
     {
-        if (Application.isEditor && !Application.isPlaying && !initGuid)
+        if (Application.isEditor && !Application.isPlaying && string.IsNullOrEmpty(guid))
         {
-            GenerateGuid();
-            initGuid = true;
+            guid = System.Guid.NewGuid().ToString();
         }
-    }
-
-    public void GenerateGuid()
-    {
-        objectState.GenerateGuid();
     }
 
     public void Load(ObjectState objectState)
@@ -33,4 +30,7 @@ public class DynamicObject : MonoBehaviour
     {
         OnPrepareToSave?.Invoke(objectState);
     }
+
+    public string Guid { get => guid; }
+    public ObjectState State { get => objectState; }
 }

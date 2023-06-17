@@ -260,14 +260,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6281572545184279742}
     m_Modifications:
-    - target: {fileID: 962435863348394344, guid: a5f0e2d1e197c1048b871f7ae126aabd, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: 145e221221c157649ba63b931fe9597e, type: 2}
-    - target: {fileID: 962435863846549006, guid: a5f0e2d1e197c1048b871f7ae126aabd, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: 41ef6745e6db34b4689538cde8ff2c8c, type: 2}
     - target: {fileID: 962435864903141912, guid: a5f0e2d1e197c1048b871f7ae126aabd, type: 3}
       propertyPath: m_Name
       value: NavMeshes

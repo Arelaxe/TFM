@@ -187,7 +187,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6092282611859858863}
   - component: {fileID: 6092282611859858856}
-  - component: {fileID: 2540668409973081531}
   m_Layer: 0
   m_Name: SceneLoadManager
   m_TagString: Untagged
@@ -224,21 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testMode: 0
-  progress: {fileID: 11400000, guid: 9dcfe3c92d1292e45b94cad8f9a4ea81, type: 2}
+  inGameProgress: {fileID: 11400000, guid: 2605bb40c184cbb488e940bcd4db4e19, type: 2}
   playerUtils: {fileID: 6558404035773667762, guid: 34f363cfdea111f469aa53e765a36ff9, type: 3}
   fadingPanel: {fileID: 6092282611766972633}
   fadingSpeed: 1.5
---- !u!114 &2540668409973081531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6092282611859858857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee93c21a294e0024d8ad344e5815fe9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Channel: {fileID: 11400000, guid: b742aaa9d665b494cad1a8fd04c01718, type: 2}
-  m_StartupState: {fileID: 11400000, guid: 56b2a0d9e0f9fa24093e6c04c1d20fbf, type: 2}

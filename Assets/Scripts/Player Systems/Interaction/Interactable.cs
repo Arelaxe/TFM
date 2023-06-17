@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(DynamicObject))]
@@ -23,15 +24,20 @@ public class Interactable : MonoBehaviour
 
     private void PrepareToSaveObjectState(ObjectState objectState)
     {
-        objectState.extendedData[KEY_INTERACTIONS] = interactions;
+        List<InteractionData> interactionDatas = new();
+        foreach (Interaction interaction in interactions)
+        {
+            interactionDatas.Add(new(interaction.Name, interaction.IsAvailable));
+        }
+        objectState.extendedData[KEY_INTERACTIONS] = interactionDatas;
     }
 
     private void LoadObjectState(ObjectState objectState)
     {
-        Interaction[] savedInteractions = (Interaction[]) objectState.extendedData[KEY_INTERACTIONS];
+        List<InteractionData> interactionDatas = PersistenceUtils.GetList<InteractionData>(objectState.extendedData[KEY_INTERACTIONS]);
         for (int i = 0; i < interactions.Length; i++)
         {
-            interactions[i].SetAvailable(savedInteractions[i].IsAvailable);
+            interactions[i].SetAvailable(interactionDatas[i].available);
         }
     }
 }

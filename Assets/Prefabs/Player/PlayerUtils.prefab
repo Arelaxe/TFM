@@ -1,5 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< HEAD
 --- !u!1 &1691317793937654111
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,6 +119,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+=======
+>>>>>>> origin/develop
 --- !u!1 &6558404035773667762
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,14 +256,6 @@ PrefabInstance:
     - target: {fileID: 189167745955996858, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 938490737635636644, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
-      propertyPath: m_fontSize
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 938490737635636644, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 959245023612589058, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -466,14 +461,10 @@ PrefabInstance:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 5012927746220799430, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
-      propertyPath: m_fontSize
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5012927746220799430, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 50
-      objectReference: {fileID: 0}
+    - target: {fileID: 4483764835495138760, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
+      propertyPath: input
+      value: 
+      objectReference: {fileID: 4208196696465312802}
     - target: {fileID: 5203874046918725243, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -638,6 +629,7 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 7065727648801464018, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
       propertyPath: m_ChoicesBoxTransform
       value: 
@@ -650,6 +642,8 @@ PrefabInstance:
       propertyPath: m_InventoryControllerPrefab
       value: 
       objectReference: {fileID: 8038304612043932813, guid: cd5f737be5d43744a85529551b538224, type: 3}
+=======
+>>>>>>> origin/develop
     - target: {fileID: 7146553286251740279, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -904,11 +898,6 @@ PrefabInstance:
       objectReference: {fileID: 4208196694695774366}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
---- !u!224 &3475402665368427080 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8785408653704054101, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
-  m_PrefabInstance: {fileID: 5320746567674060573}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4208196694695774366 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8336605227977791363, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
@@ -940,6 +929,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4208196696465312802 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8336605229212422975, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
+  m_PrefabInstance: {fileID: 5320746567674060573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &4208196696465312805 stripped

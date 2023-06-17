@@ -14,4 +14,8 @@ public static class GlobalConstants
     // Paths
     public static string PathBoundaries = "/Level Structure/Boundaries";
     public static string PathDynamicObjectsRoot = "/Level Structure/Dynamic Objects";
+
+    // Folders
+    public static string ResourcesBaseDataFolder = "Data";
+    public static string ResourcesItemDataFolder = "Items";
 }

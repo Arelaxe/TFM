@@ -7,6 +7,7 @@ public static class PlayerConstants
     public static string ActionInventory = "Inventory";
     public static string ActionDocumentation = "Documentation";
     public static string ActionMousePos = "MousePosition";
+    public static string ActionQuickSave = "QuickSave";
 
     // Camera states
     public static string CameraStateRyo = "Ryo Camera State";
