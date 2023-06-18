@@ -6,12 +6,18 @@ using Newtonsoft.Json;
 
 public static class PersistenceUtils
 {
+    public static string SAVE_PATH = Application.persistentDataPath + "\\save.json";
+
+    public static void ClearSave()
+    {
+        File.Delete(SAVE_PATH);
+    }
     public static void Save()
     {
         SceneLoadManager.Instance.SaveSceneProgress();
         SceneLoadManager.Instance.Progress.player.Save();
         string json = JsonConvert.SerializeObject(SceneLoadManager.Instance.Progress, Formatting.Indented);
-        File.WriteAllText(Application.persistentDataPath + "\\save.json", json);
+        File.WriteAllText(SAVE_PATH, json);
     }
 
     public static SavedProgress Load()
@@ -19,7 +25,7 @@ public static class PersistenceUtils
         SavedProgress savedProgress = null;
         try
         {
-            string json = File.ReadAllText(Application.persistentDataPath + "\\save.json");
+            string json = File.ReadAllText(SAVE_PATH);
             savedProgress = JsonConvert.DeserializeObject<SavedProgress>(json);
         }
         catch (FileNotFoundException)
