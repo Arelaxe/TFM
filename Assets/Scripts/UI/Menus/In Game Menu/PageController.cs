@@ -5,6 +5,7 @@ public abstract class PageController : MonoBehaviour
 {
     private PlayerInput input;
     private InputAction menuAction;
+    private InputAction backAction;
 
     public abstract Page Page
     {
@@ -35,12 +36,17 @@ public abstract class PageController : MonoBehaviour
                 Hide();
             }
         }
+        if (backAction.triggered && Page.isActiveAndEnabled)
+        {
+            Hide();
+        }
     }
 
     protected void InitInputActions()
     {
         input = GetComponent<PlayerInput>();
         menuAction = input.actions[MenuAction];
+        backAction = input.actions[PlayerConstants.ActionCancel];
     }
 
     protected void Show()
