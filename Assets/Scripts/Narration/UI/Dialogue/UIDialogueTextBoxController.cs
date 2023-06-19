@@ -115,8 +115,16 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
 
         foreach (DialogueChoice choice in node.Choices)
         {
-            UIDialogueChoiceController newChoice = Instantiate(m_ChoiceControllerPrefab, m_ChoicesBoxTransform);
-            newChoice.Choice = choice;
+            if (choice.InitiallyAvailable){
+                UIDialogueChoiceController newChoice = Instantiate(m_ChoiceControllerPrefab, m_ChoicesBoxTransform);
+                newChoice.Choice = choice;
+            }
+        }
+
+        if (node.InventoryChoices.Length > 0){
+            UIDialogueChoiceController opt = Instantiate(m_ChoiceControllerPrefab, m_ChoicesBoxTransform);
+            opt.getChoice().text = "Abrir Inventario";
+            opt.setInventoryOption(true);
         }
     }
 }

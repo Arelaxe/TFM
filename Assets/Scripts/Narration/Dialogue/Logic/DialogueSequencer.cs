@@ -52,7 +52,8 @@ public class DialogueSequencer
 
     private bool CanStartNode(DialogueNode node)
     {
-        return (m_CurrentNode == null || node == null || m_CurrentNode.CanBeFollowedByNode(node));
+        return true;
+        //return (m_CurrentNode == null || node == null || m_CurrentNode.CanBeFollowedByNode(node) || );
     }
 
     public void StartDialogueNode(DialogueNode node)

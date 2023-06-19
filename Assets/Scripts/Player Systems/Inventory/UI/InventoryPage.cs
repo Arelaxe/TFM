@@ -192,14 +192,39 @@ public class InventoryPage : Page
 
     private void HandleSelect(InventoryElement item)
     {
-        if (elementList.Contains(item))
-        {
+       if (elementList.Contains(item))
+        { 
             OnDescriptionRequested?.Invoke(1, elementList.IndexOf(item));
         }
         else
         {
             OnDescriptionRequested?.Invoke(2, elementList2.IndexOf(item));
         }
+
+        if (dialogueMode){
+            ItemShowDialog();
+        }
+    }
+
+    private void ItemShowDialog(){
+        dialogueMode = false;
+        InventoryController invController = PlayerManager.Instance.GetInventoryController();
+        ChoiceDialogueNode choiceNode = (ChoiceDialogueNode) invController.Channel.currentNode;
+        DialogueInventoryChoice[] invChoices = choiceNode.InventoryChoices;
+        bool foundItem = false;
+
+        for (int i = 0; i < invChoices.Length && !foundItem; i++){
+            if (invChoices[i].Item.ID == invController.SelectedItem.ID){
+                invController.Channel.RaiseRequestDialogueNode(invChoices[i].ChoiceNode);
+                foundItem = true;
+            }
+        }
+
+        if (!foundItem){
+            invController.Channel.RaiseRequestDialogueNode(choiceNode.DefaultInventoryChoice);
+        }
+
+        base.Hide();
     }
 
     private void HandleBeginDrag(InventoryElement item)

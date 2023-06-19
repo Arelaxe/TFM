@@ -11,6 +11,8 @@ public class InventoryController : PageController
     
     [SerializeField]
     private Inventory inventory2;
+    private Item selectedItem;
+    private DialogueChannel channel;
 
     public override Page Page => page;
 
@@ -25,7 +27,7 @@ public class InventoryController : PageController
         page.OnStartDragging += HandleDragging;
     }
 
-    protected override void LoadData()
+    public override void LoadData()
     {
         page.LoadData(inventory1);
         page.LoadData(inventory2);
@@ -141,6 +143,8 @@ public class InventoryController : PageController
         {
             item = inventory.GetItems()[itemIndex];
         }
+
+        selectedItem = item;
         page.UpdateSelected(inventoryIndex, itemIndex, item);
     }
 
@@ -213,4 +217,9 @@ public class InventoryController : PageController
 
     public Inventory InventoryOne { get => inventory1; }
     public Inventory InventoryTwo { get => inventory2; }
+    public Item SelectedItem { get => selectedItem; }
+    public DialogueChannel Channel { get => channel; }
+    public void SetChannel(DialogueChannel dialogueChannel) { 
+        channel = dialogueChannel; 
+    }
 }

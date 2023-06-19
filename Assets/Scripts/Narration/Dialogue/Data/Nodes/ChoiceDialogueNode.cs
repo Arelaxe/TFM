@@ -9,8 +9,23 @@ public class DialogueChoice
     private string m_ChoicePreview;
     [SerializeField]
     private DialogueNode m_ChoiceNode;
+    [SerializeField]
+    private bool m_InitiallyAvailable;
 
     public string ChoicePreview => m_ChoicePreview;
+    public DialogueNode ChoiceNode => m_ChoiceNode;
+    public bool InitiallyAvailable => m_InitiallyAvailable;
+}
+
+[Serializable]
+public class DialogueInventoryChoice
+{
+    [SerializeField]
+    private Item m_Item;
+    [SerializeField]
+    private DialogueNode m_ChoiceNode;
+
+    public Item Item => m_Item;
     public DialogueNode ChoiceNode => m_ChoiceNode;
 }
 
@@ -20,8 +35,14 @@ public class ChoiceDialogueNode : DialogueNode
 {
     [SerializeField]
     private DialogueChoice[] m_Choices;
-    public DialogueChoice[] Choices => m_Choices;
+    [SerializeField]
+    private DialogueInventoryChoice[] m_InventoryChoices;
+    [SerializeField]
+    private DialogueNode m_DefaultInventoryChoice;
 
+    public DialogueChoice[] Choices => m_Choices;
+    public DialogueInventoryChoice[] InventoryChoices => m_InventoryChoices;
+    public DialogueNode DefaultInventoryChoice => m_DefaultInventoryChoice;
 
     public override bool CanBeFollowedByNode(DialogueNode node)
     {

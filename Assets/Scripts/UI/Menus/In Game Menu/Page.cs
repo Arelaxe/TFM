@@ -1,11 +1,13 @@
 using UnityEngine.EventSystems;
 using UnityEngine;
 using System;
+using UnityEngine.Events;
 
 public abstract class Page : MonoBehaviour, IEventSystemHandler
 {
     [SerializeField]
     protected RectTransform contentPanel;
+    protected bool dialogueMode = false;
 
     public event Action<Page> OnShow, OnHide;
 
@@ -17,7 +19,15 @@ public abstract class Page : MonoBehaviour, IEventSystemHandler
 
     public virtual void Hide()
     {
-        OnHide?.Invoke(this);
-        gameObject.SetActive(false);
+        if (!dialogueMode){
+            OnHide?.Invoke(this);
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void ShowDialogueMode(DialogueChannel channel){
+        Show();
+        dialogueMode = true;
+        PlayerManager.Instance.GetInventoryController().SetChannel(channel);
     }
 }

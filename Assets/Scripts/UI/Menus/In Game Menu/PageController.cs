@@ -73,6 +73,5 @@ public abstract class PageController : MonoBehaviour
     }
 
     protected abstract void InitPage();
-    protected abstract void LoadData();
-    
+    public abstract void LoadData();
 }

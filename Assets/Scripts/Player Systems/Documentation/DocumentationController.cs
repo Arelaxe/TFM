@@ -18,7 +18,7 @@ public class DocumentationController : PageController
         page.OnDescriptionRequested += HandleDescriptionRequest;
     }
 
-    protected override void LoadData()
+    public override void LoadData()
     {
         page.LoadData(documentation);
     }

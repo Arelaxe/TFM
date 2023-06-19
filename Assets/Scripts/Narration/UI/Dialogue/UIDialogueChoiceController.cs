@@ -10,6 +10,7 @@ public class UIDialogueChoiceController : MonoBehaviour
     private DialogueChannel m_DialogueChannel;
 
     private DialogueNode m_ChoiceNextNode;
+    private bool m_InventoryOption = false;
 
     public DialogueChoice Choice
     {
@@ -20,6 +21,9 @@ public class UIDialogueChoiceController : MonoBehaviour
         }
     }
 
+    public TextMeshProUGUI getChoice() { return m_Choice; }
+    public void setInventoryOption(bool invOpt) { m_InventoryOption = invOpt; }
+
     private void Start()
     {
         GetComponent<Button>().onClick.AddListener(OnClick);
@@ -27,6 +31,13 @@ public class UIDialogueChoiceController : MonoBehaviour
 
     private void OnClick()
     {
-        m_DialogueChannel.RaiseRequestDialogueNode(m_ChoiceNextNode);
+        if (m_InventoryOption){
+            InventoryController invController = PlayerManager.Instance.GetInventoryController();
+            invController.LoadData();
+            invController.Page.ShowDialogueMode(m_DialogueChannel);
+        }
+        else{
+            m_DialogueChannel.RaiseRequestDialogueNode(m_ChoiceNextNode);
+        }
     }
 }
