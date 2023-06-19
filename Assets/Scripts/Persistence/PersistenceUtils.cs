@@ -10,6 +10,7 @@ public static class PersistenceUtils
 
     public static void ClearSave()
     {
+        SceneLoadManager.Instance.Progress.Clear();
         File.Delete(SAVE_PATH);
     }
     public static void Save()

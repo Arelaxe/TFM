@@ -1,12 +1,8 @@
 using System.Collections.Generic;
-using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class InGameMenuController : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerInput input;
-
     [SerializeField]
     private List<Page> pages;
 
@@ -14,14 +10,7 @@ public class InGameMenuController : MonoBehaviour
 
     void Start()
     {
-        InitInputActions();
         InitPageEvents();
-    }
-
-    private void InitInputActions()
-    {
-        InputAction quickSaveAction = input.actions[PlayerConstants.ActionQuickSave];
-        quickSaveAction.performed += (ctx) => { QuickSave(); };
     }
 
     private void InitPageEvents()
@@ -31,11 +20,6 @@ public class InGameMenuController : MonoBehaviour
             page.OnShow += HandleShow;
             page.OnHide += HandleHide;
         }
-    }
-
-    private void QuickSave()
-    {
-        PersistenceUtils.Save();
     }
 
     // Event handlers

@@ -1,13 +1,9 @@
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
-    private bool loading;
-
-    [SerializeField]
     private PlayerInput input;
     private InputAction backAction;
 
@@ -18,7 +14,7 @@ public class MainMenuController : MonoBehaviour
     private GameObject controlsMenu;
 
     [SerializeField]
-    private GameObject overrideMenu;
+    private GameObject confirmationMenu;
 
     [SerializeField]
     private Button newGameButton;
@@ -49,9 +45,9 @@ public class MainMenuController : MonoBehaviour
             {
                 CloseControlsMenu();
             }
-            else if (overrideMenu.activeSelf)
+            else if (confirmationMenu.activeSelf)
             {
-                CloseOverrideMenu();
+                CloseConfirmationMenu();
             }
         }
     }
@@ -66,30 +62,29 @@ public class MainMenuController : MonoBehaviour
     {
         if (continueButton.interactable)
         {
-            OpenOverrideMenu();
+            OpenConfirmationMenu();
         }
         else {
             StartNewGame();
         }
     }
 
-    private void OpenOverrideMenu()
+    private void OpenConfirmationMenu()
     {
-        overrideMenu.SetActive(true);
+        confirmationMenu.SetActive(true);
         noButton.Select();
     }
 
-    public void CloseOverrideMenu()
+    public void CloseConfirmationMenu()
     {
-        overrideMenu.SetActive(false);
+        confirmationMenu.SetActive(false);
         newGameButton.Select();
     }
 
     public void StartNewGame()
     {
-        if (!loading)
+        if (!SceneLoadManager.Instance.Loading)
         {
-            loading = true;
             PersistenceUtils.ClearSave();
             SceneLoadManager.Instance.LoadSceneFromMenu(newGameScene);
         }
@@ -97,9 +92,8 @@ public class MainMenuController : MonoBehaviour
 
     public void Continue()
     {
-        if (!loading)
+        if (!SceneLoadManager.Instance.Loading)
         {
-            loading = true;
             string continueScene = SceneLoadManager.Instance.Progress.player.selectedCharacter.scene;
             SceneLoadManager.Instance.LoadSceneFromMenu(continueScene, false);
         }
@@ -127,9 +121,6 @@ public class MainMenuController : MonoBehaviour
     private void CheckContinueAvailable()
     {
         string continueScene = SceneLoadManager.Instance.Progress.player.selectedCharacter.scene;
-        if (string.IsNullOrEmpty(continueScene))
-        {
-            continueButton.interactable = false;
-        }
+        continueButton.interactable = !string.IsNullOrEmpty(continueScene);
     }
 }

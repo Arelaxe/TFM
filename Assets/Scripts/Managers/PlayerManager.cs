@@ -17,7 +17,7 @@ public class PlayerManager : Singleton<PlayerManager>
             Transform child = playerUtils.transform.GetChild(0);
             child.parent = transform;
             
-            if (i == 1)
+            if (child.gameObject.CompareTag(GlobalConstants.TagPlayer))
             {
                 player = child.gameObject;
             }

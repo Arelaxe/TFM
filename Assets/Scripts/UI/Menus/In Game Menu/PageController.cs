@@ -25,20 +25,23 @@ public abstract class PageController : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (menuAction.triggered)
+        if (!SceneLoadManager.Instance.Paused && !SceneLoadManager.Instance.Loading)
         {
-            if (!Page.isActiveAndEnabled)
+            if (menuAction.triggered)
             {
-                Show();
+                if (!Page.isActiveAndEnabled)
+                {
+                    Show();
+                }
+                else
+                {
+                    Hide();
+                }
             }
-            else
+            if (backAction.triggered && Page.isActiveAndEnabled)
             {
                 Hide();
             }
-        }
-        if (backAction.triggered && Page.isActiveAndEnabled)
-        {
-            Hide();
         }
     }
 
