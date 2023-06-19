@@ -3260,6 +3260,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1963225746}
+    - target: {fileID: 6920099567400314838, guid: 22b0c5d24d8051143a975176858fd633, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseControlsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920099567400314838, guid: 22b0c5d24d8051143a975176858fd633, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenuController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6920099567400314839, guid: 22b0c5d24d8051143a975176858fd633, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
