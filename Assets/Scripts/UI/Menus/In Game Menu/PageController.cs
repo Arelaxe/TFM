@@ -5,6 +5,7 @@ public abstract class PageController : MonoBehaviour
 {
     private PlayerInput input;
     private InputAction menuAction;
+    private InputAction backAction;
 
     public abstract Page Page
     {
@@ -24,13 +25,20 @@ public abstract class PageController : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (menuAction.triggered)
+        if (!SceneLoadManager.Instance.Paused && !SceneLoadManager.Instance.Loading)
         {
-            if (!Page.isActiveAndEnabled)
+            if (menuAction.triggered)
             {
-                Show();
+                if (!Page.isActiveAndEnabled)
+                {
+                    Show();
+                }
+                else
+                {
+                    Hide();
+                }
             }
-            else
+            if (backAction.triggered && Page.isActiveAndEnabled)
             {
                 Hide();
             }
@@ -41,6 +49,7 @@ public abstract class PageController : MonoBehaviour
     {
         input = GetComponent<PlayerInput>();
         menuAction = input.actions[MenuAction];
+        backAction = input.actions[PlayerConstants.ActionCancel];
     }
 
     protected void Show()

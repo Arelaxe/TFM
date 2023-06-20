@@ -51,6 +51,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "959ae4f8-36c8-4857-a17b-2035662ed48b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "MousePosition",
                     "type": "Value",
                     "id": "1f9454a7-9af1-4b0a-8260-5a62ec42ae3b",
@@ -150,7 +159,7 @@
                 {
                     "name": "",
                     "id": "90d3838e-ad85-42c5-8251-fa2054927618",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "Hold(duration=0.8),Press(behavior=1)",
                     "processors": "",
                     "groups": "Gamepad",
@@ -162,6 +171,17 @@
                     "name": "",
                     "id": "6b72591d-8417-45e3-97a9-6c8394953b53",
                     "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "77cdc50c-419c-42aa-b032-a7f0b51eeedf",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -227,7 +247,7 @@
                 {
                     "name": "",
                     "id": "51c76de3-b8fd-44d5-962a-6d50603ea604",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -243,6 +263,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "QuickSave",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ddd4fc19-5d25-4ea7-88f9-b3bbeac84264",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4c6cfab6-44df-45f5-9685-faf9d5e0a769",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -621,6 +663,17 @@
                 },
                 {
                     "name": "",
+                    "id": "bfa983cc-94c2-49de-974e-61c3689074c7",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "5bf1d08f-5322-421e-a8bf-e841beac2f78",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
@@ -633,7 +686,18 @@
                 {
                     "name": "",
                     "id": "82627dcc-3b13-4ba9-841d-e4b746d6553e",
-                    "path": "*/{Cancel}",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse;Gamepad;Touch;Joystick;XR",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0f504166-f173-4ba7-a347-6a6df1d4e844",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad;Touch;Joystick;XR",
