@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using System;
 using System.Collections.Generic;
 
@@ -21,6 +20,7 @@ public class InteractionController : MonoBehaviour
     private GameObject interactionBtn;
     [SerializeField]
     private float spacing;
+    [SerializeField]
     private List<GameObject> interactions = new();
 
     void Update()
@@ -70,7 +70,7 @@ public class InteractionController : MonoBehaviour
     private void CreateButtonList(Interactable interactable)
     {
         int shown = 0;
-        for (int i = 0; i < interactable.Interactions.Length; i++)
+        for (int i = interactable.Interactions.Length - 1; i >= 0; i--)
         {
             Interaction interaction = interactable.Interactions[i];
 
@@ -91,27 +91,26 @@ public class InteractionController : MonoBehaviour
 
     private void CustomButton(Interaction interaction, GameObject goButton)
     {
+        goButton.GetComponent<InteractionButton>().SetData(interaction);
+
         Button tempButton = goButton.GetComponent<Button>();
-
-        string text = interaction.Name;
-        if (interaction.RequiredItem)
-        {
-            text = text + " (" + interaction.RequiredItem.Name + ")";
-        }
-
-        tempButton.GetComponentInChildren<TextMeshProUGUI>().text = text;
         tempButton.onClick.AddListener(() => PerformInteraction(interaction));
 
         if (IsNotInteractable(interaction))
         {
             tempButton.interactable = false;
+
+            Navigation navToSelected = new();
+            navToSelected.mode = Navigation.Mode.None;
+            tempButton.navigation = navToSelected;
         }
+        goButton.SetActive(false);
     }
 
     private void SelectLastInteractableButton()
     {
         Button interactableButton = null;
-        foreach (var interaction in interactions)
+        foreach (GameObject interaction in interactions)
         {
             Button tempButton = interaction.GetComponent<Button>();
             if (tempButton.interactable)
