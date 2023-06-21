@@ -1435,9 +1435,7 @@ MonoBehaviour:
   m_AnimatedTarget: {fileID: 8336605227977791372}
   m_LayerIndex: 0
   m_ShowDebugText: 0
-  m_ChildCameras:
-  - {fileID: 8336605229122867053}
-  - {fileID: 8336605228708046907}
+  m_ChildCameras: []
   m_Instructions:
   - m_FullHash: 1563953630
     m_VirtualCamera: {fileID: 8336605229122867053}
@@ -4394,6 +4392,10 @@ PrefabInstance:
     - target: {fileID: 1623054267681114711, guid: 23b0f1dbb199dca498d5895614ac31c0, type: 3}
       propertyPath: m_Name
       value: Pause Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3587303441400376142, guid: 23b0f1dbb199dca498d5895614ac31c0, type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4261451985272563398, guid: 23b0f1dbb199dca498d5895614ac31c0, type: 3}
       propertyPath: m_Pivot.x
