@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676f063305c2bae4a997b5004ec9d858, type: 3}
+  m_Name: Choices
+  m_EditorClassIdentifier: 
+  m_DialogueLine: {fileID: 11400000, guid: 968239ba2d6d91046934ed94ee96ca47, type: 2}
+  m_Choices:
+  - m_ChoicePreview: "S\xED"
+    m_ChoiceNode: {fileID: 11400000, guid: baca35960bd03ad49b87dcf77d3bac87, type: 2}
+    m_InitiallyAvailable: 1
+  - m_ChoicePreview: No
+    m_ChoiceNode: {fileID: 0}
+    m_InitiallyAvailable: 1
+  m_InventoryChoices: []
+  m_DefaultInventoryChoice: {fileID: 0}

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676f063305c2bae4a997b5004ec9d858, type: 3}
+  m_Name: Node1
+  m_EditorClassIdentifier: 
+  m_DialogueLine: {fileID: 11400000, guid: 28668fd32643a454a807464030b08e0e, type: 2}
+  m_Choices:
+  - m_ChoicePreview: Saludar
+    m_ChoiceNode: {fileID: 0}
+    m_InitiallyAvailable: 1
+  - m_ChoicePreview: "Preguntar por el ba\xF1o"
+    m_ChoiceNode: {fileID: 0}
+    m_InitiallyAvailable: 1
+  m_InventoryChoices:
+  - m_Item: {fileID: 0}
+    m_ChoiceNode: {fileID: 0}
+  m_DefaultInventoryChoice: {fileID: 11400000, guid: f37d1e9fede39bf4a8eeacd566456cb9, type: 2}
