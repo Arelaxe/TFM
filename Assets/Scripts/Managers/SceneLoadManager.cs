@@ -196,9 +196,9 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         yield return StartCoroutine(LoadDestinationScene(destinationScene));
 
-        LoadSceneElements();
-
         DisableControl();
+
+        LoadSceneElements();
 
         if (init)
         {
