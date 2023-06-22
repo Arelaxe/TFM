@@ -15,12 +15,12 @@ MonoBehaviour:
   m_DialogueLine: {fileID: 11400000, guid: 28668fd32643a454a807464030b08e0e, type: 2}
   m_Choices:
   - m_ChoicePreview: Saludar
-    m_ChoiceNode: {fileID: 0}
+    m_ChoiceNode: {fileID: 11400000, guid: 965f5cfbccbf33d4aa5f90238e4a9583, type: 2}
     m_InitiallyAvailable: 1
   - m_ChoicePreview: "Preguntar por el ba\xF1o"
-    m_ChoiceNode: {fileID: 0}
+    m_ChoiceNode: {fileID: 11400000, guid: 518f245e94a66c446a7a16ef94f6af4d, type: 2}
     m_InitiallyAvailable: 1
   m_InventoryChoices:
-  - m_Item: {fileID: 0}
-    m_ChoiceNode: {fileID: 0}
+  - m_Item: {fileID: 11400000, guid: 747123d724f008b4fa0dd69cb4162a9d, type: 2}
+    m_ChoiceNode: {fileID: 11400000, guid: a8c12679b56e18448bb6d8c0e43893ca, type: 2}
   m_DefaultInventoryChoice: {fileID: 11400000, guid: f37d1e9fede39bf4a8eeacd566456cb9, type: 2}

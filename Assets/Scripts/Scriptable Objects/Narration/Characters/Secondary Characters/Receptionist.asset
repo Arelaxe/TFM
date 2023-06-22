@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Receptionist
   m_EditorClassIdentifier: 
   m_CharacterName: Recepcionista
-  m_Color: {r: 0.01882438, g: 0.3018868, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.7372549, b: 0.039215688, a: 1}

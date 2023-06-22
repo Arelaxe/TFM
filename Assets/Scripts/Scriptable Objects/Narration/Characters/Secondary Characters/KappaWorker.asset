@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: KappaWorker
   m_EditorClassIdentifier: 
   m_CharacterName: Trabajador sede Ogawa
-  m_Color: {r: 0.019607844, g: 0.3019608, b: 0, a: 0}
+  m_Color: {r: 0, g: 0.7372549, b: 0.039215688, a: 1}

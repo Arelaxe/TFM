@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 316405213286054074, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 959245023612589058, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -551,6 +555,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6698125678863559309, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7065727648801464018, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
       propertyPath: m_ChoicesBoxTransform
       value: 
@@ -717,7 +725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8336605227977791363, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
       propertyPath: m_ChildCameras.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8336605227977791363, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
       propertyPath: m_ChildCameras.Array.data[0]

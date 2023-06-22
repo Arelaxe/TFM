@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d150190ca6408f1418b81dcb81e9f740, type: 3}
   m_Name: DialogueKappaGlasses
   m_EditorClassIdentifier: 
-  m_FirstNode: {fileID: 0}
+  m_FirstNode: {fileID: 11400000, guid: ebb82656b64625244a06a61684e571aa, type: 2}

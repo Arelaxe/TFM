@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d150190ca6408f1418b81dcb81e9f740, type: 3}
   m_Name: DialogueBanana
   m_EditorClassIdentifier: 
-  m_FirstNode: {fileID: 0}
+  m_FirstNode: {fileID: 11400000, guid: b4b1e3e1677552e4493b1c1390b0e7dc, type: 2}

@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 1417909043}
   - component: {fileID: 1417909042}
   - component: {fileID: 1417909041}
+  - component: {fileID: 1417909046}
   m_Layer: 3
   m_Name: Banana
   m_TagString: Untagged
@@ -278,6 +279,11 @@ MonoBehaviour:
     available: 1
     item: {fileID: 0}
     action: {fileID: 1417909042}
+  - name: Hablar
+    type: 1
+    available: 1
+    item: {fileID: 0}
+    action: {fileID: 1417909046}
 --- !u!61 &1417909044
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -356,6 +362,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1417909046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417909039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8463d1457e994d5418e3ac76b5b7ef06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRequestEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: ba30d10c4ccf61c4e8119de0f19b641b, type: 2}
+        m_TargetAssemblyTypeName: DialogueChannel, Assembly-CSharp
+        m_MethodName: RaiseRequestDialogue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 785ddad472d531644892e2a3db9ac06c, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1072670051618629586
 PrefabInstance:
   m_ObjectHideFlags: 0

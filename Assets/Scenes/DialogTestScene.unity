@@ -39771,6 +39771,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 656594910}
     m_Modifications:
+    - target: {fileID: 7907441227734274061, guid: 3bdefe34b3c7cee4db48c70c5a95facd, type: 3}
+      propertyPath: dialogueRequestEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RaiseRequestDialogue
+      objectReference: {fileID: 0}
     - target: {fileID: 7907441227734274096, guid: 3bdefe34b3c7cee4db48c70c5a95facd, type: 3}
       propertyPath: m_RootOrder
       value: 2

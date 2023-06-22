@@ -178,6 +178,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlassesWorker
       objectReference: {fileID: 0}
+    - target: {fileID: 7322570668573286056, guid: 36718cf4f28780244833fe2d2f2696b2, type: 3}
+      propertyPath: interactions.Array.data[0].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7322570668573286057, guid: 36718cf4f28780244833fe2d2f2696b2, type: 3}
+      propertyPath: dialogueRequestEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d399bad44085bc4fa34a12b0808d46f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36718cf4f28780244833fe2d2f2696b2, type: 3}
 --- !u!1001 &190644596
@@ -191,6 +199,14 @@ PrefabInstance:
       propertyPath: guid
       value: recepcionist2
       objectReference: {fileID: 0}
+    - target: {fileID: 5698502420028578462, guid: f1d3cf7af8069664fadd7d0f808e7bd2, type: 3}
+      propertyPath: interactions.Array.data[0].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698502420028578463, guid: f1d3cf7af8069664fadd7d0f808e7bd2, type: 3}
+      propertyPath: dialogueRequestEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d461ccdd61877c4e8f3d8bbb99b15ab, type: 2}
     - target: {fileID: 5698502420028578464, guid: f1d3cf7af8069664fadd7d0f808e7bd2, type: 3}
       propertyPath: m_Name
       value: Recepcionist_1
@@ -365,6 +381,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6029056119372110370, guid: ec33883932b87324b9a631e1cfbf4dd0, type: 3}
+      propertyPath: dialogueRequestEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 5467411a9fee4544a838247d8c5a01e9, type: 2}
+    - target: {fileID: 6029056119372110371, guid: ec33883932b87324b9a631e1cfbf4dd0, type: 3}
+      propertyPath: interactions.Array.data[0].type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec33883932b87324b9a631e1cfbf4dd0, type: 3}
 --- !u!1001 &737205572
@@ -385,6 +409,10 @@ PrefabInstance:
     - target: {fileID: 5698502420028578460, guid: f1d3cf7af8069664fadd7d0f808e7bd2, type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698502420028578462, guid: f1d3cf7af8069664fadd7d0f808e7bd2, type: 3}
+      propertyPath: interactions.Array.data[0].type
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5698502420028578463, guid: f1d3cf7af8069664fadd7d0f808e7bd2, type: 3}
       propertyPath: dialogueRequestEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -495,6 +523,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Worker_lookup
       objectReference: {fileID: 0}
+    - target: {fileID: 2826354474714504672, guid: 0f14132565fbb844eb1ff1a88a1d8544, type: 3}
+      propertyPath: dialogueRequestEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 5467411a9fee4544a838247d8c5a01e9, type: 2}
+    - target: {fileID: 2826354474714504673, guid: 0f14132565fbb844eb1ff1a88a1d8544, type: 3}
+      propertyPath: interactions.Array.data[0].type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2826354474714504675, guid: 0f14132565fbb844eb1ff1a88a1d8544, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -508,6 +544,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1072670051618629587}
     m_Modifications:
+    - target: {fileID: 7907441227734274060, guid: 3bdefe34b3c7cee4db48c70c5a95facd, type: 3}
+      propertyPath: interactions.Array.data[0].type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7907441227734274061, guid: 3bdefe34b3c7cee4db48c70c5a95facd, type: 3}
       propertyPath: dialogueRequestEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
@@ -616,6 +656,14 @@ PrefabInstance:
     - target: {fileID: 1043284682775108507, guid: 72e6cac84a3e15b45ae62d2cdd5ddefc, type: 3}
       propertyPath: m_Name
       value: SecurityAgent
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043284682775108516, guid: 72e6cac84a3e15b45ae62d2cdd5ddefc, type: 3}
+      propertyPath: dialogueRequestEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 559b0452cf80adb4bb63a9be11f89e7b, type: 2}
+    - target: {fileID: 1043284682775108517, guid: 72e6cac84a3e15b45ae62d2cdd5ddefc, type: 3}
+      propertyPath: interactions.Array.data[0].type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72e6cac84a3e15b45ae62d2cdd5ddefc, type: 3}

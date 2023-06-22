@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abaa1d01ebe65f6469c9f7f9cd89f2dc, type: 3}
   m_Name: BananaInventoryNode
   m_EditorClassIdentifier: 
-  m_DialogueLine: {fileID: 0}
+  m_DialogueLine: {fileID: 11400000, guid: d2f232b80635aa74782387ba290de48c, type: 2}
   m_NextNode: {fileID: 0}
