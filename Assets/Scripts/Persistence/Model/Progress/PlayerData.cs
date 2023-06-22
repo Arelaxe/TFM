@@ -10,9 +10,9 @@ public class PlayerData
     public bool selectedCharacterOne;
     public bool grouped;
 
-    public List<int> itemsOne = new();
-    public List<int> itemsTwo = new();
-    public List<int> documents = new();
+    public List<string> itemsOne = new();
+    public List<string> itemsTwo = new();
+    public List<string> documents = new();
 
     public void Save()
     {
@@ -41,12 +41,12 @@ public class PlayerData
         return unselectedCharacterScene;
     }
 
-    private void SaveItems(List<int> itemsIds, List<Item> items)
+    private void SaveItems(List<string> itemsIds, List<Item> items)
     {
         itemsIds.Clear();
         foreach (Item item in items)
         {
-            itemsIds.Add(item.ID);
+            itemsIds.Add(item.Name);
         }
     }
 }

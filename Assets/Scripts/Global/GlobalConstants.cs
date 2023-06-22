@@ -18,4 +18,8 @@ public static class GlobalConstants
     // Folders
     public static string ResourcesBaseDataFolder = "Data";
     public static string ResourcesItemDataFolder = "Items";
+
+    // Control Schemes
+    public static string ControlSchemeKeyboard = "Keyboard&Mouse";
+    public static string ControlSchemeGamepad = "Gamepad";
 }

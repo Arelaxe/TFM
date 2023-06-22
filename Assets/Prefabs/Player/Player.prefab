@@ -1186,6 +1186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad861fd64a370354e83dbbd21f24c87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: {fileID: 8336605229212422975}
   pages:
   - {fileID: 6040234516921171563}
   - {fileID: 5926759254861957546}
@@ -1435,7 +1436,9 @@ MonoBehaviour:
   m_AnimatedTarget: {fileID: 8336605227977791372}
   m_LayerIndex: 0
   m_ShowDebugText: 0
-  m_ChildCameras: []
+  m_ChildCameras:
+  - {fileID: 8336605229122867053}
+  - {fileID: 8336605228708046907}
   m_Instructions:
   - m_FullHash: 1563953630
     m_VirtualCamera: {fileID: 8336605229122867053}

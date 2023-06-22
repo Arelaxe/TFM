@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InGameMenuController : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerInput input;
     [SerializeField]
     private List<Page> pages;
 
@@ -11,6 +14,11 @@ public class InGameMenuController : MonoBehaviour
     void Start()
     {
         InitPageEvents();
+    }
+
+    private void Update()
+    {
+        InputSystemUtils.ControlCursor(input);
     }
 
     private void InitPageEvents()

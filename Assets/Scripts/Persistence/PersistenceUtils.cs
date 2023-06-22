@@ -15,8 +15,9 @@ public static class PersistenceUtils
     }
     public static void Save()
     {
-        SceneLoadManager.Instance.SaveSceneProgress();
+        SceneLoadManager.Instance.Progress.newGame = false;
         SceneLoadManager.Instance.Progress.player.Save();
+        SceneLoadManager.Instance.SaveSceneProgress();
         string json = JsonConvert.SerializeObject(SceneLoadManager.Instance.Progress, Formatting.Indented);
         File.WriteAllText(SAVE_PATH, json);
     }

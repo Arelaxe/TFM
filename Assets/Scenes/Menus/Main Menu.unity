@@ -586,10 +586,6 @@ PrefabInstance:
       propertyPath: progress
       value: 
       objectReference: {fileID: 11400000, guid: 9dcfe3c92d1292e45b94cad8f9a4ea81, type: 2}
-    - target: {fileID: 6092282611859858856, guid: 723afa300fc941b469d700c39d0008b3, type: 3}
-      propertyPath: testMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6092282611859858857, guid: 723afa300fc941b469d700c39d0008b3, type: 3}
       propertyPath: m_Name
       value: SceneLoadManager

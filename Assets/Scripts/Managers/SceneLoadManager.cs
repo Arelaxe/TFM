@@ -15,6 +15,8 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     [SerializeField]
     private InGameProgress inGameProgress;
     [SerializeField]
+    private InGameProgress newGameProgress;
+    [SerializeField]
     private GameObject playerUtils;
 
     [Header("Fading")]
@@ -38,7 +40,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         }
         else
         {
-            LoadProgress();
+            LoadProgress(false);
         }
     }
 
@@ -52,27 +54,34 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         DisableFadePanel();
     }
 
-    private void LoadProgress()
+    public void LoadProgress(bool newGame)
     {
-        inGameProgress.Clear();
-
-        SavedProgress savedProgress = PersistenceUtils.Load();
-        if (savedProgress != null)
+        if (!newGame)
         {
-            inGameProgress.Load(savedProgress);
+            inGameProgress.Clear();
+            SavedProgress savedProgress = PersistenceUtils.Load();
+            if (savedProgress != null)
+            {
+                inGameProgress.Load(savedProgress);
+            }
         }
+        else
+        {
+            inGameProgress.Copy(newGameProgress);
+        }   
+    }
+
+    public void LoadNewGame()
+    {
+        PersistenceUtils.ClearSave();
+        LoadProgress(true);
+        LoadSceneFromMenu(inGameProgress.player.selectedCharacter.scene, false);
     }
 
     public void LoadFromPause()
     {
-        LoadProgress();
+        LoadProgress(false);
         LoadSceneFromMenu(inGameProgress.player.selectedCharacter.scene, false);
-    }
-
-    public void Pause(bool pause)
-    {
-        Time.timeScale = pause ? 0 : 1;
-        paused = pause;
     }
 
     public void LoadScene(string destinationScene, int destinationPassage = -1, bool reverseLookingAt = false)
@@ -283,27 +292,27 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         }
     }
 
-    private void LoadItems(List<int> itemsOne, List<int> itemsTwo)
+    private void LoadItems(List<string> itemsOne, List<string> itemsTwo)
     {
         InventoryController inventoryController = PlayerManager.Instance.GetInventoryController();
         inventoryController.Clear();
 
-        foreach (int itemId in itemsOne)
+        foreach (string itemId in itemsOne)
         {
             inventoryController.AddItem(true, ItemDataManager.Instance.Get(itemId));
         }
 
-        foreach (int itemId in itemsTwo)
+        foreach (string itemId in itemsTwo)
         {
             inventoryController.AddItem(false, ItemDataManager.Instance.Get(itemId));
         }
     }
 
-    private void LoadDocuments(List<int> documents)
+    private void LoadDocuments(List<string> documents)
     {
         DocumentationController documentationController = PlayerManager.Instance.GetDocumentationController();
         documentationController.Clear();
-        foreach (int documentId in documents)
+        foreach (string documentId in documents)
         {
             documentationController.Add(ItemDataManager.Instance.Get(documentId), false);
         }
@@ -452,6 +461,12 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     public void ResetFollowerInSceneData()
     {
         unselectedScene = null;
+    }
+
+    public void Pause(bool pause)
+    {
+        Time.timeScale = pause ? 0 : 1;
+        paused = pause;
     }
 
     public InGameProgress Progress { get => inGameProgress; }

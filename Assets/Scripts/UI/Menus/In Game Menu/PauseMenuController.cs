@@ -77,7 +77,7 @@ public class PauseMenuController : MonoBehaviour
     private void CheckLoadGameAvailable()
     {
         string savedScene = SceneLoadManager.Instance.Progress.player.selectedCharacter.scene;
-        loadGameButton.interactable = !string.IsNullOrEmpty(savedScene);
+        loadGameButton.interactable = !string.IsNullOrEmpty(savedScene) && !SceneLoadManager.Instance.Progress.newGame;
     }
 
     public void Resume()
@@ -175,13 +175,16 @@ public class PauseMenuController : MonoBehaviour
 
     private void Back()
     {
-        if (!currentMenu.Equals(mainPage))
+        if (currentMenu != null)
         {
-            BackToMainPage();
-        }
-        else
-        {
-            Pause(false);
+            if (!currentMenu.Equals(mainPage))
+            {
+                BackToMainPage();
+            }
+            else
+            {
+                Pause(false);
+            }
         }
     }
 

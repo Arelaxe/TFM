@@ -39,6 +39,7 @@ public class MainMenuController : MonoBehaviour
 
     private void Update()
     {
+        InputSystemUtils.ControlCursor(input);
         if (backAction.triggered)
         {
             if (controlsMenu.activeSelf)
@@ -85,8 +86,7 @@ public class MainMenuController : MonoBehaviour
     {
         if (!SceneLoadManager.Instance.Loading)
         {
-            PersistenceUtils.ClearSave();
-            SceneLoadManager.Instance.LoadSceneFromMenu(newGameScene);
+            SceneLoadManager.Instance.LoadNewGame();
         }
     }
 

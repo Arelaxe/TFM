@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ItemDataManager : Singleton<ItemDataManager>
 {
-    private Dictionary<int, Item> dataDictionary;
+    private Dictionary<string, Item> dataDictionary;
 
     protected override void LoadData()
     {
@@ -13,14 +13,14 @@ public class ItemDataManager : Singleton<ItemDataManager>
     private void LoadFromResources()
     {
         dataDictionary = new();
-        Item[] items = Resources.LoadAll<Item>(GlobalConstants.ResourcesBaseDataFolder + "\\" + GlobalConstants.ResourcesItemDataFolder);
+        Item[] items = Resources.LoadAll<Item>(GlobalConstants.ResourcesBaseDataFolder + "/" + GlobalConstants.ResourcesItemDataFolder);
         foreach (Item item in items)
         {
-            dataDictionary.TryAdd(item.ID, item);
+            dataDictionary.TryAdd(item.Name, item);
         }
     }
 
-    public Item Get(int id)
+    public Item Get(string id)
     {
         Item item = null;
         if (dataDictionary.ContainsKey(id))
