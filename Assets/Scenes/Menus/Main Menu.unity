@@ -925,8 +925,7 @@ MonoBehaviour:
   continueButton: {fileID: 1506758833}
   backButton: {fileID: 895323176}
   noButton: {fileID: 1094562761}
-  newGameScene: Warp Test 2
-  cursorTexture: {fileID: 2800000, guid: 9c08391ea92007d44ab3a71690972a28, type: 3}
+  cursor: {fileID: 2800000, guid: b8e636f758f9a2a4e9bd7dc3568c3ffe, type: 3}
 --- !u!114 &1963225747
 MonoBehaviour:
   m_ObjectHideFlags: 0

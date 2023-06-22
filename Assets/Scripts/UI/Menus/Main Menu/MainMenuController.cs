@@ -28,11 +28,13 @@ public class MainMenuController : MonoBehaviour
     [SerializeField]
     private Button noButton;
 
+    [Space]
     [SerializeField]
-    private string newGameScene;
+    private Texture2D cursor;
 
     private void Start()
     {
+        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
         InitInputActions();
         CheckContinueAvailable();
     }
