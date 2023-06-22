@@ -10,6 +10,8 @@ public class InteractionButton : MonoBehaviour
     private GameObject typeConstraint;
     [SerializeField]
     private GameObject itemConstraint;
+    [SerializeField]
+    private GameObject inventoryConstraint;
 
     [Space]
     [SerializeField]
@@ -41,6 +43,11 @@ public class InteractionButton : MonoBehaviour
             itemConstraint.SetActive(true);
             Image itemImage = itemConstraint.GetComponent<Image>();
             itemImage.sprite = interaction.RequiredItem.ItemImage;
+        }
+
+        if (interaction.Action is PickUpAction)
+        {
+            inventoryConstraint.SetActive(true);
         }
     }
 
