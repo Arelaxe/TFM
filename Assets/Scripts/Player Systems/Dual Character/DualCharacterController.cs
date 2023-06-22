@@ -42,6 +42,8 @@ public class DualCharacterController: MonoBehaviour
     private Slider groupSlider;
 
     private bool grouped = true;
+    private bool prevGrouped = true;
+    private bool groupedError = false;
     private Vector3 followerVelocity = Vector3.zero;
 
     // Camera
@@ -322,7 +324,7 @@ public class DualCharacterController: MonoBehaviour
             i++;
         }
 
-        return canGroup;
+        return canGroup && !groupedError;
     }
 
     private void CheckSplit()
@@ -335,16 +337,45 @@ public class DualCharacterController: MonoBehaviour
 
     private void UpdateSplitBar()
     {
-        if (splitAction.inProgress && splitAction.GetTimeoutCompletionPercentage() > 0.1 && splitAction.GetTimeoutCompletionPercentage() < 1)
+        if (!groupedError)
         {
-            groupSlider.gameObject.SetActive(true);
-            groupSlider.value = splitAction.GetTimeoutCompletionPercentage();
+            if (splitAction.inProgress && splitAction.GetTimeoutCompletionPercentage() > 0.1 && splitAction.GetTimeoutCompletionPercentage() < 1)
+            {
+                groupSlider.gameObject.SetActive(true);
+                groupSlider.value = splitAction.GetTimeoutCompletionPercentage();
+                prevGrouped = grouped;
+            }
+            else if (groupSlider.gameObject.activeSelf && groupSlider.value > 0)
+            {
+                if (splitAction.GetTimeoutCompletionPercentage() == 1)
+                {
+                    StartCoroutine(CheckGroupError());
+                }
+                else
+                {
+                    ResetGroupSlider();
+                }
+            }
         }
-        else if (groupSlider.gameObject.activeSelf)
+    }
+
+    private IEnumerator CheckGroupError()
+    {
+        if (!prevGrouped && !grouped)
         {
-            groupSlider.value = 0;
-            groupSlider.gameObject.SetActive(false);
+            groupedError = true;
+            groupSlider.fillRect.GetComponent<Image>().color = Color.red;
+            yield return new WaitForSeconds(0.5f);
         }
+        ResetGroupSlider();
+    } 
+
+    private void ResetGroupSlider()
+    {
+        groupSlider.fillRect.GetComponent<Image>().color = Color.white;
+        groupSlider.value = 0;
+        groupSlider.gameObject.SetActive(false);
+        groupedError = false;
     }
 
     // Auxiliar methods

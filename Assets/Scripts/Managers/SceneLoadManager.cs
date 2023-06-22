@@ -15,6 +15,8 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     [SerializeField]
     private InGameProgress inGameProgress;
     [SerializeField]
+    private InGameProgress newGameProgress;
+    [SerializeField]
     private GameObject playerUtils;
 
     [Header("Fading")]
@@ -27,6 +29,9 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     private string unselectedScene;
 
+    private bool loading;
+    private bool paused;
+
     protected override void LoadData()
     {
         if (testMode)
@@ -35,7 +40,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         }
         else
         {
-            LoadProgress();
+            LoadProgress(false);
         }
     }
 
@@ -49,17 +54,34 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         DisableFadePanel();
     }
 
-    private void LoadProgress()
+    public void LoadProgress(bool newGame)
     {
-        SavedProgress savedProgress = PersistenceUtils.Load();
-        if (savedProgress != null)
+        if (!newGame)
         {
-            inGameProgress.Load(savedProgress);
+            inGameProgress.Clear();
+            SavedProgress savedProgress = PersistenceUtils.Load();
+            if (savedProgress != null)
+            {
+                inGameProgress.Load(savedProgress);
+            }
         }
         else
         {
-            inGameProgress.Clear();
-        }
+            inGameProgress.Copy(newGameProgress);
+        }   
+    }
+
+    public void LoadNewGame()
+    {
+        PersistenceUtils.ClearSave();
+        LoadProgress(true);
+        LoadSceneFromMenu(inGameProgress.player.selectedCharacter.scene, false);
+    }
+
+    public void LoadFromPause()
+    {
+        LoadProgress(false);
+        LoadSceneFromMenu(inGameProgress.player.selectedCharacter.scene, false);
     }
 
     public void LoadScene(string destinationScene, int destinationPassage = -1, bool reverseLookingAt = false)
@@ -74,6 +96,8 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     public IEnumerator LoadSceneCouroutine(string destinationScene, int destinationPassage, bool reverseLookingAt)
     {
+        loading = true;
+
         DisableControl();
 
         DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
@@ -119,10 +143,14 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         yield return StartCoroutine(Fade(false));
 
         EnableControl();
+
+        loading = false;
     }
 
     public IEnumerator LoadSceneSwitchCouroutine()
     {
+        loading = true;
+
         DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
         dualCharacterController.SetSwitchAvailability(false);
         
@@ -156,10 +184,14 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         dualCharacterController.SetCameraTransitionTime(false);
         dualCharacterController.SetSwitchAvailability(true);
+
+        loading = false;
     }
 
     public IEnumerator LoadSceneFromMenuCouroutine(string destinationScene, bool init)
     {
+        loading = true;
+
         yield return StartCoroutine(Fade(true));
 
         yield return StartCoroutine(LoadDestinationScene(destinationScene));
@@ -180,7 +212,11 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         yield return StartCoroutine(Fade(false));
 
+        PlayerManager.Instance.GetDualCharacterController().SetCameraTransitionTime(false);
+
         EnableControl();
+
+        loading = false;
     }
 
     private void DisableControl()
@@ -222,11 +258,16 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         LoadDocuments(playerData.documents);
 
         DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
-        if (!playerData.selectedCharacterOne)
+
+        dualCharacterController.SetCharacterActive(true, true);
+        dualCharacterController.SetCharacterActive(false, true);
+
+        if (playerData.selectedCharacterOne != dualCharacterController.SelectedCharacterOne)
         {
+            dualCharacterController.SetCameraTransitionTime(true);
             dualCharacterController.SwitchCharacter();
         }
-        if (!playerData.grouped)
+        if (playerData.grouped != dualCharacterController.Grouped)
         {
             dualCharacterController.SwitchGrouping();
         }
@@ -238,6 +279,8 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         dualCharacterController.SetCharacterLookingAt(false, playerData.unselectedCharacter.LookingAt);
 
         dualCharacterController.SetCharacterMobility(true, true);
+        dualCharacterController.SetCharacterMobility(false, true);
+
         if (!playerData.grouped && !playerData.selectedCharacter.scene.Equals(playerData.unselectedCharacter.scene))
         {
             unselectedScene = playerData.unselectedCharacter.scene;
@@ -249,27 +292,27 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         }
     }
 
-    private void LoadItems(List<int> itemsOne, List<int> itemsTwo)
+    private void LoadItems(List<string> itemsOne, List<string> itemsTwo)
     {
         InventoryController inventoryController = PlayerManager.Instance.GetInventoryController();
         inventoryController.Clear();
 
-        foreach (int itemId in itemsOne)
+        foreach (string itemId in itemsOne)
         {
             inventoryController.AddItem(true, ItemDataManager.Instance.Get(itemId));
         }
 
-        foreach (int itemId in itemsTwo)
+        foreach (string itemId in itemsTwo)
         {
             inventoryController.AddItem(false, ItemDataManager.Instance.Get(itemId));
         }
     }
 
-    private void LoadDocuments(List<int> documents)
+    private void LoadDocuments(List<string> documents)
     {
         DocumentationController documentationController = PlayerManager.Instance.GetDocumentationController();
         documentationController.Clear();
-        foreach (int documentId in documents)
+        foreach (string documentId in documents)
         {
             documentationController.Add(ItemDataManager.Instance.Get(documentId), false);
         }
@@ -420,8 +463,16 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         unselectedScene = null;
     }
 
+    public void Pause(bool pause)
+    {
+        Time.timeScale = pause ? 0 : 1;
+        paused = pause;
+    }
+
     public InGameProgress Progress { get => inGameProgress; }
     public GameObject PlayerUtils { get => playerUtils; }
     public string UnselectedScene { get => unselectedScene; set => unselectedScene = value; }
+    public bool Paused { get => paused; }
+    public bool Loading { get => loading; }
     public bool LoadSceneOnSwitch { get => unselectedScene != null && !SceneManager.GetActiveScene().name.Equals(unselectedScene); }
 }

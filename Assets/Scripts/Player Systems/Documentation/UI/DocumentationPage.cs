@@ -52,7 +52,7 @@ public class DocumentationPage : Page
 
     public void UpdateSelected(Item item, DocumentElement documentItem)
     {
-        description.SetDescription(item.ItemImage, item.Description);
+        description.SetDescription(item.ItemImage, item.Name, item.Description);
         description.SetNavigation(documentItem);
     }
 
