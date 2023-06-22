@@ -3470,6 +3470,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: f70f742e32aa3944b99b67aba7202ef3, type: 3}
     - target: {fileID: 5231320645340220159, guid: 4515cbd703afebc4ba78f79fbb11bf76, type: 3}
+      propertyPath: m_DialogPanel
+      value: 
+      objectReference: {fileID: 6698125678863559309}
+    - target: {fileID: 5231320645340220159, guid: 4515cbd703afebc4ba78f79fbb11bf76, type: 3}
       propertyPath: mouseFollower
       value: 
       objectReference: {fileID: 6825335794061525226}

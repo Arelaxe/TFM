@@ -11,6 +11,7 @@ public class InventoryController : PageController
     
     [SerializeField]
     private Inventory inventory2;
+
     private Item selectedItem;
     private DialogueChannel channel;
 

@@ -16,6 +16,9 @@ public class InventoryPage : Page
 
     [SerializeField]
     private MouseFollower mouseFollower;
+/*
+    [SerializeField] 
+    private GameObject m_DialogPanel;*/
 
     private List<InventoryElement> elementList = new();
     private List<InventoryElement> elementList2 = new();
@@ -207,6 +210,7 @@ public class InventoryPage : Page
     }
 
     private void ItemShowDialog(){
+        m_DialogPanel.SetActive(false);
         dialogueMode = false;
         InventoryController invController = PlayerManager.Instance.GetInventoryController();
         ChoiceDialogueNode choiceNode = (ChoiceDialogueNode) invController.Channel.currentNode;

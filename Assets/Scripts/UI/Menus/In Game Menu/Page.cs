@@ -7,6 +7,10 @@ public abstract class Page : MonoBehaviour, IEventSystemHandler
 {
     [SerializeField]
     protected RectTransform contentPanel;
+
+    [SerializeField] 
+    protected GameObject m_DialogPanel;
+
     protected bool dialogueMode = false;
 
     public event Action<Page> OnShow, OnHide;
@@ -26,6 +30,7 @@ public abstract class Page : MonoBehaviour, IEventSystemHandler
     }
 
     public void ShowDialogueMode(DialogueChannel channel){
+        m_DialogPanel.SetActive(false);
         Show();
         dialogueMode = true;
         PlayerManager.Instance.GetInventoryController().SetChannel(channel);
