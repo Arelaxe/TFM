@@ -16,6 +16,9 @@ public class Interaction
     [SerializeField]
     private Item item;
 
+    [SerializeField]
+    private bool reusable;
+
     [Space]
     [SerializeField]
     private Action action;
@@ -31,6 +34,7 @@ public class Interaction
     public bool IsAvailable { get => available; }
     public ActionType Type { get => type; }
     public Item RequiredItem { get => item; }
+    public bool Reusable { get => reusable; }
     public Action Action { get => action; }
 
     public void SetAvailable(bool available)

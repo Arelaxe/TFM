@@ -148,7 +148,7 @@ public class InteractionController : MonoBehaviour
         Action action = interaction.Action;
         if (action)
         {
-            if (interaction.RequiredItem)
+            if (interaction.RequiredItem && !interaction.Reusable)
             {
                 PlayerManager.Instance.GetInventoryController().RemoveItem(interaction.RequiredItem);
             }
