@@ -15,19 +15,23 @@ MonoBehaviour:
   newGame: 1
   player:
     selectedCharacter:
-      scene: Warp Test 2
-      positionX: -6
-      positionY: -2.5
+      scene: PlunkerScene 1
+      positionX: 3
+      positionY: -8.5
       verticalMovement: 1
-      positiveMovement: 0
+      positiveMovement: 1
     unselectedCharacter:
-      scene: Warp Test 2
-      positionX: -6
-      positionY: -2.5
+      scene: PlunkerScene 1
+      positionX: 3
+      positionY: -8.5
       verticalMovement: 1
-      positiveMovement: 0
+      positiveMovement: 1
     selectedCharacterOne: 1
     grouped: 1
-    itemsOne: d66b0000
-    itemsTwo: 
-    documents: 
+    itemsOne:
+    - Hueso
+    - Ojo de juguete
+    itemsTwo: []
+    documents:
+    - "Quetzalc\xF3atl y el ma\xEDz"
+    - El hilo rojo del destino
