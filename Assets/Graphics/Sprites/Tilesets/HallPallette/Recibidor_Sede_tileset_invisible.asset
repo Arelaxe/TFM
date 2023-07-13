@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Recibidor_Sede_tileset_invisible
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: -1996419197, guid: 18527156ccc18f446a506dcfb818d7a3, type: 3}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Transform:
     e00: 1
     e01: 0
