@@ -27,11 +27,7 @@ public abstract class PageController : MonoBehaviour
     {
         if (!SceneLoadManager.Instance.Paused && !SceneLoadManager.Instance.Loading)
         {
-<<<<<<< HEAD
-            if (menuAction.triggered && !Page.DialoguePanel.activeSelf && !Page.OtherPage.activeSelf)
-=======
             if (menuAction.triggered && PlayerManager.Instance.GetInGameMenuController().SwitchPageAvailable)
->>>>>>> develop
             {
                 if (!Page.isActiveAndEnabled)
                 {

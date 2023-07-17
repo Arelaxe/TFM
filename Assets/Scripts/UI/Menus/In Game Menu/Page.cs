@@ -11,9 +11,6 @@ public abstract class Page : MonoBehaviour, IEventSystemHandler
     [SerializeField] 
     protected GameObject m_DialogPanel;
 
-    [SerializeField] 
-    protected GameObject m_OtherPage;
-
     [SerializeField]
     private GameObject buttons;
 
@@ -25,7 +22,9 @@ public abstract class Page : MonoBehaviour, IEventSystemHandler
     {
         OnShow?.Invoke(this);
         gameObject.SetActive(true);
-        buttons.SetActive(false);
+        if (buttons){
+            buttons.SetActive(false);
+        }
     }
 
     public virtual void Hide()
@@ -37,6 +36,7 @@ public abstract class Page : MonoBehaviour, IEventSystemHandler
     }
 
     public void ShowDialogueMode(DialogueChannel channel){
+        PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(false);
         m_DialogPanel.SetActive(false);
         Show();
         buttons.SetActive(true);
@@ -46,6 +46,4 @@ public abstract class Page : MonoBehaviour, IEventSystemHandler
 
     public bool DialogueMode { get { return dialogueMode; } set { dialogueMode = value; } }
     public GameObject DialoguePanel { get => m_DialogPanel; }
-
-    public GameObject OtherPage { get => m_OtherPage; }
 }

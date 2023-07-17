@@ -204,32 +204,6 @@ public class InventoryPage : Page
         {
             OnDescriptionRequested?.Invoke(2, elementList2.IndexOf(item));
         }
-
-        if (dialogueMode){
-            ItemShowDialog();
-        }
-    }
-
-    private void ItemShowDialog(){
-        m_DialogPanel.SetActive(false);
-        dialogueMode = false;
-        InventoryController invController = PlayerManager.Instance.GetInventoryController();
-        ChoiceDialogueNode choiceNode = (ChoiceDialogueNode) invController.Channel.currentNode;
-        DialogueInventoryChoice[] invChoices = choiceNode.InventoryChoices;
-        bool foundItem = false;
-
-        for (int i = 0; i < invChoices.Length && !foundItem; i++){
-            if (invChoices[i].Item.ID == invController.SelectedItem.ID){
-                invController.Channel.RaiseRequestDialogueNode(invChoices[i].ChoiceNode);
-                foundItem = true;
-            }
-        }
-
-        if (!foundItem){
-            invController.Channel.RaiseRequestDialogueNode(choiceNode.DefaultInventoryChoice);
-        }
-
-        base.Hide();
     }
 
     private void HandleBeginDrag(InventoryElement item)
@@ -283,12 +257,31 @@ public class InventoryPage : Page
     // Buttons
 
     public void OnExit(){
+        DialoguePanel.SetActive(true);
         DialogueMode = false;
         Hide();
     }
 
     public void OnShowObject(){
-        
+        DialoguePanel.SetActive(false);
+        dialogueMode = false;
+        InventoryController invController = PlayerManager.Instance.GetInventoryController();
+        ChoiceDialogueNode choiceNode = (ChoiceDialogueNode) invController.Channel.currentNode;
+        DialogueInventoryChoice[] invChoices = choiceNode.InventoryChoices;
+        bool foundItem = false;
+
+        for (int i = 0; i < invChoices.Length && !foundItem; i++){
+            if (invChoices[i].Item.ID == invController.SelectedItem.ID){
+                invController.Channel.RaiseRequestDialogueNode(invChoices[i].ChoiceNode);
+                foundItem = true;
+            }
+        }
+
+        if (!foundItem){
+            invController.Channel.RaiseRequestDialogueNode(choiceNode.DefaultInventoryChoice);
+        }
+
+        base.Hide();
     }
 
 
