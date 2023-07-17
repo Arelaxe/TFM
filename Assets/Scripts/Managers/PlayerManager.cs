@@ -46,4 +46,9 @@ public class PlayerManager : Singleton<PlayerManager>
         return player.GetComponent<DocumentationController>();
     }
 
+    public InGameMenuController GetInGameMenuController()
+    {
+        return player.GetComponent<InGameMenuController>();
+    }
+
 }

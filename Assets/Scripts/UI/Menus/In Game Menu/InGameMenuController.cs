@@ -5,14 +5,16 @@ using UnityEngine.InputSystem;
 public class InGameMenuController : MonoBehaviour
 {
     [SerializeField]
-    private PlayerInput input;
-    [SerializeField]
     private List<Page> pages;
+
+    private PlayerInput input;
+    private bool switchPageAvailable = true;
 
     private int openPage = -1;
 
     void Start()
     {
+        input = GetComponent<PlayerInput>();
         InitPageEvents();
     }
 
@@ -47,5 +49,11 @@ public class InGameMenuController : MonoBehaviour
         {
             openPage = -1;
         }
+    }
+
+    public bool SwitchPageAvailable { get => switchPageAvailable; }
+    public void SetSwitchPageAvailability(bool switchPageAvailable)
+    {
+        this.switchPageAvailable = switchPageAvailable;
     }
 }
