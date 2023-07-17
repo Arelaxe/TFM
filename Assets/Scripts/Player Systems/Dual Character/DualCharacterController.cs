@@ -16,6 +16,8 @@ public class DualCharacterController: MonoBehaviour
     
     [SerializeField]
     private PlayerParams playerParams;
+    [SerializeField]
+    private GameObject dialoguePanel;
 
     // Movement
     private bool canMove = true;
@@ -264,7 +266,7 @@ public class DualCharacterController: MonoBehaviour
         }
         else if (context.interaction is HoldInteraction)
         {
-            if (grouped || CanGroup())
+            if ((grouped || CanGroup()) && !dialoguePanel.activeSelf)
             {
                 SwitchGrouping();
             }
@@ -337,7 +339,7 @@ public class DualCharacterController: MonoBehaviour
 
     private void UpdateSplitBar()
     {
-        if (!groupedError)
+        if (!groupedError && !dialoguePanel.activeSelf)
         {
             if (splitAction.inProgress && splitAction.GetTimeoutCompletionPercentage() > 0.1 && splitAction.GetTimeoutCompletionPercentage() < 1)
             {

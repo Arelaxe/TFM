@@ -16,6 +16,7 @@ public class InventoryPage : Page
 
     [SerializeField]
     private MouseFollower mouseFollower;
+
 /*
     [SerializeField] 
     private GameObject m_DialogPanel;*/
@@ -278,7 +279,19 @@ public class InventoryPage : Page
             OnSwitchInventory?.Invoke(currentSubmitInventoryIndex, currentSubmitItemIndex, switchInventoryIndex, switchItemIndex);
         }
     }
-    
+
+    // Buttons
+
+    public void OnExit(){
+        DialogueMode = false;
+        Hide();
+    }
+
+    public void OnShowObject(){
+        
+    }
+
+
     // Auxiliar methods
 
     private RectTransform GetCharacterContentPanel(bool characterOne)

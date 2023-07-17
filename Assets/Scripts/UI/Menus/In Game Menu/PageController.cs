@@ -27,7 +27,7 @@ public abstract class PageController : MonoBehaviour
     {
         if (!SceneLoadManager.Instance.Paused && !SceneLoadManager.Instance.Loading)
         {
-            if (menuAction.triggered)
+            if (menuAction.triggered && !Page.DialoguePanel.activeSelf && !Page.OtherPage.activeSelf)
             {
                 if (!Page.isActiveAndEnabled)
                 {
