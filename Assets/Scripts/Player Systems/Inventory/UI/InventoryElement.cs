@@ -8,8 +8,9 @@ public class InventoryElement : Selectable, IPointerClickHandler, IBeginDragHand
     [SerializeField]
     private Image icon;
 
-    public event Action<InventoryElement> OnItemClicked, OnItemDroppedOn, OnItemBeginDrag, OnItemEndDrag, OnItemSelected, OnItemSubmit;
+    public event Action<InventoryElement> OnItemClicked, OnItemDroppedOn, OnItemBeginDrag, OnItemEndDrag, OnItemSelected, OnItemDoubleSubmit;
     private bool empty = true;
+    private bool submit = false;
 
     public void SetData(Sprite sprite)
     {
@@ -24,17 +25,31 @@ public class InventoryElement : Selectable, IPointerClickHandler, IBeginDragHand
         empty = true;
     }
 
-    public override void OnSelect(BaseEventData eventData)
+    public Image GetIcon()
     {
-        base.OnSelect(eventData);
-        OnItemSelected?.Invoke(this);
+        return icon;
+    }
+
+    public override void OnDeselect(BaseEventData eventData)
+    {
+        base.OnDeselect(eventData);
+        submit = false;
     }
 
     public void OnSubmit(BaseEventData eventData)
     {
         if (!empty)
         {
-            OnItemSubmit?.Invoke(this);
+            if (!submit)
+            {
+                submit = true;
+                OnItemSelected?.Invoke(this);
+            }
+            else
+            {
+                submit = false;
+                OnItemDoubleSubmit?.Invoke(this);
+            }  
         }
     }
 
@@ -46,7 +61,14 @@ public class InventoryElement : Selectable, IPointerClickHandler, IBeginDragHand
         {
             if (eventData.button == PointerEventData.InputButton.Left)
             {
-                OnItemClicked?.Invoke(this);
+                if (eventData.clickCount == 1)
+                {
+                    OnItemClicked?.Invoke(this);
+                }
+                else if (eventData.clickCount > 1)
+                {
+                    OnItemDoubleSubmit?.Invoke(this);
+                }
             }
         }
     }

@@ -91,5 +91,11 @@ public class DocumentationPage : Page
     private void HandleSubmit(DocumentElement document)
     {
         OnDescriptionRequested?.Invoke(elementList.IndexOf(document), document);
+
+        HackingExtension extension = PlayerManager.Instance.GetInGameMenuController().GetHackingExtension();
+        if (extension)
+        {
+            extension.SetDocument(document.GetTitle().text);
+        }
     }
 }
