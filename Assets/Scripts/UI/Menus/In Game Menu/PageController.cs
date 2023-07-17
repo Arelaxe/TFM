@@ -27,7 +27,7 @@ public abstract class PageController : MonoBehaviour
     {
         if (!SceneLoadManager.Instance.Paused && !SceneLoadManager.Instance.Loading)
         {
-            if (menuAction.triggered)
+            if (menuAction.triggered && PlayerManager.Instance.GetInGameMenuController().SwitchPageAvailable)
             {
                 if (!Page.isActiveAndEnabled)
                 {
@@ -52,7 +52,7 @@ public abstract class PageController : MonoBehaviour
         backAction = input.actions[PlayerConstants.ActionCancel];
     }
 
-    protected void Show()
+    public void Show()
     {
         DualCharacterController playerController = PlayerManager.Instance.GetDualCharacterController();
         InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
