@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
@@ -14,8 +15,6 @@ public class HackingManager : MonoBehaviour
     [Header("Energy Flow")]
     [SerializeField]
     private GameObject energyFlowPrefab;
-    [SerializeField]
-    private CinemachineVirtualCamera vcam;
     [SerializeField]
     private Transform playerStart;
 
@@ -31,6 +30,8 @@ public class HackingManager : MonoBehaviour
 
     [Header("User Interface")]
     [SerializeField]
+    private Canvas canvas;
+    [SerializeField]
     private GameObject status;
     [SerializeField]
     private GameObject controls;
@@ -42,10 +43,12 @@ public class HackingManager : MonoBehaviour
     private Color32 successColor;
     [SerializeField]
     private Color32 maximumColor;
-    
-    // Status
+
+    [Header("Camera")]
+    [SerializeField]
+    private PolygonCollider2D bounds;
+
     private bool firstRun;
-    private bool failed;
 
     private void Start()
     {
@@ -65,6 +68,7 @@ public class HackingManager : MonoBehaviour
 
     private void InitUI()
     {
+        canvas.worldCamera = Camera.main;
         StartCoroutine(FadeCanvasGroup(status.GetComponent<CanvasGroup>(), false));
     }
 
@@ -76,15 +80,18 @@ public class HackingManager : MonoBehaviour
 
     private void InitPlayer()
     {
-        energyFlow = Instantiate(energyFlowPrefab, playerStart.position, Quaternion.identity);
+        energyFlow = Instantiate(energyFlowPrefab, playerStart.position, Quaternion.identity, transform);
+
+        CinemachineVirtualCamera vcam = PlayerManager.Instance.GetDualCharacterController().GetMinigameCamera();
         vcam.Follow = energyFlow.transform;
+        vcam.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = bounds;
     }
 
     private void InitPoints()
     {
         for (int i = 0; i < energyPointsParent.transform.childCount; i++)
         {
-            GameObject energyPoint = Instantiate(energyPointPrefab, energyPointsParent.transform.GetChild(i).transform.position, Quaternion.identity);
+            GameObject energyPoint = Instantiate(energyPointPrefab, energyPointsParent.transform.GetChild(i).transform.position, Quaternion.identity, transform);
             energyPoint.name = energyPoint.name.Replace("(Clone)", "") + "_" + i;
             energyPoints.Add(energyPoint);
         }
@@ -117,25 +124,21 @@ public class HackingManager : MonoBehaviour
         return canRun;
     }
 
-    public void Restart()
+    public void Fail()
     {
-        energyFlow.transform.position = playerStart.position;
-        foreach (GameObject point in energyPoints)
-        {
-            Destroy(point);
-        }
-        energyPoints.Clear();
-        InitPoints();
-
-        StartCoroutine(FadeCanvasGroup(controls.GetComponent<CanvasGroup>(), false));
+        Destroy(energyFlow);
+        StartCoroutine(End());
     }
 
     public IEnumerator End()
     {
-        EnergyFlowController flow = energyFlow.GetComponent<EnergyFlowController>();
-        flow.Stop();
+        if (energyFlow)
+        {
+            EnergyFlowController flow = energyFlow.GetComponent<EnergyFlowController>();
+            flow.Stop();
 
-        yield return StartCoroutine(energyContainer.AddEnergy(flow.Energy));
+            yield return StartCoroutine(energyContainer.AddEnergy(flow.Energy));
+        }
 
         switch (energyContainer.GetEnergyLevel())
         {
@@ -155,7 +158,10 @@ public class HackingManager : MonoBehaviour
                 break;
         }
 
-        StartCoroutine(FadeCanvasGroup(status.GetComponent<CanvasGroup>(), false));
+        yield return StartCoroutine(FadeCanvasGroup(status.GetComponent<CanvasGroup>(), false));
+
+        yield return new WaitForSeconds(1.5f);
+        SceneLoadManager.Instance.ReturnFromMinigameScene();
     }
 
     public IEnumerator FadeCanvasGroup(CanvasGroup group, bool hide = true)

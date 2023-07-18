@@ -30,7 +30,7 @@ public class HackingExtension : MonoBehaviour
 
     public void OpenMiniGame()
     {
-        SceneManager.LoadScene("HackingMinigame", LoadSceneMode.Additive);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
+        PlayerManager.Instance.GetInGameMenuController().Hide();
+        SceneLoadManager.Instance.LoadMinigameScene(GlobalConstants.MinigameHacking);
     }
 }

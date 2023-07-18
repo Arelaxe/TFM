@@ -93,7 +93,7 @@ public class EnergyFlowController : MonoBehaviour
             else
             {
                 Stop();
-                manager.Restart();
+                manager.Fail();
             }
         }
     }

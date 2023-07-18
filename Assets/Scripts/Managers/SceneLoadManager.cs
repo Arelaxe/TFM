@@ -31,6 +31,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     private bool loading;
     private bool paused;
+    private bool inMinigame;
 
     protected override void LoadData()
     {
@@ -86,15 +87,25 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     public void LoadScene(string destinationScene, int destinationPassage = -1, bool reverseLookingAt = false)
     {
-        StartCoroutine(LoadSceneCouroutine(destinationScene, destinationPassage, reverseLookingAt));
+        StartCoroutine(LoadSceneCoroutine(destinationScene, destinationPassage, reverseLookingAt));
     }
 
     public void LoadSceneFromMenu(string destinationScene, bool init = true)
     {
-        StartCoroutine(LoadSceneFromMenuCouroutine(destinationScene, init));
+        StartCoroutine(LoadSceneFromMenuCoroutine(destinationScene, init));
     }
 
-    public IEnumerator LoadSceneCouroutine(string destinationScene, int destinationPassage, bool reverseLookingAt)
+    public void LoadMinigameScene(string minigameScene)
+    {
+        StartCoroutine(LoadMinigameSceneCoroutine(minigameScene));
+    }
+
+    public void ReturnFromMinigameScene()
+    {
+        StartCoroutine(ReturnFromMinigameSceneCoroutine());
+    }
+
+    public IEnumerator LoadSceneCoroutine(string destinationScene, int destinationPassage, bool reverseLookingAt)
     {
         loading = true;
 
@@ -147,7 +158,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         loading = false;
     }
 
-    public IEnumerator LoadSceneSwitchCouroutine()
+    public IEnumerator LoadSceneSwitchCoroutine()
     {
         loading = true;
 
@@ -188,7 +199,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         loading = false;
     }
 
-    public IEnumerator LoadSceneFromMenuCouroutine(string destinationScene, bool init)
+    public IEnumerator LoadSceneFromMenuCoroutine(string destinationScene, bool init)
     {
         loading = true;
 
@@ -216,6 +227,43 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         EnableControl();
 
+        loading = false;
+    }
+
+    public IEnumerator LoadMinigameSceneCoroutine(string minigameScene)
+    {
+        loading = true;
+        inMinigame = true;
+
+        yield return StartCoroutine(Fade(true));
+
+        SceneManager.LoadScene(minigameScene, LoadSceneMode.Additive);
+
+        PlayerManager.Instance.GetDualCharacterController().SwitchToMinigameCamera();
+
+        yield return StartCoroutine(Fade(false));
+
+        loading = false;
+    }
+
+    public IEnumerator ReturnFromMinigameSceneCoroutine()
+    {
+        loading = true;
+
+        yield return StartCoroutine(Fade(true));
+
+        yield return SceneManager.UnloadSceneAsync(2);
+
+        DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
+        dualCharacterController.SetCharacterMobility(true, true);
+        dualCharacterController.SetSwitchAvailability(true);
+        dualCharacterController.SwitchToCharacterCamera();
+
+        PlayerManager.Instance.GetInteractionController().SetInteractivity(true);
+
+        yield return StartCoroutine(Fade(false));
+
+        inMinigame = false;
         loading = false;
     }
 
@@ -474,5 +522,6 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     public string UnselectedScene { get => unselectedScene; set => unselectedScene = value; }
     public bool Paused { get => paused; }
     public bool Loading { get => loading; }
+    public bool InMinigame { get => inMinigame; set => inMinigame = value; }
     public bool LoadSceneOnSwitch { get => unselectedScene != null && !SceneManager.GetActiveScene().name.Equals(unselectedScene); }
 }

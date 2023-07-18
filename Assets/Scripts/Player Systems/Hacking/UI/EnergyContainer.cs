@@ -22,8 +22,8 @@ public class EnergyContainer : MonoBehaviour
         foreach (EnergyPoint point in energy)
         {
             slider.value++;
-            yield return new WaitForSeconds(fillDelay);
             if (slider.value == slider.maxValue) break;
+            yield return new WaitForSeconds(fillDelay);
         }
     }
 

@@ -13,6 +13,7 @@ public static class PlayerConstants
     // Camera states
     public static string CameraStateRyo = "Ryo Camera State";
     public static string CameraStateShinen = "Shinen Camera State";
+    public static string CameraStateMinigame = "Minigame Camera State";
 
     // Animation parameters
     public static string AnimParamVelocity = "Velocity";

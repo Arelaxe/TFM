@@ -30,6 +30,12 @@ public class InventoryElement : Selectable, IPointerClickHandler, IBeginDragHand
         return icon;
     }
 
+    public override void OnSelect(BaseEventData eventData)
+    {
+        base.OnSelect(eventData);
+        submit = false;
+    }
+
     public override void OnDeselect(BaseEventData eventData)
     {
         base.OnDeselect(eventData);

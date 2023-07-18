@@ -54,6 +54,13 @@ public class InGameMenuController : MonoBehaviour
         }
     }
 
+    public void Hide()
+    {
+        pages[openPage].Hide();
+        openPage = -1;
+        ShowHackingExtension(false);
+    }
+
     public bool SwitchPageAvailable { get => switchPageAvailable; }
     public void SetSwitchPageAvailability(bool switchPageAvailable)
     {
