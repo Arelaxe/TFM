@@ -86,6 +86,13 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
 
     private void OnDialogueNodeEnd(DialogueNode node)
     {
+        if (node != null){
+            if (node.GetType().ToString() == "ActionDialogueNode"){
+                ActionDialogueNode copyNode = (ActionDialogueNode) node;
+                copyNode.m_Action.GetComponent<NarrationAction>().EndAction();
+            }
+        }
+
         m_NextNode = null;
         m_ListenToInput = false;
         m_DialogueText.text = "";
@@ -98,6 +105,13 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
 
         gameObject.SetActive(false);
         m_ChoicesBoxTransform.gameObject.SetActive(false);
+    }
+
+    public void Visit(ActionDialogueNode node)
+    {
+        choiceDialog = false;
+        m_ListenToInput = true;
+        m_NextNode = node.NextNode;
     }
 
     public void Visit(BasicDialogueNode node)
