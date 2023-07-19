@@ -58,7 +58,7 @@ public class InGameMenuController : MonoBehaviour
     {
         pages[openPage].Hide();
         openPage = -1;
-        ShowHackingExtension(false);
+        HideHackingExtension();
     }
 
     public bool SwitchPageAvailable { get => switchPageAvailable; }
@@ -67,14 +67,15 @@ public class InGameMenuController : MonoBehaviour
         this.switchPageAvailable = switchPageAvailable;
     }
 
-    public void ShowHackingExtension(bool show)
+    public void ShowHackingExtension(string hackingScene, GameObject interactable)
     {
-        if (!show)
-        {
-           hackingExtension.GetComponent<HackingExtension>().ResetData();
-        }
+        hackingExtension.GetComponent<HackingExtension>().ResetData(hackingScene, interactable);
+        hackingExtension.SetActive(true);
+    }
 
-        hackingExtension.SetActive(show);
+    public void HideHackingExtension()
+    {
+        hackingExtension.SetActive(false);
     }
 
     public HackingExtension GetHackingExtension()

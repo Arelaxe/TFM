@@ -73,7 +73,7 @@ public abstract class PageController : MonoBehaviour
         playerController.SetCharacterMobility(true, true);
         interactionController.SetInteractivity(true);
 
-        PlayerManager.Instance.GetInGameMenuController().ShowHackingExtension(false);
+        PlayerManager.Instance.GetInGameMenuController().HideHackingExtension();
 
         HidePage();
     }

@@ -22,7 +22,4 @@ public static class GlobalConstants
     // Control Schemes
     public static string ControlSchemeKeyboard = "Keyboard&Mouse";
     public static string ControlSchemeGamepad = "Gamepad";
-
-    // Minigames Scenes
-    public static string MinigameHacking = "HackingMinigame";
 }

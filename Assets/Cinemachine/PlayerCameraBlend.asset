@@ -36,7 +36,7 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - m_From: Ryo Camera
-    m_To: Minigame Camera
+    m_To: Additive Camera
     m_Blend:
       m_Style: 0
       m_Time: 2
@@ -47,7 +47,7 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - m_From: Shinen Camera
-    m_To: Minigame Camera
+    m_To: Additive Camera
     m_Blend:
       m_Style: 0
       m_Time: 2
@@ -57,7 +57,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: Minigame Camera
+  - m_From: Additive Camera
     m_To: Ryo Camera
     m_Blend:
       m_Style: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: Minigame Camera
+  - m_From: Additive Camera
     m_To: Shinen Camera
     m_Blend:
       m_Style: 0

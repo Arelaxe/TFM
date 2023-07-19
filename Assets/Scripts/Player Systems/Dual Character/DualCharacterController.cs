@@ -52,7 +52,7 @@ public class DualCharacterController: MonoBehaviour
     [SerializeField]
     private CinemachineStateDrivenCamera stateDrivenCamera;
     [SerializeField]
-    private CinemachineVirtualCamera minigameCamera;
+    private CinemachineVirtualCamera additiveCamera;
     private float defaultTransitionTime;
 
     private void Awake()
@@ -374,9 +374,10 @@ public class DualCharacterController: MonoBehaviour
         groupedError = false;
     }
 
-    public void SwitchToMinigameCamera()
+    public void SwitchToAdditiveCamera()
     {
-        stateDrivenCamera.GetComponent<Animator>().Play(PlayerConstants.CameraStateMinigame);
+        additiveCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_YDamping = 0;
+        stateDrivenCamera.GetComponent<Animator>().Play(PlayerConstants.CameraStateAdditive);
     }
 
     public void SwitchToCharacterCamera()
@@ -491,8 +492,8 @@ public class DualCharacterController: MonoBehaviour
         stateDrivenCamera.m_DefaultBlend = blend;
     }
 
-    public CinemachineVirtualCamera GetMinigameCamera()
+    public CinemachineVirtualCamera GetAdditiveCamera()
     {
-        return minigameCamera;
+        return additiveCamera;
     }
 }

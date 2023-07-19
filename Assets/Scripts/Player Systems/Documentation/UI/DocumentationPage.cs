@@ -54,6 +54,12 @@ public class DocumentationPage : Page
     {
         description.SetDescription(item.ItemImage, item.Name, item.Description);
         description.SetNavigation(documentItem);
+
+        HackingExtension extension = PlayerManager.Instance.GetInGameMenuController().GetHackingExtension();
+        if (extension)
+        {
+            extension.SetDocument(item);
+        }
     }
 
     public override void Show()
@@ -91,11 +97,5 @@ public class DocumentationPage : Page
     private void HandleSubmit(DocumentElement document)
     {
         OnDescriptionRequested?.Invoke(elementList.IndexOf(document), document);
-
-        HackingExtension extension = PlayerManager.Instance.GetInGameMenuController().GetHackingExtension();
-        if (extension)
-        {
-            extension.SetDocument(document.GetTitle().text);
-        }
     }
 }

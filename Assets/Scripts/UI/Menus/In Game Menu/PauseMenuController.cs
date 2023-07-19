@@ -82,8 +82,8 @@ public class PauseMenuController : MonoBehaviour
 
     private void CheckSaveGameAvailable()
     {
-        saveGameButton.interactable = !SceneLoadManager.Instance.InMinigame;
-        saveAndQuitGameButton.interactable = !SceneLoadManager.Instance.InMinigame;
+        saveGameButton.interactable = !SceneLoadManager.Instance.InAdditive;
+        saveAndQuitGameButton.interactable = !SceneLoadManager.Instance.InAdditive;
     }
 
     private void CheckLoadGameAvailable()

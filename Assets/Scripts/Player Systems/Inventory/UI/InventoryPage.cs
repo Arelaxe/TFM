@@ -104,6 +104,12 @@ public class InventoryPage : Page
             {
                 elementList2[itemIndex].Select();
             }
+
+            HackingExtension extension = PlayerManager.Instance.GetInGameMenuController().GetHackingExtension();
+            if (extension)
+            {
+                extension.SetItem(item);
+            }
         }
         else
         {
@@ -202,12 +208,6 @@ public class InventoryPage : Page
         else
         {
             OnDescriptionRequested?.Invoke(2, elementList2.IndexOf(item));
-        }
-
-        HackingExtension extension = PlayerManager.Instance.GetInGameMenuController().GetHackingExtension();
-        if (extension)
-        {
-            extension.SetItem(item.GetIcon());
         }
 
         if (dialogueMode){
