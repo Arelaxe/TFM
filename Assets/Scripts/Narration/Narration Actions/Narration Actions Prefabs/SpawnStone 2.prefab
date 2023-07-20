@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9030093316580526046}
   - component: {fileID: 4487312802045701505}
   m_Layer: 0
-  m_Name: SpawnStone
+  m_Name: SpawnStone 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,3 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 8287173383443809193, guid: 97caea6e104721441b84c4677095ecf3, type: 3}
+  positionX: -5
+  positionY: 0
+  positionZ: 0

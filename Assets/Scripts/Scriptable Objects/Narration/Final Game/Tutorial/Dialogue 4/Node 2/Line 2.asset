@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbd2c1887a808da4b8f0a6cec8d8b890, type: 3}
-  m_Name: Line 5
+  m_Name: Line 2
   m_EditorClassIdentifier: 
-  m_Speaker: {fileID: 11400000, guid: 9662b2e36d8422e49a357ca50d445522, type: 2}
-  m_Text: Puedes mover a ambos personajes con WASD o con el joystick izquierdo de
-    tu mando, intenta moverte a la piedra que acaba de aparecer
+  m_Speaker: {fileID: 0}
+  m_Text: 

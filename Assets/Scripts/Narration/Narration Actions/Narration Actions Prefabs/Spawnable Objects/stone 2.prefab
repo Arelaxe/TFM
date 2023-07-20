@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8287173383443809195}
   - component: {fileID: 6822744692083925924}
   - component: {fileID: -6592699708720597757}
-  m_Layer: 6
-  m_Name: stone
+  m_Layer: 7
+  m_Name: stone 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,6 +98,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce4a128b07e038841855b02f0b2fd2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueRequestEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: ba30d10c4ccf61c4e8119de0f19b641b, type: 2}
+        m_TargetAssemblyTypeName: DialogueChannel, Assembly-CSharp
+        m_MethodName: RaiseRequestDialogue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 43a8de2e58267b54a8d86bca1353ce8e, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!61 &-6592699708720597757
 BoxCollider2D:
   m_ObjectHideFlags: 0

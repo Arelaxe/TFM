@@ -6,12 +6,16 @@ public class SpawnObject : NarrationAction
 {
     [SerializeField]
     private GameObject objectToSpawn;
-    [SerializeField] Transform position;
+    [SerializeField] 
+    private int positionX;
+    [SerializeField] 
+    private int positionY;
+    [SerializeField] 
+    private int positionZ;
     
-    public override void Execute() { }
-
-    public override void EndAction()
-    {
-        GameObject clone = Instantiate(objectToSpawn, new Vector3(0, 0, 0), Quaternion.identity);
+    public override void Execute() { 
+        GameObject clone = Instantiate(objectToSpawn, new Vector3(positionX, positionY, positionZ), Quaternion.identity);
     }
+
+    public override void EndAction() { }
 }
