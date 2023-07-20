@@ -6,7 +6,7 @@ using System.Collections;
 public class EnergyContainer : MonoBehaviour
 {
     [SerializeField]
-    private int levelAmount;
+    private int maxValue;
     [SerializeField]
     private float fillDelay;
 
@@ -14,7 +14,7 @@ public class EnergyContainer : MonoBehaviour
     void Start()
     {
         slider = GetComponent<Slider>();
-        slider.maxValue = levelAmount * 3;
+        slider.maxValue = maxValue;
     }
 
     public IEnumerator AddEnergy(List<EnergyPoint> energy)
@@ -30,11 +30,11 @@ public class EnergyContainer : MonoBehaviour
     public int GetEnergyLevel()
     {
         int energyLevel = 1;
-        if (levelAmount < slider.value && slider.value <= levelAmount * 2)
+        if (maxValue * 0.5f < slider.value && slider.value <= maxValue * 0.85f)
         {
             energyLevel = 2;
         }
-        else if (levelAmount * 2 < slider.value && slider.value <= levelAmount * 3)
+        else if (maxValue * 0.85f < slider.value && slider.value <= maxValue)
         {
             energyLevel = 3;
         }
