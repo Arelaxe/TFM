@@ -26,7 +26,13 @@ public class PauseMenuController : MonoBehaviour
     private Button resumeButton;
 
     [SerializeField]
+    private Button saveGameButton;
+
+    [SerializeField]
     private Button loadGameButton;
+
+    [SerializeField]
+    private Button saveAndQuitGameButton;
 
     [SerializeField]
     private Button backButton;
@@ -74,6 +80,12 @@ public class PauseMenuController : MonoBehaviour
         backAction = input.actions[PlayerConstants.ActionCancel];
     }
 
+    private void CheckSaveGameAvailable()
+    {
+        saveGameButton.interactable = !SceneLoadManager.Instance.InAdditive;
+        saveAndQuitGameButton.interactable = !SceneLoadManager.Instance.InAdditive;
+    }
+
     private void CheckLoadGameAvailable()
     {
         string savedScene = SceneLoadManager.Instance.Progress.player.selectedCharacter.scene;
@@ -90,6 +102,8 @@ public class PauseMenuController : MonoBehaviour
         SceneLoadManager.Instance.Pause(pause);
 
         background.enabled = pause;
+
+        CheckSaveGameAvailable();
         ShowPage(pause, mainPage, resumeButton);
     }
 
