@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 77414616}
   - component: {fileID: 77414615}
   - component: {fileID: 77414614}
-  - component: {fileID: 77414613}
+  - component: {fileID: 77414617}
   - component: {fileID: 77414612}
   m_Layer: 3
   m_Name: Banana
@@ -388,19 +388,6 @@ MonoBehaviour:
     layer: 0
     positionX: 0
     positionY: 0
---- !u!114 &77414613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77414610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe4663b9e608382458129bb63871659c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 747123d724f008b4fa0dd69cb4162a9d, type: 2}
 --- !u!114 &77414614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,26 +401,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactions:
-  - name: Coger
-    type: 0
-    available: 1
-    item: {fileID: 0}
-    action: {fileID: 77414613}
-  - name: Coger
+  - name: Hackear
     type: 1
     available: 1
     item: {fileID: 0}
-    action: {fileID: 77414613}
-  - name: Coger
-    type: 0
-    available: 1
-    item: {fileID: 11400000, guid: 5609813125f3045449fdb1221f01fd6b, type: 2}
-    action: {fileID: 77414613}
-  - name: Coger
-    type: 2
-    available: 1
-    item: {fileID: 11400000, guid: ae76ac4a56ffed942a5eebb805997aab, type: 2}
-    action: {fileID: 77414613}
+    reusable: 0
+    action: {fileID: 77414617}
 --- !u!61 &77414615
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -512,6 +485,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &77414617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77414610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d90608376638bd4985a640c088ebda3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hackingScene: HackingMinigame
 --- !u!213 &114874539
 Sprite:
   m_ObjectHideFlags: 0

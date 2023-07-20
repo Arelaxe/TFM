@@ -29,8 +29,12 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     private string unselectedScene;
 
+    private Dictionary<string, UnityEngine.Object> customData;
+
+    // Status
     private bool loading;
     private bool paused;
+    private bool inAdditive;
 
     protected override void LoadData()
     {
@@ -86,15 +90,35 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     public void LoadScene(string destinationScene, int destinationPassage = -1, bool reverseLookingAt = false)
     {
-        StartCoroutine(LoadSceneCouroutine(destinationScene, destinationPassage, reverseLookingAt));
+        StartCoroutine(LoadSceneCoroutine(destinationScene, destinationPassage, reverseLookingAt));
     }
 
     public void LoadSceneFromMenu(string destinationScene, bool init = true)
     {
-        StartCoroutine(LoadSceneFromMenuCouroutine(destinationScene, init));
+        StartCoroutine(LoadSceneFromMenuCoroutine(destinationScene, init));
     }
 
-    public IEnumerator LoadSceneCouroutine(string destinationScene, int destinationPassage, bool reverseLookingAt)
+    public void LoadAdditiveScene(string minigameScene)
+    {
+        LoadAdditiveScene(minigameScene, new Dictionary<string, UnityEngine.Object>());
+    }
+
+    public void LoadAdditiveScene(string minigameScene, Dictionary<string, UnityEngine.Object> data)
+    {
+        StartCoroutine(LoadAdditiveSceneCoroutine(minigameScene, data));
+    }
+
+    public void ReturnFromAdditiveScene()
+    {
+        ReturnFromAdditiveScene(new Dictionary<string, UnityEngine.Object>());
+    }
+
+    public void ReturnFromAdditiveScene(Dictionary<string, UnityEngine.Object> data)
+    {
+        StartCoroutine(ReturnFromAdditiveSceneCoroutine(data));
+    }
+
+    public IEnumerator LoadSceneCoroutine(string destinationScene, int destinationPassage, bool reverseLookingAt)
     {
         loading = true;
 
@@ -147,7 +171,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         loading = false;
     }
 
-    public IEnumerator LoadSceneSwitchCouroutine()
+    public IEnumerator LoadSceneSwitchCoroutine()
     {
         loading = true;
 
@@ -188,7 +212,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         loading = false;
     }
 
-    public IEnumerator LoadSceneFromMenuCouroutine(string destinationScene, bool init)
+    public IEnumerator LoadSceneFromMenuCoroutine(string destinationScene, bool init)
     {
         loading = true;
 
@@ -216,6 +240,46 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         EnableControl();
 
+        loading = false;
+    }
+
+    public IEnumerator LoadAdditiveSceneCoroutine(string minigameScene, Dictionary<string, UnityEngine.Object> data)
+    {
+        loading = true;
+        customData = data;
+
+        inAdditive = true;
+
+        yield return StartCoroutine(Fade(true));
+
+        SceneManager.LoadScene(minigameScene, LoadSceneMode.Additive);
+
+        PlayerManager.Instance.GetDualCharacterController().SwitchToAdditiveCamera();
+
+        yield return StartCoroutine(Fade(false));
+
+        loading = false;
+    }
+
+    public IEnumerator ReturnFromAdditiveSceneCoroutine(Dictionary<string, UnityEngine.Object> data)
+    {
+        loading = true;
+        customData = data;
+
+        yield return StartCoroutine(Fade(true));
+
+        yield return SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(SceneManager.sceneCount - 1));
+
+        DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
+        dualCharacterController.SetCharacterMobility(true, true);
+        dualCharacterController.SetSwitchAvailability(true);
+        dualCharacterController.SwitchToCharacterCamera();
+
+        PlayerManager.Instance.GetInteractionController().SetInteractivity(true);
+
+        yield return StartCoroutine(Fade(false));
+
+        inAdditive = false;
         loading = false;
     }
 
@@ -474,5 +538,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     public string UnselectedScene { get => unselectedScene; set => unselectedScene = value; }
     public bool Paused { get => paused; }
     public bool Loading { get => loading; }
+    public bool InAdditive { get => inAdditive; set => inAdditive = value; }
     public bool LoadSceneOnSwitch { get => unselectedScene != null && !SceneManager.GetActiveScene().name.Equals(unselectedScene); }
+    public Dictionary<string, UnityEngine.Object> CustomData { get => customData; }
 }

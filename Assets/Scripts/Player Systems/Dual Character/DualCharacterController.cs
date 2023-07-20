@@ -51,6 +51,8 @@ public class DualCharacterController: MonoBehaviour
     // Camera
     [SerializeField]
     private CinemachineStateDrivenCamera stateDrivenCamera;
+    [SerializeField]
+    private CinemachineVirtualCamera additiveCamera;
     private float defaultTransitionTime;
 
     private void Awake()
@@ -260,7 +262,7 @@ public class DualCharacterController: MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine(SceneLoadManager.Instance.LoadSceneSwitchCouroutine());
+                    StartCoroutine(SceneLoadManager.Instance.LoadSceneSwitchCoroutine());
                 }
             }
         }
@@ -280,15 +282,7 @@ public class DualCharacterController: MonoBehaviour
         InitSelectedPlayer();
         InitNavAgents();
 
-        Animator cameraAnimator = stateDrivenCamera.GetComponent<Animator>();
-        if (selectedCharacterOne)
-        {
-            cameraAnimator.Play(PlayerConstants.CameraStateRyo);
-        }
-        else
-        {
-            cameraAnimator.Play(PlayerConstants.CameraStateShinen);
-        }
+        SwitchToCharacterCamera();
 
         PlayerManager.Instance.GetInteractionController().DestroyInteractions();
         PlayerManager.Instance.GetInventoryController().UpdateItemPanelsForSwitch(selectedCharacterOne, grouped);
@@ -378,6 +372,25 @@ public class DualCharacterController: MonoBehaviour
         groupSlider.value = 0;
         groupSlider.gameObject.SetActive(false);
         groupedError = false;
+    }
+
+    public void SwitchToAdditiveCamera()
+    {
+        additiveCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_YDamping = 0;
+        stateDrivenCamera.GetComponent<Animator>().Play(PlayerConstants.CameraStateAdditive);
+    }
+
+    public void SwitchToCharacterCamera()
+    {
+        Animator cameraAnimator = stateDrivenCamera.GetComponent<Animator>();
+        if (selectedCharacterOne)
+        {
+            cameraAnimator.Play(PlayerConstants.CameraStateRyo);
+        }
+        else
+        {
+            cameraAnimator.Play(PlayerConstants.CameraStateShinen);
+        }
     }
 
     // Auxiliar methods
@@ -479,4 +492,8 @@ public class DualCharacterController: MonoBehaviour
         stateDrivenCamera.m_DefaultBlend = blend;
     }
 
+    public CinemachineVirtualCamera GetAdditiveCamera()
+    {
+        return additiveCamera;
+    }
 }

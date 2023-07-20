@@ -54,6 +54,12 @@ public class DocumentationPage : Page
     {
         description.SetDescription(item.ItemImage, item.Name, item.Description);
         description.SetNavigation(documentItem);
+
+        HackingExtension extension = PlayerManager.Instance.GetInGameMenuController().GetHackingExtension();
+        if (extension)
+        {
+            extension.SetDocument(item);
+        }
     }
 
     public override void Show()

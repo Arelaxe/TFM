@@ -16,6 +16,11 @@ public class DocumentElement : Selectable, IPointerClickHandler, ISubmitHandler
         this.title.text = title;
     }
 
+    public TMP_Text GetTitle()
+    {
+        return title;
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)

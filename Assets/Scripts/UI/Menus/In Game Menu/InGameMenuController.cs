@@ -7,6 +7,9 @@ public class InGameMenuController : MonoBehaviour
     [SerializeField]
     private List<Page> pages;
 
+    [SerializeField]
+    private GameObject hackingExtension;
+
     private PlayerInput input;
     private bool switchPageAvailable = true;
 
@@ -51,9 +54,37 @@ public class InGameMenuController : MonoBehaviour
         }
     }
 
+    public void Hide()
+    {
+        pages[openPage].Hide();
+        openPage = -1;
+        HideHackingExtension();
+    }
+
     public bool SwitchPageAvailable { get => switchPageAvailable; }
     public void SetSwitchPageAvailability(bool switchPageAvailable)
     {
         this.switchPageAvailable = switchPageAvailable;
+    }
+
+    public void ShowHackingExtension(string hackingScene, GameObject interactable)
+    {
+        hackingExtension.GetComponent<HackingExtension>().ResetData(hackingScene, interactable);
+        hackingExtension.SetActive(true);
+    }
+
+    public void HideHackingExtension()
+    {
+        hackingExtension.SetActive(false);
+    }
+
+    public HackingExtension GetHackingExtension()
+    {
+        HackingExtension extension = null;
+        if (hackingExtension.activeSelf)
+        {
+            extension = hackingExtension.GetComponent<HackingExtension>();
+        }
+        return extension;
     }
 }

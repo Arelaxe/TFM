@@ -171,7 +171,9 @@ MonoBehaviour:
   controlsPage: {fileID: 9158760247329955347}
   confirmationMenu: {fileID: 1381362842752637712}
   resumeButton: {fileID: 9051108593149203252}
+  saveGameButton: {fileID: 9077902062887650418}
   loadGameButton: {fileID: 6895561050578493704}
+  saveAndQuitGameButton: {fileID: 2426309917683518085}
   backButton: {fileID: 8256820323287104390}
   yesButton: {fileID: 2209010749024559493}
   noButton: {fileID: 2209010749506222588}
@@ -3904,6 +3906,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ca2459f01b189d4fb6d39a0fbb13928, type: 3}
+--- !u!114 &9077902062887650418 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 976275878507174993, guid: 2ca2459f01b189d4fb6d39a0fbb13928, type: 3}
+  m_PrefabInstance: {fileID: 8104019075246037027}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &9077902062887650419 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 976275878507174992, guid: 2ca2459f01b189d4fb6d39a0fbb13928, type: 3}

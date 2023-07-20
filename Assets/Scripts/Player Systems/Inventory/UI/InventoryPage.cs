@@ -16,7 +16,6 @@ public class InventoryPage : Page
 
     [SerializeField]
     private MouseFollower mouseFollower;
-
 /*
     [SerializeField] 
     private GameObject m_DialogPanel;*/
@@ -58,7 +57,7 @@ public class InventoryPage : Page
         elementList.Add(item);
 
         item.OnItemSelected += HandleSelect;
-        item.OnItemSubmit += HandleSwitch;
+        item.OnItemDoubleSubmit += HandleSwitch;
 
         item.OnItemClicked += HandleSelect;
         item.OnItemBeginDrag += HandleBeginDrag;
@@ -104,6 +103,12 @@ public class InventoryPage : Page
             else
             {
                 elementList2[itemIndex].Select();
+            }
+
+            HackingExtension extension = PlayerManager.Instance.GetInGameMenuController().GetHackingExtension();
+            if (extension)
+            {
+                extension.SetItem(item);
             }
         }
         else
@@ -196,7 +201,7 @@ public class InventoryPage : Page
 
     private void HandleSelect(InventoryElement item)
     {
-       if (elementList.Contains(item))
+        if (elementList.Contains(item))
         { 
             OnDescriptionRequested?.Invoke(1, elementList.IndexOf(item));
         }
@@ -204,6 +209,32 @@ public class InventoryPage : Page
         {
             OnDescriptionRequested?.Invoke(2, elementList2.IndexOf(item));
         }
+
+        if (dialogueMode){
+            ItemShowDialog();
+        }
+    }
+
+    private void ItemShowDialog(){
+        m_DialogPanel.SetActive(false);
+        dialogueMode = false;
+        InventoryController invController = PlayerManager.Instance.GetInventoryController();
+        ChoiceDialogueNode choiceNode = (ChoiceDialogueNode) invController.Channel.currentNode;
+        DialogueInventoryChoice[] invChoices = choiceNode.InventoryChoices;
+        bool foundItem = false;
+
+        for (int i = 0; i < invChoices.Length && !foundItem; i++){
+            if (invChoices[i].Item.ID == invController.SelectedItem.ID){
+                invController.Channel.RaiseRequestDialogueNode(invChoices[i].ChoiceNode);
+                foundItem = true;
+            }
+        }
+
+        if (!foundItem){
+            invController.Channel.RaiseRequestDialogueNode(choiceNode.DefaultInventoryChoice);
+        }
+
+        base.Hide();
     }
 
     private void HandleBeginDrag(InventoryElement item)
@@ -253,38 +284,7 @@ public class InventoryPage : Page
             OnSwitchInventory?.Invoke(currentSubmitInventoryIndex, currentSubmitItemIndex, switchInventoryIndex, switchItemIndex);
         }
     }
-
-    // Buttons
-
-    public void OnExit(){
-        DialoguePanel.SetActive(true);
-        DialogueMode = false;
-        Hide();
-    }
-
-    public void OnShowObject(){
-        DialoguePanel.SetActive(false);
-        dialogueMode = false;
-        InventoryController invController = PlayerManager.Instance.GetInventoryController();
-        ChoiceDialogueNode choiceNode = (ChoiceDialogueNode) invController.Channel.currentNode;
-        DialogueInventoryChoice[] invChoices = choiceNode.InventoryChoices;
-        bool foundItem = false;
-
-        for (int i = 0; i < invChoices.Length && !foundItem; i++){
-            if (invChoices[i].Item.ID == invController.SelectedItem.ID){
-                invController.Channel.RaiseRequestDialogueNode(invChoices[i].ChoiceNode);
-                foundItem = true;
-            }
-        }
-
-        if (!foundItem){
-            invController.Channel.RaiseRequestDialogueNode(choiceNode.DefaultInventoryChoice);
-        }
-
-        base.Hide();
-    }
-
-
+    
     // Auxiliar methods
 
     private RectTransform GetCharacterContentPanel(bool characterOne)
