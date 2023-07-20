@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9030093316580526046}
-  - component: {fileID: 4487312802045701505}
+  - component: {fileID: 1659978168291331276}
   m_Layer: 0
-  m_Name: SpawnStone 2
+  m_Name: SpawnTwoStones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4487312802045701505
+--- !u!114 &1659978168291331276
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +41,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1948895477211506953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a442af741f868bc47905d52ce21361c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5938a50cbae65d843971872c1cd3eb99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 8287173383443809193, guid: 1bd0bd0528c66494988db52049311920, type: 3}
-  positionX: -5
-  positionY: 0
-  positionZ: 0
+  object1: {fileID: 8287173383443809193, guid: 0a3ed753263891d46a6dab7ad82d9387, type: 3}
+  object2: {fileID: 8287173383443809193, guid: 8a80f01bf0e9bed43a0ccf7bafbe4fe7, type: 3}
+  position1X: 5
+  position1Y: -5
+  position1Z: 0
+  position2X: -5
+  position2Y: -5
+  position2Z: 0

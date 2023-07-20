@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd2c1887a808da4b8f0a6cec8d8b890, type: 3}
   m_Name: Line 2
   m_EditorClassIdentifier: 
-  m_Speaker: {fileID: 0}
-  m_Text: 
+  m_Speaker: {fileID: 11400000, guid: 9662b2e36d8422e49a357ca50d445522, type: 2}
+  m_Text: "En ocasiones, necesitar\xE1s que Ryo y Shin'en se separen, para ello simplemente
+    mant\xE9n \"R\" o \"RB\". Prueba a mover a Ryo hacia la piedra azul y a Shin'en
+    hacia la roja"

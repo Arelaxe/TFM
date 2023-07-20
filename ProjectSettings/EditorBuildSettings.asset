@@ -8,13 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final Game/Menus/Main Menu.unity
     guid: adaf214bc1f63a242a0adb8389fdcfc2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test Scenes/Warp Test 1.unity
     guid: 5a85463a16dc4f0448db416580fc0b56
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test Scenes/Warp Test 2.unity
     guid: 4e55e7a09ae465c4183e730f0b0f8fa3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test Scenes/HackingMinigame.unity
     guid: ae0f1cd713e61ea42adb8bd274b6ba02
+  - enabled: 1
+    path: Assets/Scenes/Final Game/Tutorial/TutorialScene.unity
+    guid: 98acec34a3c45b34a9af8a84869d7c80
   m_configObjects: {}

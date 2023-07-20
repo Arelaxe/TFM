@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class DestroyableObject : MonoBehaviour
 {
-    [SerializeField] UnityEvent dialogueRequestEvent;
+    [SerializeField] private UnityEvent dialogueRequestEvent;
     private void OnTriggerEnter2D(Collider2D other) {
-        Destroy(gameObject);
         dialogueRequestEvent.Invoke();
+        Destroy(gameObject);
     }
 }
