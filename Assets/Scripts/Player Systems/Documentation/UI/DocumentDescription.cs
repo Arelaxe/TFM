@@ -36,7 +36,11 @@ public class DocumentDescription : MonoBehaviour
         image.sprite = sprite;
         this.title.text = title;
         this.description.text = description;
-        
+
+        Color imageColor = image.color;
+        imageColor.a = string.IsNullOrEmpty(description) ? 0.8f : 0.2f;
+        image.color = imageColor;
+
         scrollbar.value = 1;
         scrollbar.Select();
     }

@@ -11,9 +11,9 @@ public class HackingAction : Action
     [Serializable]
     public enum HackingStatus
     {
-        Failed,
-        Completed,
-        Maximum
+        Failed = 0,
+        Completed = 1,
+        Maximum = 2
     }
 
     private static readonly string HACKING_STATUS = "hackingStatus";

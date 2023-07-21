@@ -8,6 +8,7 @@ TagManager:
   - PlayerInit
   - VCam
   - DynamicObjects
+  - DeviceManager
   layers:
   - Default
   - TransparentFX
