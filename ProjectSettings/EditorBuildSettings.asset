@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test Scenes/HackingMinigame.unity
     guid: ae0f1cd713e61ea42adb8bd274b6ba02
+  - enabled: 1
+    path: Assets/Scenes/Devices/Desktop Computer.unity
+    guid: 0301168589eee6147bbc7ff3d6c9a86f
   m_configObjects: {}

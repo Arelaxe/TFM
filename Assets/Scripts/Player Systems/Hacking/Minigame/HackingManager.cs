@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
@@ -109,13 +108,13 @@ public class HackingManager : MonoBehaviour
 
     private void InitPowerUps()
     {
-        Item selectedItem = (Item) SceneLoadManager.Instance.CustomData["item"];
+        Item selectedItem = (Item) SceneLoadManager.Instance.ObjectsData[GlobalConstants.HackingItem];
         if (item.Equals(selectedItem))
         {
             itemBlock.SetActive(false);
         }
 
-        Item selectedDocument = (Item) SceneLoadManager.Instance.CustomData["document"];
+        Item selectedDocument = (Item) SceneLoadManager.Instance.ObjectsData[GlobalConstants.HackingDocument];
         if (document.Equals(selectedDocument))
         {
             documentBlock.SetActive(false);
@@ -172,7 +171,7 @@ public class HackingManager : MonoBehaviour
             yield return StartCoroutine(energyContainer.AddEnergy(flow.Energy));
         }
 
-        GameObject interactableGo = (GameObject)SceneLoadManager.Instance.CustomData["interactable"];
+        GameObject interactableGo = (GameObject)SceneLoadManager.Instance.ObjectsData[GlobalConstants.HackingInteractable];
         Interactable interactable = interactableGo.GetComponent<Interactable>();
         HackingAction hackingAction = interactableGo.GetComponent<HackingAction>();
 
@@ -184,12 +183,12 @@ public class HackingManager : MonoBehaviour
                 hackingAction.status = HackingAction.HackingStatus.Failed;
                 break;
             case 2:
-                status.GetComponentInChildren<TextMeshProUGUI>().text = "Hackeo completado";
+                status.GetComponentInChildren<TextMeshProUGUI>().text = "Hackeo completado\nAcceso de nivel 1";
                 status.GetComponentInChildren<Image>().color = successColor;
                 hackingAction.status = HackingAction.HackingStatus.Completed;
                 break;
             case 3:
-                status.GetComponentInChildren<TextMeshProUGUI>().text = "Hackeo máximo";
+                status.GetComponentInChildren<TextMeshProUGUI>().text = "Hackeo máximo\nAcceso de nivel 2";
                 status.GetComponentInChildren<Image>().color = maximumColor;
                 hackingAction.status = HackingAction.HackingStatus.Maximum;
                 foreach (Interaction interaction in interactable.Interactions)
