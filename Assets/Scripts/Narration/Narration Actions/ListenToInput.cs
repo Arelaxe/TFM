@@ -11,10 +11,13 @@ public class ListenToInput : NarrationAction
     private bool listening;
     private PlayerInput input;
 
-    public override void Execute(){ }
+    public override void Execute(){
+        base.Execute();
+    }
 
     public override void EndAction()
     {
+        base.EndAction();
         input = PlayerManager.Instance.GetDualCharacterController().GetComponent<PlayerInput>();
         listening = true;
         PlayerManager.Instance.StartCoroutine(Listen());

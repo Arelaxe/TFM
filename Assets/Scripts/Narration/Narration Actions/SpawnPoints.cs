@@ -22,6 +22,7 @@ public class SpawnPoints : NarrationAction
     private int position2Z;
     
     public override void Execute() { 
+        base.Execute();
         GameObject clone1 = Instantiate(object1, new Vector3(position1X, position1Y, position1Z), Quaternion.identity);
         GameObject clone2 = Instantiate(object2, new Vector3(position2X, position2Y, position2Z), Quaternion.identity);
 
@@ -29,5 +30,7 @@ public class SpawnPoints : NarrationAction
         clone2.GetComponent<DualDestroyableObject>().SetOtherObject(clone1);
     }
 
-    public override void EndAction() { }
+    public override void EndAction() {
+        base.EndAction();
+    }
 }

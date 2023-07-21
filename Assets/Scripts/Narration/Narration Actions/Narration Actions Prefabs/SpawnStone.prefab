@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a442af741f868bc47905d52ce21361c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  opensPopup: 1
+  closesPopups: 0
+  popupToOpen: {fileID: 2698021639399333441, guid: 2e4f170c92d78644ab0ff2f8905e5797, type: 3}
   objectToSpawn: {fileID: 8287173383443809193, guid: 97caea6e104721441b84c4677095ecf3, type: 3}
   positionX: 5
   positionY: 0

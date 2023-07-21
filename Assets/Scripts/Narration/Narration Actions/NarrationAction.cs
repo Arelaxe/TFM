@@ -2,9 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class NarrationAction : MonoBehaviour
+public class NarrationAction : MonoBehaviour
 {
-    public abstract void Execute();
+    [SerializeField]
+    protected bool opensPopup;
+    [SerializeField]
+    protected bool closesPopups;
+    [SerializeField]
+    protected bool turnOffSwitchPageAvailability;
+    [SerializeField]
+    protected GameObject popupToOpen;
 
-    public abstract void EndAction();
+    public virtual void Execute(){
+        if (turnOffSwitchPageAvailability){
+            PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(false);
+        }
+
+        if (closesPopups){
+            GameObject[] popups = GameObject.FindGameObjectsWithTag("TemporalPopups"); 
+
+            for (int i = 0; i < popups.Length; i++){
+                Destroy(popups[i]);
+            }
+        }
+    }
+
+    public virtual void EndAction(){
+        if (opensPopup){
+            Instantiate(popupToOpen, new Vector3(0, 0, 0), Quaternion.identity);
+        }
+
+        if (turnOffSwitchPageAvailability){
+            PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(true);
+        }
+    }
 }

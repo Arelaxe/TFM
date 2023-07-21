@@ -44,5 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d95d6231f092cb408fc847954c62856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  opensPopup: 0
+  closesPopups: 0
+  popupToOpen: {fileID: 0}
   illumColor: {r: 1, g: 0.009047445, b: 0, a: 1}
   isRyo: 1

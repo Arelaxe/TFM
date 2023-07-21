@@ -14,6 +14,7 @@ public class IlluminateCharacter : NarrationAction
 
     public override void Execute()
     {
+        base.Execute();
         canBlink = true;
         objectToIllum = PlayerManager.Instance.GetDualCharacterController().GetCharacter(isRyo).GetComponent<SpriteRenderer>();
         originalColor = objectToIllum.color;
@@ -22,6 +23,7 @@ public class IlluminateCharacter : NarrationAction
 
     public override void EndAction()
     {
+        base.EndAction();
         canBlink = false;
         PlayerManager.Instance.StopCoroutine("Illuminate");
         objectToIllum.color = originalColor;

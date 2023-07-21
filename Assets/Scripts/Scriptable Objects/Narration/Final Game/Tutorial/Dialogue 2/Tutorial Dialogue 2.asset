@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d150190ca6408f1418b81dcb81e9f740, type: 3}
   m_Name: Tutorial Dialogue 2
   m_EditorClassIdentifier: 
-  m_FirstNode: {fileID: 11400000, guid: f90c755a001ae684abcc690407668f4b, type: 2}
+  m_FirstNode: {fileID: 11400000, guid: 3581bcd06c320834f8e17650e4120fc7, type: 2}

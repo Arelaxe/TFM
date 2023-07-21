@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2092d214d24ec24ba2e7b516db95862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  opensPopup: 1
+  closesPopups: 0
+  popupToOpen: {fileID: 2698021639399333441, guid: 8add379f7ec69a146aabe67445a74c5c, type: 3}
   action: Split
   dialogueRequestEvent:
     m_PersistentCalls:

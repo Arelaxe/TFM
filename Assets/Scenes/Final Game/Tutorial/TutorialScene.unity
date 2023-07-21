@@ -6136,5 +6136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d95d6231f092cb408fc847954c62856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  opensPopup: 0
+  closesPopup: 0
+  popupToOpen: {fileID: 0}
+  popupToClose: {fileID: 0}
   illumColor: {r: 0, g: 0, b: 0, a: 0}
   isRyo: 0

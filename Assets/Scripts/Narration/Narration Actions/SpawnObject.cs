@@ -14,8 +14,11 @@ public class SpawnObject : NarrationAction
     private int positionZ;
     
     public override void Execute() { 
-        GameObject clone = Instantiate(objectToSpawn, new Vector3(positionX, positionY, positionZ), Quaternion.identity);
+        base.Execute();
     }
 
-    public override void EndAction() { }
+    public override void EndAction() { 
+        base.EndAction();
+        GameObject clone = Instantiate(objectToSpawn, new Vector3(positionX, positionY, positionZ), Quaternion.identity);
+    }
 }

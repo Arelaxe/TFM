@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Line 2
   m_EditorClassIdentifier: 
   m_Speaker: {fileID: 11400000, guid: 9662b2e36d8422e49a357ca50d445522, type: 2}
-  m_Text: "En este juego tendr\xE1s que controlar a dos personajes para resolver
-    puzles y misterios"
+  m_Text: "En este juego controlar\xE1s a dos personajes para resolver puzzles y
+    misterios"
