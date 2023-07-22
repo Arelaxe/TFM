@@ -17,14 +17,14 @@ public class Inventory : ScriptableObject
 
     public void AddItem(Item item)
     {
-        if (!IsFull)
+        if (!IsFull && !items.Contains(item))
         {
             items.Add(item);
         }
     }
     public void AddItem(int index, Item item)
     {
-        if (!IsFull)
+        if (!IsFull && !items.Contains(item))
         {
             items.Insert(index, item);
         }

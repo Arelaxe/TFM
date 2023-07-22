@@ -44,9 +44,9 @@ public class HackingExtension : MonoBehaviour
     public void OpenMiniGame()
     {
         Dictionary<string, Object> hackingData = new();
-        hackingData.Add("interactable", interactable);
-        hackingData.Add("item", item);
-        hackingData.Add("document", document);
+        hackingData.Add(GlobalConstants.HackingInteractable, interactable);
+        hackingData.Add(GlobalConstants.HackingItem, item);
+        hackingData.Add(GlobalConstants.HackingDocument, document);
 
         PlayerManager.Instance.GetInGameMenuController().Hide();
 

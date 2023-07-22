@@ -29,7 +29,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     private string unselectedScene;
 
-    private Dictionary<string, UnityEngine.Object> customData;
+    private Dictionary<string, UnityEngine.Object> objectsData;
 
     // Status
     private bool loading;
@@ -246,7 +246,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     public IEnumerator LoadAdditiveSceneCoroutine(string minigameScene, Dictionary<string, UnityEngine.Object> data)
     {
         loading = true;
-        customData = data;
+        objectsData = data;
 
         inAdditive = true;
 
@@ -264,7 +264,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     public IEnumerator ReturnFromAdditiveSceneCoroutine(Dictionary<string, UnityEngine.Object> data)
     {
         loading = true;
-        customData = data;
+        objectsData = data;
 
         yield return StartCoroutine(Fade(true));
 
@@ -540,5 +540,5 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     public bool Loading { get => loading; }
     public bool InAdditive { get => inAdditive; set => inAdditive = value; }
     public bool LoadSceneOnSwitch { get => unselectedScene != null && !SceneManager.GetActiveScene().name.Equals(unselectedScene); }
-    public Dictionary<string, UnityEngine.Object> CustomData { get => customData; }
+    public Dictionary<string, UnityEngine.Object> ObjectsData { get => objectsData; }
 }

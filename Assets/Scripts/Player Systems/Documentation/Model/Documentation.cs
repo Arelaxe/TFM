@@ -9,11 +9,17 @@ public class Documentation : ScriptableObject
 
     public void AddItem(Item item)
     {
-        documents.Add(item);
+        if (!documents.Contains(item))
+        {
+            documents.Add(item);
+        }
     }
     public void AddItem(int index, Item item)
     {
-        documents.Insert(index, item);
+        if (!documents.Contains(item))
+        {
+            documents.Insert(index, item);
+        }
     }
 
     public List<Item> GetItems()
