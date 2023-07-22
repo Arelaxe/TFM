@@ -48,6 +48,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         }
     }
 
+    #region Load Functions
     private void TestLoad()
     {
         DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
@@ -117,7 +118,9 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     {
         StartCoroutine(ReturnFromAdditiveSceneCoroutine(data));
     }
+    #endregion
 
+    #region Load Coroutines
     public IEnumerator LoadSceneCoroutine(string destinationScene, int destinationPassage, bool reverseLookingAt)
     {
         loading = true;
@@ -282,39 +285,9 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         inAdditive = false;
         loading = false;
     }
+    #endregion
 
-    private void DisableControl()
-    {
-        InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
-        interactionController.DestroyInteractions();
-        interactionController.SetInteractivity(false);
-
-        DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
-        dualCharacterController.SetMobility(false);
-        dualCharacterController.SetSwitchAvailability(false);
-    }
-
-    private void EnableControl()
-    {
-        PlayerManager.Instance.GetInteractionController().SetInteractivity(true);
-        PlayerManager.Instance.GetDualCharacterController().SetSwitchAvailability(true);
-    }
-
-    public void SaveSceneProgress()
-    {
-        GameObject rootDynamicObjects = GameObject.Find(GlobalConstants.PathDynamicObjectsRoot);
-        Dictionary<string, ObjectState> objectStates = PersistenceUtils.SaveObjects(rootDynamicObjects);
-        string sceneName = SceneManager.GetActiveScene().name;
-        if (inGameProgress.scenes.ContainsKey(sceneName))
-        {
-            inGameProgress.scenes[sceneName] = objectStates;
-        }
-        else
-        {
-            inGameProgress.scenes.Add(sceneName, objectStates);
-        }
-    }
-
+    #region Load Data Functions
     private void LoadPlayer()
     {
         PlayerData playerData = inGameProgress.player;
@@ -478,7 +451,57 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         return position;
     }
+    #endregion
 
+    #region Load Player Control
+    private void EnableControl()
+    {
+        PlayerManager.Instance.GetInteractionController().SetInteractivity(true);
+        PlayerManager.Instance.GetDualCharacterController().SetSwitchAvailability(true);
+    }
+
+    private void DisableControl()
+    {
+        InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
+        interactionController.DestroyInteractions();
+        interactionController.SetInteractivity(false);
+
+        DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
+        dualCharacterController.SetMobility(false);
+        dualCharacterController.SetSwitchAvailability(false);
+    }
+    #endregion
+
+    #region Save Functions
+    public void SaveSceneProgress()
+    {
+        GameObject rootDynamicObjects = GameObject.Find(GlobalConstants.PathDynamicObjectsRoot);
+        Dictionary<string, ObjectState> objectStates = PersistenceUtils.SaveObjects(rootDynamicObjects);
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (inGameProgress.scenes.ContainsKey(sceneName))
+        {
+            inGameProgress.scenes[sceneName] = objectStates;
+        }
+        else
+        {
+            inGameProgress.scenes.Add(sceneName, objectStates);
+        }
+    }
+
+    public void SaveKeyAction(string key, string value)
+    {
+        if (inGameProgress.keyActions.ContainsKey(key))
+        {
+            inGameProgress.keyActions[key] = value;
+        }
+        else
+        {
+            inGameProgress.keyActions.Add(key, value);
+        }
+    }
+    #endregion
+
+    #region Auxiliar Functions
     public IEnumerator Fade(bool fadeToBlack)
     {
         if (!isFading)
@@ -533,6 +556,12 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         paused = pause;
     }
 
+    public string GetKeyAction(string key)
+    {
+        return inGameProgress.keyActions[key];
+    }
+    #endregion
+
     public InGameProgress Progress { get => inGameProgress; }
     public GameObject PlayerUtils { get => playerUtils; }
     public string UnselectedScene { get => unselectedScene; set => unselectedScene = value; }
@@ -541,4 +570,5 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     public bool InAdditive { get => inAdditive; set => inAdditive = value; }
     public bool LoadSceneOnSwitch { get => unselectedScene != null && !SceneManager.GetActiveScene().name.Equals(unselectedScene); }
     public Dictionary<string, UnityEngine.Object> ObjectsData { get => objectsData; }
+
 }

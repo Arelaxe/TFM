@@ -26,11 +26,4 @@ public static class GlobalConstants
     // Control Schemes
     public static string ControlSchemeKeyboard = "Keyboard&Mouse";
     public static string ControlSchemeGamepad = "Gamepad";
-
-    // Custom Data
-    // Hacking
-    public static string HackingInteractable = "hackingInteractable";
-    public static string HackingItem = "hackingItem";
-    public static string HackingDocument = "hackingDocument";
-    public static string HackingAction = "hackingAction";
 }

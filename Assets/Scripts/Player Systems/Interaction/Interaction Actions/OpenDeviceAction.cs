@@ -15,7 +15,7 @@ public class OpenDeviceAction : Action
         PlayerControl();
 
         Dictionary<string, UnityEngine.Object> deviceData = new();
-        deviceData.Add(GlobalConstants.HackingAction, hackingAction);
+        deviceData.Add(HackingAction.ObjectName, hackingAction);
         SceneLoadManager.Instance.LoadAdditiveScene(deviceScene, deviceData);
     }
 

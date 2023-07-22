@@ -16,7 +16,8 @@ public class HackingAction : Action
         Maximum = 2
     }
 
-    private static readonly string HACKING_STATUS = "hackingStatus";
+    public static readonly string ObjectName = "hackingAction";
+    private static readonly string Status = "hackingStatus";
 
     private void Start()
     {
@@ -39,11 +40,11 @@ public class HackingAction : Action
 
     private void PrepareToSaveObjectState(ObjectState objectState)
     {
-        objectState.extendedData[HACKING_STATUS] = status;
+        objectState.extendedData[Status] = status;
     }
 
     private void LoadObjectState(ObjectState objectState)
     {
-        status = PersistenceUtils.Get<HackingStatus>(objectState.extendedData[HACKING_STATUS]);
+        status = PersistenceUtils.Get<HackingStatus>(objectState.extendedData[Status]);
     }
 }

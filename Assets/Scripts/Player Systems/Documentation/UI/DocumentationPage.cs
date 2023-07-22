@@ -48,6 +48,7 @@ public class DocumentationPage : Page
 
         document.OnElementSelect += HandleSelect;
         document.OnElementSubmit += HandleSubmit;
+        document.OnElementDoubleSubmit += HandleDoubleSubmit;
     }
 
     public void UpdateSelected(Item item, DocumentElement documentItem)
@@ -56,9 +57,9 @@ public class DocumentationPage : Page
         description.SetNavigation(documentItem);
 
         HackingExtension extension = PlayerManager.Instance.GetInGameMenuController().GetHackingExtension();
-        if (extension)
+        if (!extension)
         {
-            extension.SetDocument(item);
+            description.Select();
         }
     }
 
@@ -97,5 +98,15 @@ public class DocumentationPage : Page
     private void HandleSubmit(DocumentElement document)
     {
         OnDescriptionRequested?.Invoke(elementList.IndexOf(document), document);
+    }
+
+    private void HandleDoubleSubmit(DocumentElement document)
+    {
+        HackingExtension extension = PlayerManager.Instance.GetInGameMenuController().GetHackingExtension();
+        if (extension)
+        {
+            extension.SetDocument(PlayerManager.Instance.GetDocumentationController().SelectedDocument);
+            extension.SelectContinueButton();
+        }
     }
 }

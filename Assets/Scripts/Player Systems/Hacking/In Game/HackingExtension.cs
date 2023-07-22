@@ -9,11 +9,18 @@ public class HackingExtension : MonoBehaviour
     private Image itemImage;
     [SerializeField]
     private TextMeshProUGUI documentTitle;
+    [SerializeField]
+    private Button continueButton;
 
     private GameObject interactable;
     private string scene;
     private Item item;
     private Item document;
+
+    private void OnEnable()
+    {
+        Debug.Log("HOLA");
+    }
 
     public void SetItem(Item item)
     {
@@ -41,12 +48,17 @@ public class HackingExtension : MonoBehaviour
         documentTitle.text = "";
     }
 
+    public void SelectContinueButton()
+    {
+        continueButton.Select();
+    }
+
     public void OpenMiniGame()
     {
         Dictionary<string, Object> hackingData = new();
-        hackingData.Add(GlobalConstants.HackingInteractable, interactable);
-        hackingData.Add(GlobalConstants.HackingItem, item);
-        hackingData.Add(GlobalConstants.HackingDocument, document);
+        hackingData.Add(HackingManager.HackingInteractable, interactable);
+        hackingData.Add(HackingManager.HackingItem, item);
+        hackingData.Add(HackingManager.HackingDocument, document);
 
         PlayerManager.Instance.GetInGameMenuController().Hide();
 

@@ -58,6 +58,10 @@ public class HackingManager : MonoBehaviour
 
     private bool firstRun;
 
+    public static readonly string HackingInteractable = "hackingInteractable";
+    public static readonly string HackingItem = "hackingItem";
+    public static readonly string HackingDocument = "hackingDocument";
+
     private void Start()
     {
         InitUI();
@@ -108,13 +112,13 @@ public class HackingManager : MonoBehaviour
 
     private void InitPowerUps()
     {
-        Item selectedItem = (Item) SceneLoadManager.Instance.ObjectsData[GlobalConstants.HackingItem];
+        Item selectedItem = (Item) SceneLoadManager.Instance.ObjectsData[HackingItem];
         if (item.Equals(selectedItem))
         {
             itemBlock.SetActive(false);
         }
 
-        Item selectedDocument = (Item) SceneLoadManager.Instance.ObjectsData[GlobalConstants.HackingDocument];
+        Item selectedDocument = (Item) SceneLoadManager.Instance.ObjectsData[HackingDocument];
         if (document.Equals(selectedDocument))
         {
             documentBlock.SetActive(false);
@@ -171,7 +175,7 @@ public class HackingManager : MonoBehaviour
             yield return StartCoroutine(energyContainer.AddEnergy(flow.Energy));
         }
 
-        GameObject interactableGo = (GameObject)SceneLoadManager.Instance.ObjectsData[GlobalConstants.HackingInteractable];
+        GameObject interactableGo = (GameObject)SceneLoadManager.Instance.ObjectsData[HackingInteractable];
         Interactable interactable = interactableGo.GetComponent<Interactable>();
         HackingAction hackingAction = interactableGo.GetComponent<HackingAction>();
 

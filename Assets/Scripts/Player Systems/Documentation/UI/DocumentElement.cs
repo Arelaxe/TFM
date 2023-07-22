@@ -9,7 +9,9 @@ public class DocumentElement : Selectable, IPointerClickHandler, ISubmitHandler
     [SerializeField]
     private TMP_Text title;
 
-    public event Action<DocumentElement> OnElementSelect, OnElementSubmit;
+    public event Action<DocumentElement> OnElementSelect, OnElementSubmit, OnElementDoubleSubmit;
+
+    private bool submit = false;
 
     public void SetData(string title)
     {
@@ -21,23 +23,46 @@ public class DocumentElement : Selectable, IPointerClickHandler, ISubmitHandler
         return title;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (eventData.button == PointerEventData.InputButton.Left)
-        {
-            OnElementSubmit?.Invoke(this);
-        }
-    }
-
     public override void OnSelect(BaseEventData eventData)
     {
         base.OnSelect(eventData);
+        submit = false;
         OnElementSelect?.Invoke(this);
+    }
+
+    public override void OnDeselect(BaseEventData eventData)
+    {
+        base.OnDeselect(eventData);
+        submit = false;
     }
 
     public void OnSubmit(BaseEventData eventData)
     {
-        OnElementSubmit?.Invoke(this);
+        if (!submit)
+        {
+            submit = true;
+            OnElementSubmit?.Invoke(this);
+        }
+        else
+        {
+            submit = false;
+            OnElementDoubleSubmit?.Invoke(this);
+        }
     }
-    
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            if (eventData.clickCount == 1)
+            {
+                OnElementSubmit?.Invoke(this);
+            }
+            else if (eventData.clickCount > 1)
+            {
+                OnElementDoubleSubmit?.Invoke(this);
+            }
+        }
+    }
+
 }
