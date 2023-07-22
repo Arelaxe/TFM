@@ -51,12 +51,20 @@ public class HackingManager : MonoBehaviour
     private Color32 successColor;
     [SerializeField]
     private Color32 maximumColor;
+    [Space]
+    [SerializeField]
+    private GameObject tutorial;
+    private bool tutorialWasActive;
 
     [Header("Camera")]
     [SerializeField]
     private PolygonCollider2D bounds;
 
     private bool firstRun;
+
+    public static readonly string HackingInteractable = "hackingInteractable";
+    public static readonly string HackingItem = "hackingItem";
+    public static readonly string HackingDocument = "hackingDocument";
 
     private void Start()
     {
@@ -79,6 +87,11 @@ public class HackingManager : MonoBehaviour
     {
         canvas.worldCamera = Camera.main;
         StartCoroutine(FadeCanvasGroup(status.GetComponent<CanvasGroup>(), false));
+
+        if (SceneLoadManager.Instance.GetKeyAction(KeyActions.TutorialHacking) == null)
+        {
+            tutorial.SetActive(true);
+        }
     }
 
     private void InitInputActions()
@@ -108,13 +121,13 @@ public class HackingManager : MonoBehaviour
 
     private void InitPowerUps()
     {
-        Item selectedItem = (Item) SceneLoadManager.Instance.ObjectsData[GlobalConstants.HackingItem];
+        Item selectedItem = (Item) SceneLoadManager.Instance.ObjectsData[HackingItem];
         if (item.Equals(selectedItem))
         {
             itemBlock.SetActive(false);
         }
 
-        Item selectedDocument = (Item) SceneLoadManager.Instance.ObjectsData[GlobalConstants.HackingDocument];
+        Item selectedDocument = (Item) SceneLoadManager.Instance.ObjectsData[HackingDocument];
         if (document.Equals(selectedDocument))
         {
             documentBlock.SetActive(false);
@@ -142,7 +155,7 @@ public class HackingManager : MonoBehaviour
         bool canRun = energyFlow != null;
         if (energyFlow)
         {
-            canRun = canRun && !energyFlow.GetComponent<EnergyFlowController>().CanMove;
+            canRun = canRun && !energyFlow.GetComponent<EnergyFlowController>().CanMove && !tutorial.activeSelf && !tutorialWasActive;
             if (!firstRun)
             {
                 canRun = canRun && status.GetComponent<CanvasGroup>().alpha == 1;
@@ -152,6 +165,7 @@ public class HackingManager : MonoBehaviour
                 canRun = canRun && controls.GetComponent<CanvasGroup>().alpha == 1;
             }
         }
+        tutorialWasActive = tutorial.activeSelf;
         return canRun;
     }
 
@@ -171,7 +185,7 @@ public class HackingManager : MonoBehaviour
             yield return StartCoroutine(energyContainer.AddEnergy(flow.Energy));
         }
 
-        GameObject interactableGo = (GameObject)SceneLoadManager.Instance.ObjectsData[GlobalConstants.HackingInteractable];
+        GameObject interactableGo = (GameObject)SceneLoadManager.Instance.ObjectsData[HackingInteractable];
         Interactable interactable = interactableGo.GetComponent<Interactable>();
         HackingAction hackingAction = interactableGo.GetComponent<HackingAction>();
 
@@ -205,6 +219,7 @@ public class HackingManager : MonoBehaviour
         }
 
         yield return StartCoroutine(FadeCanvasGroup(status.GetComponent<CanvasGroup>(), false));
+        SceneLoadManager.Instance.SaveKeyAction(KeyActions.TutorialHacking, "completed");
 
         yield return new WaitForSeconds(1.5f);
         SceneLoadManager.Instance.ReturnFromAdditiveScene();

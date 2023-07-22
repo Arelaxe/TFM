@@ -15,7 +15,7 @@ public class DeviceWindowIcon : DeviceIcon
 
     public override void Execute()
     {
-        HackingAction hackingAction = (HackingAction) SceneLoadManager.Instance.ObjectsData[GlobalConstants.HackingAction];
+        HackingAction hackingAction = (HackingAction) SceneLoadManager.Instance.ObjectsData[HackingAction.ObjectName];
         HackingAction.HackingStatus status = hackingAction != null ? hackingAction.status : HackingAction.HackingStatus.Failed;
 
         if (((int)status) < ((int)accessLevel))

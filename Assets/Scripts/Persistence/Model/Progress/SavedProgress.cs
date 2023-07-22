@@ -6,4 +6,5 @@ public class SavedProgress
 {
     public PlayerData player;
     public Dictionary<string, Dictionary<string, ObjectState>> scenes;
+    public Dictionary<string, string> keyActions;
 }
