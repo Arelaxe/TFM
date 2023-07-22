@@ -558,7 +558,12 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     public string GetKeyAction(string key)
     {
-        return inGameProgress.keyActions[key];
+        string value = null;
+        if (inGameProgress.keyActions.ContainsKey(key))
+        {
+            value = inGameProgress.keyActions[key];
+        }
+        return value;
     }
     #endregion
 

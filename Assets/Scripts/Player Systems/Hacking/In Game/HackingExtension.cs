@@ -11,6 +11,8 @@ public class HackingExtension : MonoBehaviour
     private TextMeshProUGUI documentTitle;
     [SerializeField]
     private Button continueButton;
+    [SerializeField]
+    private GameObject tutorialBox;
 
     private GameObject interactable;
     private string scene;
@@ -19,7 +21,8 @@ public class HackingExtension : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("HOLA");
+        string tutorialHacking = SceneLoadManager.Instance.GetKeyAction(KeyActions.TutorialHacking);
+        tutorialBox.GetComponent<CanvasGroup>().alpha = tutorialHacking == null ? 1 : 0;
     }
 
     public void SetItem(Item item)
