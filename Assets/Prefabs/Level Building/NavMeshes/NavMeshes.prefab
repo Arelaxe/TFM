@@ -49,6 +49,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6531162029471963544, guid: d7ec5b2613d4f374d8e5b0bffc250388, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531162029471963544, guid: d7ec5b2613d4f374d8e5b0bffc250388, type: 3}
       propertyPath: m_UseGeometry
       value: 1
       objectReference: {fileID: 0}
@@ -117,6 +121,10 @@ PrefabInstance:
     - target: {fileID: 7309684496828241720, guid: 50d33bed47b45aa43964782048cded22, type: 3}
       propertyPath: m_Name
       value: NavMesh Spiritual
+      objectReference: {fileID: 0}
+    - target: {fileID: 7309684496828241725, guid: 50d33bed47b45aa43964782048cded22, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7309684496828241725, guid: 50d33bed47b45aa43964782048cded22, type: 3}
       propertyPath: m_UseGeometry

@@ -5,6 +5,9 @@ using UnityEngine.UI;
 public class DocumentDescription : MonoBehaviour
 {
     [SerializeField]
+    private Image selectionPanel;
+
+    [SerializeField]
     private Image image;
 
     [SerializeField]
@@ -36,7 +39,14 @@ public class DocumentDescription : MonoBehaviour
         image.sprite = sprite;
         this.title.text = title;
         this.description.text = description;
-        
+
+        Color imageColor = image.color;
+        imageColor.a = string.IsNullOrEmpty(description) ? 0.8f : 0.2f;
+        image.color = imageColor;       
+    }
+
+    public void Select()
+    {
         scrollbar.value = 1;
         scrollbar.Select();
     }
@@ -47,5 +57,15 @@ public class DocumentDescription : MonoBehaviour
         navToSelected.mode = Navigation.Mode.Explicit;
         navToSelected.selectOnLeft = element;
         scrollbar.navigation = navToSelected;
+    }
+
+    public void EnableSelectionPanel()
+    {
+        selectionPanel.enabled = true;
+    }
+
+    public void DisableSelectionPanel()
+    {
+        selectionPanel.enabled = false;
     }
 }

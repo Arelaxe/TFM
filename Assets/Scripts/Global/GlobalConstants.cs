@@ -5,11 +5,15 @@ public static class GlobalConstants
     public static string TagPlayerInit = "PlayerInit";
     public static string TagPassage = "Passage";
     public static string TagVirtualCamera = "VCam";
+    public static string TagDeviceManager = "DeviceManager";
 
     // Layers
     public static int LayerIntTerrenal = 6;
     public static int LayerIntSpiritual = 7;
     public static string LayerInteractable = "Interactable";
+
+    // Sorting layers
+    public static string SortingLayerForeground = "Foreground";
 
     // Paths
     public static string PathBoundaries = "/Level Structure/Boundaries";

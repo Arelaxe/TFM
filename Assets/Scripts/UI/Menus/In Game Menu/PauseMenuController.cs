@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class PauseMenuController : MonoBehaviour
@@ -48,6 +49,8 @@ public class PauseMenuController : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI confirmMessage;
+
+    private GameObject lastSelected;
 
     private static string CONFIRM_MESSAGE_SAVE = "¿Seguro que quieres guardar la partida?";
     private static string CONFIRM_MESSAGE_SAVE_AND_QUIT = "¿Seguro que quieres salir del juego? Se guardará el progreso actual.";
@@ -99,12 +102,22 @@ public class PauseMenuController : MonoBehaviour
 
     public void Pause(bool pause)
     {
+        if (pause)
+        {
+            lastSelected = EventSystem.current.currentSelectedGameObject;
+        }
+
         SceneLoadManager.Instance.Pause(pause);
 
         background.enabled = pause;
 
         CheckSaveGameAvailable();
         ShowPage(pause, mainPage, resumeButton);
+
+        if (!pause)
+        {
+            EventSystem.current.SetSelectedGameObject(lastSelected);
+        }
     }
 
     public void OpenControlsPage()

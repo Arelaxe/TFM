@@ -57,7 +57,7 @@ public class InventoryPage : Page
         elementList.Add(item);
 
         item.OnItemSelected += HandleSelect;
-        item.OnItemDoubleSubmit += HandleSwitch;
+        item.OnItemDoubleSubmit += HandleDoubleSubmit;
 
         item.OnItemClicked += HandleSelect;
         item.OnItemBeginDrag += HandleBeginDrag;
@@ -103,12 +103,6 @@ public class InventoryPage : Page
             else
             {
                 elementList2[itemIndex].Select();
-            }
-
-            HackingExtension extension = PlayerManager.Instance.GetInGameMenuController().GetHackingExtension();
-            if (extension)
-            {
-                extension.SetItem(item);
             }
         }
         else
@@ -267,17 +261,26 @@ public class InventoryPage : Page
         }
     }
 
-    private void HandleSwitch(InventoryElement item)
+    private void HandleDoubleSubmit(InventoryElement item)
     {
-        int currentSubmitInventoryIndex = elementList.Contains(item) ? 1 : 2;
-        int switchInventoryIndex = elementList.Contains(item) ? 2 : 1;
-
-        int currentSubmitItemIndex = switchInventoryIndex == 1 ? elementList2.IndexOf(item) : elementList.IndexOf(item);
-        int switchItemIndex = switchInventoryIndex == 1 ? elementList.Count - 1 : elementList2.Count - 1;
-
-        if (PlayerManager.Instance.Grouped)
+        HackingExtension extension = PlayerManager.Instance.GetInGameMenuController().GetHackingExtension();
+        if (extension)
         {
-            OnSwitchInventory?.Invoke(currentSubmitInventoryIndex, currentSubmitItemIndex, switchInventoryIndex, switchItemIndex);
+            extension.SetItem(PlayerManager.Instance.GetInventoryController().SelectedItem);
+            PlayerManager.Instance.GetDocumentationController().Show();
+        }
+        else
+        {
+            int currentSubmitInventoryIndex = elementList.Contains(item) ? 1 : 2;
+            int switchInventoryIndex = elementList.Contains(item) ? 2 : 1;
+
+            int currentSubmitItemIndex = switchInventoryIndex == 1 ? elementList2.IndexOf(item) : elementList.IndexOf(item);
+            int switchItemIndex = switchInventoryIndex == 1 ? elementList.Count - 1 : elementList2.Count - 1;
+
+            if (PlayerManager.Instance.Grouped)
+            {
+                OnSwitchInventory?.Invoke(currentSubmitInventoryIndex, currentSubmitItemIndex, switchInventoryIndex, switchItemIndex);
+            }
         }
     }
     

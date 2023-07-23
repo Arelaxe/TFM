@@ -120,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contentPanel: {fileID: 228749317946877901}
   m_DialogPanel: {fileID: 0}
+  buttons: {fileID: 0}
   element: {fileID: 1899631466687718689, guid: 53bf010e09a6b334292fe11d7f6694dc, type: 3}
   description: {fileID: 5945334502311105891}
   scrollbar: {fileID: 123731458927354115}

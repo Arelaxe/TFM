@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 77414615}
   - component: {fileID: 77414614}
   - component: {fileID: 77414617}
+  - component: {fileID: 77414618}
   - component: {fileID: 77414612}
   m_Layer: 3
   m_Name: Banana
@@ -407,6 +408,12 @@ MonoBehaviour:
     item: {fileID: 0}
     reusable: 0
     action: {fileID: 77414617}
+  - name: Acceder
+    type: 0
+    available: 1
+    item: {fileID: 0}
+    reusable: 0
+    action: {fileID: 77414618}
 --- !u!61 &77414615
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -498,6 +505,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hackingScene: HackingMinigame
+  status: 0
+--- !u!114 &77414618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77414610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31ca47337404a940adf1e501b3e624c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deviceScene: Desktop Computer
+  hackingAction: {fileID: 77414617}
 --- !u!213 &114874539
 Sprite:
   m_ObjectHideFlags: 0

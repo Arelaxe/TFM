@@ -8,6 +8,8 @@ public class DocumentationController : PageController
     [SerializeField]
     private Documentation documentation;
 
+    private Item selectedDocument;
+
     public override Page Page => page;
 
     public override string MenuAction => PlayerConstants.ActionDocumentation;
@@ -46,8 +48,11 @@ public class DocumentationController : PageController
         {
             document = documentation.GetItems()[documentIndex];
         }
+
+        selectedDocument = document;
         page.UpdateSelected(document, documentItem);
     }
 
     public Documentation Documents { get => documentation; }
+    public Item SelectedDocument { get => selectedDocument; }
 }
