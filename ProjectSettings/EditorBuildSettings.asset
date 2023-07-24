@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Devices/Desktop Computer.unity
     guid: 0301168589eee6147bbc7ff3d6c9a86f
+  - enabled: 1
+    path: Assets/Scenes/HallScene.unity
+    guid: 210fca5357d809143b97daecc7422eeb
+  - enabled: 1
+    path: Assets/Scenes/OfficeScene.unity
+    guid: da7d567294af9ea4fb2a55acfac7e778
   m_configObjects: {}
