@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbd2c1887a808da4b8f0a6cec8d8b890, type: 3}
-  m_Name: Line 1
+  m_Script: {fileID: 11500000, guid: abaa1d01ebe65f6469c9f7f9cd89f2dc, type: 3}
+  m_Name: Default Choice Node
   m_EditorClassIdentifier: 
-  m_Speaker: {fileID: 11400000, guid: 9662b2e36d8422e49a357ca50d445522, type: 2}
-  m_Text: "Aqu\xED puedes leer los documentos que encuentras durante la aventura
-    haciendo click sobre su nombre"
+  m_DialogueLine: {fileID: 11400000, guid: 72a6a7ceeed2b0c448ab5282ce1b1b9a, type: 2}
+  m_NextNode: {fileID: 0}

@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbd2c1887a808da4b8f0a6cec8d8b890, type: 3}
-  m_Name: Line 1
+  m_Script: {fileID: 11500000, guid: d150190ca6408f1418b81dcb81e9f740, type: 3}
+  m_Name: Tutorial Kappa Dialogue
   m_EditorClassIdentifier: 
-  m_Speaker: {fileID: 11400000, guid: 9662b2e36d8422e49a357ca50d445522, type: 2}
-  m_Text: "Aqu\xED puedes leer los documentos que encuentras durante la aventura
-    haciendo click sobre su nombre"
+  m_FirstNode: {fileID: 11400000, guid: e48eea2e3fb03b94f840a54ab0190391, type: 2}

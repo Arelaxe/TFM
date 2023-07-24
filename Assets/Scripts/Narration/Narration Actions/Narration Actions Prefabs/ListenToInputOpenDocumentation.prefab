@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2092d214d24ec24ba2e7b516db95862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  opensPopup: 1
+  closesPopups: 1
+  turnOffSwitchPageAvailability: 0
+  popupToOpen: {fileID: 2698021639399333441, guid: 28338588ebc6fc34b81d6d989133fcf0, type: 3}
   action: Documentation
   dialogueRequestEvent:
     m_PersistentCalls:

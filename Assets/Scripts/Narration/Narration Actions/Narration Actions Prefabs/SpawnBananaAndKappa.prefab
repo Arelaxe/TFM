@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9030093316580526046}
-  - component: {fileID: 1692540209443184572}
+  - component: {fileID: 455826859612755337}
   m_Layer: 0
-  m_Name: ListenToInputCloseInventory
+  m_Name: SpawnBananaAndKappa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1692540209443184572
+--- !u!114 &455826859612755337
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,26 +41,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1948895477211506953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2092d214d24ec24ba2e7b516db95862, type: 3}
+  m_Script: {fileID: 11500000, guid: 782cb3e7e18819644a6a072c9befd4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   opensPopup: 1
   closesPopups: 1
-  turnOffSwitchPageAvailability: 1
-  popupToOpen: {fileID: 2698021639399333441, guid: 58f64a1526d85794eab3fe03b2d7009b, type: 3}
-  action: Inventory
-  dialogueRequestEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: ba30d10c4ccf61c4e8119de0f19b641b, type: 2}
-        m_TargetAssemblyTypeName: DialogueChannel, Assembly-CSharp
-        m_MethodName: RaiseRequestDialogue
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 1e3a0dfa4f0019145941f07eb4f4ac18, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  turnOffSwitchPageAvailability: 0
+  popupToOpen: {fileID: 2698021639399333441, guid: 2c95f5d3681a5d54ea07571840d974a2, type: 3}
+  object1: {fileID: 405107839435377968, guid: d6cf879f5ab1acc4cb9aadc3a94af161, type: 3}
+  object2: {fileID: 7322570668573286038, guid: bffa05fa33ba64648bd62943c0cf288f, type: 3}
+  position1X: 6
+  position1Y: -5
+  position1Z: 0
+  position2X: -6
+  position2Y: -5
+  position2Z: 0
