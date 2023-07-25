@@ -15,17 +15,17 @@ MonoBehaviour:
   newGame: 1
   player:
     selectedCharacter:
-      scene: PlunkerScene 1
-      positionX: 3
-      positionY: -8.5
+      scene: TutorialScene
+      positionX: 0
+      positionY: -4
       verticalMovement: 1
-      positiveMovement: 1
+      positiveMovement: 0
     unselectedCharacter:
-      scene: PlunkerScene 1
-      positionX: 3
-      positionY: -8.5
+      scene: TutorialScene
+      positionX: -1
+      positionY: -4
       verticalMovement: 1
-      positiveMovement: 1
+      positiveMovement: 0
     selectedCharacterOne: 1
     grouped: 1
     itemsOne:

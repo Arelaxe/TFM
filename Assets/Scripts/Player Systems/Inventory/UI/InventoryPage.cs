@@ -203,10 +203,6 @@ public class InventoryPage : Page
         {
             OnDescriptionRequested?.Invoke(2, elementList2.IndexOf(item));
         }
-
-        if (dialogueMode){
-            ItemShowDialog();
-        }
     }
 
     private void ItemShowDialog(){
@@ -288,6 +284,38 @@ public class InventoryPage : Page
         }
     }
     
+    // Buttons
+
+    public void OnExit(){
+        DialoguePanel.SetActive(true);
+        DialogueMode = false;
+        PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(true);
+        Hide();
+    }
+
+    public void OnShowObject(){
+        DialoguePanel.SetActive(false);
+        dialogueMode = false;
+        InventoryController invController = PlayerManager.Instance.GetInventoryController();
+        ChoiceDialogueNode choiceNode = (ChoiceDialogueNode) invController.Channel.currentNode;
+        DialogueInventoryChoice[] invChoices = choiceNode.InventoryChoices;
+        bool foundItem = false;
+
+        for (int i = 0; i < invChoices.Length && !foundItem; i++){
+            if (invChoices[i].Item.ID == invController.SelectedItem.ID){
+                invController.Channel.RaiseRequestDialogueNode(invChoices[i].ChoiceNode);
+                foundItem = true;
+            }
+        }
+
+        if (!foundItem){
+            invController.Channel.RaiseRequestDialogueNode(choiceNode.DefaultInventoryChoice);
+        }
+
+        PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(true);
+        base.Hide();
+    }
+
     // Auxiliar methods
 
     private RectTransform GetCharacterContentPanel(bool characterOne)

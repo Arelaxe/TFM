@@ -4,11 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Passage
+  - TemporalPopups
   - PlayerInit
-  - VCam
   - DynamicObjects
-  - DeviceManager
+  - VCam
+  - Temporary
   layers:
   - Default
   - TransparentFX
@@ -45,10 +45,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Background
-    uniqueID: 1637097859
-    locked: 0
-  - name: Foreground
-    uniqueID: 1183464629
     locked: 0
