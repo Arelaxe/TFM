@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final Game/Tutorial/TutorialScene.unity
     guid: 98acec34a3c45b34a9af8a84869d7c80
+  - enabled: 1
+    path: Assets/Scenes/Final Game/Intro Scene/IntroScene.unity
+    guid: fb41fa136e131304fa0ad8566b1eb09b
   m_configObjects: {}
