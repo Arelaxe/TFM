@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9030093316580526046}
-  - component: {fileID: 455826859612755337}
+  - component: {fileID: 4487312802045701505}
   m_Layer: 0
-  m_Name: SpawnBananaAndKappa
+  m_Name: SpawnStone 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &455826859612755337
+--- !u!114 &4487312802045701505
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,18 +41,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1948895477211506953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 782cb3e7e18819644a6a072c9befd4ea, type: 3}
+  m_Script: {fileID: 11500000, guid: a442af741f868bc47905d52ce21361c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   opensPopup: 1
   closesPopups: 1
   turnOffSwitchPageAvailability: 0
-  popupToOpen: {fileID: 2698021639399333441, guid: 2c95f5d3681a5d54ea07571840d974a2, type: 3}
-  object1: {fileID: 405107839435377968, guid: d6cf879f5ab1acc4cb9aadc3a94af161, type: 3}
-  object2: {fileID: 7322570668573286038, guid: bffa05fa33ba64648bd62943c0cf288f, type: 3}
-  position1X: 7
-  position1Y: -5
-  position1Z: 0
-  position2X: -7
-  position2Y: -5
-  position2Z: 0
+  popupToOpen: {fileID: 2698021639399333441, guid: edcc046dee2aeb74eb9e7ca3c5fa0032, type: 3}
+  objectToSpawn: {fileID: 8287173383443809193, guid: 38cff1d20df086c40a9b3cf724f10310, type: 3}
+  positionX: 0
+  positionY: -3
+  positionZ: 0

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 796eefde6ce9fc740a78a45bc3360fcf, type: 3}
-  m_Name: Banana Choice Node
+  m_Name: Node 2
   m_EditorClassIdentifier: 
-  m_DialogueLine: {fileID: 11400000, guid: 56e2727ae5aaa3e4eb9e564d90f7e517, type: 2}
-  m_NextNode: {fileID: 11400000, guid: 064d591ea0a54e74fab233837fdf9ad7, type: 2}
-  m_Action: {fileID: 1948895477211506953, guid: c64ca843b405a5e4599759b584c3d3dc, type: 3}
+  m_DialogueLine: {fileID: 11400000, guid: 6c0c1ef7fe4f325469cc49e06e47c982, type: 2}
+  m_NextNode: {fileID: 0}
+  m_Action: {fileID: 1948895477211506953, guid: 5f827dc9d79956544be4522468eaf1e8, type: 3}
