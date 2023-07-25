@@ -29,7 +29,8 @@ public class NarrationAction : MonoBehaviour
 
     public virtual void EndAction(){
         if (opensPopup){
-            Instantiate(popupToOpen, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject popup = Instantiate(popupToOpen, new Vector3(0, 0, 0), Quaternion.identity);
+            popup.GetComponent<Canvas>().worldCamera = Camera.main;
         }
 
         if (turnOffSwitchPageAvailability){
