@@ -41,7 +41,7 @@ public class InteractionController : MonoBehaviour
     private void SetInteractionArea()
     {
         DualCharacterController playerController = PlayerManager.Instance.GetDualCharacterController();
-        Tuple<bool, bool> lookingAt = playerController.GetCharacterLookingAt(true);
+        Tuple<bool, bool> lookingAt = playerController.GetCharacterAnimator(true).GetCharacterLookingAt();
         BoxCollider2D playerCol = playerController.Collider;
         if (lookingAt.Item1)
         {
@@ -145,19 +145,30 @@ public class InteractionController : MonoBehaviour
 
     private void PerformInteraction(Interaction interaction)
     {
-        Action action = interaction.Action;
-        if (action)
+        interaction.Action.DoAction();
+        Action[] additionalActions = interaction.AdditionalActions;
+        if (additionalActions != null && additionalActions.Length > 0)
         {
-            if (interaction.RequiredItem && !interaction.Reusable)
+            for (int i = 0; i < additionalActions.Length; i++)
             {
-                PlayerManager.Instance.GetInventoryController().RemoveItem(interaction.RequiredItem);
+                additionalActions[i].DoAction();
             }
-            action.Execute();
+        }
+        interaction.IncreaseTimesExecuted();
 
-            if (action is TalkAction){
-                SetInteractivity(false);
-                DestroyInteractions();
-            }
+        if (interaction.RequiredItem && !interaction.Reusable)
+        {
+            PlayerManager.Instance.GetInventoryController().RemoveItem(interaction.RequiredItem);
+        }
+
+        if (interaction.Once)
+        {
+            interaction.SetAvailable(false);
+        }
+
+        if (!string.IsNullOrEmpty(interaction.OppositeName))
+        {
+            DestroyInteractions();
         }
     }
 

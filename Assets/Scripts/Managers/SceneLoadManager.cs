@@ -310,10 +310,10 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         }
 
         dualCharacterController.GetCharacter(true).transform.position = playerData.selectedCharacter.Position;
-        dualCharacterController.SetCharacterLookingAt(true, playerData.selectedCharacter.LookingAt);
+        dualCharacterController.GetCharacterAnimator(true).SetCharacterLookingAt(playerData.selectedCharacter.LookingAt);
 
         dualCharacterController.GetCharacter(false).transform.position = playerData.unselectedCharacter.Position;
-        dualCharacterController.SetCharacterLookingAt(false, playerData.unselectedCharacter.LookingAt);
+        dualCharacterController.GetCharacterAnimator(false).SetCharacterLookingAt(playerData.unselectedCharacter.LookingAt);
 
         dualCharacterController.SetCharacterMobility(true, true);
         dualCharacterController.SetCharacterMobility(false, true);
@@ -390,12 +390,12 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         Tuple<bool, bool> inSceneLookingAt = GetInSceneLookingAt(inSceneTransform, reverseLookingAt);
 
         dualCharacterController.GetCharacter(true).transform.position = inSceneTransform.position;
-        dualCharacterController.SetCharacterLookingAt(true, inSceneLookingAt);
+        dualCharacterController.GetCharacterAnimator(true).SetCharacterLookingAt(inSceneLookingAt);
 
         if (dualCharacterController.Grouped)
         {
             dualCharacterController.GetCharacter(false).transform.position = GetUnselectedCharacterPosition(inSceneTransform.position, inSceneLookingAt);
-            dualCharacterController.SetCharacterLookingAt(false, inSceneLookingAt);
+            dualCharacterController.GetCharacterAnimator(false).SetCharacterLookingAt(inSceneLookingAt);
         }
     }
 

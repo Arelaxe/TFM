@@ -23,18 +23,14 @@ public class DualCharacterController: MonoBehaviour
     private bool canMove = true;
     private bool canFollowerMove = true;
     private Vector2 inputMovement;
-    private Tuple<bool, bool> lookingAt1 = Tuple.Create(true, false);
-    private Tuple<bool, bool> lookingAt2 = Tuple.Create(true, false);
 
     // Group and switch
     [SerializeField]
     private GameObject character1;
     private NavMeshAgent navAgent1;
-    private Animator animator1;
     [SerializeField]
     private GameObject character2;
     private NavMeshAgent navAgent2;
-    private Animator animator2;
 
     private bool selectedCharacterOne = true;
     private bool canSwitch = true;
@@ -60,7 +56,6 @@ public class DualCharacterController: MonoBehaviour
         InitInputActions();
         InitSelectedPlayer();
         InitNavAgents();
-        InitAnimators();
         InitCamera();
     }
 
@@ -103,32 +98,15 @@ public class DualCharacterController: MonoBehaviour
 
     private void InitNavAgents()
     {
-        if (!navAgent1)
-        {
-            navAgent1 = character1.GetComponent<NavMeshAgent>();
-            InitNavAgent(navAgent1);
-        }
-        if (!navAgent2)
-        {
-            navAgent2 = character2.GetComponent<NavMeshAgent>();
-            InitNavAgent(navAgent2);
-        }
+        navAgent1 = character1.GetComponent<NavMeshAgent>();
+        navAgent2 = character2.GetComponent<NavMeshAgent>();
+        EnableNavAgents();
+    }
 
+    private void EnableNavAgents()
+    {
         navAgent1.enabled = !selectedCharacterOne;
         navAgent2.enabled = selectedCharacterOne;
-    }
-
-    private void InitNavAgent(NavMeshAgent navAgent)
-    {
-        navAgent.updateRotation = false;
-        navAgent.updateUpAxis = false;
-        navAgent.updatePosition = false;
-    }
-
-    private void InitAnimators()
-    {
-        animator1 = character1.GetComponent<Animator>();
-        animator2 = character2.GetComponent<Animator>();
     }
 
     private void InitCamera()
@@ -141,8 +119,6 @@ public class DualCharacterController: MonoBehaviour
     private void Move()
     {
         rb.velocity = inputMovement * playerParams.Speed;
-        SetMoveAnimParams(rb.velocity, selectedCharacterOne ? animator1 : animator2, false);
-
         if (rb.velocity.sqrMagnitude != 0)
         {
             PlayerManager.Instance.GetInteractionController().DestroyInteractions();
@@ -155,16 +131,16 @@ public class DualCharacterController: MonoBehaviour
         {
             if (selectedCharacterOne)
             {
-                FollowMovement(character1, character2, navAgent2, animator2);
+                FollowMovement(character1, character2, navAgent2);
             }
             else
             {
-                FollowMovement(character2, character1, navAgent1, animator1);
+                FollowMovement(character2, character1, navAgent1);
             }
         }
     }
 
-    private void FollowMovement(GameObject leader, GameObject follower, NavMeshAgent followerAgent, Animator followerAnimator)
+    private void FollowMovement(GameObject leader, GameObject follower, NavMeshAgent followerAgent)
     {
         if (followerAgent.speed == 0)
         {
@@ -172,80 +148,6 @@ public class DualCharacterController: MonoBehaviour
         }
         followerAgent.SetDestination(leader.transform.position);
         follower.transform.position = Vector3.SmoothDamp(follower.transform.position, followerAgent.nextPosition, ref followerVelocity, 0.1f);
-
-        SetMoveAnimParams(followerAgent.velocity, followerAnimator, true);
-    }
-
-    private void SetMoveAnimParams(Vector2 velocity, Animator characterAnimator, bool isFollower)
-    {
-        SetLookingAt(isFollower);
-        characterAnimator.SetInteger(PlayerConstants.AnimParamVelocity, (int)velocity.sqrMagnitude);
-        characterAnimator.SetBool(PlayerConstants.AnimParamVerticalMovement, IsCharacterOne(isFollower) ? lookingAt1.Item1 : lookingAt2.Item1);
-        characterAnimator.SetBool(PlayerConstants.AnimParamPositiveMovement, IsCharacterOne(isFollower) ? lookingAt1.Item2 : lookingAt2.Item2);
-    }
-
-    private void SetLookingAt(bool isFollower)
-    {
-        Vector2 velocity = rb.velocity;
-        if (isFollower)
-        {
-            velocity = IsCharacterOne(isFollower) ? navAgent1.velocity : navAgent2.velocity;
-        }
-
-        bool verticalMovement = IsCharacterOne(isFollower) ? lookingAt1.Item1 : lookingAt2.Item1;
-        bool positiveMovement = IsCharacterOne(isFollower) ? lookingAt1.Item2 : lookingAt2.Item2;
-
-        Tuple<bool, bool> currentLookingAt = CalculateLookingAt(velocity, verticalMovement, positiveMovement);
-        if (IsCharacterOne(isFollower))
-        {
-            lookingAt1 = currentLookingAt;
-        }
-        else
-        {
-            lookingAt2 = currentLookingAt;
-        }
-    }
-
-    private Tuple<bool, bool> CalculateLookingAt(Vector2 velocity, bool currentVerticalMovement, bool currentPositiveMovement)
-    {
-        int velocitySqr = (int)velocity.sqrMagnitude;
-        if (velocitySqr > 0)
-        {
-            currentVerticalMovement = Mathf.Abs(velocity.y) > Mathf.Abs(velocity.x);
-            if (currentVerticalMovement)
-            {
-                currentPositiveMovement = velocity.y > 0;
-            }
-            else
-            {
-                currentPositiveMovement = velocity.x > 0;
-            }
-        }
-        return Tuple.Create(currentVerticalMovement, currentPositiveMovement);
-    }
-
-    public void SetCharacterLookingAt(bool selected, Tuple<bool, bool> lookingAt)
-    {
-        Animator animator;
-        if (selected)
-        {
-            animator = selectedCharacterOne ? ref animator1 : ref animator2;
-        }
-        else
-        {
-            animator = selectedCharacterOne ? ref animator2 : ref animator1;
-        }
-        animator.SetInteger(PlayerConstants.AnimParamVelocity, 1);
-        animator.SetBool(PlayerConstants.AnimParamVerticalMovement, lookingAt.Item1);
-        animator.SetBool(PlayerConstants.AnimParamPositiveMovement, lookingAt.Item2);
-
-        StartCoroutine(DisableAnimVelocity(animator));
-    }
-
-    private IEnumerator DisableAnimVelocity(Animator animator)
-    {
-        yield return null;
-        animator.SetInteger(PlayerConstants.AnimParamVelocity, 0);
     }
 
     // Switch and group
@@ -277,10 +179,11 @@ public class DualCharacterController: MonoBehaviour
 
     public void SwitchCharacter()
     {
-        SwitchSelectedCharacter();
         rb.velocity = Vector2.zero;
+
+        SwitchSelectedCharacter();
         InitSelectedPlayer();
-        InitNavAgents();
+        EnableNavAgents();
 
         SwitchToCharacterCamera();
 
@@ -413,6 +316,11 @@ public class DualCharacterController: MonoBehaviour
         return character;
     }
 
+    public CharacterAnimator GetCharacterAnimator(bool selected)
+    {
+        return GetCharacter(selected).GetComponent<CharacterAnimator>();
+    }
+
     public bool IsCharacterActive(bool selected)
     {
         GameObject character = GetCharacter(selected);
@@ -424,20 +332,6 @@ public class DualCharacterController: MonoBehaviour
         GameObject character = GetCharacter(selected);
         character.GetComponent<SpriteRenderer>().enabled = active;
         character.GetComponent<Collider2D>().enabled = active;
-    }
-
-    public Tuple<bool, bool> GetCharacterLookingAt(bool selected)
-    {
-        Tuple<bool, bool> lookingAt;
-        if (selected)
-        {
-            lookingAt = selectedCharacterOne ? lookingAt1 : lookingAt2;
-        }
-        else
-        {
-            lookingAt = selectedCharacterOne ? lookingAt2 : lookingAt1;
-        }
-        return lookingAt;
     }
 
     public bool IsCharacterOne(bool isFollower)

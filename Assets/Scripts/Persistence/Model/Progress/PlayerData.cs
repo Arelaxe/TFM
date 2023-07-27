@@ -23,8 +23,8 @@ public class PlayerData
         selectedCharacterOne = dualCharacterController.SelectedCharacterOne;
         grouped = dualCharacterController.Grouped;
 
-        selectedCharacter.Save(selectedCharacterScene, dualCharacterController.GetCharacter(true).transform.position, dualCharacterController.GetCharacterLookingAt(true));
-        unselectedCharacter.Save(GetUnselectedCharacterScene(selectedCharacterScene), dualCharacterController.GetCharacter(false).transform.position, dualCharacterController.GetCharacterLookingAt(false));
+        selectedCharacter.Save(selectedCharacterScene, dualCharacterController.GetCharacter(true).transform.position, dualCharacterController.GetCharacterAnimator(true).GetCharacterLookingAt());
+        unselectedCharacter.Save(GetUnselectedCharacterScene(selectedCharacterScene), dualCharacterController.GetCharacter(false).transform.position, dualCharacterController.GetCharacterAnimator(false).GetCharacterLookingAt());
 
         SaveItems(itemsOne, PlayerManager.Instance.GetInventoryController().InventoryOne.GetItems());
         SaveItems(itemsTwo, PlayerManager.Instance.GetInventoryController().InventoryTwo.GetItems());

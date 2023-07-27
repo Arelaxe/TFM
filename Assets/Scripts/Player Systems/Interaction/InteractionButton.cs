@@ -22,7 +22,7 @@ public class InteractionButton : MonoBehaviour
     public void SetData(Interaction interaction)
     {
         Button tempButton = GetComponent<Button>();
-        tempButton.GetComponentInChildren<TextMeshProUGUI>().text = interaction.Name;
+        tempButton.GetComponentInChildren<TextMeshProUGUI>().text = interaction.IsOppositeStatus() ? interaction.OppositeName : interaction.Name;
 
         if (!interaction.Type.Equals(Interaction.ActionType.Normal))
         {

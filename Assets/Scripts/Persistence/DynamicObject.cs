@@ -20,6 +20,11 @@ public class DynamicObject : MonoBehaviour
         }
     }
 
+    public void GenerateGUID()
+    {
+        guid = System.Guid.NewGuid().ToString();
+    }
+
     public void Load(ObjectState objectState)
     {
         this.objectState = objectState;
