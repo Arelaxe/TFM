@@ -8,5 +8,9 @@ public class TalkAction : Action
     public override void Execute()
     {
         dialogueRequestEvent.Invoke();
+
+        InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
+        interactionController.SetInteractivity(false);
+        interactionController.DestroyInteractions();
     }
 }
