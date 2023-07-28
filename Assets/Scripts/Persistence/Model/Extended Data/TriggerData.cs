@@ -3,7 +3,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 
 [Serializable]
-public class TriggerData
+public class TriggerData : ActionData
 {
     public bool enabled;
     public float colliderOffsetX;
@@ -11,7 +11,7 @@ public class TriggerData
     public float colliderSizeX;
     public float colliderSizeY;
 
-    public TriggerData(bool enabled, float colliderOffsetX, float colliderOffsetY, float colliderSizeX, float colliderSizeY)
+    public TriggerData(int timesExecuted, bool enabled, float colliderOffsetX, float colliderOffsetY, float colliderSizeX, float colliderSizeY) : base(timesExecuted)
     {
         this.enabled = enabled;
         this.colliderOffsetX = colliderOffsetX;

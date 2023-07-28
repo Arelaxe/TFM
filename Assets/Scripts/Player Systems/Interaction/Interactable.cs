@@ -8,7 +8,7 @@ public class Interactable : MonoBehaviour
     private Interaction[] interactions;
     public Interaction[] Interactions { get => interactions; }
 
-    private static readonly string KEY_INTERACTIONS = "interactions";
+    private static readonly string KEY_INTERACTIONS = "Interactable";
 
     private void Start()
     {

@@ -14,8 +14,6 @@ public class BinaryMovable : MonoBehaviour
     private bool moving;
     private bool atTarget;
 
-    private static readonly string Data = "data";
-
     void Start()
     {
         initPosition = transform.position;
@@ -59,12 +57,12 @@ public class BinaryMovable : MonoBehaviour
 
     private void PrepareToSaveObjectState(ObjectState objectState)
     {
-        objectState.extendedData[Data] = new BinaryMovableData(initPosition.x, initPosition.y, moving, atTarget);
+        objectState.extendedData[GetType().Name] = new BinaryMovableData(initPosition.x, initPosition.y, moving, atTarget);
     }
 
     private void LoadObjectState(ObjectState objectState)
     {
-        BinaryMovableData data = PersistenceUtils.Get<BinaryMovableData>(objectState.extendedData[Data]);
+        BinaryMovableData data = PersistenceUtils.Get<BinaryMovableData>(objectState.extendedData[GetType().Name]);
         initPosition = data.InitPosition;
         targetPosition = initPosition + movement;
         moving = data.moving;
