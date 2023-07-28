@@ -27,7 +27,7 @@ public class Interactable : MonoBehaviour
         List<InteractionData> interactionDatas = new();
         foreach (Interaction interaction in interactions)
         {
-            interactionDatas.Add(new(interaction.Name, interaction.IsAvailable));
+            interactionDatas.Add(new(interaction.Name, interaction.IsAvailable, interaction.TimesExecuted));
         }
         objectState.extendedData[KEY_INTERACTIONS] = interactionDatas;
     }
@@ -38,6 +38,7 @@ public class Interactable : MonoBehaviour
         for (int i = 0; i < interactions.Length; i++)
         {
             interactions[i].SetAvailable(interactionDatas[i].available);
+            interactions[i].SetExecuted(interactionDatas[i].timesExecuted);
         }
     }
 }

@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Line 5
   m_EditorClassIdentifier: 
   m_Speaker: {fileID: 11400000, guid: 2eec0de6c511e1741bc7c0190fcd01c0, type: 2}
-  m_Text: "\xBFY t\xFA es que est\xE1s amargado las 24 horas del d\xEDa? \xBFO c\xF3mo
-    va la cosa?"
+  m_Text: "\xBFY t\xFA es que est\xE1s amargado siempre? \xBFO c\xF3mo va la cosa?"
