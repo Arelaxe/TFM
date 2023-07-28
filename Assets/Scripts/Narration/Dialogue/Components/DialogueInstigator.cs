@@ -61,4 +61,8 @@ public class DialogueInstigator : MonoBehaviour
         playerController.SetSwitchAvailability(true);
         interactionController.SetInteractivity(true);
     }
+
+    public DialogueSequencer GetDialogueSequencer(){
+        return m_DialogueSequencer;
+    }
 }

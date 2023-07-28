@@ -146,8 +146,11 @@ public class DualCharacterController: MonoBehaviour
         {
             followerAgent.speed = playerParams.Speed;
         }
-        followerAgent.SetDestination(leader.transform.position);
-        follower.transform.position = Vector3.SmoothDamp(follower.transform.position, followerAgent.nextPosition, ref followerVelocity, 0.1f);
+
+        if (followerAgent.isOnNavMesh){
+            followerAgent.SetDestination(leader.transform.position);
+            follower.transform.position = Vector3.SmoothDamp(follower.transform.position, followerAgent.nextPosition, ref followerVelocity, 0.1f);
+        }
     }
 
     // Switch and group

@@ -9,6 +9,7 @@ public static class PlayerConstants
     public static string ActionMousePos = "MousePosition";
     public static string ActionPause = "Pause";
     public static string ActionCancel = "Cancel";
+    public static string ActionSkip = "Skip";
 
     // Camera states
     public static string CameraStateRyo = "Ryo Camera State";

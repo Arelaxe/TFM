@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Skip",
+                    "type": "Button",
+                    "id": "d329f092-542b-40a7-a0dc-dac6e7bc58a1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -265,6 +274,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "458c8deb-4f2c-483b-9ad6-4ae17736b500",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "Hold(duration=0.8)",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "876a8dc7-87c4-41a5-8f9f-5b4bc3d7d6d4",
+                    "path": "<Gamepad>/select",
+                    "interactions": "Hold(duration=0.8)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Skip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

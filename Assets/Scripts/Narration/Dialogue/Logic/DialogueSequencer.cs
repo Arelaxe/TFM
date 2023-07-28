@@ -31,7 +31,7 @@ public class DialogueSequencer
             StartDialogueNode(dialogue.FirstNode);
         }
         else
-        {
+        {   
             throw new DialogueException("Can't start a dialogue when another is already running.");
         }
     }
@@ -90,5 +90,9 @@ public class DialogueSequencer
         {
             throw new DialogueException("Trying to stop a dialogue node that ins't running.");
         }
+    }
+
+    public Dialogue GetCurrentDialogue(){
+        return m_CurrentDialogue;
     }
 }
