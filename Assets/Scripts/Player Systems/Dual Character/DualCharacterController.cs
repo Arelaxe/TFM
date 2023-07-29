@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using Cinemachine;
-using System;
 using System.Collections;
 
 public class DualCharacterController: MonoBehaviour
@@ -16,8 +15,6 @@ public class DualCharacterController: MonoBehaviour
     
     [SerializeField]
     private PlayerParams playerParams;
-    [SerializeField]
-    private GameObject dialoguePanel;
 
     // Movement
     private bool canMove = true;
@@ -44,12 +41,16 @@ public class DualCharacterController: MonoBehaviour
     private bool groupedError = false;
     private Vector3 followerVelocity = Vector3.zero;
 
-    // Camera
+    [Header("Camera Management")]
     [SerializeField]
     private CinemachineStateDrivenCamera stateDrivenCamera;
     [SerializeField]
     private CinemachineVirtualCamera additiveCamera;
     private float defaultTransitionTime;
+
+    [Header("Dialog Management")]
+    [SerializeField]
+    private GameObject dialoguePanel;
 
     private void Awake()
     {

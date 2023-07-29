@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1183464629
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 5
   m_Sprite: {fileID: 1567630586, guid: b662b1ae48242b6498e7c0468ad3745c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1183464629
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 6
   m_Sprite: {fileID: 1487780139, guid: 4bbbf7d3bc09f3d49acd6cacedead94b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -389,6 +389,18 @@ PrefabInstance:
     - target: {fileID: 5573282786399436615, guid: 08cac95c634923d4096e91ce30fa703b, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5573282786399436730, guid: 08cac95c634923d4096e91ce30fa703b, type: 3}
+      propertyPath: m_CameraCutEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5573282786399436730, guid: 08cac95c634923d4096e91ce30fa703b, type: 3}
+      propertyPath: m_CameraCutEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5573282786399436730, guid: 08cac95c634923d4096e91ce30fa703b, type: 3}
+      propertyPath: m_CameraCutEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5573282786399436731, guid: 08cac95c634923d4096e91ce30fa703b, type: 3}
       propertyPath: m_RootOrder
@@ -705,6 +717,18 @@ PrefabInstance:
       propertyPath: m_ChildCameras.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8336605227977791363, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
+      propertyPath: m_ChildCameras.Array.data[0]
+      value: 
+      objectReference: {fileID: 4208196696378642544}
+    - target: {fileID: 8336605227977791363, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
+      propertyPath: m_ChildCameras.Array.data[1]
+      value: 
+      objectReference: {fileID: 4208196696030181158}
+    - target: {fileID: 8336605227977791363, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
+      propertyPath: m_ChildCameras.Array.data[2]
+      value: 
+      objectReference: {fileID: 2832400101766440383}
     - target: {fileID: 8336605229212422968, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -791,11 +815,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
+--- !u!114 &2832400101766440383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7969579354823260834, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
+  m_PrefabInstance: {fileID: 5320746567674060573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3475402665368427080 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8785408653704054101, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
   m_PrefabInstance: {fileID: 5320746567674060573}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4208196696030181158 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8336605228708046907, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
+  m_PrefabInstance: {fileID: 5320746567674060573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4208196696378642544 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8336605229122867053, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
+  m_PrefabInstance: {fileID: 5320746567674060573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4208196696465312805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8336605229212422968, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}

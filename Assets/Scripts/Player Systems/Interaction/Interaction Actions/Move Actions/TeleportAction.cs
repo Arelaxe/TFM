@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Cinemachine;
 
 public class TeleportAction : Action
 {
@@ -18,10 +19,13 @@ public class TeleportAction : Action
 
     private IEnumerator Teleport()
     {
-        PlayerManager.Instance.GetInteractionController().SetInteractivity(false);
-        PlayerManager.Instance.GetInteractionController().DestroyInteractions();
+        InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
+        interactionController.SetInteractivity(false);
+        interactionController.DestroyInteractions();
+
         PlayerManager.Instance.GetDualCharacterController().GetCharacter(true).transform.position = target.position;
+
         yield return null;
-        PlayerManager.Instance.GetInteractionController().SetInteractivity(true);
+        interactionController.SetInteractivity(true);
     }
 }
