@@ -15,25 +15,31 @@ public class Interaction
 
     [Space]
     [SerializeField]
+    [Tooltip("Required item to execute the interaction.")]
     private Item item;
 
     [SerializeField]
+    [Tooltip("If set to true, the required item will not be consumed when executing the action.")]
     private bool reusable;
 
     [Space]
     [SerializeField]
+    [Tooltip("Name used when the interaction has been executed. If it is executed again, the original name is used.")]
     private string oppositeName;
 
     [SerializeField]
+    [Tooltip("Interaction sets to unavailable when executed.")]
     private bool once;
 
     private int timesExecuted;
 
     [Space]
     [SerializeField]
+    [Tooltip("Main action to be executed.")]
     private Action action;
 
     [SerializeField]
+    [Tooltip("Actions that will be executed in order after the main one.")]
     private Action[] additionalActions;
 
     public enum ActionType

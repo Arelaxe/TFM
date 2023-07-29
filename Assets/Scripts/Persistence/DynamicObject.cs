@@ -22,7 +22,7 @@ public class DynamicObject : MonoBehaviour
 
     public void GenerateGUID()
     {
-        guid = System.Guid.NewGuid().ToString();
+        guid = Convert.ToBase64String(System.Guid.NewGuid().ToByteArray()).Replace("==", "");
     }
 
     public void Load(ObjectState objectState)

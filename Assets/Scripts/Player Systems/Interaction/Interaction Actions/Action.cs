@@ -1,9 +1,17 @@
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(DynamicObject))]
+[ExecuteInEditMode]
 public abstract class Action : MonoBehaviour
 {
     [SerializeField]
+    [Tooltip("Required if there is more than one action of the same type on the GameObject")]
+    private string guid;
+
+    [Space]
+    [SerializeField]
+    [Tooltip("Action will be executed just once.")]
     protected bool once;
     protected int timesExecuted = 0;
 
@@ -31,7 +39,17 @@ public abstract class Action : MonoBehaviour
 
     protected string GetPersistentName()
     {
-        return GetType().Name;
+        string persistenName = GetType().Name;
+        if (!string.IsNullOrEmpty(guid))
+        {
+            persistenName += "-" + guid;
+        }
+        return persistenName;
+    }
+
+    public void GenerateGUID()
+    {
+        guid = Convert.ToBase64String(Guid.NewGuid().ToByteArray()).Replace("==", "");
     }
 
     public void DoAction()
