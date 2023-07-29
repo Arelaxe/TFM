@@ -42,7 +42,7 @@ public class DialogueInstigator : MonoBehaviour
     {
         DualCharacterController playerController = PlayerManager.Instance.GetDualCharacterController();
         playerController.SetCharacterMobility(true, false);
-        playerController.SetSwitchAvailability(false);
+        PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(false);
         m_DialogueChannel.RaiseDialogueStart(dialogue);
 
         m_CachedFlowState = FlowStateMachine.Instance.CurrentState;
@@ -58,7 +58,7 @@ public class DialogueInstigator : MonoBehaviour
 
         m_DialogueChannel.RaiseDialogueEnd(dialogue);
         playerController.SetCharacterMobility(true, true);
-        playerController.SetSwitchAvailability(true);
+        PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(true);
         interactionController.SetInteractivity(true);
     }
 

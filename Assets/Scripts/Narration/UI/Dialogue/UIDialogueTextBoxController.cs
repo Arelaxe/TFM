@@ -1,8 +1,7 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
 {
@@ -23,6 +22,8 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
 
     private bool m_ListenToInput = false;
     private DialogueNode m_NextNode = null;
+    private PlayerInput input;
+    private InputAction interactAction;
 
     private bool dialogEnded = false;
     private bool choiceDialog = false;
@@ -37,6 +38,12 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
         m_ChoicesBoxTransform.gameObject.SetActive(false);
     }
 
+    private void Start()
+    {
+        input = PlayerManager.Instance.GetDualCharacterController().GetComponent<PlayerInput>();
+        interactAction = input.actions[PlayerConstants.ActionInteract];
+    }
+
     private void OnDestroy()
     {
         m_DialogueChannel.OnDialogueNodeEnd -= OnDialogueNodeEnd;
@@ -45,7 +52,7 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
 
     private void Update()
     {
-        if (m_ListenToInput && Input.GetButtonDown("Submit"))
+        if (m_ListenToInput && interactAction.triggered)
         {
             if (dialogEnded){
                 if (!choiceDialog){

@@ -1,6 +1,4 @@
-using System.Collections;
 using UnityEngine.InputSystem;
-using UnityEngine.Events;
 using UnityEngine;
 
 public class TutorialScene : ScriptedScene

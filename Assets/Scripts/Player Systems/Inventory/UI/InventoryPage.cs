@@ -289,7 +289,6 @@ public class InventoryPage : Page
     public void OnExit(){
         DialoguePanel.SetActive(true);
         DialogueMode = false;
-        PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(true);
         Hide();
     }
 
@@ -312,7 +311,6 @@ public class InventoryPage : Page
             invController.Channel.RaiseRequestDialogueNode(choiceNode.DefaultInventoryChoice);
         }
 
-        PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(true);
         base.Hide();
     }
 
