@@ -107,6 +107,7 @@ public class PauseMenuController : MonoBehaviour
             lastSelected = EventSystem.current.currentSelectedGameObject;
         }
 
+        AudioListener.pause = pause;
         SceneLoadManager.Instance.Pause(pause);
 
         background.enabled = pause;

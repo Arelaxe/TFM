@@ -9,6 +9,8 @@ TagManager:
   - DynamicObjects
   - VCam
   - Temporary
+  - Passage
+  - MusicScene
   layers:
   - Default
   - TransparentFX

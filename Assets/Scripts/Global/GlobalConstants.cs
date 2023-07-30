@@ -5,6 +5,7 @@ public static class GlobalConstants
     public static string TagPlayerInit = "PlayerInit";
     public static string TagPassage = "Passage";
     public static string TagVirtualCamera = "VCam";
+    public static string TagMusicScene = "MusicScene";
     public static string TagDeviceManager = "DeviceManager";
 
     // Layers

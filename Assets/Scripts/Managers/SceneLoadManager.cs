@@ -255,7 +255,8 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         yield return StartCoroutine(Fade(true));
 
-        SceneManager.LoadScene(minigameScene, LoadSceneMode.Additive);
+        yield return SceneManager.LoadSceneAsync(minigameScene, LoadSceneMode.Additive);
+        SoundManager.Instance.LoadMusicScene();
 
         PlayerManager.Instance.GetDualCharacterController().SwitchToAdditiveCamera();
 
@@ -272,6 +273,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         yield return StartCoroutine(Fade(true));
 
         yield return SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(SceneManager.sceneCount - 1));
+        SoundManager.Instance.LoadMusicScene();
 
         DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
         dualCharacterController.SetCharacterMobility(true, true);
@@ -357,11 +359,8 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     private IEnumerator LoadDestinationScene(string destinationScene)
     {
-        AsyncOperation asyncLoadLevel = SceneManager.LoadSceneAsync(destinationScene, LoadSceneMode.Single);
-        while (!asyncLoadLevel.isDone)
-        {
-            yield return null;
-        }
+        yield return SceneManager.LoadSceneAsync(destinationScene, LoadSceneMode.Single);
+        SoundManager.Instance.LoadMusicScene();
     }
 
     private void LoadSceneElements()
@@ -574,6 +573,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     public bool Loading { get => loading; }
     public bool InAdditive { get => inAdditive; set => inAdditive = value; }
     public bool LoadSceneOnSwitch { get => unselectedScene != null && !SceneManager.GetActiveScene().name.Equals(unselectedScene); }
+    public float FadingSpeed { get => fadingSpeed; }
     public Dictionary<string, UnityEngine.Object> ObjectsData { get => objectsData; }
 
 }
