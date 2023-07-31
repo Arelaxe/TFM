@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6439623459729690535}
   - component: {fileID: 7763968311039844252}
   - component: {fileID: 8050068147278195200}
+  - component: {fileID: 5026789684395252824}
   m_Layer: 0
   m_Name: Menu Pages
   m_TagString: Untagged
@@ -74,6 +75,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &5026789684395252824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674781370306318000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &1623054267681114711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2147,6 +2161,10 @@ PrefabInstance:
     - target: {fileID: 6920099567400314839, guid: 22b0c5d24d8051143a975176858fd633, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -58.578503
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920099567590449702, guid: 22b0c5d24d8051143a975176858fd633, type: 3}
+      propertyPath: m_text
+      value: Volver
       objectReference: {fileID: 0}
     - target: {fileID: 6920099567590449703, guid: 22b0c5d24d8051143a975176858fd633, type: 3}
       propertyPath: m_AnchorMax.y

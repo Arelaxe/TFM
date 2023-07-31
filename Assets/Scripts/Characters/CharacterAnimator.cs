@@ -11,6 +11,8 @@ public class CharacterAnimator : MonoBehaviour
 
     private Tuple<bool, bool> lookingAt = Tuple.Create(true, false);
 
+    private bool settingLookingAt;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,13 +32,16 @@ public class CharacterAnimator : MonoBehaviour
 
     private void AnimMovement()
     {
-        Vector2 velocity = !navAgent.enabled ? rb.velocity : navAgent.velocity;
+        if (!settingLookingAt)
+        {
+            Vector2 velocity = !navAgent.enabled ? rb.velocity : navAgent.velocity;
 
-        lookingAt = CalculateLookingAt(velocity, lookingAt.Item1, lookingAt.Item2);
+            lookingAt = CalculateLookingAt(velocity, lookingAt.Item1, lookingAt.Item2);
 
-        animator.SetInteger(PlayerConstants.AnimParamVelocity, (int)velocity.sqrMagnitude);
-        animator.SetBool(PlayerConstants.AnimParamVerticalMovement, lookingAt.Item1);
-        animator.SetBool(PlayerConstants.AnimParamPositiveMovement, lookingAt.Item2);
+            animator.SetInteger(PlayerConstants.AnimParamVelocity, (int)velocity.sqrMagnitude);
+            animator.SetBool(PlayerConstants.AnimParamVerticalMovement, lookingAt.Item1);
+            animator.SetBool(PlayerConstants.AnimParamPositiveMovement, lookingAt.Item2);
+        }
     }
 
     private Tuple<bool, bool> CalculateLookingAt(Vector2 velocity, bool currentVerticalMovement, bool currentPositiveMovement)
@@ -64,16 +69,21 @@ public class CharacterAnimator : MonoBehaviour
 
     public void SetCharacterLookingAt(Tuple<bool, bool> lookingAt)
     {
+        this.lookingAt = lookingAt;
+        StartCoroutine(SetLookingAt(lookingAt));
+    }
+
+    private IEnumerator SetLookingAt(Tuple<bool, bool> lookingAt)
+    {
+        settingLookingAt = true;
+
         animator.SetInteger(PlayerConstants.AnimParamVelocity, 1);
         animator.SetBool(PlayerConstants.AnimParamVerticalMovement, lookingAt.Item1);
         animator.SetBool(PlayerConstants.AnimParamPositiveMovement, lookingAt.Item2);
-
-        StartCoroutine(DisableAnimVelocity(animator));
-    }
-
-    private IEnumerator DisableAnimVelocity(Animator animator)
-    {
+        
         yield return null;
-        animator.SetInteger(PlayerConstants.AnimParamVelocity, 0);
+
+        settingLookingAt = false;
     }
+
 }
