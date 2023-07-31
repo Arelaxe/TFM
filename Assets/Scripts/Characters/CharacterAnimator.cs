@@ -10,7 +10,6 @@ public class CharacterAnimator : MonoBehaviour
     private Animator animator;
 
     private Tuple<bool, bool> lookingAt = Tuple.Create(true, false);
-
     private bool settingLookingAt;
 
     void Awake()
@@ -25,9 +24,9 @@ public class CharacterAnimator : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        AnimMovement();
+        AnimMovement(); 
     }
 
     private void AnimMovement()
