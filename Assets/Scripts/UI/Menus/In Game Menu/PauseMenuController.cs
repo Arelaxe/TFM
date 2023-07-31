@@ -59,9 +59,9 @@ public class PauseMenuController : MonoBehaviour
 
     private GameObject lastSelected;
 
-    private static string CONFIRM_MESSAGE_SAVE = "�Seguro que quieres guardar la partida?";
-    private static string CONFIRM_MESSAGE_SAVE_AND_QUIT = "�Seguro que quieres salir del juego? Se guardar� el progreso actual.";
-    private static string CONFIRM_MESSAGE_LOAD = "�Seguro que quieres cargar t� �ltima partida guardada? Perder�s el progreso actual.";
+    private static string CONFIRM_MESSAGE_SAVE = "¿Seguro que quieres guardar la partida?";
+    private static string CONFIRM_MESSAGE_SAVE_AND_QUIT = "¿Seguro que quieres salir del juego? Se guardará el progreso actual.";
+    private static string CONFIRM_MESSAGE_LOAD = "¿Seguro que quieres cargar tu última partida guardada? Perderás el progreso actual.";
 
     void Start()
     {
