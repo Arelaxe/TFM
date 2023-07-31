@@ -12,6 +12,6 @@ public class OpenScene : NarrationAction
     public override void EndAction()
     {
         base.EndAction();
-        SceneLoadManager.Instance.LoadScene(sceneName);
+        SceneLoadManager.Instance.LoadScene(sceneName, -1, true);
     }
 }
