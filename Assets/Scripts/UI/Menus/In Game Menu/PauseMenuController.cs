@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class PauseMenuController : MonoBehaviour
@@ -24,6 +25,9 @@ public class PauseMenuController : MonoBehaviour
     private GameObject confirmationMenu;
 
     [SerializeField]
+    private GameObject cantSavePopup;
+
+    [SerializeField]
     private Button resumeButton;
 
     [SerializeField]
@@ -44,6 +48,9 @@ public class PauseMenuController : MonoBehaviour
     [SerializeField]
     private Button noButton;
 
+    [SerializeField]
+    private Button closeButton;
+
     private GameObject currentMenu;
     private bool inMainPage = true;
 
@@ -52,9 +59,9 @@ public class PauseMenuController : MonoBehaviour
 
     private GameObject lastSelected;
 
-    private static string CONFIRM_MESSAGE_SAVE = "¿Seguro que quieres guardar la partida?";
-    private static string CONFIRM_MESSAGE_SAVE_AND_QUIT = "¿Seguro que quieres salir del juego? Se guardará el progreso actual.";
-    private static string CONFIRM_MESSAGE_LOAD = "¿Seguro que quieres cargar tú última partida guardada? Perderás el progreso actual.";
+    private static string CONFIRM_MESSAGE_SAVE = "Â¿Seguro que quieres guardar la partida?";
+    private static string CONFIRM_MESSAGE_SAVE_AND_QUIT = "Â¿Seguro que quieres salir del juego? Se guardarÃ¡ el progreso actual.";
+    private static string CONFIRM_MESSAGE_LOAD = "Â¿Seguro que quieres cargar tu Ãºltima partida guardada? PerderÃ¡s el progreso actual.";
 
     void Start()
     {
@@ -133,7 +140,12 @@ public class PauseMenuController : MonoBehaviour
 
     public void Save()
     {
-        OpenConfirmationMenu(true, CONFIRM_MESSAGE_SAVE);
+        if (this.CanSaveOnScene()){
+            OpenConfirmationMenu(true, CONFIRM_MESSAGE_SAVE);
+        }
+        else{
+            OpenCantSavePopup();
+        }
     }
 
     public void Load()
@@ -143,7 +155,12 @@ public class PauseMenuController : MonoBehaviour
 
     public void SaveAndQuit()
     {
-        OpenConfirmationMenu(true, CONFIRM_MESSAGE_SAVE_AND_QUIT, true);
+        if (this.CanSaveOnScene()){
+            OpenConfirmationMenu(true, CONFIRM_MESSAGE_SAVE_AND_QUIT, true);
+        }
+        else{
+            OpenCantSavePopup();
+        }
     }
 
     private void OpenConfirmationMenu(bool save, string message, bool quit = false)
@@ -158,6 +175,10 @@ public class PauseMenuController : MonoBehaviour
             yesButton.onClick.AddListener(LoadGame);
         }
         ShowPage(true, confirmationMenu, noButton);
+    }
+
+    private void OpenCantSavePopup(){
+        ShowPage(true, cantSavePopup, closeButton);
     }
 
     private void SaveGame()
@@ -220,6 +241,10 @@ public class PauseMenuController : MonoBehaviour
     {
         BackToMainPage();
         Pause(false);
+    }
+
+    private bool CanSaveOnScene(){
+        return SceneManager.GetActiveScene().name != "TutorialScene" && SceneManager.GetActiveScene().name != "IntroScene";
     }
 
 }
