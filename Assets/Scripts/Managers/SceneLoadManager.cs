@@ -385,15 +385,21 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     {
         DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
 
+        Vector3 prevPosition = dualCharacterController.GetCharacter(true).transform.position;
+
         Transform inSceneTransform = GetInSceneTransform(destinationPassage);
         Tuple<bool, bool> inSceneLookingAt = GetInSceneLookingAt(inSceneTransform, reverseLookingAt);
 
         dualCharacterController.GetCharacter(true).transform.position = inSceneTransform.position;
+        dualCharacterController.SetOnTargetCameraWarped(true, prevPosition);
         dualCharacterController.GetCharacterAnimator(true).SetCharacterLookingAt(inSceneLookingAt);
 
         if (dualCharacterController.Grouped)
         {
+            prevPosition = dualCharacterController.GetCharacter(false).transform.position;
+
             dualCharacterController.GetCharacter(false).transform.position = GetUnselectedCharacterPosition(inSceneTransform.position, inSceneLookingAt);
+            dualCharacterController.SetOnTargetCameraWarped(false, prevPosition);
             dualCharacterController.GetCharacterAnimator(false).SetCharacterLookingAt(inSceneLookingAt);
         }
     }

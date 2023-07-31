@@ -45,6 +45,10 @@ public class DualCharacterController: MonoBehaviour
     [SerializeField]
     private CinemachineStateDrivenCamera stateDrivenCamera;
     [SerializeField]
+    private CinemachineVirtualCamera character1Camera;
+    [SerializeField]
+    private CinemachineVirtualCamera character2Camera;
+    [SerializeField]
     private CinemachineVirtualCamera additiveCamera;
     private float defaultTransitionTime;
 
@@ -323,6 +327,27 @@ public class DualCharacterController: MonoBehaviour
     public CharacterAnimator GetCharacterAnimator(bool selected)
     {
         return GetCharacter(selected).GetComponent<CharacterAnimator>();
+    }
+
+    public CinemachineVirtualCamera GetCharacterCamera(bool selected)
+    {
+        CinemachineVirtualCamera camera;
+        if (selected)
+        {
+            camera = selectedCharacterOne ? character1Camera : character2Camera;
+        }
+        else
+        {
+            camera = selectedCharacterOne ? character2Camera : character1Camera;
+        }
+        return camera;
+    }
+
+    public void SetOnTargetCameraWarped(bool selected, Vector3 prevPosition)
+    {
+        GameObject character = GetCharacter(selected);
+        CinemachineVirtualCamera camera = GetCharacterCamera(selected);
+        camera.OnTargetObjectWarped(character.transform, character.transform.position - prevPosition);
     }
 
     public bool IsCharacterActive(bool selected)
