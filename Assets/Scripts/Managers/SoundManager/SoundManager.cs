@@ -8,8 +8,6 @@ public class SoundManager : Singleton<SoundManager>
     public static string VolumeMusic = "VolumeMusic";
 
     [SerializeField]
-    private float maxMusicVolume;
-    [SerializeField]
     private float updateMusicSpeed;
 
     private AudioSource audioSource;
@@ -22,7 +20,7 @@ public class SoundManager : Singleton<SoundManager>
     protected override void LoadData()
     {
         effectsVolume = PlayerPrefs.GetFloat(VolumeEffects, 1f);
-        musicVolume = PlayerPrefs.GetFloat(VolumeMusic, maxMusicVolume);
+        musicVolume = PlayerPrefs.GetFloat(VolumeMusic, 1f);
 
         audioSource = GetComponent<AudioSource>();
     }
@@ -92,7 +90,7 @@ public class SoundManager : Singleton<SoundManager>
 
     private float GetMusicSceneFadeSpeed()
     {
-        return SceneLoadManager.Instance.FadingSpeed * maxMusicVolume * 2;
+        return SceneLoadManager.Instance.FadingSpeed * 2;
     }
 
     public void UpdateMusicVolume(float percentage, bool down = true, bool fading = true)
@@ -159,4 +157,6 @@ public class SoundManager : Singleton<SoundManager>
         PlayerPrefs.SetFloat(VolumeMusic, musicVolume);
     }
 
+    public float EffectsVolume { get => effectsVolume; }
+    public float MusicVolume { get => musicVolume; }
 }
