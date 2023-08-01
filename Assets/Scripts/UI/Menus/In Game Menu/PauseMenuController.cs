@@ -19,7 +19,7 @@ public class PauseMenuController : MonoBehaviour
     private GameObject mainPage;
 
     [SerializeField]
-    private GameObject controlsPage;
+    private GameObject optionsPage;
 
     [SerializeField]
     private GameObject confirmationMenu;
@@ -40,7 +40,7 @@ public class PauseMenuController : MonoBehaviour
     private Button saveAndQuitGameButton;
 
     [SerializeField]
-    private Button backButton;
+    private Button firstOptionButton;
 
     [SerializeField]
     private Button yesButton;
@@ -112,9 +112,9 @@ public class PauseMenuController : MonoBehaviour
         if (pause)
         {
             lastSelected = EventSystem.current.currentSelectedGameObject;
+            SoundManager.Instance.UpdateMusicVolume(50);
         }
 
-        AudioListener.pause = pause;
         SceneLoadManager.Instance.Pause(pause);
 
         background.enabled = pause;
@@ -124,13 +124,14 @@ public class PauseMenuController : MonoBehaviour
 
         if (!pause)
         {
+            SoundManager.Instance.BackToDefaultMusicVolume();
             EventSystem.current.SetSelectedGameObject(lastSelected);
         }
     }
 
-    public void OpenControlsPage()
+    public void OpenOptionsPage()
     {
-        SwitchPage(controlsPage, backButton);
+        SwitchPage(optionsPage, firstOptionButton, true);
     }
 
     public void BackToMainPage()
@@ -140,7 +141,7 @@ public class PauseMenuController : MonoBehaviour
 
     public void Save()
     {
-        if (this.CanSaveOnScene()){
+        if (CanSaveOnScene()){
             OpenConfirmationMenu(true, CONFIRM_MESSAGE_SAVE);
         }
         else{
@@ -205,21 +206,25 @@ public class PauseMenuController : MonoBehaviour
     }
 
     // Auxiliar methods
-    private void ShowPage(bool show, GameObject page, Button initialButton)
+    private void ShowPage(bool show, GameObject page, Button initialButton, bool invokeClick = false)
     {
         page.SetActive(show);
         if (show)
         {
             currentMenu = page;
             initialButton.Select();
+            if (invokeClick)
+            {
+                initialButton.onClick.Invoke();
+            }
         }
         inMainPage = page.Equals(mainPage);
     }
 
-    private void SwitchPage(GameObject destinationPage, Button initialButton)
+    private void SwitchPage(GameObject destinationPage, Button initialButton, bool invokeClick = false)
     {
         ShowPage(false, currentMenu, null);
-        ShowPage(true, destinationPage, initialButton);
+        ShowPage(true, destinationPage, initialButton, invokeClick);
     }
 
     private void Back()

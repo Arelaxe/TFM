@@ -141,5 +141,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0f3d48a23d51a4baab90a76ee7ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMusicVolume: 0.6
+  maxMusicVolume: 0.9
   updateMusicSpeed: 0.3
