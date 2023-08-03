@@ -10,6 +10,10 @@ public class EnergyContainer : MonoBehaviour
     [SerializeField]
     private float fillDelay;
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip increaseSound;
+
     private Slider slider;
     void Start()
     {
@@ -21,6 +25,7 @@ public class EnergyContainer : MonoBehaviour
     {
         foreach (EnergyPoint point in energy)
         {
+            SoundManager.Instance.PlayEffectOneShot(increaseSound);
             slider.value++;
             if (slider.value == slider.maxValue) break;
             yield return new WaitForSeconds(fillDelay);

@@ -34,6 +34,7 @@ public class InventoryElement : Selectable, IPointerClickHandler, IBeginDragHand
     {
         base.OnSelect(eventData);
         submit = false;
+        SoundManager.Instance.PlaySelectedButton();
     }
 
     public override void OnDeselect(BaseEventData eventData)
@@ -46,6 +47,7 @@ public class InventoryElement : Selectable, IPointerClickHandler, IBeginDragHand
     {
         if (!empty)
         {
+            SoundManager.Instance.PlayClickedButton();
             if (!submit)
             {
                 submit = true;
@@ -67,6 +69,7 @@ public class InventoryElement : Selectable, IPointerClickHandler, IBeginDragHand
         {
             if (eventData.button == PointerEventData.InputButton.Left)
             {
+                SoundManager.Instance.PlayClickedButton();
                 if (eventData.clickCount == 1)
                 {
                     OnItemClicked?.Invoke(this);

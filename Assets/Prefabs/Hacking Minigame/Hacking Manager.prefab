@@ -1356,7 +1356,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1183464629
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -2382,7 +2382,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1183464629
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -3214,6 +3214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxValue: 12
   fillDelay: 0.25
+  increaseSound: {fileID: 8300000, guid: 0b218c9e2602f25488b7a6ce22acde9f, type: 3}
 --- !u!1 &2266700956664052550
 GameObject:
   m_ObjectHideFlags: 0
@@ -3284,6 +3285,7 @@ MonoBehaviour:
     rgba: 3439286940
   tutorial: {fileID: 5430577642077103367}
   bounds: {fileID: 2266700956813827623}
+  startSound: {fileID: 8300000, guid: 4cf94535c7e23624f8aaca6fd106f883, type: 3}
 --- !u!114 &2266700956664052545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4985,7 +4987,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1183464629
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -7612,6 +7614,7 @@ GameObject:
   - component: {fileID: 1605290545465410118}
   - component: {fileID: 8524106310159390839}
   - component: {fileID: 2736670085544563465}
+  - component: {fileID: 4229035856359595114}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -7694,3 +7697,15 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &4229035856359595114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8874804349679541171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35dab3e767620844cb2eb555cdddf189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -60,6 +60,10 @@ public class HackingManager : MonoBehaviour
     [SerializeField]
     private PolygonCollider2D bounds;
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip startSound;
+
     private bool firstRun;
 
     public static readonly string HackingInteractable = "hackingInteractable";
@@ -136,6 +140,7 @@ public class HackingManager : MonoBehaviour
 
     private void Run()
     {
+        SoundManager.Instance.PlayEffectOneShot(startSound);
         energyFlow.GetComponent<EnergyFlowController>().CanMove = true;
 
         if (!firstRun)

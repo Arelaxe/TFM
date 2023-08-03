@@ -121,6 +121,8 @@ MonoBehaviour:
   contentPanel: {fileID: 228749317946877901}
   m_DialogPanel: {fileID: 0}
   buttons: {fileID: 0}
+  openSound: {fileID: 8300000, guid: be78d7a380a38144880d30b83a892505, type: 3}
+  closeSound: {fileID: 8300000, guid: 3a8accf14d1ccdd40b2fcbcd9b929d93, type: 3}
   element: {fileID: 1899631466687718689, guid: 53bf010e09a6b334292fe11d7f6694dc, type: 3}
   description: {fileID: 5945334502311105891}
   scrollbar: {fileID: 123731458927354115}
@@ -468,23 +470,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4251700065030761459, guid: cdb815868309e4f4aa95d6cadaf4a429, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4251700065030761459, guid: cdb815868309e4f4aa95d6cadaf4a429, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4251700065030761459, guid: cdb815868309e4f4aa95d6cadaf4a429, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 429.9954
       objectReference: {fileID: 0}
     - target: {fileID: 4251700065030761459, guid: cdb815868309e4f4aa95d6cadaf4a429, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 249.9977
       objectReference: {fileID: 0}
     - target: {fileID: 4251700065030761459, guid: cdb815868309e4f4aa95d6cadaf4a429, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 6631215180941690614, guid: cdb815868309e4f4aa95d6cadaf4a429, type: 3}
       propertyPath: m_AnchorMax.y
