@@ -28,6 +28,7 @@ public class DocumentElement : Selectable, IPointerClickHandler, ISubmitHandler
         base.OnSelect(eventData);
         submit = false;
         OnElementSelect?.Invoke(this);
+        SoundManager.Instance.PlaySelectedButton();
     }
 
     public override void OnDeselect(BaseEventData eventData)
@@ -38,6 +39,7 @@ public class DocumentElement : Selectable, IPointerClickHandler, ISubmitHandler
 
     public void OnSubmit(BaseEventData eventData)
     {
+        SoundManager.Instance.PlayClickedButton();
         if (!submit)
         {
             submit = true;
@@ -54,6 +56,7 @@ public class DocumentElement : Selectable, IPointerClickHandler, ISubmitHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
+            SoundManager.Instance.PlayClickedButton();
             if (eventData.clickCount == 1)
             {
                 OnElementSubmit?.Invoke(this);

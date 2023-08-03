@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class InventoryPage : Page
 {
+    [Header("Inventory Elements")]
     [SerializeField]
     private InventoryElement element;
 
@@ -16,9 +17,6 @@ public class InventoryPage : Page
 
     [SerializeField]
     private MouseFollower mouseFollower;
-/*
-    [SerializeField] 
-    private GameObject m_DialogPanel;*/
 
     private List<InventoryElement> elementList = new();
     private List<InventoryElement> elementList2 = new();

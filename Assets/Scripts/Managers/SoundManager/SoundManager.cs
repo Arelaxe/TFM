@@ -1,6 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class SoundManager : Singleton<SoundManager>
 {
@@ -8,9 +9,17 @@ public class SoundManager : Singleton<SoundManager>
     public static string VolumeMusic = "VolumeMusic";
 
     [SerializeField]
+    private AudioSource effectsAudioSource;
+    [SerializeField]
+    private AudioSource musicAudioSource;
+    [SerializeField]
     private float updateMusicSpeed;
 
-    private AudioSource audioSource;
+    [Space]
+    [SerializeField]
+    private AudioClip selectedButton;
+    [SerializeField]
+    private AudioClip clickedButton;
 
     private float effectsVolume;
     private float musicVolume;
@@ -19,10 +28,11 @@ public class SoundManager : Singleton<SoundManager>
 
     protected override void LoadData()
     {
+        effectsAudioSource.ignoreListenerPause = true;
         effectsVolume = PlayerPrefs.GetFloat(VolumeEffects, 1f);
-        musicVolume = PlayerPrefs.GetFloat(VolumeMusic, 1f);
+        effectsAudioSource.volume = effectsVolume;
 
-        audioSource = GetComponent<AudioSource>();
+        musicVolume = PlayerPrefs.GetFloat(VolumeMusic, 1f);
     }
 
     private void Start()
@@ -35,6 +45,33 @@ public class SoundManager : Singleton<SoundManager>
         StartCoroutine(LoadMusicSceneCoroutine());
     }
 
+    public void PlayAudioSource(AudioSource audioSource, float volumePercentange = 100)
+    {
+        audioSource.volume = effectsVolume * (volumePercentange / 100);
+        audioSource.Play();
+    }
+
+    public void PlayEffectOneShot(AudioClip clip)
+    {
+        effectsAudioSource.PlayOneShot(clip);
+    }
+
+    public void PlayEffect(AudioClip clip)
+    {
+        effectsAudioSource.clip = clip;
+        effectsAudioSource.Play();
+    }
+
+    public void PlaySelectedButton()
+    {
+        PlayEffect(selectedButton);
+    }
+
+    public void PlayClickedButton()
+    {
+        PlayEffect(clickedButton);
+    }
+
     public IEnumerator LoadMusicSceneCoroutine()
     {
         GameObject[] musicScenes = GameObject.FindGameObjectsWithTag(GlobalConstants.TagMusicScene);
@@ -44,26 +81,26 @@ public class SoundManager : Singleton<SoundManager>
             AudioClip musicClip = musicScene.GetComponent<MusicScene>().MusicClip;
             if (musicClip)
             {
-                if (!audioSource.clip || !musicClip.name.Equals(audioSource.clip.name))
+                if (!musicAudioSource.clip || !musicClip.name.Equals(musicAudioSource.clip.name))
                 {
-                    if (audioSource.clip)
+                    if (musicAudioSource.clip)
                     {
                         yield return StartCoroutine(FadeMusicSceneCoroutine(true));
-                        audioSource.Stop();
+                        musicAudioSource.Stop();
                     }
                    
-                    audioSource.clip = musicClip;
-                    audioSource.Play();
+                    musicAudioSource.clip = musicClip;
+                    musicAudioSource.Play();
                     yield return StartCoroutine(FadeMusicSceneCoroutine(false));
                 }
             }
             else
             {
-                if (audioSource.clip)
+                if (musicAudioSource.clip)
                 {
                     yield return StartCoroutine(FadeMusicSceneCoroutine(true));
-                    audioSource.Stop();
-                    audioSource.clip = null;
+                    musicAudioSource.Stop();
+                    musicAudioSource.clip = null;
                 }
             }
         }
@@ -95,8 +132,8 @@ public class SoundManager : Singleton<SoundManager>
 
     public void UpdateMusicVolume(float percentage, bool down = true, bool fading = true)
     {
-        float updateAmount = audioSource.volume * (percentage / 100);
-        float targetVolume = down ? audioSource.volume - updateAmount : audioSource.volume + updateAmount;
+        float updateAmount = musicAudioSource.volume * (percentage / 100);
+        float targetVolume = down ? musicAudioSource.volume - updateAmount : musicAudioSource.volume + updateAmount;
         targetVolume = Mathf.Clamp(targetVolume, 0, 1);
 
         if (fading)
@@ -105,7 +142,7 @@ public class SoundManager : Singleton<SoundManager>
         }
         else
         {
-            audioSource.volume = targetVolume;
+            musicAudioSource.volume = targetVolume;
         }
     }
 
@@ -117,28 +154,28 @@ public class SoundManager : Singleton<SoundManager>
         }
         else
         {
-            audioSource.volume = musicVolume;
+            musicAudioSource.volume = musicVolume;
         }
     }
 
     public IEnumerator FadeMusic(float targetVolume, float fadeSpeed)
     {
-        bool volumeDown = targetVolume < audioSource.volume;
+        bool volumeDown = targetVolume < musicAudioSource.volume;
         if (volumeDown)
         {
-            while (audioSource.volume > targetVolume)
+            while (musicAudioSource.volume > targetVolume)
             {
-                float newVolume = audioSource.volume - fadeSpeed * Time.deltaTime;
-                audioSource.volume = Mathf.Clamp(newVolume, targetVolume, 1);
+                float newVolume = musicAudioSource.volume - fadeSpeed * Time.deltaTime;
+                musicAudioSource.volume = Mathf.Clamp(newVolume, targetVolume, 1);
                 yield return null;
             }
         }
         else
         {
-            while (audioSource.volume < targetVolume)
+            while (musicAudioSource.volume < targetVolume)
             {
-                float newVolume = audioSource.volume + fadeSpeed * Time.deltaTime;
-                audioSource.volume = audioSource.volume = Mathf.Clamp(newVolume, 0, targetVolume);
+                float newVolume = musicAudioSource.volume + fadeSpeed * Time.deltaTime;
+                musicAudioSource.volume = musicAudioSource.volume = Mathf.Clamp(newVolume, 0, targetVolume);
                 yield return null;
             }
         }
@@ -147,14 +184,30 @@ public class SoundManager : Singleton<SoundManager>
     public void SaveEffectsVolume(float volume)
     {
         effectsVolume = volume;
+        effectsAudioSource.volume = effectsVolume;
         PlayerPrefs.SetFloat(VolumeEffects, effectsVolume);
     }
 
     public void SaveMusicVolume(float volume)
     {
         musicVolume = volume;
-        audioSource.volume = musicVolume;
+        musicAudioSource.volume = musicVolume;
         PlayerPrefs.SetFloat(VolumeMusic, musicVolume);
+    }
+
+    public void AddSounds(Button button)
+    {
+        EventTrigger eventTrigger = button.gameObject.GetComponent<EventTrigger>();
+        if (!eventTrigger)
+        {
+            eventTrigger = button.gameObject.AddComponent<EventTrigger>();
+        }
+        EventTrigger.Entry entry = new();
+        entry.eventID = EventTriggerType.Select;
+        entry.callback.AddListener((data) => { PlaySelectedButton(); });
+        eventTrigger.triggers.Add(entry);
+
+        button.onClick.AddListener(delegate { PlayClickedButton(); });
     }
 
     public float EffectsVolume { get => effectsVolume; }

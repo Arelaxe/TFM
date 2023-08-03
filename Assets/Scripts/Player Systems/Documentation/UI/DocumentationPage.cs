@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DocumentationPage : Page
 {
+    [Header("Documentation Elements")]
     [SerializeField]
     private DocumentElement element;
 

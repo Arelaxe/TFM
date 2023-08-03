@@ -1,10 +1,10 @@
 using UnityEngine.EventSystems;
 using UnityEngine;
 using System;
-using UnityEngine.Events;
 
 public abstract class Page : MonoBehaviour, IEventSystemHandler
 {
+    [Header("General")]
     [SerializeField]
     protected RectTransform contentPanel;
 
@@ -14,12 +14,19 @@ public abstract class Page : MonoBehaviour, IEventSystemHandler
     [SerializeField]
     private GameObject buttons;
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip openSound;
+    [SerializeField]
+    private AudioClip closeSound;
+
     protected bool dialogueMode = false;
 
     public event Action<Page> OnShow, OnHide;
 
     public virtual void Show()
     {
+        SoundManager.Instance.PlayEffectOneShot(openSound);
         OnShow?.Invoke(this);
         gameObject.SetActive(true);
         if (buttons){
@@ -30,6 +37,7 @@ public abstract class Page : MonoBehaviour, IEventSystemHandler
     public virtual void Hide()
     {
         if (!dialogueMode){
+            SoundManager.Instance.PlayEffect(closeSound);
             OnHide?.Invoke(this);
             gameObject.SetActive(false);
         }

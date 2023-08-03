@@ -10,10 +10,13 @@ public class DeviceManager : MonoBehaviour
     [SerializeField]
     private GameObject restrictionPanel;
     private bool restrictionPanelActivated;
+    [SerializeField]
+    private DeviceWindowIcon firstSelected;
 
     private void Start()
     {
         InitUI();
+        firstSelected.Select();
     }
 
     private void InitUI()
