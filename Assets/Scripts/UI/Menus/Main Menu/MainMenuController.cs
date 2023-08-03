@@ -11,7 +11,7 @@ public class MainMenuController : MonoBehaviour
     private GameObject mainMenu;
 
     [SerializeField]
-    private GameObject controlsMenu;
+    private GameObject optionsMenu;
 
     [SerializeField]
     private GameObject confirmationMenu;
@@ -23,7 +23,7 @@ public class MainMenuController : MonoBehaviour
     private Button continueButton;
 
     [SerializeField]
-    private Button backButton;
+    private Button firstOptionButton;
 
     [SerializeField]
     private Button noButton;
@@ -44,9 +44,9 @@ public class MainMenuController : MonoBehaviour
         InputSystemUtils.ControlCursor(input);
         if (backAction.triggered)
         {
-            if (controlsMenu.activeSelf)
+            if (optionsMenu.activeSelf)
             {
-                CloseControlsMenu();
+                CloseOptionsMenu();
             }
             else if (confirmationMenu.activeSelf)
             {
@@ -101,16 +101,17 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    public void OpenControlsMenu()
+    public void OpenOptionsMenu()
     {
         mainMenu.SetActive(false);
-        controlsMenu.SetActive(true);
-        backButton.Select();
+        optionsMenu.SetActive(true);
+        firstOptionButton.Select();
+        firstOptionButton.onClick.Invoke();
     }
 
-    public void CloseControlsMenu()
+    public void CloseOptionsMenu()
     {
-        controlsMenu.SetActive(false);
+        optionsMenu.SetActive(false);
         mainMenu.SetActive(true);
         newGameButton.Select();
     }
