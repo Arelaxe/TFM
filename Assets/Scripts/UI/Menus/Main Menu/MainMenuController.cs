@@ -7,6 +7,7 @@ public class MainMenuController : MonoBehaviour
     private PlayerInput input;
     private InputAction backAction;
 
+    [Header("Menus")]
     [SerializeField]
     private GameObject mainMenu;
 
@@ -16,6 +17,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField]
     private GameObject confirmationMenu;
 
+    [Header("Buttons")]
     [SerializeField]
     private Button newGameButton;
 
@@ -125,5 +127,17 @@ public class MainMenuController : MonoBehaviour
     {
         string continueScene = SceneLoadManager.Instance.Progress.player.selectedCharacter.scene;
         continueButton.interactable = !string.IsNullOrEmpty(continueScene);
+    }
+
+    // Effects
+
+    public void PlaySelected()
+    {
+        SoundManager.Instance.PlaySelectedButton();
+    }
+
+    public void PlayClicked()
+    {
+        SoundManager.Instance.PlayClickedButton();
     }
 }

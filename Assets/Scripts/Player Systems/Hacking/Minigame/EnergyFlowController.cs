@@ -31,13 +31,22 @@ public class EnergyFlowController : MonoBehaviour
     private List<EnergyPoint> energy = new();
 
     private bool added;
-    
+
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip addPointSound;
+    [SerializeField]
+    private AudioClip damageSound;
+    [SerializeField]
+    private AudioClip destroySound;
+    private AudioSource audioSource;
+
     void Start()
     {
         manager = GameObject.Find("Hacking Manager").GetComponent<HackingManager>();
-
         rb = GetComponent<Rigidbody2D>();
         InitInputActions();
+        InitAudioSource();
     }
 
     private void InitInputActions()
@@ -49,11 +58,27 @@ public class EnergyFlowController : MonoBehaviour
         moveAction.canceled += (ctx) => { inputMovement = Vector2.zero; };
     }
 
+    private void InitAudioSource()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void FixedUpdate()
     {
         if (canMove)
         {
+            if (!audioSource.isPlaying)
+            {
+                SoundManager.Instance.PlayAudioSource(audioSource, 60);
+            }
             Move();
+        }
+        else
+        {
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
         }
     }
 
@@ -69,6 +94,7 @@ public class EnergyFlowController : MonoBehaviour
             verticalVelFactor = accelerationFactor;
         }
 
+        audioSource.pitch = verticalVelFactor;
         rb.velocity = new Vector2(inputMovement.x * horizontalSpeed, verticalVelFactor * verticalSpeed);
     }
 
@@ -92,6 +118,8 @@ public class EnergyFlowController : MonoBehaviour
             }
             else
             {
+                audioSource.Stop();
+                SoundManager.Instance.PlayEffectOneShot(destroySound);
                 Stop();
                 manager.Fail();
             }
@@ -100,6 +128,7 @@ public class EnergyFlowController : MonoBehaviour
 
     private void AddEnergyPoint(EnergyPoint point)
     {
+        SoundManager.Instance.PlayEffectOneShot(addPointSound);
         if (energy.Count > 0)
         {
             point.SetTarget(gameObject, energy[^1].gameObject);
@@ -120,6 +149,8 @@ public class EnergyFlowController : MonoBehaviour
 
     private IEnumerator Repel(Collision2D collision)
     {
+        audioSource.Stop();
+        SoundManager.Instance.PlayEffectOneShot(damageSound);
         canMove = false;
         rb.velocity = new Vector2(0, 0);
 

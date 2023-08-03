@@ -295,6 +295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2805481670578539390}
+  - component: {fileID: 1428122466654095335}
   m_Layer: 0
   m_Name: Buttons
   m_TagString: Untagged
@@ -324,6 +325,18 @@ RectTransform:
   m_AnchoredPosition: {x: -7, y: -350.3}
   m_SizeDelta: {x: 330, y: 37.875}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1428122466654095335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6455291445675782505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35dab3e767620844cb2eb555cdddf189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6945885574867421482
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,8 +797,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contentPanel: {fileID: 8080662105995221098}
   m_DialogPanel: {fileID: 0}
-  m_OtherPage: {fileID: 0}
   buttons: {fileID: 6455291445675782505}
+  openSound: {fileID: 8300000, guid: 421f41ef7fa8fe441a2c7edae66f43ee, type: 3}
+  closeSound: {fileID: 8300000, guid: aaa878584377d724380c23dc7d9476a1, type: 3}
   element: {fileID: 1621551525188174461, guid: 354d6157213e03147a96b033c0ea23e7, type: 3}
   description: {fileID: 3583172517979343147}
   contentPanel2: {fileID: 1586876096864534217}
