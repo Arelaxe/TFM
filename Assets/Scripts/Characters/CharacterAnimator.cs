@@ -1,16 +1,21 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class CharacterAnimator : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip stepSound;
+    [SerializeField]
+    private float stepDelay;
+    private float lastStep;
+
     private Rigidbody2D rb;
     private NavMeshAgent navAgent;
     private Animator animator;
+    private AudioSource audioSource;
 
     private Tuple<bool, bool> lookingAt = Tuple.Create(true, false);
-    private bool settingLookingAt;
 
     void Awake()
     {
@@ -22,24 +27,43 @@ public class CharacterAnimator : MonoBehaviour
         navAgent.updatePosition = false;
 
         animator = GetComponent<Animator>();
-    }
+
+        audioSource = GetComponent<AudioSource>();
+
+        lastStep = Time.time;
+    }    
 
     void FixedUpdate()
+    {
+        CalculateRequestedLookingAt();
+    }
+
+    private void Update()
     {
         AnimMovement(); 
     }
 
     private void AnimMovement()
     {
-        if (!settingLookingAt)
+        Vector2 velocity = !navAgent.enabled ? rb.velocity : navAgent.velocity;
+            
+        if (velocity.sqrMagnitude != 0)
         {
-            Vector2 velocity = !navAgent.enabled ? rb.velocity : navAgent.velocity;
-
             lookingAt = CalculateLookingAt(velocity, lookingAt.Item1, lookingAt.Item2);
+            TryPlayStep();
+        }
 
-            animator.SetInteger(PlayerConstants.AnimParamVelocity, (int)velocity.sqrMagnitude);
-            animator.SetBool(PlayerConstants.AnimParamVerticalMovement, lookingAt.Item1);
-            animator.SetBool(PlayerConstants.AnimParamPositiveMovement, lookingAt.Item2);
+        animator.SetInteger(PlayerConstants.AnimParamVelocity, (int)velocity.sqrMagnitude);
+        animator.SetBool(PlayerConstants.AnimParamVerticalMovement, lookingAt.Item1);
+        animator.SetBool(PlayerConstants.AnimParamPositiveMovement, lookingAt.Item2);
+    }
+
+    private void CalculateRequestedLookingAt()
+    {
+        Vector2 velocity = !navAgent.enabled ? rb.velocity : navAgent.velocity;
+        if (velocity.sqrMagnitude != 0)
+        {
+            lookingAt = CalculateLookingAt(velocity, lookingAt.Item1, lookingAt.Item2);
         }
     }
 
@@ -69,20 +93,25 @@ public class CharacterAnimator : MonoBehaviour
     public void SetCharacterLookingAt(Tuple<bool, bool> lookingAt)
     {
         this.lookingAt = lookingAt;
-        StartCoroutine(SetLookingAt(lookingAt));
     }
 
-    private IEnumerator SetLookingAt(Tuple<bool, bool> lookingAt)
+    private void TryPlayStep()
     {
-        settingLookingAt = true;
+        if (Time.time > lastStep + stepDelay)
+        {
+            PlayStep();
+            lastStep = Time.time;
+        }
+    }
 
-        animator.SetInteger(PlayerConstants.AnimParamVelocity, 1);
-        animator.SetBool(PlayerConstants.AnimParamVerticalMovement, lookingAt.Item1);
-        animator.SetBool(PlayerConstants.AnimParamPositiveMovement, lookingAt.Item2);
-        
-        yield return null;
-
-        settingLookingAt = false;
+    private void PlayStep()
+    {
+        if (audioSource && stepSound)
+        {
+            audioSource.volume = SoundManager.Instance.EffectsVolume / 5;
+            audioSource.clip = stepSound;
+            audioSource.Play();
+        }
     }
 
 }

@@ -56,6 +56,14 @@ public class DualCharacterController: MonoBehaviour
     [SerializeField]
     private GameObject dialoguePanel;
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip switchSound;
+    [SerializeField]
+    private AudioClip groupSuccessSound;
+    [SerializeField]
+    private AudioClip groupFailedSound;
+
     private void Awake()
     {
         InitInputActions();
@@ -166,6 +174,7 @@ public class DualCharacterController: MonoBehaviour
         {
             if (canSwitch)
             {
+                SoundManager.Instance.PlayEffectOneShot(switchSound);
                 if (!SceneLoadManager.Instance.LoadSceneOnSwitch)
                 {
                     SwitchCharacter();
@@ -270,8 +279,16 @@ public class DualCharacterController: MonoBehaviour
     {
         if (!prevGrouped && !grouped)
         {
+            SoundManager.Instance.PlayEffectOneShot(groupFailedSound);
             groupedError = true;
             groupSlider.fillRect.GetComponent<Image>().color = Color.red;
+            yield return new WaitForSeconds(0.5f);
+        }
+        else
+        {
+            SoundManager.Instance.PlayEffectOneShot(groupSuccessSound);
+            groupedError = true;
+            groupSlider.fillRect.GetComponent<Image>().color = Color.green;
             yield return new WaitForSeconds(0.5f);
         }
         ResetGroupSlider();
