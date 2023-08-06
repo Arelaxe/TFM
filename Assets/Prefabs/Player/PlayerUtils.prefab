@@ -657,6 +657,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7065727648801464018, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
+      propertyPath: pauseDialogue
+      value: 
+      objectReference: {fileID: 3458312233084003724}
     - target: {fileID: 7080914639014527160, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -814,6 +818,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3458312233084003724 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7361540922368817809, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
+  m_PrefabInstance: {fileID: 5320746567674060573}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3475402665368427080 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8785408653704054101, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}

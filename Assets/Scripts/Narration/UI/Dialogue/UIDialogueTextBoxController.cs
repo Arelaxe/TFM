@@ -19,6 +19,7 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
     private DialogueChannel m_DialogueChannel;
 
     [SerializeField] UIParams uiParams;
+    [SerializeField] GameObject pauseDialogue;
 
     private bool m_ListenToInput = false;
     private DialogueNode m_NextNode = null;
@@ -52,7 +53,7 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
 
     private void Update()
     {
-        if (m_ListenToInput && interactAction.triggered)
+        if (m_ListenToInput && interactAction.triggered && !pauseDialogue.activeSelf)
         {
             if (dialogEnded){
                 if (!choiceDialog){

@@ -1,5 +1,6 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialScene : ScriptedScene
 {
@@ -20,15 +21,17 @@ public class TutorialScene : ScriptedScene
 
     private void SkipTutorial(InputAction.CallbackContext context)
     {
-        GameObject[] popups = GameObject.FindGameObjectsWithTag("TemporalPopups"); 
-        DialogueSequencer dialogueSequencer = PlayerManager.Instance.GetDialogueInstigator().GetDialogueSequencer();
+        if (SceneManager.GetActiveScene().name == "TutorialScene"){
+            GameObject[] popups = GameObject.FindGameObjectsWithTag("TemporalPopups"); 
+            DialogueSequencer dialogueSequencer = PlayerManager.Instance.GetDialogueInstigator().GetDialogueSequencer();
 
-        for (int i = 0; i < popups.Length; i++){
-            Destroy(popups[i]);
+            for (int i = 0; i < popups.Length; i++){
+                Destroy(popups[i]);
+            }
+
+            dialogueSequencer.EndDialogue(dialogueSequencer.GetCurrentDialogue());
+            SceneLoadManager.Instance.LoadScene("IntroScene");
         }
-
-        dialogueSequencer.EndDialogue(dialogueSequencer.GetCurrentDialogue());
-        SceneLoadManager.Instance.LoadScene("IntroScene");
     }
 
 }
