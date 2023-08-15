@@ -29,7 +29,14 @@ public class TutorialScene : ScriptedScene
                 Destroy(popups[i]);
             }
 
-            dialogueSequencer.EndDialogue(dialogueSequencer.GetCurrentDialogue());
+            if (dialogueSequencer.GetCurrentDialogue() != null){
+                dialogueSequencer.EndDialogue(dialogueSequencer.GetCurrentDialogue());
+            }
+
+            if (!PlayerManager.Instance.GetDualCharacterController().Grouped){
+                PlayerManager.Instance.GetDualCharacterController().SwitchGrouping();
+            }
+
             SceneLoadManager.Instance.LoadScene("IntroScene");
         }
     }

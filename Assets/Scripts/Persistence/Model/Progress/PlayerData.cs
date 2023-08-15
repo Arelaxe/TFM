@@ -9,6 +9,7 @@ public class PlayerData
     public CharacterData unselectedCharacter = new();
     public bool selectedCharacterOne;
     public bool grouped;
+    
 
     public List<string> itemsOne = new();
     public List<string> itemsTwo = new();
