@@ -60,12 +60,18 @@ public class DialogueSequencer
     {   
         if (CanStartNode(node))
         {
-            StopDialogueNode(m_CurrentNode);
+            if (m_CurrentNode != null){
+                StopDialogueNode(m_CurrentNode);
+            }
 
             m_CurrentNode = node;
 
             if (m_CurrentNode != null)
             {
+                if (m_CurrentDialogue.LimitedOptions && m_CurrentDialogue.Options == 0){
+                    m_CurrentNode = m_CurrentDialogue.ConfluenceNode;
+                    m_CurrentDialogue.DecreaseOptions();
+                }
                 OnDialogueNodeStart?.Invoke(m_CurrentNode);
             }
             else
@@ -83,6 +89,12 @@ public class DialogueSequencer
     {
         if (m_CurrentNode == node)
         {
+            if (m_CurrentNode != null){
+                if (m_CurrentNode.EndsChoiceOption){
+                    m_CurrentDialogue.DecreaseOptions();
+                }
+            }
+
             OnDialogueNodeEnd?.Invoke(m_CurrentNode);
             m_CurrentNode = null;
         }

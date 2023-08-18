@@ -39721,7 +39721,7 @@ PrefabInstance:
     - target: {fileID: 7907441227734274061, guid: 3bdefe34b3c7cee4db48c70c5a95facd, type: 3}
       propertyPath: dialogueRequestEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 4d461ccdd61877c4e8f3d8bbb99b15ab, type: 2}
+      objectReference: {fileID: 11400000, guid: 9410e1ee7db29524bb2d3597691a6362, type: 2}
     - target: {fileID: 7907441227734274096, guid: 3bdefe34b3c7cee4db48c70c5a95facd, type: 3}
       propertyPath: m_RootOrder
       value: 2
