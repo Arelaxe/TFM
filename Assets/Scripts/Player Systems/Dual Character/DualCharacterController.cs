@@ -436,4 +436,8 @@ public class DualCharacterController: MonoBehaviour
     {
         return additiveCamera;
     }
+
+    public Rigidbody2D GetRB(){
+        return rb;
+    }
 }
