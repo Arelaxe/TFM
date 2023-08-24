@@ -14,7 +14,7 @@ public class BinaryMovable : MonoBehaviour
     private bool moving;
     private bool atTarget;
 
-    void Start()
+    private void Awake()
     {
         initPosition = transform.position;
         targetPosition = initPosition + movement;

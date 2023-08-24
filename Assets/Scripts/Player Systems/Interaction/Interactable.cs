@@ -10,7 +10,7 @@ public class Interactable : MonoBehaviour
 
     private static readonly string KEY_INTERACTIONS = "Interactable";
 
-    private void Start()
+    private void Awake()
     {
         InitDynamicObject();
     }

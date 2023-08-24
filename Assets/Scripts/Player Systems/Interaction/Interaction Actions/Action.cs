@@ -15,7 +15,7 @@ public abstract class Action : MonoBehaviour
     protected bool once;
     protected int timesExecuted = 0;
 
-    private void Start()
+    private void Awake()
     {
         InitDynamicObject();
     }
@@ -34,7 +34,6 @@ public abstract class Action : MonoBehaviour
 
     protected virtual void LoadObjectState(ObjectState objectState)
     {
-        Debug.Log(PersistenceUtils.Get<ActionData>(objectState.extendedData[GetPersistentName()]).timesExecuted);
         timesExecuted = PersistenceUtils.Get<ActionData>(objectState.extendedData[GetPersistentName()]).timesExecuted;
     }
 
