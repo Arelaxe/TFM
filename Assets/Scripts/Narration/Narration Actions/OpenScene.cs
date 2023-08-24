@@ -12,6 +12,11 @@ public class OpenScene : NarrationAction
     public override void EndAction()
     {
         base.EndAction();
+
+        if (!PlayerManager.Instance.GetDualCharacterController().Grouped){
+            PlayerManager.Instance.GetDualCharacterController().SwitchGrouping();
+        }
+        
         SceneLoadManager.Instance.LoadScene(sceneName, -1, true);
     }
 }

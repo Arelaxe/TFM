@@ -16,6 +16,5 @@ public class ScriptedScene : MonoBehaviour
                 init = true;
             }
         }
-        
     }
 }
