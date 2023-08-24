@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speaker: {fileID: 11400000, guid: 9662b2e36d8422e49a357ca50d445522, type: 2}
   m_Text: "\xA1Muy bien! Ten en cuenta tambi\xE9n que habr\xE1 acciones para las
-    cuales no necesitar\xE1s ning\xFAn objeto"
+    cuales no necesitar\xE1s ning\xFAn objeto."

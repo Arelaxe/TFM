@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speaker: {fileID: 11400000, guid: 9662b2e36d8422e49a357ca50d445522, type: 2}
   m_Text: "\xA1Muy bien! Si te has fijado, esta acci\xF3n solo la pod\xEDa realizar
-    Shin'en"
+    Shin'en."

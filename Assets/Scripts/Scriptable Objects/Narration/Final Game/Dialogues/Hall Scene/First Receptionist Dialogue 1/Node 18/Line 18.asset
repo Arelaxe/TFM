@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd2c1887a808da4b8f0a6cec8d8b890, type: 3}
   m_Name: Line 18
   m_EditorClassIdentifier: 
-  m_Speaker: {fileID: 11400000, guid: 938261814dbc2bf4b9e062a0abfe1f80, type: 2}
-  m_Text: El Sr. Ogawa es una persona muy ocupada, siento no poder ayudarle.
+  m_Speaker: {fileID: 11400000, guid: baff6483c8a9f1e46878ff4976172455, type: 2}
+  m_Text: "Asociaci\xF3n M, d\xEDgame."

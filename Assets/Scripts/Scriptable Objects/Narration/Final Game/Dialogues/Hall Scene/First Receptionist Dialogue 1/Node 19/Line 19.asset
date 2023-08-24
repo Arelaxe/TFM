@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd2c1887a808da4b8f0a6cec8d8b890, type: 3}
   m_Name: Line 19
   m_EditorClassIdentifier: 
-  m_Speaker: {fileID: 11400000, guid: 938261814dbc2bf4b9e062a0abfe1f80, type: 2}
-  m_Text: El Sr. Ogawa es una persona muy ocupada, siento no poder ayudarle.
+  m_Speaker: {fileID: 11400000, guid: dbe0c0ffe7897114d80ce989431cf5ce, type: 2}
+  m_Text: "Yumi soy Ryo, no me dejan ver a su jefe, hay que coger cita previa. \xBFC\xF3mo
+    no me hab\xEDas dicho nada de esto?"

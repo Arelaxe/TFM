@@ -15,4 +15,4 @@ MonoBehaviour:
   m_Speaker: {fileID: 11400000, guid: 9662b2e36d8422e49a357ca50d445522, type: 2}
   m_Text: "Cada personaje tiene su propio inventario, si est\xE1n cerca pueden intercambiar
     objetos entre ellos. Puedes pulsar en los objetos para solicitar una descripci\xF3n
-    de los mismos"
+    de los mismos."

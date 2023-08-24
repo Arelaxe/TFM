@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d150190ca6408f1418b81dcb81e9f740, type: 3}
-  m_Name: First Receptionist Dialogue 1
+  m_Script: {fileID: 11500000, guid: bbd2c1887a808da4b8f0a6cec8d8b890, type: 3}
+  m_Name: Line 1
   m_EditorClassIdentifier: 
-  m_FirstNode: {fileID: 11400000, guid: 37b5e387698fb1c4986b41ae85bb93cc, type: 2}
+  m_Speaker: {fileID: 11400000, guid: 182bb5690f4c7114b99be8e67f6ec1f8, type: 2}
+  m_Text: "\xA1NOOOOOOOOOO! Me toca turno en el s\xF3tano 2, lo odioooooooo"

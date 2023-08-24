@@ -15,4 +15,4 @@ MonoBehaviour:
   m_Speaker: {fileID: 11400000, guid: 9662b2e36d8422e49a357ca50d445522, type: 2}
   m_Text: "Por \xFAltimo, hablemos de la interacci\xF3n con objetos y de los di\xE1logos,
     que son partes centrales del gameplay. Los objetos pueden usarse para realizar
-    diferentes acciones o para desbloquear opciones de di\xE1logo"
+    diferentes acciones o para desbloquear opciones de di\xE1logo."

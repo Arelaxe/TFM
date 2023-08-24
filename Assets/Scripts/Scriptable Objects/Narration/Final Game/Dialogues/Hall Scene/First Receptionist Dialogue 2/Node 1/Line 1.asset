@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Line 1
   m_EditorClassIdentifier: 
   m_Speaker: {fileID: 11400000, guid: 938261814dbc2bf4b9e062a0abfe1f80, type: 2}
-  m_Text: "Este es el segundo di\xE1logo"
+  m_Text: "\xA1Que pase un buen d\xEDa en la sede Ogawa!"
