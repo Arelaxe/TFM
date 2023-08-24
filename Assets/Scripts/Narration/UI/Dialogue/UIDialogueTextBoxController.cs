@@ -21,6 +21,9 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
     [SerializeField] UIParams uiParams;
     [SerializeField] GameObject pauseDialogue;
 
+    [SerializeField] private AudioSource effectsAudioSource;
+    [SerializeField] private int soundRatio;
+
     private bool m_ListenToInput = false;
     private DialogueNode m_NextNode = null;
     private PlayerInput input;
@@ -74,6 +77,7 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
         StartCoroutine(ShowLine(currentText));
         m_SpeakerText.text = node.DialogueLine.Speaker.CharacterName;
         m_SpeakerText.color = node.DialogueLine.Speaker.Color;
+        
         node.Accept(this);
     }
 
@@ -81,10 +85,17 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
     {
         dialogEnded = false;
         m_DialogueText.text= string.Empty;
+        int charIndex = 0;
 
         foreach(char c in line){
             if (!dialogEnded){
                 m_DialogueText.text += c;
+                charIndex++;
+
+                if (charIndex % soundRatio == 0){
+                    effectsAudioSource.PlayOneShot(m_DialogueChannel.currentNode.DialogueLine.Speaker.Voice);
+                }
+                
                 yield return new WaitForSecondsRealtime(uiParams.DialogSpeed);
             }
         }

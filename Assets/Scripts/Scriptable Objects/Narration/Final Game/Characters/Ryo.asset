@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CharacterName: Ryo
   m_Color: {r: 0, g: 0.052697107, b: 0.8867924, a: 1}
+  m_Voice: {fileID: 8300000, guid: 5ec6ac51caf873d4e8a44a34e46b1176, type: 3}

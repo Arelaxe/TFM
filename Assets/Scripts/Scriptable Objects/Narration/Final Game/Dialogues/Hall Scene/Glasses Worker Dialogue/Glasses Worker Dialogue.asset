@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d150190ca6408f1418b81dcb81e9f740, type: 3}
   m_Name: Glasses Worker Dialogue
   m_EditorClassIdentifier: 
-  m_FirstNode: {fileID: 0}
+  m_FirstNode: {fileID: 11400000, guid: eaf1a81deb8a2e34fb52c05096f8d360, type: 2}
   m_LimitedOptions: 0
   m_Options: 0
   m_ConfluenceNode: {fileID: 0}

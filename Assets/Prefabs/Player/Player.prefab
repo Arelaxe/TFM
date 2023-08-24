@@ -1167,6 +1167,9 @@ MonoBehaviour:
   m_ChoiceControllerPrefab: {fileID: 7260258590126597936, guid: 9182d879243c8d746a71e684f8820a8a, type: 3}
   m_DialogueChannel: {fileID: 11400000, guid: ba30d10c4ccf61c4e8119de0f19b641b, type: 2}
   uiParams: {fileID: 11400000, guid: d42e0fba6c5e5c74f83c646e6945e48b, type: 2}
+  pauseDialogue: {fileID: 0}
+  effectsAudioSource: {fileID: 0}
+  soundRatio: 3
 --- !u!222 &4888340674885762099
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ MonoBehaviour:
     m_ChoiceNode: {fileID: 11400000, guid: cfcae58561e89e3419b8d26de043c678, type: 2}
     m_InitiallyAvailable: 1
   - m_ChoicePreview: No
-    m_ChoiceNode: {fileID: 0}
+    m_ChoiceNode: {fileID: 11400000, guid: 739a985f8721b5f4eb9572f6a048558e, type: 2}
     m_InitiallyAvailable: 1
   m_InventoryChoices: []
   m_DefaultInventoryChoice: {fileID: 0}

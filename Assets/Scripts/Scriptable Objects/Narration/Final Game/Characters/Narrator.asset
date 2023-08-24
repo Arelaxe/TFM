@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CharacterName: Narrador
   m_Color: {r: 1, g: 0.91486025, b: 0, a: 1}
+  m_Voice: {fileID: 8300000, guid: e1cd28e882da69b44af70ed9f3ddd287, type: 3}

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: MrOgawa
   m_EditorClassIdentifier: 
   m_CharacterName: Sr. Ogawa
-  m_Color: {r: 0, g: 1, b: 0.30356598, a: 1}
+  m_Color: {r: 0.40832603, g: 1, b: 0, a: 1}
+  m_Voice: {fileID: 8300000, guid: e1cd28e882da69b44af70ed9f3ddd287, type: 3}

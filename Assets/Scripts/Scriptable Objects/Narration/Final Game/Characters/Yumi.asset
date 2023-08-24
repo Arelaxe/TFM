@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CharacterName: Yumi
   m_Color: {r: 1, g: 0.032075405, b: 0.97985876, a: 1}
+  m_Voice: {fileID: 8300000, guid: f6030a2bfd7344c47ad2fcac22dd2a25, type: 3}
