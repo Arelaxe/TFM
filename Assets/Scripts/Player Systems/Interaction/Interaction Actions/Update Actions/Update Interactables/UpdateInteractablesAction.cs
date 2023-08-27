@@ -18,6 +18,16 @@ public class UpdateInteractablesAction : Action
             {
                 interactableUpdate.interactable.Interactions[index].SetAvailable(false);
             }
+
+            foreach (int index in interactableUpdate.blockedInteractions)
+            {
+                interactableUpdate.interactable.Interactions[index].SetBlocked(true);
+            }
+
+            foreach (int index in interactableUpdate.notBlockedInteractions)
+            {
+                interactableUpdate.interactable.Interactions[index].SetBlocked(false);
+            }
         }
     }
 }

@@ -5,10 +5,15 @@ using UnityEngine.InputSystem;
 public class InGameMenuController : MonoBehaviour
 {
     [SerializeField]
+    private RectTransform rectTransform;
+
+    [SerializeField]
     private List<Page> pages;
 
     [SerializeField]
     private GameObject hackingExtension;
+
+    private GameObject additionalUI;
 
     private PlayerInput input;
     private bool switchPageAvailable = true;
@@ -86,5 +91,17 @@ public class InGameMenuController : MonoBehaviour
             extension = hackingExtension.GetComponent<HackingExtension>();
         }
         return extension;
+    }
+
+    public void AddAdditionalUI(GameObject panel)
+    {
+        panel.GetComponent<RectTransform>().SetParent(rectTransform, false);
+        panel.GetComponent<RectTransform>().position = rectTransform.position;
+        additionalUI = panel;
+    }
+
+    public void DestroyAdditionalUI()
+    {
+        Destroy(additionalUI);
     }
 }
