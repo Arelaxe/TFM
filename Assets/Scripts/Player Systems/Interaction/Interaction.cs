@@ -13,6 +13,9 @@ public class Interaction
     [SerializeField]
     private bool available;
 
+    [SerializeField]
+    private bool blocked;
+
     [Space]
     [SerializeField]
     [Tooltip("Required item to execute the interaction.")]
@@ -51,6 +54,7 @@ public class Interaction
 
     public string Name { get => name; }
     public bool IsAvailable { get => available; }
+    public bool IsBlocked { get => blocked; }
     public ActionType Type { get => type; }
     public Item RequiredItem { get => item; }
     public bool Reusable { get => reusable; }
@@ -78,5 +82,10 @@ public class Interaction
     public void SetAvailable(bool available)
     {
         this.available = available;
+    }
+
+    public void SetBlocked(bool blocked)
+    {
+        this.blocked = blocked;
     }
 }

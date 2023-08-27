@@ -12,4 +12,10 @@ public class InteractableUpdate
 
     [SerializeField]
     public int[] notAvailableInteractions;
+
+    [SerializeField]
+    public int[] blockedInteractions;
+
+    [SerializeField]
+    public int[] notBlockedInteractions;
 }

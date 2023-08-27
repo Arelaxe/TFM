@@ -140,7 +140,7 @@ public class InteractionController : MonoBehaviour
             pickUpConstraint = inventoryController.IsCharacterInventoryFull(selectedCharacterOne);
         }
 
-        return hackingConstraint || spiritualConstraint || itemConstraint || pickUpConstraint;
+        return interaction.IsBlocked || hackingConstraint || spiritualConstraint || itemConstraint || pickUpConstraint;
     }
 
     private void PerformInteraction(Interaction interaction)
