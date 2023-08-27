@@ -1772,7 +1772,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4567441784859575242}
-  - component: {fileID: 2455914174106954118}
   m_Layer: 0
   m_Name: Character Selector
   m_TagString: Untagged
@@ -1803,23 +1802,6 @@ RectTransform:
   m_AnchoredPosition: {x: 960, y: -540}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2455914174106954118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7403970604103219141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b038110ca8e96bf44a5179f014a72aec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  character1Icon: {fileID: 6127380111286290630}
-  character2Icon: {fileID: 3459310740288553292}
-  groupChain: {fileID: 4042765513309874396}
-  chainSprite: {fileID: 21300000, guid: c4bee1197578424418215c169e03bba4, type: 3}
-  brokenChainSprite: {fileID: 21300000, guid: 989e4741e39f05e42b82c79cb0edbf62, type: 3}
 --- !u!1 &7701791070663685072
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,6 +2526,7 @@ GameObject:
   - component: {fileID: 3255614408493529419}
   - component: {fileID: 4245717551466702137}
   - component: {fileID: 4425455385008391537}
+  - component: {fileID: 760797068743129300}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2631,7 +2614,7 @@ MonoBehaviour:
   character1: {fileID: 8336605228558245094}
   character2: {fileID: 8336605227755948323}
   groupSlider: {fileID: 7285216572322308115}
-  characterSelector: {fileID: 2455914174106954118}
+  characterSelector: {fileID: 0}
   stateDrivenCamera: {fileID: 8336605227977791363}
   character1Camera: {fileID: 8336605229122867053}
   character2Camera: {fileID: 8336605228708046907}
@@ -2704,6 +2687,24 @@ MonoBehaviour:
   - {fileID: 6040234516921171563}
   - {fileID: 5926759254861957546}
   hackingExtension: {fileID: 3793012485194640192}
+--- !u!114 &760797068743129300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8336605229212422970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0c41f551706604cb4a48afcd4b17a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hud: {fileID: 195286847703003455}
+  character1Icon: {fileID: 6127380111286290630}
+  character2Icon: {fileID: 3459310740288553292}
+  groupChain: {fileID: 4042765513309874396}
+  chainSprite: {fileID: 21300000, guid: c4bee1197578424418215c169e03bba4, type: 3}
+  brokenChainSprite: {fileID: 21300000, guid: 989e4741e39f05e42b82c79cb0edbf62, type: 3}
 --- !u!1 &8336605229378331947
 GameObject:
   m_ObjectHideFlags: 0

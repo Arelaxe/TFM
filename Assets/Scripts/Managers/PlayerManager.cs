@@ -51,6 +51,11 @@ public class PlayerManager : Singleton<PlayerManager>
         return player.GetComponent<InGameMenuController>();
     }
 
+    public HUDController GetHUDController()
+    {
+        return player.GetComponent<HUDController>();
+    }
+
     public DialogueInstigator GetDialogueInstigator(){
         return player.GetComponent<DialogueInstigator>();
     }

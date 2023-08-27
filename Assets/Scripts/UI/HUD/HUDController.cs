@@ -1,19 +1,33 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterSelector : MonoBehaviour
+public class HUDController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject hud;
+
+    [Header("Character Icons")]
     [SerializeField]
     private Image character1Icon;
     [SerializeField]
     private Image character2Icon;
-    [Space]
+    [Header("Group Icons")]
     [SerializeField]
     private Image groupChain;
     [SerializeField]
     private Sprite chainSprite;
     [SerializeField]
     private Sprite brokenChainSprite;
+
+    public void EnableHUD()
+    {
+        hud.SetActive(true);
+    }
+
+    public void DisableHUD()
+    {
+        hud.SetActive(false);
+    }
 
     public void SwitchCharacterIcon()
     {
