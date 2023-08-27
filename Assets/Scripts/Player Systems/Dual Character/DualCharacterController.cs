@@ -36,6 +36,9 @@ public class DualCharacterController: MonoBehaviour
     [SerializeField]
     private Slider groupSlider;
 
+    [SerializeField]
+    private CharacterSelector characterSelector;
+
     private bool grouped = true;
     private bool prevGrouped = true;
     private bool groupedError = false;
@@ -203,6 +206,7 @@ public class DualCharacterController: MonoBehaviour
         EnableNavAgents();
 
         SwitchToCharacterCamera();
+        characterSelector.SwitchCharacterIcon();
 
         PlayerManager.Instance.GetInteractionController().DestroyInteractions();
         PlayerManager.Instance.GetInventoryController().UpdateItemPanelsForSwitch(selectedCharacterOne, grouped);
@@ -218,6 +222,7 @@ public class DualCharacterController: MonoBehaviour
         }
 
         GetUnselectedCharacterAgent().enabled = grouped;
+        characterSelector.SwitchGroupIcon();
 
         PlayerManager.Instance.GetInventoryController().UpdateItemPanelsForGrouping(selectedCharacterOne, grouped);
     }

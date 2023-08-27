@@ -1,5 +1,5 @@
-using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryController : PageController
 {
@@ -18,6 +18,9 @@ public class InventoryController : PageController
     public override Page Page => page;
 
     public override string MenuAction => PlayerConstants.ActionInventory;
+
+    [SerializeField]
+    private Image newItem;
 
     protected override void InitPage()
     {
@@ -88,6 +91,8 @@ public class InventoryController : PageController
         {
             AddItemToCharacter(inventory2.IsFull, item);
         }
+
+        ShowNewItemIcon(true);
     }
 
     public void AddItemToCharacter(bool isCharacter1, Item item)
@@ -132,6 +137,11 @@ public class InventoryController : PageController
         {
             page.DisableContentPanel(!isCharacter1);
         }
+    }
+
+    public void ShowNewItemIcon(bool show)
+    {
+        newItem.enabled = show;
     }
 
     // Page Event Handlers

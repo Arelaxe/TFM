@@ -70,6 +70,8 @@ public class DocumentationPage : Page
         description.ResetDescription();
         SelectFirstAvailable();
         scrollbar.value = 1;
+
+        PlayerManager.Instance.GetDocumentationController().ShowNewDocIcon(false);
     }
 
     public void SelectFirstAvailable()

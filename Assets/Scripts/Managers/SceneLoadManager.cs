@@ -345,6 +345,8 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         {
             inventoryController.AddItem(false, ItemDataManager.Instance.Get(itemId));
         }
+
+        inventoryController.ShowNewItemIcon(false);
     }
 
     private void LoadDocuments(List<string> documents)
@@ -355,6 +357,8 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         {
             documentationController.Add(ItemDataManager.Instance.Get(documentId), false);
         }
+
+        documentationController.ShowNewDocIcon(false);
     }
 
     private IEnumerator LoadDestinationScene(string destinationScene)
