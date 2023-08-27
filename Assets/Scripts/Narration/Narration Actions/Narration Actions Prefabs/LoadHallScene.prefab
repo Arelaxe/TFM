@@ -48,4 +48,4 @@ MonoBehaviour:
   closesPopups: 0
   turnOffSwitchPageAvailability: 0
   popupToOpen: {fileID: 0}
-  sceneName: HallScene
+  sceneName: Ogawa Hall
