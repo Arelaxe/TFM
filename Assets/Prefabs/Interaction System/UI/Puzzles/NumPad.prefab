@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7824264599465656793}
   - component: {fileID: 1155805351722680604}
   - component: {fileID: 1595762593010906917}
+  - component: {fileID: 5936913116521186286}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -82,6 +83,18 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 3
+--- !u!114 &5936913116521186286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241958353202245738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35dab3e767620844cb2eb555cdddf189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &628338229931614958
 GameObject:
   m_ObjectHideFlags: 0
@@ -1996,6 +2009,8 @@ MonoBehaviour:
   btn0: {fileID: 5967509080008489440}
   btnClr: {fileID: 5967509080939265835}
   btnEnt: {fileID: 5967509079745363601}
+  correctSound: {fileID: 8300000, guid: 7278f91c345a6774081b693c3af5ffd4, type: 3}
+  incorrectSound: {fileID: 8300000, guid: 18b4eb296bba6a74e84911fa78ff96f9, type: 3}
 --- !u!114 &326126294047947294
 MonoBehaviour:
   m_ObjectHideFlags: 0

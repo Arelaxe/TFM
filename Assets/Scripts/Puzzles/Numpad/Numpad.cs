@@ -25,6 +25,12 @@ public class Numpad : MonoBehaviour
     public GameObject btnClr;
     public GameObject btnEnt;
 
+    [Space]
+    [SerializeField]
+    private AudioClip correctSound;
+    [SerializeField]
+    private AudioClip incorrectSound;
+
     private bool startText = true;
 
     private void Awake()
@@ -82,11 +88,13 @@ public class Numpad : MonoBehaviour
     public void BEnter (){
         if(charHolder.text == code)
         {
+            SoundManager.Instance.PlayEffectOneShot(correctSound);
             charHolder.text = "ACTIVADO";
             StartCoroutine(Unlock());
         }
         else
         {
+            SoundManager.Instance.PlayEffectOneShot(incorrectSound);
             charHolder.text = "PIN ERRONEO";
         }
     }
