@@ -125,6 +125,8 @@ public class InventoryPage : Page
         base.Show();
         description.ResetDescription();
         SelectFirstAvailable();
+
+        PlayerManager.Instance.GetInventoryController().ShowNewItemIcon(false);
     }
 
     public override void Hide()

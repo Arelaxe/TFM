@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DocumentationController : PageController
 {
@@ -13,6 +14,9 @@ public class DocumentationController : PageController
     public override Page Page => page;
 
     public override string MenuAction => PlayerConstants.ActionDocumentation;
+
+    [SerializeField]
+    private Image newDoc;
 
     protected override void InitPage()
     {
@@ -37,6 +41,13 @@ public class DocumentationController : PageController
         {
             page.InitUIElement();
         }
+
+        ShowNewDocIcon(true);
+    }
+
+    public void ShowNewDocIcon(bool show)
+    {
+        newDoc.enabled = show;
     }
 
     // Page Event Handlers

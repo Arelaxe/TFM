@@ -6124,21 +6124,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  dialogueEndEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: ba30d10c4ccf61c4e8119de0f19b641b, type: 2}
-        m_TargetAssemblyTypeName: DialogueChannel, Assembly-CSharp
-        m_MethodName: RaiseDialogueEnd
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 9366f8a6c39d43847a2bbf7371ff0a14, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1295668550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6164,6 +6149,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3627321184081009786, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627321184081009786, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627321184081009786, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627321184081009786, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627321184081009786, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627321184081009786, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -540
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530472724267168648, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 68.900024
+      objectReference: {fileID: 0}
     - target: {fileID: 5530472724441952296, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -6252,5 +6265,100 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkipTutorialCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5530472725107680497, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530472725107680497, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530472725107680497, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530472725107680497, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530472725107680497, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530472725107680497, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530472725107680497, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530472725143607715, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -32
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530472725326081994, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530472725326081994, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530472725326081994, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530472725326081994, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530472725326081994, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 378.81067
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530472725326081994, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 139.41687
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530472725326081994, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530472725326081994, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -90.708435
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+--- !u!1 &5530472725265171580 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5530472724441952308, guid: 470bfe6551a48fa4b8e66b820f35de7f, type: 3}
+  m_PrefabInstance: {fileID: 5530472725265171579}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5530472725265171581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5530472725265171580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
