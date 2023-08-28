@@ -11,7 +11,8 @@ public class ElectricInput : MonoBehaviour
     public bool active;
     private Image img;
     private ElectricInput eI;
-    public AudioSource pieceSound;
+    [SerializeField]
+    public AudioClip pieceSound;
     void Start()
     {
         eI = GetComponent<ElectricInput>();
