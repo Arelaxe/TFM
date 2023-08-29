@@ -78,6 +78,18 @@ public abstract class PageController : MonoBehaviour
         HidePage();
     }
 
+    public void IconControl()
+    {
+        if (!Page.gameObject.activeSelf)
+        {
+            Show();
+        }
+        else
+        {
+            Hide();
+        }
+    }
+
     public void HidePage()
     {
         Page.Hide();
