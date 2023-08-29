@@ -10,6 +10,9 @@ public class Switch : MonoBehaviour
     public Sprite off;
     public Boolean active;
     private Button btn;
+
+    [SerializeField]
+    private AudioClip press;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,7 @@ public class Switch : MonoBehaviour
     }
     // Update is called once per frame
      public void changeColor(){
+        SoundManager.Instance.PlayEffectOneShot(press);
         if (active){
             btn.image.sprite = off;
             active = false;
