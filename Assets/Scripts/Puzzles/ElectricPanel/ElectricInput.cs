@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ElectricInput : MonoBehaviour
 {
-    public Sprite on;
+    private Sprite on;
     public Sprite off;
     public bool active;
     private Image img;
@@ -23,10 +23,14 @@ public class ElectricInput : MonoBehaviour
     {
         //Debug.Log("Entra el Collider");
         if (other.gameObject.tag == eI.gameObject.tag){
-            //pieceSound.Play();
+            SoundManager.Instance.PlayEffectOneShot(pieceSound);
             Destroy(other.gameObject);
             img.sprite = on; 
             active = true;
         }  
+    }
+
+    public void setOn (Sprite onImage){
+        on = onImage;
     }
 }

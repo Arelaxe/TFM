@@ -24,4 +24,8 @@ public class Drag : MonoBehaviour
             out position);
         transform.position = canvas.transform.TransformPoint(position);
     }
+
+    public void setCanvas(Canvas canvas){
+        this.canvas = canvas;
+    }
 }
