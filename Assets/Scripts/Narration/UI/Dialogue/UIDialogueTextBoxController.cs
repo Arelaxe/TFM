@@ -21,7 +21,6 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
     [SerializeField] UIParams uiParams;
     [SerializeField] GameObject pauseDialogue;
 
-    [SerializeField] private AudioSource effectsAudioSource;
     [SerializeField] private int soundRatio;
 
     private bool m_ListenToInput = false;
@@ -93,7 +92,7 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
                 charIndex++;
 
                 if (charIndex % soundRatio == 0){
-                    effectsAudioSource.PlayOneShot(m_DialogueChannel.currentNode.DialogueLine.Speaker.Voice);
+                    SoundManager.Instance.PlayEffectOneShot(m_DialogueChannel.currentNode.DialogueLine.Speaker.Voice);
                 }
                 
                 yield return new WaitForSecondsRealtime(uiParams.DialogSpeed);

@@ -203,7 +203,8 @@ public class DualCharacterController: MonoBehaviour
         EnableNavAgents();
 
         SwitchToCharacterCamera();
-
+        
+        PlayerManager.Instance.GetHUDController().SwitchCharacterIcon();
         PlayerManager.Instance.GetInteractionController().DestroyInteractions();
         PlayerManager.Instance.GetInventoryController().UpdateItemPanelsForSwitch(selectedCharacterOne, grouped);
     }
@@ -219,6 +220,7 @@ public class DualCharacterController: MonoBehaviour
 
         GetUnselectedCharacterAgent().enabled = grouped;
 
+        PlayerManager.Instance.GetHUDController().SwitchGroupIcon();
         PlayerManager.Instance.GetInventoryController().UpdateItemPanelsForGrouping(selectedCharacterOne, grouped);
     }
 

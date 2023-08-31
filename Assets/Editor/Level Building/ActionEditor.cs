@@ -14,7 +14,7 @@ public class ActionEditor : Editor
             if (Application.isEditor && !Application.isPlaying)
             {
                 action.GenerateGUID();
-                //PrefabUtility.RecordPrefabInstancePropertyModifications(action);
+                PrefabUtility.RecordPrefabInstancePropertyModifications(action);
                 EditorSceneManager.SaveScene(SceneManager.GetActiveScene());
             }
         }

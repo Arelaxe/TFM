@@ -727,9 +727,13 @@ MonoBehaviour:
   - name: Coger
     type: 0
     available: 1
+    blocked: 0
     item: {fileID: 0}
     reusable: 1
+    oppositeName: 
+    once: 0
     action: {fileID: 2133396000}
+    additionalActions: []
 --- !u!114 &2133395997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,7 +792,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1183464629
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ebfe10c96978990408af521a2f776e97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -839,6 +843,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4663b9e608382458129bb63871659c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  guid: 
+  once: 0
   item: {fileID: 11400000, guid: 2306a898223c0f54aad46c853c5b88ff, type: 2}
 --- !u!1001 &1072670051618629586
 PrefabInstance:
