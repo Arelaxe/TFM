@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a34f43700a09204b87d566bb38ef6cf, type: 3}
   m_Name: UI Params
   m_EditorClassIdentifier: 
-  dialogSpeed: 0.05
+  dialogSpeed: 0.03
