@@ -259,6 +259,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         SoundManager.Instance.LoadMusicScene();
 
         PlayerManager.Instance.GetDualCharacterController().SwitchToAdditiveCamera();
+        PlayerManager.Instance.GetHUDController().DisableHUD();
 
         yield return StartCoroutine(Fade(false));
 
@@ -281,6 +282,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         dualCharacterController.SwitchToCharacterCamera();
 
         PlayerManager.Instance.GetInteractionController().SetInteractivity(true);
+        PlayerManager.Instance.GetHUDController().EnableHUD();
 
         yield return StartCoroutine(Fade(false));
 
@@ -505,6 +507,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         }
         else
         {
+            Debug.Log("A");
             inGameProgress.keyActions.Add(key, value);
         }
     }
@@ -570,6 +573,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         string value = null;
         if (inGameProgress.keyActions.ContainsKey(key))
         {
+            Debug.Log("B");
             value = inGameProgress.keyActions[key];
         }
         return value;
