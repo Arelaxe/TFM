@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
   m_Name: DocumentMaxHackDataLabo
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "Informaci\xF3n Laboratorio"
-  <Description>k__BackingField: "Noe aqu\xED va la info del lore del hackeo m\xE1ximo"
-  <ItemImage>k__BackingField: {fileID: 21300000, guid: 8a280abaab43102498a6393f30a25c22, type: 3}
+  <Name>k__BackingField: Email Pruebas
+  <Description>k__BackingField: "<b>De:</b> shuntaro.inoue@ogawacorp.jp\r\n<b>Para:</b>
+    kenta.sato@ogawacorp.jp\r\n<b>Cc:</b> yoki.inoue@ogawacorp.jp, \nkeitaro.ogawa@ogawacorp.jp\r\n<b>Asunto:</b>
+    Pruebas A3000-HQ\r\n\r\nBuenos d\xEDas,\r\n\r\nEscribimos desde el Laboratorio
+    2 para informar de que las muestras de materiales para el A3000-HQ han superado
+    la primera fase de pruebas. Necesitamos m\xE1s informaci\xF3n sobre el proyecto
+    para poder avanzar a la siguiente fase.\r\n\r\nUn saludo.\r\nShuntaro Inoue.\r\nT\xE9cnico
+    de laboratorio."
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: facd9b6fea9877a43930a0e665801207, type: 3}
   Type: 1
