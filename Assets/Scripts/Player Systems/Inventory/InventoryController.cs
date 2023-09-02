@@ -78,7 +78,10 @@ public class InventoryController : PageController
     public void Clear()
     {
         inventory1.Clear();
+        page.ClearData(inventory1);
+
         inventory2.Clear();
+        page.ClearData(inventory2);
     }
 
     public void AddItem(bool isCharacter1, Item item)

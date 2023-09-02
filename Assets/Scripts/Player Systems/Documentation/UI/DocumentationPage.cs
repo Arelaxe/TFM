@@ -26,10 +26,25 @@ public class DocumentationPage : Page
 
     public void LoadData(Documentation documentation)
     {
+        if (elementList.Count == 0)
+        {
+            InitUIElementList(documentation.GetItems().Count);
+        }
+
         for (int i = 0; i < documentation.GetItems().Count; i++)
         {
             elementList[i].SetData(documentation.GetItems()[i].Name);
         }
+    }
+
+    public void ClearData()
+    {
+        foreach (DocumentElement documentElement in elementList)
+        {
+            documentElement.Delete();
+        }
+
+        elementList.Clear();
     }
 
     public void InitUIElementList(int documentationSize)

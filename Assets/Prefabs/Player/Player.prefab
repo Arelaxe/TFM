@@ -2818,6 +2818,8 @@ MonoBehaviour:
   groupChain: {fileID: 4042765513309874396}
   chainSprite: {fileID: 21300000, guid: c4bee1197578424418215c169e03bba4, type: 3}
   brokenChainSprite: {fileID: 21300000, guid: 989e4741e39f05e42b82c79cb0edbf62, type: 3}
+  inventoryButton: {fileID: 7592163487082125522}
+  documentationButton: {fileID: 3538751424110837979}
 --- !u!1 &8336605229378331947
 GameObject:
   m_ObjectHideFlags: 0

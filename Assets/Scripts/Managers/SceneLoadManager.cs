@@ -259,7 +259,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         SoundManager.Instance.LoadMusicScene();
 
         PlayerManager.Instance.GetDualCharacterController().SwitchToAdditiveCamera();
-        PlayerManager.Instance.GetHUDController().DisableHUD();
+        PlayerManager.Instance.GetHUDController().HideHUD();
 
         yield return StartCoroutine(Fade(false));
 
@@ -282,7 +282,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         dualCharacterController.SwitchToCharacterCamera();
 
         PlayerManager.Instance.GetInteractionController().SetInteractivity(true);
-        PlayerManager.Instance.GetHUDController().EnableHUD();
+        PlayerManager.Instance.GetHUDController().ShowHUD();
 
         yield return StartCoroutine(Fade(false));
 

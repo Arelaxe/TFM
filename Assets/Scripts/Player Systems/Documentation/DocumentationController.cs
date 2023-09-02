@@ -32,6 +32,7 @@ public class DocumentationController : PageController
     public void Clear()
     {
         documentation.Clear();
+        page.ClearData();
     }
 
     public void Add(Item item, bool initUI = true)
