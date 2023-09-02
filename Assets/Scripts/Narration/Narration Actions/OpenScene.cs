@@ -17,7 +17,7 @@ public class OpenScene : NarrationAction
             PlayerManager.Instance.GetDualCharacterController().SwitchGrouping();
         }
 
-        PlayerManager.Instance.GetHUDController().EnableHUD();
+        PlayerManager.Instance.GetHUDController().ShowHUD();
         SceneLoadManager.Instance.LoadScene(sceneName, -1, true);
     }
 }

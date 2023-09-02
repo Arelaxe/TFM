@@ -89,6 +89,15 @@ public class InventoryPage : Page
         }
     }
 
+    public void ClearData(Inventory inventory)
+    {
+        List<InventoryElement> items = inventory.Index == 1 ? ref elementList : ref elementList2;
+        foreach (InventoryElement item in items)
+        {
+            item.ResetData();
+        }
+    }
+
     public void UpdateSelected(int inventoryIndex, int itemIndex, Item item)
     {
         if (item)
