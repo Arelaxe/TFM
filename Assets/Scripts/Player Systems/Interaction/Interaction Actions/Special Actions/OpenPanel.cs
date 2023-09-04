@@ -15,7 +15,7 @@ public class OpenPanel : Action
     [SerializeField]
     private Interactable panelInteractable;
     [SerializeField]
-    private GameObject doorToDestroy;
+    private GameObject[] destroyables;
     [SerializeField]
     private List<int> array;
     [SerializeField]
@@ -24,7 +24,7 @@ public class OpenPanel : Action
     {
         GameObject newPanel = Instantiate(panel);
         PlayerManager.Instance.GetInGameMenuController().AddAdditionalUI(newPanel);
-        newPanel.GetComponent<Panel>().Init(tagFuse, panelInteraction, panelInteractable,  array, onFuseImage, doorToDestroy);
+        newPanel.GetComponent<Panel>().Init(tagFuse, panelInteraction, panelInteractable,  array, onFuseImage, destroyables);
     }
 
 }

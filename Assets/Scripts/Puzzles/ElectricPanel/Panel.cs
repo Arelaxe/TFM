@@ -21,7 +21,7 @@ public class Panel : MonoBehaviour
     public Switch onBtn;
     [SerializeField]
     public AudioClip buttonSound;
-    private GameObject doorToDestroy;
+    private GameObject[] destroyables;
     private List<int> array;
     bool btnControl = true; 
 
@@ -134,7 +134,11 @@ public class Panel : MonoBehaviour
         {
             unlock.SetAvailable(false);
         }
-        Destroy(doorToDestroy);
+
+        foreach (GameObject destroyable in destroyables)
+        {
+            Destroy(destroyable);
+        }
         Close();
     }
 
@@ -144,13 +148,13 @@ public class Panel : MonoBehaviour
         PlayerManager.Instance.GetInGameMenuController().DestroyAdditionalUI();
     }
 
-    public void Init(string tagFuse, string panelInteraction, Interactable panelInteractable, List<int> array, Sprite onFuseImage, GameObject doorToDestroy)
+    public void Init(string tagFuse, string panelInteraction, Interactable panelInteractable, List<int> array, Sprite onFuseImage, GameObject[] destroyables)
     {
         eI.tag = tagFuse;
         eI.setOn(onFuseImage);
         this.panelInteraction = panelInteraction;
         this.panelInteractable = panelInteractable;
-        this.doorToDestroy = doorToDestroy;
+        this.destroyables = destroyables;
         this.array = array;
         
         for (int i = 0; i < drag.Length; i++)
