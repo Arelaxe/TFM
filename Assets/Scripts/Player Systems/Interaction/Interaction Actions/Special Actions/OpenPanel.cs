@@ -24,7 +24,7 @@ public class OpenPanel : Action
     {
         GameObject newPanel = Instantiate(panel);
         PlayerManager.Instance.GetInGameMenuController().AddAdditionalUI(newPanel);
-        newPanel.GetComponent<Panel>().Init(tagFuse, panelInteraction, panelInteractable,  array, onFuseImage, destroyables);
+        newPanel.GetComponent<Panel>().Init(tagFuse, panelInteraction, panelInteractable, array, onFuseImage, destroyables);
     }
 
 }

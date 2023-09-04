@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d83547f9e82db94dba35d9454f31f5e, type: 3}
   m_Name: Player Params
   m_EditorClassIdentifier: 
-  movementSpeed: 4
+  movementSpeed: 5
   interactionRange: 0.22
   groupingMaxDistance: 4.5
   distanceOnLoadScene: 0.85
