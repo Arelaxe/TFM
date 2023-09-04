@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d150190ca6408f1418b81dcb81e9f740, type: 3}
+  m_Name: Security Dialogue
+  m_EditorClassIdentifier: 
+  m_FirstNode: {fileID: 11400000, guid: e5c26d4361d0d2249841f6e9eeedd959, type: 2}
+  m_LimitedOptions: 0
+  m_Options: 0
+  m_ConfluenceNode: {fileID: 0}

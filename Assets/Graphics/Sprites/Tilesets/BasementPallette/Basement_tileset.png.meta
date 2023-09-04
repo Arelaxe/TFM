@@ -15146,6 +15146,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Basement_tileset_714
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 1024
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a12589e344a1f824aacaa5cde2d69988
+      internalID: 964765706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -15329,8 +15350,8 @@ TextureImporter:
       Basement_tileset_433: -1591843618
       Basement_tileset_333: -401476282
       Basement_tileset_641: -39834454
-      Basement_tileset_682: 1911971277
       Basement_tileset_595: -828435333
+      Basement_tileset_682: 1911971277
       Basement_tileset_672: -1226007385
       Basement_tileset_698: -2048165465
       Basement_tileset_343: 1847333423
@@ -15644,6 +15665,7 @@ TextureImporter:
       Basement_tileset_617: 914241682
       Basement_tileset_500: -1389343906
       Basement_tileset_341: -1608385313
+      Basement_tileset_714: 964765706
       Basement_tileset_567: 1999665051
       Basement_tileset_544: -1598526005
       Basement_tileset_163: -154334363
