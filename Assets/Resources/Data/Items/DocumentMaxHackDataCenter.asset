@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
+  m_Name: DocumentMaxHackDataCenter
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: Contrato Proyecto Michelangelo
+  <Description>k__BackingField: "\t        <b>REUNIDOS</b>\r\n\r\nDe una parte D\xF1a.
+    TAMAKO YOSHIDA mayor de edad con domicilio en AVENIDA DE LA PROSPERIDAD 8, quien
+    act\xFAa en nombre y representaci\xF3n de COOL WAVES JAPAN S.A. con con NIF:
+    9722059357 en calidad de PRESIDENTA, con poderes suficientes para este acto.\r\n\r\nY
+    de otra D. KEITARO OGAWA, mayor de edad con domicilio en CALLE DEL ARRECIFE 10,
+    quien act\xFAa en nombre y representaci\xF3n de OGAWA CORPORATION S.L. con NIF:
+    1914537826 en calidad DIRECTOR EJECUTIVO, con poderes suficientes para este acto.\r\n\r\n\t       
+    <b>ACUERDAN\r</b>\n\r\n<b>a)</b>  La entrega de tres barcos anuales del modelo
+    \u201CAldabrachelys-3000HQ\u201D por parte de OGAWA CORPORATION S.L. a COOL WAVES
+    JAPAN S.A. durante un periodo de 3 a\xF1os, con capacidad de renovaci\xF3n.\r\n\n<b>b)</b> 
+    El pago de una cantidad de MIL MILLONES DE YENES al a\xF1o por parte de COOL
+    WAVES JAPAN S.A. a OGAWA CORPORATION S.L.\r\n\n<b>c)</b>  Toda la informaci\xF3n
+    de este proyecto es confidencial. COOL WAVES JAPAN S.A. se reserva el derecho
+    a ejercer acciones legales de incumplir este punto.\r\n\n<b>d)</b>  Se asigna
+    como jefe del presente proyecto a D. KENTA SATO.\r\n\r\n\nFdo. digitalmente por:\r\nKeitaro
+    Ogawa, CEO de Ogawa Corporation S.L.\r\nKenta Sato, Jefe de proyectos en Ogawa
+    Corporation S.L.\r\nTamako Yoshida, Presidenta de Cool Waves Japan S.A.\r\nEmily
+    Adams, CEO de Cool Waves International S.A."
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: facd9b6fea9877a43930a0e665801207, type: 3}
+  Type: 1

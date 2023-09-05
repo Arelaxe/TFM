@@ -21,7 +21,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     [Header("Fading")]
     [SerializeField]
-    private Image fadingPanel;
+    private CanvasGroup fadingPanel;
 
     [SerializeField]
     private float fadingSpeed = 1.5f;
@@ -259,7 +259,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         SoundManager.Instance.LoadMusicScene();
 
         PlayerManager.Instance.GetDualCharacterController().SwitchToAdditiveCamera();
-        PlayerManager.Instance.GetHUDController().DisableHUD();
+        PlayerManager.Instance.GetHUDController().HideHUD();
 
         yield return StartCoroutine(Fade(false));
 
@@ -282,7 +282,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         dualCharacterController.SwitchToCharacterCamera();
 
         PlayerManager.Instance.GetInteractionController().SetInteractivity(true);
-        PlayerManager.Instance.GetHUDController().EnableHUD();
+        PlayerManager.Instance.GetHUDController().ShowHUD();
 
         yield return StartCoroutine(Fade(false));
 
@@ -522,16 +522,16 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
             if (fadeToBlack)
             {
-                while (fadingPanel.color.a < 1)
+                while (fadingPanel.alpha < 1)
                 {
-                    yield return StartCoroutine(Fade(fadingPanel.color, fadingSpeed));
+                    yield return StartCoroutine(Fade(fadingSpeed));
                 }
             }
             else
             {
-                while (fadingPanel.color.a > 0)
+                while (fadingPanel.alpha > 0)
                 {
-                    yield return StartCoroutine(Fade(fadingPanel.color, -fadingSpeed));
+                    yield return StartCoroutine(Fade(-fadingSpeed));
                 }
             }
 
@@ -539,22 +539,15 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         } 
     }
 
-    private IEnumerator Fade(Color objectColor, float fadeSpeed)
+    private IEnumerator Fade(float fadeSpeed)
     {
-        float fadeAmount;
-
-        fadeAmount = objectColor.a + (fadeSpeed * Time.deltaTime);
-
-        objectColor = new(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
-        fadingPanel.color = objectColor;
+        fadingPanel.alpha += (fadeSpeed * Time.deltaTime);
         yield return null;
     }
 
     private void DisableFadePanel()
     {
-        Color objectColor = fadingPanel.color;
-        objectColor = new(objectColor.r, objectColor.g, objectColor.b, 0);
-        fadingPanel.color = objectColor;
+        fadingPanel.alpha = 0;
     }
 
     public void ResetFollowerInSceneData()

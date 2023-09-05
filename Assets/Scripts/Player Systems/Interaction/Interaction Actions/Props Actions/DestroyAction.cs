@@ -1,11 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyAction : Action
 {
+    [SerializeField]
+    private GameObject destroyable;
+
     public override void Execute()
     {
-        Destroy(gameObject);
+        if (destroyable)
+        {
+            Destroy(destroyable);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -18,6 +18,11 @@ public class DocumentElement : Selectable, IPointerClickHandler, ISubmitHandler
         this.title.text = title;
     }
 
+    public void Delete()
+    {
+        Destroy(gameObject);
+    }
+
     public TMP_Text GetTitle()
     {
         return title;

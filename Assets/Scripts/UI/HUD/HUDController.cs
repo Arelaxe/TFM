@@ -18,15 +18,32 @@ public class HUDController : MonoBehaviour
     private Sprite chainSprite;
     [SerializeField]
     private Sprite brokenChainSprite;
+    [Header("Buttons")]
+    [SerializeField]
+    private Button inventoryButton;
+    [SerializeField]
+    private Button documentationButton;
 
-    public void EnableHUD()
+    public void ShowHUD()
     {
         hud.SetActive(true);
     }
 
-    public void DisableHUD()
+    public void HideHUD()
     {
         hud.SetActive(false);
+    }
+
+    public void EnableHUD()
+    {
+        inventoryButton.interactable = true;
+        documentationButton.interactable = true;
+    }
+
+    public void DisableHUD()
+    {
+        inventoryButton.interactable = false;
+        documentationButton.interactable = false;
     }
 
     public void SwitchCharacterIcon()

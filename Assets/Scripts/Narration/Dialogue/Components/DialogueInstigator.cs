@@ -43,6 +43,7 @@ public class DialogueInstigator : MonoBehaviour
         DualCharacterController playerController = PlayerManager.Instance.GetDualCharacterController();
         playerController.SetCharacterMobility(true, false);
         PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(false);
+        PlayerManager.Instance.GetHUDController().DisableHUD();
         m_DialogueChannel.RaiseDialogueStart(dialogue);
 
         m_CachedFlowState = FlowStateMachine.Instance.CurrentState;
@@ -60,6 +61,7 @@ public class DialogueInstigator : MonoBehaviour
         playerController.SetCharacterMobility(true, true);
         PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(true);
         interactionController.SetInteractivity(true);
+        PlayerManager.Instance.GetHUDController().EnableHUD();
     }
 
     public DialogueSequencer GetDialogueSequencer(){
