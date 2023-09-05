@@ -72,6 +72,11 @@ public class SoundManager : Singleton<SoundManager>
         PlayEffect(clickedButton);
     }
 
+    public void StopSound()
+    {
+        effectsAudioSource.Stop();
+    }
+
     public IEnumerator LoadMusicSceneCoroutine()
     {
         GameObject[] musicScenes = GameObject.FindGameObjectsWithTag(GlobalConstants.TagMusicScene);

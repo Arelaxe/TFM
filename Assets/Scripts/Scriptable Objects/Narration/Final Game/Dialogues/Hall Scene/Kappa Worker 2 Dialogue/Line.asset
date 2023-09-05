@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Line
   m_EditorClassIdentifier: 
   m_Speaker: {fileID: 11400000, guid: 182bb5690f4c7114b99be8e67f6ec1f8, type: 2}
-  m_Text: "Mi amigo es un poco exagerado, pero tiene su parte de raz\xF3n."
+  m_Text: "Estamos teniendo muchos cortes de luz \xFAltimamente, solo personal autorizado
+    como el de seguridad puede acceder al s\xF3tano."
