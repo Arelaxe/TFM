@@ -35,21 +35,7 @@ public class Numpad : MonoBehaviour
 
     private void Awake()
     {
-        ControlPlayerActions(false);
         btn1.GetComponent<Button>().Select();
-    }
-
-    private void ControlPlayerActions(bool close)
-    {
-        DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
-        dualCharacterController.SetCharacterMobility(true, close);
-        dualCharacterController.SetSwitchAvailability(close);
-
-        InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
-        interactionController.SetInteractivity(close);
-        interactionController.DestroyInteractions();
-
-        PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(close);
     }
 
     public void B1 (){
@@ -120,7 +106,6 @@ public class Numpad : MonoBehaviour
 
     public void Close()
     {
-        ControlPlayerActions(true);
         PlayerManager.Instance.GetInGameMenuController().DestroyAdditionalUI();
     }
 

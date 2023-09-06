@@ -87,6 +87,12 @@ public class DocumentationPage : Page
         scrollbar.value = 1;
 
         PlayerManager.Instance.GetDocumentationController().ShowNewDocIcon(false);
+
+        HackingExtension extension = PlayerManager.Instance.GetInGameMenuController().GetHackingExtension();
+        if (extension && elementList.Count == 0)
+        {
+            extension.SelectContinueButton();
+        }
     }
 
     public void SelectFirstAvailable()

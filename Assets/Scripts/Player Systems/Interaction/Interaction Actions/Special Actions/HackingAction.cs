@@ -20,9 +20,19 @@ public class HackingAction : Action
 
     public override void Execute()
     {
-        PlayerManager.Instance.GetInventoryController().Show();
-        PlayerManager.Instance.GetDualCharacterController().SetSwitchAvailability(false);
         PlayerManager.Instance.GetInGameMenuController().ShowHackingExtension(hackingScene, gameObject);
+
+        bool inventoryEmpty = PlayerManager.Instance.GetInventoryController().IsCharacterInventoryEmpty(PlayerManager.Instance.SelectedCharacterOne);
+        if (!inventoryEmpty)
+        {
+            PlayerManager.Instance.GetInventoryController().Show();
+        }
+        else
+        {
+            PlayerManager.Instance.GetDocumentationController().Show();
+        }
+
+        PlayerManager.Instance.GetDualCharacterController().SetSwitchAvailability(false);
     }
 
     protected override void PrepareToSaveObjectState(ObjectState objectState)

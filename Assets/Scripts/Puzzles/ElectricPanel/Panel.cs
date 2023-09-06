@@ -27,8 +27,6 @@ public class Panel : MonoBehaviour
 
     private void Awake()
     {
-        
-        ControlPlayerActions(false);
         if(PlayerManager.Instance.GetInventoryController().HasCharacterItem(PlayerManager.Instance.SelectedCharacterOne, redFuse)){
             redFuseGO.SetActive(true);
         }
@@ -55,18 +53,6 @@ public class Panel : MonoBehaviour
             onBtn.changeColor();
         }
         
-    }
-    private void ControlPlayerActions(bool close)
-    {
-        DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
-        dualCharacterController.SetCharacterMobility(true, close);
-        dualCharacterController.SetSwitchAvailability(close);
-
-        InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
-        interactionController.SetInteractivity(close);
-        interactionController.DestroyInteractions();
-
-        PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(close);
     }
     public void activateCorners(){
         switches[0].changeColor();
@@ -111,7 +97,7 @@ public class Panel : MonoBehaviour
         switches[6].changeColor(); 
         switches[10].changeColor(); 
     }
-        public void activateDoubleChange4(){
+    public void activateDoubleChange4(){
         switches[array[7]].changeColor(); //el boton que pulsamos.
         switches[5].changeColor(); 
         switches[9].changeColor(); 
@@ -144,7 +130,6 @@ public class Panel : MonoBehaviour
 
     public void Close()
     {
-        ControlPlayerActions(true);
         PlayerManager.Instance.GetInGameMenuController().DestroyAdditionalUI();
     }
 

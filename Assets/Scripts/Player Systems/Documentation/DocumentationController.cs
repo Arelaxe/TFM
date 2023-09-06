@@ -29,6 +29,11 @@ public class DocumentationController : PageController
         page.LoadData(documentation);
     }
 
+    public bool IsDocumentationEmpty()
+    {
+        return documentation.IsEmpty;
+    }
+
     public void Clear()
     {
         documentation.Clear();

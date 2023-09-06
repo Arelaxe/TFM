@@ -14,6 +14,7 @@ public class Inventory : ScriptableObject
     [field: SerializeField]
     public int Size { get; set; }
     public bool IsFull => items.Count == Size;
+    public bool IsEmpty => items.Count == 0;
 
     public void AddItem(Item item)
     {

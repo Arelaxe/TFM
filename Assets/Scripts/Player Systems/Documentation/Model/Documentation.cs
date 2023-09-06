@@ -7,6 +7,8 @@ public class Documentation : ScriptableObject
     [SerializeField]
     private List<Item> documents;
 
+    public bool IsEmpty => documents.Count == 0;
+
     public void AddItem(Item item)
     {
         if (!documents.Contains(item))

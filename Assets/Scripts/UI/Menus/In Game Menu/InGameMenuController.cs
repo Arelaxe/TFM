@@ -16,6 +16,7 @@ public class InGameMenuController : MonoBehaviour
     private GameObject additionalUI;
 
     private PlayerInput input;
+    private InputAction backAction;
     private bool switchPageAvailable = true;
 
     private int openPage = -1;
@@ -23,12 +24,27 @@ public class InGameMenuController : MonoBehaviour
     void Start()
     {
         input = GetComponent<PlayerInput>();
+        backAction = input.actions[PlayerConstants.ActionCancel];
         InitPageEvents();
     }
 
     private void Update()
     {
         InputSystemUtils.ControlCursor(input);
+        if (!SceneLoadManager.Instance.Loading)
+        {
+            if (backAction.triggered)
+            {
+                if (additionalUI)
+                {
+                    DestroyAdditionalUI();
+                }
+                if (SceneLoadManager.Instance.InAdditive)
+                {
+                    SceneLoadManager.Instance.ReturnFromAdditiveScene();
+                }
+            }
+        }
     }
 
     private void InitPageEvents()
@@ -98,10 +114,26 @@ public class InGameMenuController : MonoBehaviour
         panel.GetComponent<RectTransform>().SetParent(rectTransform, false);
         panel.GetComponent<RectTransform>().position = rectTransform.position;
         additionalUI = panel;
+        ControlPlayerActions(false);
     }
 
     public void DestroyAdditionalUI()
     {
         Destroy(additionalUI);
+        additionalUI = null;
+        ControlPlayerActions(true);
+    }
+
+    private void ControlPlayerActions(bool close)
+    {
+        DualCharacterController dualCharacterController = PlayerManager.Instance.GetDualCharacterController();
+        dualCharacterController.SetCharacterMobility(true, close);
+        dualCharacterController.SetSwitchAvailability(close);
+
+        InteractionController interactionController = PlayerManager.Instance.GetInteractionController();
+        interactionController.SetInteractivity(close);
+        interactionController.DestroyInteractions();
+
+        PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(close);
     }
 }

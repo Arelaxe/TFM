@@ -75,6 +75,25 @@ public class InventoryController : PageController
         return isFull;
     }
 
+    public bool IsCharacterInventoryEmpty(bool isCharacter1)
+    {
+        bool isEmpty;
+
+        bool isChar1Empty = inventory1.IsEmpty;
+        bool isChar2Emtpy = inventory2.IsEmpty;
+
+        if (PlayerManager.Instance.Grouped)
+        {
+            isEmpty = isChar1Empty && isChar2Emtpy;
+        }
+        else
+        {
+            isEmpty = isCharacter1 ? isChar1Empty : isChar2Emtpy;
+        }
+
+        return isEmpty;
+    }
+
     public void Clear()
     {
         inventory1.Clear();
