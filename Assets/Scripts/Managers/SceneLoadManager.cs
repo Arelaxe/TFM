@@ -35,6 +35,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     private bool loading;
     private bool paused;
     private bool inAdditive;
+    private bool returnFromAdditiveEnabled = true;
 
     protected override void LoadData()
     {
@@ -111,7 +112,10 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     public void ReturnFromAdditiveScene()
     {
-        ReturnFromAdditiveScene(new Dictionary<string, UnityEngine.Object>());
+        if (returnFromAdditiveEnabled)
+        {
+            ReturnFromAdditiveScene(new Dictionary<string, UnityEngine.Object>());
+        }
     }
 
     public void ReturnFromAdditiveScene(Dictionary<string, UnityEngine.Object> data)
@@ -260,6 +264,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         PlayerManager.Instance.GetDualCharacterController().SwitchToAdditiveCamera();
         PlayerManager.Instance.GetHUDController().HideHUD();
+        PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(false);
 
         yield return StartCoroutine(Fade(false));
 
@@ -283,6 +288,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         PlayerManager.Instance.GetInteractionController().SetInteractivity(true);
         PlayerManager.Instance.GetHUDController().ShowHUD();
+        PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(true);
 
         yield return StartCoroutine(Fade(false));
 
@@ -507,7 +513,6 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         }
         else
         {
-            Debug.Log("A");
             inGameProgress.keyActions.Add(key, value);
         }
     }
@@ -566,7 +571,6 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         string value = null;
         if (inGameProgress.keyActions.ContainsKey(key))
         {
-            Debug.Log("B");
             value = inGameProgress.keyActions[key];
         }
         return value;
@@ -579,6 +583,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     public bool Paused { get => paused; }
     public bool Loading { get => loading; }
     public bool InAdditive { get => inAdditive; set => inAdditive = value; }
+    public bool ReturnFromAdditiveEnabled { set => returnFromAdditiveEnabled = value; }
     public bool LoadSceneOnSwitch { get => unselectedScene != null && !SceneManager.GetActiveScene().name.Equals(unselectedScene); }
     public float FadingSpeed { get => fadingSpeed; }
     public Dictionary<string, UnityEngine.Object> ObjectsData { get => objectsData; }

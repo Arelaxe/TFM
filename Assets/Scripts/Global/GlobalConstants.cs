@@ -24,6 +24,9 @@ public static class GlobalConstants
     public static string ResourcesBaseDataFolder = "Data";
     public static string ResourcesItemDataFolder = "Items";
 
+    // Action maps
+    public static string ActionMapPlayer = "Player";
+
     // Control Schemes
     public static string ControlSchemeKeyboard = "Keyboard&Mouse";
     public static string ControlSchemeGamepad = "Gamepad";

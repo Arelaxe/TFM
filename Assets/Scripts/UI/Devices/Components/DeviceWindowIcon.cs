@@ -24,7 +24,7 @@ public class DeviceWindowIcon : DeviceIcon
         }
         else
         {
-            window.GetComponent<DeviceWindow>().Open(title.text, document);
+            window.GetComponent<DeviceWindow>().Open(title.text, document, this);
             if (document)
             {
                 PlayerManager.Instance.GetDocumentationController().Add(document, false);

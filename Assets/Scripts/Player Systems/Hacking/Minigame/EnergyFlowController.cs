@@ -49,7 +49,7 @@ public class EnergyFlowController : MonoBehaviour
 
     private void InitInputActions()
     {
-        input = manager.GetComponent<PlayerInput>();
+        input = PlayerManager.Instance.getPlayerInput();
 
         InputAction moveAction = input.actions[PlayerConstants.ActionMove];
         moveAction.performed += (ctx) => { inputMovement = ctx.ReadValue<Vector2>().normalized; };
