@@ -140,7 +140,7 @@ MonoBehaviour:
   verticalSpeed: 5
   brakeFactor: 0.5
   accelerationFactor: 1.5
-  horizontalSpeed: 3
+  horizontalSpeed: 5
   canMove: 0
   repelForce: 500
   repelTime: 0.15

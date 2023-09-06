@@ -30,8 +30,6 @@ public class EnergyFlowController : MonoBehaviour
 
     private List<EnergyPoint> energy = new();
 
-    private bool added;
-
     [Header("Audio")]
     [SerializeField]
     private AudioClip addPointSound;
