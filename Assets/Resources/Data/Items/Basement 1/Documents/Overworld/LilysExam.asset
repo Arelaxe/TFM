@@ -13,6 +13,14 @@ MonoBehaviour:
   m_Name: LilysExam
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Examen de la hija del Sr. Dasai
-  <Description>k__BackingField: 
+  <Description>k__BackingField: "<align=\"center\"><b>EXAMEN DE MATEM\xC1TICAS/b>\r\n\r\n<align=\"left\"><b>Nombre
+    del alumno/a:</b> Lily Dasai\r\n<b>Nota:</b> <font=\"Symbols\">baa/baa</font>\r\n<b>\r\nResuelve
+    el siguiente problema, recuerda expresar la soluci\xF3n con n\xFAmeros kappa:\r\n\r\nEl
+    otro d\xEDa compr\xE9 golosinas para mi familia. Mi padre se comi\xF3 <font=\"Symbols\">eg</font>
+    y mi madre se comi\xF3 <font=\"Symbols\">cd</font>. Si compr\xE9 <font=\"Symbols\">ji</font>,
+    \xBFCu\xE1ntas golosinas me quedan?\r\n</b>\r\n\r\nMi padre se come <font=\"Symbols\">eg</font>
+    golosinas: <font=\"Symbols\">ji</font>-<font=\"Symbols\">eg</font>=<font=\"Symbols\">fc</font>\r\nMi
+    madre se come <font=\"Symbols\">cd</font> golosinas: <font=\"Symbols\">fc</font>-<font=\"Symbols\">cd</font>=<font=\"Symbols\">cj</font>\r\nMe
+    quedan <font=\"Symbols\">cj</font> golosinas."
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 8a280abaab43102498a6393f30a25c22, type: 3}
   Type: 1

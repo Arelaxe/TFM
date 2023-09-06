@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
   m_Name: BasementCode
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "Hoja con c\xF3digo"
-  <Description>k__BackingField: 
+  <Name>k__BackingField: code.txt
+  <Description>k__BackingField: <font="Symbols">bgde</font>
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 8dfbe96ab52e3e4489e07274d8683189, type: 3}
   Type: 1
