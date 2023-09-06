@@ -22,7 +22,7 @@ public static class GlobalConstants
 
     // Folders
     public static string ResourcesBaseDataFolder = "Data";
-    public static string ResourcesItemDataFolder = "Items";
+    public static string ResourcesItemDataFolder = "Inventory";
 
     // Action maps
     public static string ActionMapPlayer = "Player";

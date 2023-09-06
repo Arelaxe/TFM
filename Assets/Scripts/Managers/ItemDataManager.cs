@@ -13,10 +13,13 @@ public class ItemDataManager : Singleton<ItemDataManager>
     private void LoadFromResources()
     {
         dataDictionary = new();
-        Item[] items = Resources.LoadAll<Item>(GlobalConstants.ResourcesBaseDataFolder + "/" + GlobalConstants.ResourcesItemDataFolder);
-        foreach (Item item in items)
+        Inventory[] inventories = Resources.LoadAll<Inventory>(GlobalConstants.ResourcesBaseDataFolder + "/" + GlobalConstants.ResourcesItemDataFolder);
+        foreach (Inventory inventory in inventories)
         {
-            dataDictionary.TryAdd(item.Name, item);
+            foreach (Item item in inventory.GetItems())
+            {
+                dataDictionary.TryAdd(item.Name, item);
+            }
         }
     }
 
