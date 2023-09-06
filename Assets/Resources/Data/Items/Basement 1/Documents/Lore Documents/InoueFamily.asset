@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
-  m_Name: PowerOutage
+  m_Name: InoueFamily
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Cortes_Luz.png
-  <Description>k__BackingField: '
-
-'
-  <ItemImage>k__BackingField: {fileID: 21300000, guid: 4e1db1ce1beda684091a56b3d9656409, type: 3}
+  <Name>k__BackingField: Familia_Inoue.png
+  <Description>k__BackingField: Fred en la playa con sus padres
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: f6ae6df15c41ef343a5a0304ed07160a, type: 3}
   Type: 1

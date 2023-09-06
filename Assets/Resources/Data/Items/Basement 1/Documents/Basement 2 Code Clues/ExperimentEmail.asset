@@ -12,16 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
   m_Name: ExperimentEmail
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Pedido_Sotano1.msg
-  <Description>k__BackingField: "<b>De:</b> kobe.dasai@ogawacorp.jp\r\n<b>Para:</b>
-    kenta.sato@ogawacorp.jp\r \n<b>Asunto:</b> Pedido Primer S\xF3tano\r\n\r\n\xA1Buenas
-    Kenta!\nYa he terminado con el inventario, as\xED que te paso aqu\xED el pedido
-    para reponer los equipos inform\xE1ticos del primer s\xF3tano. B\xE1sicamente
-    vamos a necesitar reponer uno en el data center, otro en el almac\xE9n y otro
-    en el segundo laboratorio. Este ser\xEDa el pedido concreto:\n\n<font=\"Symbols\">d</font>
-    torres de ordenadores\n<font=\"Symbols\">d</font> ratones\r\n<font=\"Symbols\">d</font>\r
-    alfombrillas para ratones\n<font=\"Symbols\">d</font>\r monitores\n<font=\"Symbols\">d</font>\r
-    teclados\n\nCuando puedas se lo pasas al jefe y miramos presupuestos.\n\nUn saludo.\r\nKobe
-    Dasai.\r\nPersonal de seguridad."
+  <Name>k__BackingField: Experimento_material.msg
+  <Description>k__BackingField: "<b>De:</b> yoki.inoue@ogawacorp.jp\r\n<b>Para:</b>
+    shuntaro.inoue@ogawacorp.jp\r\n \r\n<b>Asunto:</b> Pruebas material\r\n\r\n\xA1Buenas!\r\n\r\nNo
+    pod\xEDa esperar a llegar a casa para contarte lo que he conseguido hoy. Resulta
+    que el nuevo material que estamos estudiando tiene una propiedad extra\xF1\xEDsima.
+    \xA1Cada vez que reducimos la temperatura una grado la densidad aumenta siguiendo
+    la serie de Fibonacci! De esta forma la progresi\xF3n de la densidad quedar\xEDa
+    as\xED:\r\n\r\n<align=\"center\"><font=\"Symbols\">b, c, d, f, i, bd, cb...</font>\r\n\r\n<align=\"left\">Y
+    as\xED sigue. \xBFNo te parece curios\xEDsimo?\r\n\r\n\xA1Nos esta noche!\r\nYoki
+    Inoue.\r\nT\xE9cnico de Laboratorio."
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 8a280abaab43102498a6393f30a25c22, type: 3}
   Type: 1
