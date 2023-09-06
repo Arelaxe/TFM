@@ -10,12 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
-  m_Name: DocumentLaboPC
+  m_Name: PowerOutage
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Observaciones Laboratorio
-  <Description>k__BackingField: "Ultimamente solicitan muchos archivos del Laboratorio
-    en el despacho del sotano 2, la verdad, no se que querr\xE1n, sea lo que sea
-    deberian tener m\xE1s cuidado, han gastado el bot\xF3n n\xFAmero 4 del panel
-    del ascensor de tanto usarlo el \xFAltimo."
+  <Name>k__BackingField: Cortes_Luz.png
+  <Description>k__BackingField: "Gr\xE1fico con los cortes de luz\n"
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 8a280abaab43102498a6393f30a25c22, type: 3}
   Type: 1
