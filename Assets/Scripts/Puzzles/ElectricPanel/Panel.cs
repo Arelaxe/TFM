@@ -105,7 +105,6 @@ public class Panel : MonoBehaviour
 
     public void endBtn(){
         if(onBtn.getActive()){
-            onBtn.endPanel(onBtn.getActive());
             StartCoroutine(Unlock());
         }
     }

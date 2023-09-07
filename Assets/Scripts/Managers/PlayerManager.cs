@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerManager : Singleton<PlayerManager>
 {
@@ -60,4 +61,8 @@ public class PlayerManager : Singleton<PlayerManager>
         return player.GetComponent<DialogueInstigator>();
     }
 
+    public PlayerInput getPlayerInput()
+    {
+        return player.GetComponent<PlayerInput>();
+    }
 }

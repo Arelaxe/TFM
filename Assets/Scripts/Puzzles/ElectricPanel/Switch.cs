@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,7 +23,10 @@ public class Switch : MonoBehaviour
     }
     // Update is called once per frame
      public void changeColor(){
-        SoundManager.Instance.PlayEffectOneShot(press);
+        if (press)
+        {
+            SoundManager.Instance.PlayEffectOneShot(press);
+        }
         if (active){
             btn.image.sprite = off;
             active = false;
@@ -36,11 +37,5 @@ public class Switch : MonoBehaviour
     }
     public Boolean getActive(){
         return active;
-    }
-
-    public void endPanel(Boolean allActive){
-        if (allActive){
-            Debug.Log("Panel Completado");
-        }
     }
 }

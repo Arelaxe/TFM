@@ -100,7 +100,7 @@ public class HackingManager : MonoBehaviour
 
     private void InitInputActions()
     {
-        input = GetComponent<PlayerInput>();
+        input = PlayerManager.Instance.getPlayerInput();
         startAction = input.actions[PlayerConstants.ActionInteract];
     }
 
@@ -140,6 +140,7 @@ public class HackingManager : MonoBehaviour
 
     private void Run()
     {
+        SceneLoadManager.Instance.ReturnFromAdditiveEnabled = false;
         SoundManager.Instance.PlayEffectOneShot(startSound);
         energyFlow.GetComponent<EnergyFlowController>().CanMove = true;
 
@@ -227,6 +228,7 @@ public class HackingManager : MonoBehaviour
         SceneLoadManager.Instance.SaveKeyAction(KeyActions.TutorialHacking, "completed");
 
         yield return new WaitForSeconds(1.5f);
+        SceneLoadManager.Instance.ReturnFromAdditiveEnabled = true;
         SceneLoadManager.Instance.ReturnFromAdditiveScene();
     }
 

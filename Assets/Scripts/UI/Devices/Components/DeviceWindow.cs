@@ -16,8 +16,11 @@ public class DeviceWindow : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI docText;
 
-    public void Open(string title, Item document)
+    private DeviceWindowIcon previous;
+
+    public void Open(string title, Item document, DeviceWindowIcon previous)
     {
+        this.previous = previous;
         this.title.text = title;
         if (document)
         {
@@ -35,6 +38,7 @@ public class DeviceWindow : MonoBehaviour
 
     public void Close()
     {
+        previous.Select();
         gameObject.SetActive(false);
     }
 }
