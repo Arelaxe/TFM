@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Line 1
   m_EditorClassIdentifier: 
   m_Speaker: {fileID: 11400000, guid: dbe0c0ffe7897114d80ce989431cf5ce, type: 2}
-  m_Text: "Por fin tengo el c\xF3digo, a ver si encontramos algo en la siguiente
-    sala."
+  m_Text: Bueno, pasemos por fin a la siguiente sala.
