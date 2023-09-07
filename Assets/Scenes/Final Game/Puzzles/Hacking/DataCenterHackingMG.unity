@@ -46200,6 +46200,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2266700956664052544, guid: 2fea6cb5edd1f8e45b1d4f687a1e8421, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: b05a63aba17145345a6261d9fb034fda, type: 2}
+    - target: {fileID: 2266700956664052544, guid: 2fea6cb5edd1f8e45b1d4f687a1e8421, type: 3}
+      propertyPath: document
+      value: 
+      objectReference: {fileID: 11400000, guid: 774ab1befd3ff1a47a10c5247f9e4d27, type: 2}
     - target: {fileID: 2266700956664052550, guid: 2fea6cb5edd1f8e45b1d4f687a1e8421, type: 3}
       propertyPath: m_Name
       value: Hacking Manager

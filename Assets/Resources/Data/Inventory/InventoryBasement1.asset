@@ -28,4 +28,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 10301d5cace8ff64ea4b12cb8305c271, type: 2}
   - {fileID: 11400000, guid: 2fe2b5c36bcfd4a419039cfa363570b8, type: 2}
   - {fileID: 11400000, guid: c26ce8e9c00866848afb35110a96f5a4, type: 2}
+  - {fileID: 11400000, guid: 70759bb3c8e198749a7ddf4741dd2e50, type: 2}
+  - {fileID: 11400000, guid: c9edeed520a35fa4c9f8a67e5b8c119f, type: 2}
+  - {fileID: 11400000, guid: b05a63aba17145345a6261d9fb034fda, type: 2}
+  - {fileID: 11400000, guid: 774ab1befd3ff1a47a10c5247f9e4d27, type: 2}
   <Size>k__BackingField: 0
