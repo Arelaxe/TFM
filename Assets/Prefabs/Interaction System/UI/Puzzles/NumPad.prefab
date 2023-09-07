@@ -2140,6 +2140,7 @@ MonoBehaviour:
   btnEnt: {fileID: 5967509079745363601}
   correctSound: {fileID: 8300000, guid: 7278f91c345a6774081b693c3af5ffd4, type: 3}
   incorrectSound: {fileID: 8300000, guid: 18b4eb296bba6a74e84911fa78ff96f9, type: 3}
+  closeButton: {fileID: 7140863480252046046}
 --- !u!114 &326126294047947294
 MonoBehaviour:
   m_ObjectHideFlags: 0

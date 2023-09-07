@@ -31,6 +31,10 @@ public class Numpad : MonoBehaviour
     [SerializeField]
     private AudioClip incorrectSound;
 
+    [Space]
+    [SerializeField]
+    public Button closeButton;
+
     private bool startText = true;
 
     private void Awake()
@@ -87,6 +91,7 @@ public class Numpad : MonoBehaviour
 
     private IEnumerator Unlock()
     {
+        closeButton.interactable = false;
         yield return new WaitForSeconds(1);
 
         Interaction unlock = numpadInteractable.GetInteraction(numpadInteraction);

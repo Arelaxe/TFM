@@ -23,7 +23,10 @@ public class Panel : MonoBehaviour
     public AudioClip buttonSound;
     private GameObject[] destroyables;
     private List<int> array;
-    bool btnControl = true; 
+    bool btnControl = true;
+    [Space]
+    [SerializeField]
+    public Button closeButton;
 
     private void Awake()
     {
@@ -32,12 +35,11 @@ public class Panel : MonoBehaviour
         }
         if(PlayerManager.Instance.GetInventoryController().HasCharacterItem(PlayerManager.Instance.SelectedCharacterOne, purpleFuse)){
             purpleFuseGO.SetActive(true);
-        }
-        
+        } 
     }
+
     void Update()
     {
-        
         bool allActive = true;
         for (int i = 0; i < switches.Length; i++){
             if(switches[i].getActive() == false){
@@ -111,6 +113,7 @@ public class Panel : MonoBehaviour
 
     private IEnumerator Unlock()
     {
+        closeButton.interactable = false;
         SoundManager.Instance.PlayEffectOneShot(buttonSound);
         yield return new WaitForSeconds(1);
 

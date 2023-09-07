@@ -184,6 +184,7 @@ MonoBehaviour:
   - {fileID: 8937620965225824795}
   onBtn: {fileID: 8937620966990549631}
   buttonSound: {fileID: 8300000, guid: 201757f8f29767a46abe14444ec2d5b1, type: 3}
+  closeButton: {fileID: 8937620965331501737}
 --- !u!1 &1184403087510336587
 GameObject:
   m_ObjectHideFlags: 0
