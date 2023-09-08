@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
 {
@@ -22,6 +23,7 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
     [SerializeField] GameObject pauseDialogue;
 
     [SerializeField] private int soundRatio;
+    [SerializeField] Item michelangeloDocument;
 
     private bool m_ListenToInput = false;
     private DialogueNode m_NextNode = null;
@@ -147,7 +149,9 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
 
         foreach (DialogueChoice choice in node.Choices)
         {
-            if (choice.InitiallyAvailable){
+            if (choice.InitiallyAvailable || 
+                (choice.ChoicePreview == "Preguntar por el sótano 2" && SceneLoadManager.Instance.GetKeyAction(KeyActions.TalkedToNPC) == "completed")
+                || choice.ChoicePreview == "Preguntar sobre el proyecto Michelangelo" && PlayerManager.Instance.GetDocumentationController().Documents.GetItems().Contains(michelangeloDocument)){
                 UIDialogueChoiceController newChoice = Instantiate(m_ChoiceControllerPrefab, m_ChoicesBoxTransform);
                 newChoice.Choice = choice;
             }

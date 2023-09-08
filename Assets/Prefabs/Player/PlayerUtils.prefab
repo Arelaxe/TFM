@@ -669,6 +669,10 @@ PrefabInstance:
       propertyPath: effectsAudioSource
       value: 
       objectReference: {fileID: 3860137547314315389}
+    - target: {fileID: 7065727648801464018, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
+      propertyPath: michelangeloDocument
+      value: 
+      objectReference: {fileID: 11400000, guid: b5ad16c477ec2f9468f2e8975823edb6, type: 2}
     - target: {fileID: 7080914639014527160, guid: 405e348d49b64574ba49009e9a0164f0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
