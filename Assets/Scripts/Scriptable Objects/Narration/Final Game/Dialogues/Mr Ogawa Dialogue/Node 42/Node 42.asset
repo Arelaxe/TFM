@@ -17,10 +17,15 @@ MonoBehaviour:
   m_Choices:
   - m_ChoicePreview: "Preguntar por el s\xF3tano 2"
     m_ChoiceNode: {fileID: 11400000, guid: 602b7e60bd9c143429cdd470b719b548, type: 2}
-    m_InitiallyAvailable: 1
+    m_InitiallyAvailable: 0
   - m_ChoicePreview: "Preguntar por qu\xE9 ha ocultado informaci\xF3n sobre el clan
       Nakamura"
     m_ChoiceNode: {fileID: 11400000, guid: c970b64064323a74c85cc8e7a7b39468, type: 2}
     m_InitiallyAvailable: 1
-  m_InventoryChoices: []
-  m_DefaultInventoryChoice: {fileID: 0}
+  - m_ChoicePreview: Preguntar sobre el proyecto Michelangelo
+    m_ChoiceNode: {fileID: 11400000, guid: 8ae5e82e5a2c2214c91471d19728413c, type: 2}
+    m_InitiallyAvailable: 0
+  m_InventoryChoices:
+  - m_Item: {fileID: 11400000, guid: 9058cbf2a6bad5e49bacf8ebfb0be6e3, type: 2}
+    m_ChoiceNode: {fileID: 11400000, guid: 2120fd3f9c1cd6649aaf128f14e8636a, type: 2}
+  m_DefaultInventoryChoice: {fileID: 11400000, guid: f3ad670a1f6cfd84c8d8164631cb4e6c, type: 2}

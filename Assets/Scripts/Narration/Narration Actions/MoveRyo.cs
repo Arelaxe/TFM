@@ -1,10 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 public class MoveRyo : NarrationAction
 {
     private int moved;
+    [SerializeField]
+    private string direction;
+    [SerializeField]
+    private int times;
+    private UnityEngine.Vector2 vector;
+    private UnityEngine.Vector2 contraryVector;
     public override void Execute(){
         base.Execute();
         moved = 0;
@@ -13,18 +19,30 @@ public class MoveRyo : NarrationAction
     public override void EndAction()
     {
         base.EndAction();
+        if (direction == "D"){
+            vector = UnityEngine.Vector2.down;
+            contraryVector = UnityEngine.Vector2.up;
+        }
+        else if (direction == "L"){
+            vector = UnityEngine.Vector2.left;
+            contraryVector = UnityEngine.Vector2.right;
+        }
+        else if (direction == "U"){
+            vector = UnityEngine.Vector2.up;
+            contraryVector = UnityEngine.Vector2.down;
+        }
         PlayerManager.Instance.StartCoroutine(Move());
     }
 
     IEnumerator Move()
     {
-        while( moved < 3 )
+        while( moved < times )
         {
-            PlayerManager.Instance.GetDualCharacterController().GetRB().velocity = Vector2.down * 2.0f;
+            PlayerManager.Instance.GetDualCharacterController().GetRB().velocity = vector * 2.0f;
             moved++;
 
-            if (moved == 3){
-                PlayerManager.Instance.GetDualCharacterController().GetRB().velocity = Vector2.up * 0.0f;
+            if (moved == times){
+                PlayerManager.Instance.GetDualCharacterController().GetRB().velocity = contraryVector * 0.0f;
             }
 
             yield return new WaitForSeconds( 1.0f );

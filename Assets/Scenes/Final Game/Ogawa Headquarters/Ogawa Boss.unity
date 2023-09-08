@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Worker_lookup
       objectReference: {fileID: 0}
+    - target: {fileID: 2826354474714504671, guid: 0f14132565fbb844eb1ff1a88a1d8544, type: 3}
+      propertyPath: m_TagString
+      value: Temporary
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f14132565fbb844eb1ff1a88a1d8544, type: 3}
 --- !u!1 &294038290

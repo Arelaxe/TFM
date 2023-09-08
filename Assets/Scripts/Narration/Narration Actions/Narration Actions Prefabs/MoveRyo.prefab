@@ -48,3 +48,5 @@ MonoBehaviour:
   closesPopups: 0
   turnOffSwitchPageAvailability: 1
   popupToOpen: {fileID: 0}
+  direction: D
+  times: 3
