@@ -27,7 +27,11 @@ public class DeviceWindowIcon : DeviceIcon
             window.GetComponent<DeviceWindow>().Open(title.text, document, this);
             if (document)
             {
-                PlayerManager.Instance.GetDocumentationController().Add(document, false);
+                DocumentationController documentationController = PlayerManager.Instance.GetDocumentationController();
+                if (!documentationController.Documents.GetItems().Contains(document))
+                {
+                    PlayerManager.Instance.GetDocumentationController().Add(document);
+                }
             }
         }
     }
