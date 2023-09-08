@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd2c1887a808da4b8f0a6cec8d8b890, type: 3}
+  m_Name: Line 22
+  m_EditorClassIdentifier: 
+  m_Speaker: {fileID: 11400000, guid: 36c3c2b67e99e9b43a17b4403d5a7fdd, type: 2}
+  m_Text: "Nada, era solo por saber a qu\xE9 hora llegabas a casa. Mis viejos van
+    a hacer empanadillas para la cena y s\xE9 que te encantan, vaya a ser que se
+    te enfr\xEDen."
