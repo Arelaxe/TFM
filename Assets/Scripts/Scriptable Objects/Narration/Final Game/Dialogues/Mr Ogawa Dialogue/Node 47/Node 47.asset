@@ -15,4 +15,4 @@ MonoBehaviour:
   m_DialogueLine: {fileID: 11400000, guid: 0eb34271a2499944693e10fb0f327962, type: 2}
   m_EndsChoiceOption: 0
   m_NextNode: {fileID: 0}
-  m_Action: {fileID: 1948895477211506953, guid: f8f3bd57003d9c543ab1c039cd384a91, type: 3}
+  m_Action: {fileID: 1948895477211506953, guid: e9bea3194eb4e8e4fa2564931d30562b, type: 3}
