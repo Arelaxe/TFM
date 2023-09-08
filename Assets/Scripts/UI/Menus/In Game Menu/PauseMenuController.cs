@@ -73,7 +73,7 @@ public class PauseMenuController : MonoBehaviour
     {
         if (!SceneLoadManager.Instance.Loading)
         {
-            if (pauseAction.triggered && inMainPage)
+            if (pauseAction.triggered && inMainPage && SceneLoadManager.Instance.Pausable)
             {
                 Pause(!SceneLoadManager.Instance.Paused);
             }

@@ -34,6 +34,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     // Status
     private bool loading;
     private bool paused;
+    private bool pausable = true;
     private bool inAdditive;
     private bool returnFromAdditiveEnabled = true;
 
@@ -581,6 +582,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     public GameObject PlayerUtils { get => playerUtils; }
     public string UnselectedScene { get => unselectedScene; set => unselectedScene = value; }
     public bool Paused { get => paused; }
+    public bool Pausable { get => pausable; set => pausable = value; }
     public bool Loading { get => loading; }
     public bool InAdditive { get => inAdditive; set => inAdditive = value; }
     public bool ReturnFromAdditiveEnabled { set => returnFromAdditiveEnabled = value; }
