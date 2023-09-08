@@ -263,6 +263,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7286052126175364675, guid: 891233110fab2f44f931aff2f1c79e17, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: facd9b6fea9877a43930a0e665801207, type: 3}
     - target: {fileID: 7286052126175364677, guid: 891233110fab2f44f931aff2f1c79e17, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -413,7 +417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7286052126050443430, guid: 891233110fab2f44f931aff2f1c79e17, type: 3}
       propertyPath: m_text
-      value: 'Documento de Maximo Hackeo
+      value: 'Email_Sra_Yoshida.msg
 
 '
       objectReference: {fileID: 0}
@@ -433,6 +437,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7286052126175364675, guid: 891233110fab2f44f931aff2f1c79e17, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: facd9b6fea9877a43930a0e665801207, type: 3}
     - target: {fileID: 7286052126175364677, guid: 891233110fab2f44f931aff2f1c79e17, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -469,7 +477,7 @@ PrefabInstance:
     - target: {fileID: 5625176966426846000, guid: 891233110fab2f44f931aff2f1c79e17, type: 3}
       propertyPath: document
       value: 
-      objectReference: {fileID: 11400000, guid: 2fe2b5c36bcfd4a419039cfa363570b8, type: 2}
+      objectReference: {fileID: 11400000, guid: d2d7624e000e91844b0f9966d3799bf3, type: 2}
     - target: {fileID: 5625176966426846000, guid: 891233110fab2f44f931aff2f1c79e17, type: 3}
       propertyPath: accessLevel
       value: 0
@@ -572,7 +580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7286052126050443430, guid: 891233110fab2f44f931aff2f1c79e17, type: 3}
       propertyPath: m_text
-      value: Pedido_Sotano1.msg
+      value: Presupuesto.msg
       objectReference: {fileID: 0}
     - target: {fileID: 7286052126050443431, guid: 891233110fab2f44f931aff2f1c79e17, type: 3}
       propertyPath: m_AnchorMax.y
@@ -590,6 +598,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7286052126175364675, guid: 891233110fab2f44f931aff2f1c79e17, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: facd9b6fea9877a43930a0e665801207, type: 3}
     - target: {fileID: 7286052126175364677, guid: 891233110fab2f44f931aff2f1c79e17, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

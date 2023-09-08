@@ -15,6 +15,7 @@ public class FlowStateMachine : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("hey");
         ms_Instance = this;
 
         m_Channel.OnFlowStateRequested += SetFlowState;

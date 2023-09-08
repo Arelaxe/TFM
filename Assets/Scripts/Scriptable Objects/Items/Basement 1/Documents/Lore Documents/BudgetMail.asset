@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
+  m_Name: BudgetMail
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: Presupuesto.msg
+  <Description>k__BackingField: "De: keitaro.ogawa@ogawacorp.jp\r\nPara: kenta.sato@ogawacorp.jp\r\nAsunto:
+    Presupuesto\r\nBuenos d\xEDas Kenta,\r\nNecesito cuanto antes el presupuesto
+    para el a\xF1o que viene teniendo en cuenta los inconvenientes que hemos tenido.
+    Una vez lo tengas escribe a la Sra. Yoshida para concretar una call y replanificar
+    el proyecto.\r\nY no te agobies que vamos a sacar esto a flote :)\r\nUn saludo.\r\nKeitaro
+    Ogawa.\r\nCEO.\n"
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: facd9b6fea9877a43930a0e665801207, type: 3}
+  Type: 1

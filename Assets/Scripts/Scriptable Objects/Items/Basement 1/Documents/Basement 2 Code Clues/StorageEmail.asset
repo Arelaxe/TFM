@@ -18,9 +18,9 @@ MonoBehaviour:
     Kenta!\nYa he terminado con el inventario, as\xED que te paso aqu\xED el pedido
     para reponer los equipos inform\xE1ticos del primer s\xF3tano. B\xE1sicamente
     vamos a necesitar reponer uno en el data center, otro en el almac\xE9n y otro
-    en el segundo laboratorio. Este ser\xEDa el pedido concreto:\n\n<font=\"Symbols\">d</font>
-    torres de ordenadores\n<font=\"Symbols\">d</font> ratones\r\n<font=\"Symbols\">d</font>\r
-    alfombrillas para ratones\n<font=\"Symbols\">d</font>\r monitores\n<font=\"Symbols\">d</font>\r
+    en el segundo laboratorio. Este ser\xEDa el pedido concreto:\n\n<font=\"Symbols\">d</font>     
+    torres de ordenadores\n<font=\"Symbols\">d</font>      ratones\r\n<font=\"Symbols\">d</font>\r    
+    alfombrillas para ratones\n<font=\"Symbols\">d</font>\r     monitores\n<font=\"Symbols\">d</font>\r    
     teclados\n\nCuando puedas se lo pasas al jefe y miramos presupuestos.\n\nUn saludo.\r\nKobe
     Dasai.\r\nPersonal de seguridad."
   <ItemImage>k__BackingField: {fileID: 21300000, guid: facd9b6fea9877a43930a0e665801207, type: 3}
