@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796eefde6ce9fc740a78a45bc3360fcf, type: 3}
   m_Name: Node 6
   m_EditorClassIdentifier: 
-  m_DialogueLine: {fileID: 0}
+  m_DialogueLine: {fileID: 11400000, guid: c995e2ce3330b4c41988ae631d8b92be, type: 2}
   m_EndsChoiceOption: 0
   m_NextNode: {fileID: 0}
-  m_Action: {fileID: 0}
+  m_Action: {fileID: 1948895477211506953, guid: d5ef61709d4a7494d8557cc721eeb8d9, type: 3}
