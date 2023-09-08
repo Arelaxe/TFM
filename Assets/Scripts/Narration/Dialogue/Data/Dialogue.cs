@@ -20,4 +20,8 @@ public class Dialogue : ScriptableObject
     public void DecreaseOptions(){
         m_Options--;
     }
+
+    public void ResetOptions(){
+        m_Options = 4;
+    }
 }

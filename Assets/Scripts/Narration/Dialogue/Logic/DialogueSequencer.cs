@@ -70,7 +70,7 @@ public class DialogueSequencer
             {
                 if (m_CurrentDialogue.LimitedOptions && m_CurrentDialogue.Options == 0){
                     m_CurrentNode = m_CurrentDialogue.ConfluenceNode;
-                    m_CurrentDialogue.DecreaseOptions();
+                    m_CurrentDialogue.ResetOptions();
                 }
                 OnDialogueNodeStart?.Invoke(m_CurrentNode);
             }

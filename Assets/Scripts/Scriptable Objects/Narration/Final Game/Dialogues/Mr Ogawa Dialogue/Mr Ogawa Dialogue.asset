@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_FirstNode: {fileID: 11400000, guid: cb74dc053ddf261498c1c66183fb56c0, type: 2}
   m_LimitedOptions: 1
-  m_Options: -1
+  m_Options: 4
   m_ConfluenceNode: {fileID: 11400000, guid: 2293ed5db70b5cb408bc7c75ebeaf522, type: 2}
