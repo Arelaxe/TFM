@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final Game/End Scene/EndScene.unity
     guid: a2d7e5dfe412e844787001adb971eb3a
+  - enabled: 1
+    path: Assets/Scenes/Final Game/Pre-ending/PreEndingScene.unity
+    guid: f0b5226b2bd093e47b763211d6be27d2
   m_configObjects: {}
