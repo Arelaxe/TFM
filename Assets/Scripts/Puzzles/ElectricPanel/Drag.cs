@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Drag : MonoBehaviour
+public class Drag : Selectable, ISubmitHandler
 {
     [SerializeField]
     private Canvas canvas;
 
     [SerializeField]
-    private RectTransform upperLimit;
+    private GameObject submitTarget;
 
     [SerializeField]
-    private RectTransform lowerLimit;
+    private GameObject upperLimit;
+
+    [SerializeField]
+    private GameObject lowerLimit;
 
     public void DragHandler(BaseEventData data){
 
@@ -33,8 +37,8 @@ public class Drag : MonoBehaviour
 
     protected Vector3 LimitPosition(Vector3 newPosition)
     {
-        Vector3 upperLimitPos = upperLimit.gameObject.transform.position;
-        Vector3 lowerLimitPos = lowerLimit.gameObject.transform.position;
+        Vector3 upperLimitPos = upperLimit.transform.position;
+        Vector3 lowerLimitPos = lowerLimit.transform.position;
 
         float newX = newPosition.x;
         if (newPosition.x < lowerLimitPos.x)
@@ -57,5 +61,17 @@ public class Drag : MonoBehaviour
         }
 
         return new(newX, newY, newPosition.z);
+    }
+
+    public void OnSubmit(BaseEventData eventData)
+    {
+        if (submitTarget)
+        {
+            ElectricInput electricInput = submitTarget.GetComponent<ElectricInput>();
+            if (electricInput)
+            {
+                electricInput.TrySetFuse(gameObject);
+            }
+        }
     }
 }
