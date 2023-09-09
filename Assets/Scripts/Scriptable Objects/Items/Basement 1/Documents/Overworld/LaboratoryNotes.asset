@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
   m_Name: LaboratoryNotes
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Cortes_Luz.png
+  <Name>k__BackingField: Notas del laboratorio
   <Description>k__BackingField: '
 
 '
-  <ItemImage>k__BackingField: {fileID: 21300000, guid: 4e1db1ce1beda684091a56b3d9656409, type: 3}
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: e72b1dad1a49bfe419410dc5b65e7116, type: 3}
   Type: 1

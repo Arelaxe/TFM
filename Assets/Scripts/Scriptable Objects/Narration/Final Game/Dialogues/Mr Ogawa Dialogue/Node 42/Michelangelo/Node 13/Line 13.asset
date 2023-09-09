@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd2c1887a808da4b8f0a6cec8d8b890, type: 3}
   m_Name: Line 13
   m_EditorClassIdentifier: 
-  m_Speaker: {fileID: 11400000, guid: fe02b1d6427b8db4ea218a3cfa553a47, type: 2}
-  m_Text: "En el supuesto de que lo que comentas sea real, eso de que Cool Waves
-    y ese contrato sean turbios, lo est\xE1s diciendo t\xFA, no yo."
+  m_Speaker: {fileID: 11400000, guid: dbe0c0ffe7897114d80ce989431cf5ce, type: 2}
+  m_Text: "\xBFTan turbia es Cool Waves y el supuesto acuerdo que tuvieron?"
