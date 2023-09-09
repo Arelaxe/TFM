@@ -10,6 +10,8 @@ public class Panel : MonoBehaviour
     [SerializeField]
     private Item purpleFuse;
     [SerializeField]
+    private GameObject greenFuseGO;
+    [SerializeField]
     private GameObject redFuseGO;
     [SerializeField]
     private GameObject purpleFuseGO;
@@ -30,6 +32,7 @@ public class Panel : MonoBehaviour
 
     private void Awake()
     {
+        greenFuseGO.GetComponent<Drag>().Select();
         if(PlayerManager.Instance.GetInventoryController().HasCharacterItem(PlayerManager.Instance.SelectedCharacterOne, redFuse)){
             redFuseGO.SetActive(true);
         }
@@ -49,6 +52,7 @@ public class Panel : MonoBehaviour
         if(allActive && btnControl && eI.active){
             btnControl = false;
             onBtn.changeColor();
+            onBtn.GetComponent<Button>().Select();
         }
         if(!allActive && !btnControl){
             btnControl = true;

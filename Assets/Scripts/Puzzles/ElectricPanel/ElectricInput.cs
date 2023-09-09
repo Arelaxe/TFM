@@ -10,27 +10,36 @@ public class ElectricInput : MonoBehaviour
     public Sprite off;
     public bool active;
     private Image img;
-    private ElectricInput eI;
+
     [SerializeField]
     public AudioClip pieceSound;
+
+    [SerializeField]
+    public Button firstSwitch;
+
     void Start()
     {
-        eI = GetComponent<ElectricInput>();
         img = GetComponent<Image>();
         active = false;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log("Entra el Collider");
-        if (other.gameObject.tag == eI.gameObject.tag){
-            SoundManager.Instance.PlayEffectOneShot(pieceSound);
-            Destroy(other.gameObject);
-            img.sprite = on; 
-            active = true;
-        }  
+        TrySetFuse(other.gameObject);
     }
 
     public void setOn (Sprite onImage){
         on = onImage;
+    }
+
+    public void TrySetFuse(GameObject fuse)
+    {
+        if (fuse.CompareTag(tag))
+        {
+            SoundManager.Instance.PlayEffectOneShot(pieceSound);
+            Destroy(fuse);
+            img.sprite = on;
+            active = true;
+            firstSwitch.Select();
+        }
     }
 }
