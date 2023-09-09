@@ -21,8 +21,7 @@ public class ElectricInput : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log("Entra el Collider");
-        if (other.gameObject.tag == eI.gameObject.tag){
+        if (other.gameObject.CompareTag(eI.gameObject.tag)){
             SoundManager.Instance.PlayEffectOneShot(pieceSound);
             Destroy(other.gameObject);
             img.sprite = on; 
