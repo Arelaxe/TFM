@@ -20,6 +20,10 @@ public class SoundManager : Singleton<SoundManager>
     private AudioClip selectedButton;
     [SerializeField]
     private AudioClip clickedButton;
+    [SerializeField]
+    private AudioClip pickupItem;
+    [SerializeField]
+    private AudioClip pickupDocument;
 
     private float effectsVolume;
     private float musicVolume;
@@ -29,10 +33,10 @@ public class SoundManager : Singleton<SoundManager>
     protected override void LoadData()
     {
         effectsAudioSource.ignoreListenerPause = true;
-        effectsVolume = PlayerPrefs.GetFloat(VolumeEffects, 1f);
+        effectsVolume = PlayerPrefs.GetFloat(VolumeEffects, 0.5f);
         effectsAudioSource.volume = effectsVolume;
 
-        musicVolume = PlayerPrefs.GetFloat(VolumeMusic, 1f);
+        musicVolume = PlayerPrefs.GetFloat(VolumeMusic, 0.5f);
     }
 
     private void Start()
@@ -70,6 +74,16 @@ public class SoundManager : Singleton<SoundManager>
     public void PlayClickedButton()
     {
         PlayEffect(clickedButton);
+    }
+
+    public void PlayPickupItem()
+    {
+        PlayEffect(pickupItem);
+    }
+
+    public void PlayPickupDocument()
+    {
+        PlayEffect(pickupDocument);
     }
 
     public void StopSound()

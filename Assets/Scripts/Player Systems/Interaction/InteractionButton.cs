@@ -52,7 +52,11 @@ public class InteractionButton : MonoBehaviour
 
         if (interaction.Action is PickUpAction)
         {
-            inventoryConstraint.SetActive(true);
+            PickUpAction action = (PickUpAction) interaction.Action;
+            if (action.PickedItem.Type.Equals(Item.ItemType.Basic))
+            {
+                inventoryConstraint.SetActive(true);
+            }
         }
 
         SoundManager.Instance.AddSounds(tempButton);

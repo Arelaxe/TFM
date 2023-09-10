@@ -243,3 +243,5 @@ MonoBehaviour:
   updateMusicSpeed: 0.3
   selectedButton: {fileID: 8300000, guid: 5ff63d98678d3d946a62d67962e0df13, type: 3}
   clickedButton: {fileID: 8300000, guid: 1c6797ba72f7cc54fb0344fb8bea39d7, type: 3}
+  pickupItem: {fileID: 8300000, guid: bb509f33d88324243b168fd84c60df6b, type: 3}
+  pickupDocument: {fileID: 8300000, guid: 78a6a41a03fb7a3458ac3e59325b444d, type: 3}

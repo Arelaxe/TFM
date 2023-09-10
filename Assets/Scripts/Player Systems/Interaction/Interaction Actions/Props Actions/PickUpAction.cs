@@ -11,11 +11,13 @@ public class PickUpAction : Action
         {
             InventoryController inventoryController = PlayerManager.Instance.GetInventoryController();
             inventoryController.AddItem(PlayerManager.Instance.SelectedCharacterOne, item);
+            SoundManager.Instance.PlayPickupItem();
         }
         else if (item.Type.Equals(Item.ItemType.Document))
         {
             DocumentationController documentationController = PlayerManager.Instance.GetDocumentationController();
             documentationController.Add(item);
+            SoundManager.Instance.PlayPickupDocument();
         }
         
         InteractionController interactor = PlayerManager.Instance.GetInteractionController();
@@ -23,4 +25,6 @@ public class PickUpAction : Action
 
         Destroy(gameObject);
     }
+
+    public Item PickedItem { get => item; }
 }
