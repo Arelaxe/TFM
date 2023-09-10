@@ -7,14 +7,19 @@ public class ReadAction : Action
     [Header("Initialization")]
     [SerializeField]
     private Item document;
+    [SerializeField]
+    private bool addDocument;
 
     public override void Execute()
     {
-        DocumentationController documentationController = PlayerManager.Instance.GetDocumentationController();
-        if (!documentationController.Documents.GetItems().Contains(document))
+        if (addDocument)
         {
-            PlayerManager.Instance.GetDocumentationController().Add(document);
-            SoundManager.Instance.PlayPickupDocument();
+            DocumentationController documentationController = PlayerManager.Instance.GetDocumentationController();
+            if (!documentationController.Documents.GetItems().Contains(document))
+            {
+                PlayerManager.Instance.GetDocumentationController().Add(document);
+                SoundManager.Instance.PlayPickupDocument();
+            }
         }
 
         GameObject newReadDocument = Instantiate(readDocument);
