@@ -132,6 +132,7 @@ public class InteractionController : MonoBehaviour
 
         bool hackingConstraint = interaction.Type.Equals(Interaction.ActionType.Hacking) && !selectedCharacterOne;
         bool spiritualConstraint = interaction.Type.Equals(Interaction.ActionType.Spiritual) && selectedCharacterOne;
+        bool teamworkConstraint = interaction.RequiredTeamwork && !PlayerManager.Instance.Grouped;
         bool itemConstraint = interaction.RequiredItem != null && !inventoryController.HasCharacterItem(selectedCharacterOne, interaction.RequiredItem);
 
         bool pickUpConstraint = false;
@@ -140,7 +141,7 @@ public class InteractionController : MonoBehaviour
             pickUpConstraint = inventoryController.IsCharacterInventoryFull(selectedCharacterOne);
         }
 
-        return interaction.IsBlocked || hackingConstraint || spiritualConstraint || itemConstraint || pickUpConstraint;
+        return interaction.IsBlocked || hackingConstraint || spiritualConstraint || teamworkConstraint || itemConstraint || pickUpConstraint;
     }
 
     private void PerformInteraction(Interaction interaction)

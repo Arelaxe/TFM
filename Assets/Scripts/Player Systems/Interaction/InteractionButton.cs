@@ -7,6 +7,8 @@ public class InteractionButton : MonoBehaviour
     [SerializeField]
     private GameObject typeConstraint;
     [SerializeField]
+    private GameObject teamworkConstraint;
+    [SerializeField]
     private GameObject itemConstraint;
     [SerializeField]
     private GameObject inventoryConstraint;
@@ -35,7 +37,12 @@ public class InteractionButton : MonoBehaviour
                 typeImage.sprite = spiritualIcon;
             }
         }
-        
+
+        if (interaction.RequiredTeamwork)
+        {
+            teamworkConstraint.SetActive(true);
+        }
+
         if (interaction.RequiredItem != null)
         {
             itemConstraint.SetActive(true);

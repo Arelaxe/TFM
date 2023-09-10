@@ -11,6 +11,9 @@ public class Interaction
     private ActionType type;
 
     [SerializeField]
+    private bool teamwork;
+
+    [SerializeField]
     private bool available;
 
     [SerializeField]
@@ -56,6 +59,7 @@ public class Interaction
     public bool IsAvailable { get => available; }
     public bool IsBlocked { get => blocked; }
     public ActionType Type { get => type; }
+    public bool RequiredTeamwork { get => teamwork; }
     public Item RequiredItem { get => item; }
     public bool Reusable { get => reusable; }
     public bool Once { get => once; }
