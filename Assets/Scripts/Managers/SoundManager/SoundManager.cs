@@ -33,10 +33,10 @@ public class SoundManager : Singleton<SoundManager>
     protected override void LoadData()
     {
         effectsAudioSource.ignoreListenerPause = true;
-        effectsVolume = PlayerPrefs.GetFloat(VolumeEffects, 0.5f);
+        effectsVolume = PlayerPrefs.GetFloat(VolumeEffects, 0.25f);
         effectsAudioSource.volume = effectsVolume;
 
-        musicVolume = PlayerPrefs.GetFloat(VolumeMusic, 0.5f);
+        musicVolume = PlayerPrefs.GetFloat(VolumeMusic, 0.25f);
     }
 
     private void Start()
