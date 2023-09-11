@@ -682,7 +682,7 @@ MonoBehaviour:
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 8937620965225824795}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnLeft: {fileID: 2332659586491910051}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -3677,7 +3677,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6653940230371026728, guid: 1f5d06bd459750149bc0e6187e2cc971, type: 3}
       propertyPath: m_Navigation.m_Mode
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6653940230371026728, guid: 1f5d06bd459750149bc0e6187e2cc971, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
@@ -3694,7 +3694,7 @@ PrefabInstance:
     - target: {fileID: 6653940230371026728, guid: 1f5d06bd459750149bc0e6187e2cc971, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 8937620965331501737}
+      objectReference: {fileID: 0}
     - target: {fileID: 6653940230371026728, guid: 1f5d06bd459750149bc0e6187e2cc971, type: 3}
       propertyPath: m_Colors.m_DisabledColor.b
       value: 1
@@ -3723,6 +3723,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 2332659585007510014}
+    - target: {fileID: 6653940230371026728, guid: 1f5d06bd459750149bc0e6187e2cc971, type: 3}
+      propertyPath: m_Navigation.m_SelectOnRight
+      value: 
+      objectReference: {fileID: 8937620965331501737}
     - target: {fileID: 6653940230371026728, guid: 1f5d06bd459750149bc0e6187e2cc971, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 0.77254903
