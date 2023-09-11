@@ -37,6 +37,9 @@ public class TutorialScene : ScriptedScene
                 PlayerManager.Instance.GetDualCharacterController().SwitchGrouping();
             }
 
+            PlayerManager.Instance.GetInventoryController().Page.DialogueMode = false;
+            PlayerManager.Instance.GetInGameMenuController().Hide();
+
             SceneLoadManager.Instance.LoadScene("IntroScene");
         }
     }

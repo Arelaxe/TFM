@@ -57,7 +57,7 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
 
     private void Update()
     {
-        if (m_ListenToInput && interactAction.triggered && !pauseDialogue.activeSelf)
+        if (m_ListenToInput && interactAction.triggered && !SceneLoadManager.Instance.Paused)
         {
             if (dialogEnded){
                 if (!choiceDialog){
