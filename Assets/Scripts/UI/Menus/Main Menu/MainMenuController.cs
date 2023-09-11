@@ -36,6 +36,7 @@ public class MainMenuController : MonoBehaviour
 
     private void Start()
     {
+        Screen.SetResolution(1920, 1080, true);
         Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
         InitInputActions();
         CheckContinueAvailable();
