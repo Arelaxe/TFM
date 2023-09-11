@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
-using System.Linq;
+using UnityEngine.UI;
 
 public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
 {
@@ -143,6 +143,7 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
 
     public void Visit(ChoiceDialogueNode node)
     {
+        bool first = true;
         choiceDialog = true;
         m_ListenToInput = true;
         m_ChoicesBoxTransform.gameObject.SetActive(true);
@@ -154,6 +155,11 @@ public class UIDialogueTextBoxController : MonoBehaviour, DialogueNodeVisitor
                 || choice.ChoicePreview == "Preguntar sobre el proyecto Michelangelo" && PlayerManager.Instance.GetDocumentationController().Documents.GetItems().Contains(michelangeloDocument)){
                 UIDialogueChoiceController newChoice = Instantiate(m_ChoiceControllerPrefab, m_ChoicesBoxTransform);
                 newChoice.Choice = choice;
+                if (first)
+                {
+                    newChoice.GetComponent<Button>().Select();
+                    first = false;
+                }
             }
         }
 
