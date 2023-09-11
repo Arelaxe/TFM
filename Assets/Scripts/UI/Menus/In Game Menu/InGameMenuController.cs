@@ -136,4 +136,9 @@ public class InGameMenuController : MonoBehaviour
 
         PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(close);
     }
+
+    public bool AnyPageOpen()
+    {
+        return openPage != -1;
+    }
 }

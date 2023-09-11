@@ -58,7 +58,10 @@ public class DialogueInstigator : MonoBehaviour
         m_CachedFlowState = null;
 
         m_DialogueChannel.RaiseDialogueEnd(dialogue);
-        playerController.SetCharacterMobility(true, true);
+        if (!PlayerManager.Instance.GetInGameMenuController().AnyPageOpen())
+        {
+            playerController.SetCharacterMobility(true, true);
+        }
         PlayerManager.Instance.GetInGameMenuController().SetSwitchPageAvailability(true);
         interactionController.SetInteractivity(true);
         PlayerManager.Instance.GetHUDController().EnableHUD();
