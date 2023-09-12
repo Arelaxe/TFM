@@ -200,7 +200,6 @@ public class HackingManager : MonoBehaviour
             case 1:
                 status.GetComponentInChildren<TextMeshProUGUI>().text = "Hackeo fallido";
                 status.GetComponentInChildren<Image>().color = failedColor;
-                hackingAction.status = HackingAction.HackingStatus.Failed;
                 break;
             case 2:
                 status.GetComponentInChildren<TextMeshProUGUI>().text = "Hackeo completado\nAcceso de nivel 1";
