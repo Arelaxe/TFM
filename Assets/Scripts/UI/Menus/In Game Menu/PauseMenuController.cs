@@ -249,7 +249,7 @@ public class PauseMenuController : MonoBehaviour
     }
 
     private bool CanSaveOnScene(){
-        return SceneManager.GetActiveScene().name != "TutorialScene" && SceneManager.GetActiveScene().name != "IntroScene";
+        return !GlobalConstants.CannotSaveScenes.Contains(SceneManager.GetActiveScene().name);
     }
 
 }

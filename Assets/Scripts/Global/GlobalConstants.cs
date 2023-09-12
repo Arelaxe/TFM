@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 public static class GlobalConstants
 {
     // Tags
@@ -30,4 +31,7 @@ public static class GlobalConstants
     // Control Schemes
     public static string ControlSchemeKeyboard = "Keyboard&Mouse";
     public static string ControlSchemeGamepad = "Gamepad";
+    
+    // Cannot Save Scenes
+    public static List<string> CannotSaveScenes = new() { "TutorialScene", "IntroScene", "Ogawa Boss", "PreEndingScene" };
 }
