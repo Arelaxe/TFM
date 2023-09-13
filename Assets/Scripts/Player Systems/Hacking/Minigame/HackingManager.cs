@@ -233,22 +233,24 @@ public class HackingManager : MonoBehaviour
 
     public IEnumerator FadeCanvasGroup(CanvasGroup group, bool hide = true)
     {
-        if (hide)
+        if (group.alpha == 0 || group.alpha == 1)
         {
-            while (group.alpha > 0)
+            if (hide)
             {
-                group.alpha -= 0.1f;
-                yield return new WaitForSeconds(0.05f);
+                while (group.alpha > 0)
+                {
+                    group.alpha -= 0.1f;
+                    yield return new WaitForSeconds(0.05f);
+                }
+            }
+            else
+            {
+                while (group.alpha < 1)
+                {
+                    group.alpha += 0.1f;
+                    yield return new WaitForSeconds(0.05f);
+                }
             }
         }
-        else
-        {
-            while (group.alpha < 1)
-            {
-                group.alpha += 0.1f;
-                yield return new WaitForSeconds(0.05f);
-            }
-        }
-        
     }
 }
