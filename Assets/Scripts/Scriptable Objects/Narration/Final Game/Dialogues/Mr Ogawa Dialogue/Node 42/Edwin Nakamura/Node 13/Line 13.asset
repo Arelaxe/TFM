@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd2c1887a808da4b8f0a6cec8d8b890, type: 3}
+  m_Name: Line 13
+  m_EditorClassIdentifier: 
+  m_Speaker: {fileID: 11400000, guid: fe02b1d6427b8db4ea218a3cfa553a47, type: 2}
+  m_Text: "Edwin y yo estudiamos en la misma escuela y entablamos amistad desde que
+    \xE9ramos muy peque\xF1os. Cuando nos convertimos en l\xEDderes de nuestros respectivos
+    clanes, siempre quisimos separar el trabajo de nuestra amistad, porque para nosotros
+    lo que hab\xEDamos vivido juntos era mucho m\xE1s importante que cualquier otra
+    cosa. Estoy seguro de que \xE9l no tuvo nada que ver en las cosas horribles que
+    se dicen ahora de su clan."

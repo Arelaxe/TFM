@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676f063305c2bae4a997b5004ec9d858, type: 3}
+  m_Name: New Choice Dialogue Node
+  m_EditorClassIdentifier: 
+  m_DialogueLine: {fileID: 11400000, guid: 3672c5ce7a3e36541884d1fcc7db927c, type: 2}
+  m_Choices:
+  - m_ChoicePreview: Bien
+    m_ChoiceNode: {fileID: 11400000, guid: 6e4c424068c2ebf4ea022ede107e528c, type: 2}
+    m_InitiallyAvailable: 1
+  - m_ChoicePreview: Mal
+    m_ChoiceNode: {fileID: 11400000, guid: cc6bc2cd0fe86cb44b2a64de43348ff3, type: 2}
+    m_InitiallyAvailable: 1
+  - m_ChoicePreview: Regular
+    m_ChoiceNode: {fileID: 11400000, guid: 174c2a1b1e3d49141a84e4b73f2b43d3, type: 2}
+    m_InitiallyAvailable: 1
+  m_InventoryChoices:
+  - m_Item: {fileID: 11400000, guid: 2306a898223c0f54aad46c853c5b88ff, type: 2}
+    m_ChoiceNode: {fileID: 11400000, guid: a468ac44a8c98eb439fff0f92f439559, type: 2}
+  m_DefaultInventoryChoice: {fileID: 11400000, guid: f4df2191ca70ca5459f8d962d2f8549a, type: 2}

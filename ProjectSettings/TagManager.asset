@@ -3,17 +3,29 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - TemporalPopups
+  - PlayerInit
+  - DynamicObjects
+  - VCam
+  - Temporary
+  - Passage
+  - MusicScene
+  - plomoVerde
+  - plomoNaranja
+  - plomoMorado
+  - plomoRojo
+  - plomoAzul
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Interactable
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Terrenal
+  - Spiritual
+  - Hacking
   - 
   - 
   - 
@@ -40,4 +52,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Muro
+    uniqueID: 1934078113
+    locked: 0
+  - name: Sombra
+    uniqueID: 3406453897
     locked: 0

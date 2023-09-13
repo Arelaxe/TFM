@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
+  m_Name: EmailMrsYoshida
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: Email_Sra_Yoshida.msg
+  <Description>k__BackingField: "<b>De:</b> kenta.sato@ogawacorp.jp\r\n<b>Para:</b>
+    tamako.yoshida@coolwaves.com\r\n<b>Asunto:</b> Proyecto Michelangelo\r\n\r\nEstimada
+    Sra. Yoshida,\r\n\r\nLe escribo para informarle de que debido a los problemas
+    de proveedores que ha atravesado nuestra compa\xF1\xEDa durante el pasado mes,
+    ser\xE1 necesario efectuar una renegociaci\xF3n del Proyecto Michelangelo. Cuando
+    le venga bien planeamos una llamada con el equipo directivode ambas empresas.\r\n\r\nEspero
+    su respuesta.\r\nKenta Sato.\r\nProject Manager.\r"
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: facd9b6fea9877a43930a0e665801207, type: 3}
+  Type: 1

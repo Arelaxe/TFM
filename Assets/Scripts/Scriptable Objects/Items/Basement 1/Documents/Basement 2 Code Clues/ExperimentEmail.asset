@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4785c8b554cd9c743861719c2d6e2301, type: 3}
+  m_Name: ExperimentEmail
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: Experimento_material.msg
+  <Description>k__BackingField: "<b>De:</b> yoki.inoue@ogawacorp.jp\r\n<b>Para:</b>
+    shuntaro.inoue@ogawacorp.jp\r\n \r\n<b>Asunto:</b> Pruebas material\r\n\r\n\xA1Buenas!\r\n\r\nNo
+    pod\xEDa esperar a llegar a casa para contarte lo que he conseguido hoy. Resulta
+    que el nuevo material que estamos estudiando tiene una propiedad extra\xF1\xEDsima.
+    \xA1Cada vez que reducimos la temperatura un grado, la densidad aumenta siguiendo
+    la serie de Fibonacci! Es decir, cada n\xFAmero es la suma de los dos anteriores.
+    De esta forma, la progresi\xF3n de la densidad quedar\xEDa as\xED:\r\n\r\n<align=\"center\"><font=\"Symbols\">b,
+    b, c, d, f, i, bd, cb...</font>\r\n\r\n<align=\"left\">Y as\xED sigue. \xBFNo
+    te parece curios\xEDsimo?\r\n\r\n\xA1Nos vemos esta noche!\r\nYoki Inoue.\r\nT\xE9cnico
+    de Laboratorio."
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: facd9b6fea9877a43930a0e665801207, type: 3}
+  Type: 1

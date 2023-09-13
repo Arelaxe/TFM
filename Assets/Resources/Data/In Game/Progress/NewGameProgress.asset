@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae7514d58117ebe4f807cef9894ea62d, type: 3}
+  m_Name: NewGameProgress
+  m_EditorClassIdentifier: 
+  newGame: 1
+  player:
+    selectedCharacter:
+      scene: TutorialScene
+      positionX: 0
+      positionY: -4
+      verticalMovement: 1
+      positiveMovement: 0
+    unselectedCharacter:
+      scene: TutorialScene
+      positionX: -1
+      positionY: -4
+      verticalMovement: 1
+      positiveMovement: 0
+    selectedCharacterOne: 1
+    grouped: 1
+    itemsOne:
+    - Hueso
+    - Ojo de juguete
+    itemsTwo: []
+    documents:
+    - "Quetzalc\xF3atl y el ma\xEDz"
+    - El hilo rojo del destino
